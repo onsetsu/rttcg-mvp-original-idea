@@ -1,0 +1,930 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Lato-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/card.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/mana.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Timer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Field.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Deck.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 11
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Game" type="Node" index="0"]
+
+script = ExtResource( 1 )
+mana_delay = 1.75
+mana_generation = 1
+
+[node name="Mockups & Placement" type="Node" parent="." index="0"]
+
+[node name="<Return to Hand>" type="ColorRect" parent="Mockups & Placement" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 430.0
+margin_right = 1030.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.182648, 0.742188, 0.584817, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/<Return to Hand>" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "<Return to Hand>"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Approaching Zone" type="ColorRect" parent="Mockups & Placement" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 850.0
+margin_top = 290.0
+margin_right = 1000.0
+margin_bottom = 440.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Approaching Zone" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Approaching Zone"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Enemy Cards" type="ColorRect" parent="Mockups & Placement" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 850.0
+margin_right = 1000.0
+margin_bottom = 280.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Enemy Cards" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Enemy Cards"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Support Zone" type="ColorRect" parent="Mockups & Placement" index="3"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 400.0
+margin_right = 190.0
+margin_bottom = 590.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Support Zone" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Support Zone"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="4"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 140.0
+margin_right = 188.0
+margin_bottom = 310.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Anschluss" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Anschluss"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="5"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 210.0
+margin_top = 450.0
+margin_right = 1070.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Player Hand" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Player Hand"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="6"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 320.0
+margin_top = 20.0
+margin_right = 470.0
+margin_bottom = 420.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.381654, 0.417969, 0.0604095, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Left Lane" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Left Lane"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Left Lane2" type="ColorRect" parent="Mockups & Placement" index="7"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 490.0
+margin_top = 20.0
+margin_right = 640.0
+margin_bottom = 420.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.381654, 0.417969, 0.0604095, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Left Lane2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Middle Lane"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Left Lane3" type="ColorRect" parent="Mockups & Placement" index="8"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 660.0
+margin_top = 20.0
+margin_right = 810.0
+margin_bottom = 420.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.381654, 0.417969, 0.0604095, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Left Lane3" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Right Lane"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="9"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 310.0
+margin_top = 230.0
+margin_right = 820.0
+margin_bottom = 380.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Player Field" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Player Field"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="10"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 310.0
+margin_top = 60.0
+margin_right = 820.0
+margin_bottom = 210.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Enemy Field" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Enemy Field"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_top = 170.0
+margin_right = 178.0
+margin_bottom = 298.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 860.0
+margin_top = 150.0
+margin_right = 988.0
+margin_bottom = 278.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="NinePatchRect6" type="NinePatchRect" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 330.0
+margin_top = 240.0
+margin_right = 458.0
+margin_bottom = 368.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="NinePatchRect7" type="NinePatchRect" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 330.0
+margin_top = 70.0
+margin_right = 458.0
+margin_bottom = 198.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="NinePatchRect8" type="NinePatchRect" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 500.0
+margin_top = 70.0
+margin_right = 628.0
+margin_bottom = 198.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="NinePatchRect9" type="NinePatchRect" parent="." index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 670.0
+margin_top = 70.0
+margin_right = 798.0
+margin_bottom = 198.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="NinePatchRect10" type="NinePatchRect" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 500.0
+margin_top = 240.0
+margin_right = 628.0
+margin_bottom = 368.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="NinePatchRect11" type="NinePatchRect" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 670.0
+margin_top = 240.0
+margin_right = 798.0
+margin_bottom = 368.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 576, 0, 192, 192 )
+patch_margin_left = 8
+patch_margin_top = 38
+patch_margin_right = 8
+patch_margin_bottom = 8
+_sections_unfolded = [ "Rect" ]
+
+[node name="towers" type="Node2D" parent="." index="9"]
+
+editor/display_folded = true
+position = Vector2( 740, 40 )
+
+[node name="tower_left_ally" parent="towers" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( -350, 360 )
+
+[node name="tower_middle_ally" parent="towers" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( -180, 360 )
+
+[node name="tower_right_ally" parent="towers" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( -10, 360 )
+
+[node name="tower_left_enemy" parent="towers" index="3" instance=ExtResource( 4 )]
+
+position = Vector2( -350, 0 )
+
+[node name="tower_middle_enemy" parent="towers" index="4" instance=ExtResource( 4 )]
+
+position = Vector2( -170, 0 )
+
+[node name="tower_right_enemy" parent="towers" index="5" instance=ExtResource( 4 )]
+
+[node name="mana" type="Node2D" parent="." index="10"]
+
+position = Vector2( 200, 370 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="mana_symbol" type="Sprite" parent="mana" index="0"]
+
+position = Vector2( 48.749, 20.776 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="mana_label" type="Label" parent="mana" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 70.0
+margin_bottom = 35.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="mana_timer" parent="mana" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( 22.216, 17.784 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="field" type="Node2D" parent="." index="11"]
+
+[node name="field_left_enemy_tower" parent="field" index="0" instance=ExtResource( 7 )]
+
+margin_left = 320.0
+margin_top = 20.0
+margin_right = 462.0
+margin_bottom = 60.0
+_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
+
+[node name="field_left_enemy_familiar" parent="field" index="1" instance=ExtResource( 7 )]
+
+margin_left = 320.0
+margin_top = 60.0
+margin_right = 462.0
+margin_bottom = 203.0
+type = "familiar"
+
+[node name="field_left_ally_familiar" parent="field" index="2" instance=ExtResource( 7 )]
+
+margin_left = 320.0
+margin_top = 230.0
+margin_right = 462.0
+margin_bottom = 373.0
+side = "friendly"
+type = "familiar"
+
+[node name="field_left_ally_tower" parent="field" index="3" instance=ExtResource( 7 )]
+
+margin_left = 320.0
+margin_top = 380.0
+margin_right = 462.0
+margin_bottom = 420.0
+side = "friendly"
+
+[node name="field_middle_enemy_tower" parent="field" index="4" instance=ExtResource( 7 )]
+
+margin_left = 490.0
+margin_top = 20.0
+margin_right = 632.0
+margin_bottom = 60.0
+_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
+lane = "middle"
+
+[node name="field_middle_enemy_familiar" parent="field" index="5" instance=ExtResource( 7 )]
+
+margin_left = 490.0
+margin_top = 60.0
+margin_right = 632.0
+margin_bottom = 203.0
+lane = "middle"
+type = "familiar"
+
+[node name="field_middle_ally_familiar" parent="field" index="6" instance=ExtResource( 7 )]
+
+margin_left = 490.0
+margin_top = 230.0
+margin_right = 632.0
+margin_bottom = 373.0
+lane = "middle"
+side = "friendly"
+type = "familiar"
+
+[node name="field_middle_ally_tower" parent="field" index="7" instance=ExtResource( 7 )]
+
+margin_left = 490.0
+margin_top = 380.0
+margin_right = 632.0
+margin_bottom = 420.0
+lane = "middle"
+side = "friendly"
+
+[node name="field_right_enemy_tower" parent="field" index="8" instance=ExtResource( 7 )]
+
+margin_left = 660.0
+margin_top = 20.0
+margin_right = 802.0
+margin_bottom = 60.0
+_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
+lane = "right"
+
+[node name="field_right_enemy_familiar" parent="field" index="9" instance=ExtResource( 7 )]
+
+margin_left = 660.0
+margin_top = 60.0
+margin_right = 802.0
+margin_bottom = 203.0
+lane = "right"
+type = "familiar"
+
+[node name="field_right_ally_familiar" parent="field" index="10" instance=ExtResource( 7 )]
+
+margin_left = 660.0
+margin_top = 230.0
+margin_right = 802.0
+margin_bottom = 373.0
+lane = "right"
+side = "friendly"
+type = "familiar"
+
+[node name="field_right_ally_tower" parent="field" index="11" instance=ExtResource( 7 )]
+
+margin_left = 660.0
+margin_top = 380.0
+margin_right = 802.0
+margin_bottom = 420.0
+lane = "right"
+side = "friendly"
+
+[node name="player_deck" parent="." index="12" instance=ExtResource( 8 )]
+
+position = Vector2( 924, 374 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="enemy_deck" parent="." index="13" instance=ExtResource( 8 )]
+
+position = Vector2( 924, 74 )
+_sections_unfolded = [ "Transform" ]
+side = "enemy"
+card_list = "ENEMY_DECK"
+
+[node name="extra_deck" parent="." index="14" instance=ExtResource( 8 )]
+
+position = Vector2( 104, 514 )
+_sections_unfolded = [ "Transform" ]
+card_list = "EXTRA_DECK"
+
+
