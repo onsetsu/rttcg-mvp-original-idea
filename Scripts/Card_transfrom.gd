@@ -462,6 +462,9 @@ func deal_3_if_approching_fire_deal_6(target_field):
 func deal_4_all_in_lane(target_field):
     deal_x_all_in_lane(target_field, 4)
 
+func sorcery__return_to_hand(target_field):
+    target_field.card.return_to_hand()
+
 # battlecries
 # ---------------------------------------------------------------------------------------------
 
@@ -656,6 +659,10 @@ func become_a_dragon():
 func become_a(name):
     Game.apply_onto(self, name)
     
+func return_to_hand():
+    remove_from_field()
+    add_to_hand()
+
 # zone changes
 # ---------------------------------------------------------------------------------------------
 
@@ -669,6 +676,11 @@ func add_to_field(field):
     go_to(field.center_position(), 0.3)
 
 func remove_from_field():
+    # needs to be called explicitly, because we have an extra instance 
+    # variable 'attack_charge_timer' that would otherwise still refer to this timer 
+    # #TODO: refactor properly
+    cancel_attacking()
+    clear_timers()
     if is_in_group('field'):
         remove_from_group('field')
     if field:
@@ -686,7 +698,12 @@ func add_to_hand():
     Game.organize_hand()
 
 func remove_from_hand():
+    clear_timers()
     remove_from_group('hand')
+
+func clear_timers():
+    for child in $timers.get_children():
+        child.queue_free()
 
 # comboing
 # ---------------------------------------------------------------------------------------------
@@ -703,7 +720,7 @@ func remove_combo_card(unused):
 
 func clear_attack_charge_timer():
     if attack_charge_timer != null:
-        attack_charge_timer.queue_free()
+        attack_charge_timer.get_parent().remove_child(attack_charge_timer)
         attack_charge_timer = null
     
     attack_timer_running = false

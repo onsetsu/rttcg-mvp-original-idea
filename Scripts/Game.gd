@@ -20,6 +20,7 @@ export var mana_generation = 1
 
 onready var DECK = [
     'VolJin',
+    'Retreat',
     'Bomber',
     'CarnivorousOoze',
     'Cinderstorm',

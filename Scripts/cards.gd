@@ -467,6 +467,15 @@ func VolJin(card):
     card.hp = 2
     card.battlecry = 'battlecry__swap_hp_opposing_familiar'
     
+func Retreat(card):
+    card.key = 'Retreat'
+    card.card_name = 'Retreat'
+    card.text = 'Return target familiar to your hand.'
+    card.element = 'water'
+    card.type = 'sorcery'
+    card.targeting = 'targets_friendly_familiar'
+    card.effect = 'sorcery__return_to_hand'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 
