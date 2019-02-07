@@ -17,6 +17,9 @@ func get_nodes_in_groups(groups):
 # array utils
 # ---------------------------------------------------------------------------------------------
 
+func shuffle(array):
+    pass
+
 func arr_copy(array):
     var result = []
     for item in array:

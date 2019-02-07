@@ -2,6 +2,7 @@ extends Node
 
 var card_scene = preload("res://Scenes/Card.tscn")
 var element_scene = preload("res://Scenes/Element.tscn")
+onready var Lobby = get_tree().get_root().get_node('Lobby')
 
 var CARD_EXTENT_HALF = Vector2(128/2, 128/2)
 #var ENEMY_IN_WAIT_POS = Vector2(860, 10) + CARD_EXTENT_HALF
@@ -20,7 +21,8 @@ export var mana_generation = 1
 
 onready var DECK = [
     'VolJin',
-    'Retreat',
+    'LoneChampion',
+    'RightShift',
     'Bomber',
     'CarnivorousOoze',
     'Cinderstorm',
@@ -29,6 +31,7 @@ onready var DECK = [
     'Phoenix',
     'Blacksmith',
     'IdolOfBlades',
+    'Retreat',
     'IdolOfGrowth',
     'Scout',
     'TheShepherd',
@@ -119,6 +122,10 @@ func draw_a_card():
     card.add_to_hand()
 
 func _ready():
+    DECK = Lobby.player_deck_from_config()
+    ENEMY_DECK = Lobby.enemy_deck_from_config()
+    EXTRA_DECK = Lobby.extra_deck_from_config()
+
     $towers/tower_right_enemy.add_to_field($field/field_right_enemy_tower)
     $towers/tower_right_ally.add_to_field($field/field_right_ally_tower)
     $towers/tower_middle_enemy.add_to_field($field/field_middle_enemy_tower)

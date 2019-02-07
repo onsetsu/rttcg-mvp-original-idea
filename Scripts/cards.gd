@@ -406,7 +406,7 @@ func Scout(card):
 func Blacksmith(card):
     card.key = 'Blacksmith'
     card.card_name = 'Blacksmith'
-    card.text = 'While approaching, Familiars you play gain +2/+2..'
+    card.text = 'While approaching, Familiars you play gain +2/+2.'
     card.type = 'familiar'
     card.element = 'earth'
     card.cost = 0
@@ -470,11 +470,31 @@ func VolJin(card):
 func Retreat(card):
     card.key = 'Retreat'
     card.card_name = 'Retreat'
-    card.text = 'Return target familiar to your hand.'
+    card.text = 'Return target friendly familiar to your hand.'
     card.element = 'water'
     card.type = 'sorcery'
     card.targeting = 'targets_friendly_familiar'
     card.effect = 'sorcery__return_to_hand'
+
+func LoneChampion(card):
+    card.key = 'LoneChampion'
+    card.card_name = 'Lone Champion'
+    card.text = 'Battlecry: Return your other Familiars to your hand.'
+    card.type = 'familiar'
+    card.element = 'fire'
+    card.cost = 0
+    card.at = 6
+    card.hp = 6
+    card.battlecry = 'battlecry__return_others_to_hand'
+    
+func RightShift(card):
+    card.key = 'RightShift'
+    card.card_name = 'Right Shift'
+    card.text = 'Move a familiar to the one lane to the right.'
+    card.element = 'water'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__shift_to_right'
 
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
@@ -572,7 +592,7 @@ func Juggernaut(card):
     card.hp = 10
     card.whenever = { attack = 'this__plus_3_plus_0'}
 
-func Counterspell(card):
+func Counterspell(card): # Rename to Disarm?
     card.key = 'Counterspell'
     card.card_name = 'Counterspell'
     card.text = 'Opponent discards all Sorceries.'

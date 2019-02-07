@@ -11,13 +11,14 @@ config_version=3
 [application]
 
 config/name="RTTCG - MVP - original idea"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/Lobby.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 utils="*res://Scripts/utils.gd"
 cards="*res://Scripts/cards.gd"
+lists="*res://Scripts/lists.gd"
 
 [input]
 

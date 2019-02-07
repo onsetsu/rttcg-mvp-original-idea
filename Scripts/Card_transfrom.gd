@@ -465,6 +465,10 @@ func deal_4_all_in_lane(target_field):
 func sorcery__return_to_hand(target_field):
     target_field.card.return_to_hand()
 
+func sorcery__shift_to_right(target_field):
+    #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO 
+    pass #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO 
+
 # battlecries
 # ---------------------------------------------------------------------------------------------
 
@@ -500,6 +504,11 @@ func battlecry__swap_hp_opposing_familiar():
     else:
         print('no familiar found')
     
+func battlecry__return_others_to_hand():
+    for f in Game.friendly_familiars():
+        if f != self:
+            f.return_to_hand()
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
