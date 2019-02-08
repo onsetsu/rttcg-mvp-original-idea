@@ -4,7 +4,8 @@ onready var Game = get_tree().get_root().get_node('Game')
 
 var index = 0
 export var side = 'friendly' # enemy
-export var card_list = 'DECK' # ENEMY_DECK, EXTRA_DECK
+
+var deck_list
 
 # Separator
 # ---------------------------------------------------------------------------------------------
@@ -13,10 +14,12 @@ func create_next_card():
     var card = Game.create_card(position)
     card.add_to_group(side)
 
-    var list = Game[card_list]
-    var card_name = list[index%list.size()]
+    var card_name = deck_list[index%deck_list.size()]
     Game.apply_onto(card, card_name)
-    
+
     index += 1
 
     return card
+
+func set_deck_list(list):
+    deck_list = [] + list

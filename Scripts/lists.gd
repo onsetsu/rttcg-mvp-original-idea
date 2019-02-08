@@ -2,21 +2,42 @@ extends Node
 
 # ---------------------------------------------------------------------------------------------
 
+var PLAYER_FIRST = [
+    'RightShift',
+
+]
+
 var PLAYER_DEFAULT = [
-    'Multiply',
-    'Dragon',
     'Flamekin',
+
+]
+
+var PLAYER_SIMPLE = [
     'Fireball',
-    'Flamekin',
     'Pyrokinesis',
-    'IceWall',
+    'Dragon',
     'GiantGrowth',
+    'IceWall',
+
+]
+
+var PLAYER_COMPLEX = [
+    'Scout',
+    'Multiply',
     'Raid',
+    'FormOfDragon',
+
 ]
 
 var PLAYER_BATTLECRY = [
+    'Anafenza',
     'KnifeJuggler',
     'TheShepherd',
+    'ElvenArcher',
+    'LoneChampion',
+    'VolJin',
+
+    'Retreat',
 
 ]
 
@@ -33,6 +54,10 @@ var PLAYER_COMBO = [
     'Bumerang',
     'SharedGrowth',
     'GoblinForerunner',
+    'ComboFighter',
+    'PierceThrough',
+
+    'BladeDance',
 
 ]
 
@@ -42,27 +67,30 @@ var PLAYER_INSPIRE = [
     'IdolOfDragon',
     'IdolOfBlades',
     'IdolOfGrowth',
+
 ]
 
-var DECK = [
-    'VolJin',
-    'LoneChampion',
-    'RightShift',
+var PLAYER_APPROACHING = [
+    'Cinderstorm',
+    'Blacksmith',
+
+]
+
+var PLAYER_POSITION = [
+    'PillarOfFire',
+
+]
+
+var PLAYER_SABOTAGE = [
+    'DracoKnight',
+    'GoblinLooter',
+
+]
+
+var PLAYER_IGNITION = [
     'Bomber',
     'CarnivorousOoze',
-    'Cinderstorm',
-    'PillarOfFire',
-    'ElvenArcher',
-    'Blacksmith',
-    'Retreat',
-    'Scout',
-    'DracoKnight',
-    'FormOfDragon',
-    'PierceThrough',
-    'ComboFighter',
-    'BladeDance',
-    'GoblinLooter',
-    'Anafenza',
+
 ]
 
 # ---------------------------------------------------------------------------------------------

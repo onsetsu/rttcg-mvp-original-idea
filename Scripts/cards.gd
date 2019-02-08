@@ -342,7 +342,7 @@ func IdolOfDragon(card):
 func TheShepherd(card):
     card.key = 'TheShepherd'
     card.card_name = 'The Shepherd'
-    card.text = 'Fill your board with exploding 2/2 Sheeps.'
+    card.text = 'Battlecry: Fill your board with exploding 2/2 Sheeps.'
     card.type = 'familiar'
     card.element = 'water'
     card.cost = 2

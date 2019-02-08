@@ -17,8 +17,19 @@ func get_nodes_in_groups(groups):
 # array utils
 # ---------------------------------------------------------------------------------------------
 
-func shuffle(array):
-    pass
+func shuffle(list):
+    var shuffledList = [] + list
+
+    for i in range(list.size() - 1, 0, -1):
+        randomize()
+        var x = randi()%i
+        
+        # swap
+        var temp = shuffledList[x]
+        shuffledList[x] = shuffledList[i]
+        shuffledList[i] = temp
+
+    return shuffledList
 
 func arr_copy(array):
     var result = []
