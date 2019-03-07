@@ -1,5 +1,8 @@
 extends Node
 
+func apply_onto(name, card):
+    funcref(self, name).call_func(card)
+
 # ==============================================================================
 # ================================= CARDS ======================================
 # ==============================================================================
@@ -493,8 +496,41 @@ func RightShift(card):
     card.text = 'Move a familiar to the one lane to the right.'
     card.element = 'water'
     card.type = 'sorcery'
-    card.targeting = 'targets_familiar'
+    card.targeting = 'targets_familiar_with_empty_field_to_the_right'
     card.effect = 'sorcery__shift_to_right'
+
+func Golem(card):
+    card.key = 'Golem'
+    card.card_name = 'Golem'
+    card.text = 'Battlecry: Deal 2 Damage to all Familiars in other lanes.'
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.cost = 1
+    card.at = 2
+    card.hp = 5
+    card.battlecry = 'battlecry__deal_2_familiars_in_other_lanes'
+
+func DragonHatchling(card):
+    card.key = 'DragonHatchling'
+    card.card_name = 'Dragon Hatchling'
+    card.text = 'In 10 seconds: Becomes a 5/5 Dragon.'
+    card.type = 'familiar'
+    card.element = 'fire'
+    card.cost = 1
+    card.at = 2
+    card.hp = 3
+    card.battlecry = 'battlecry__delay_10_become_a_dragon'
+
+func Cleric(card):
+    card.key = 'Cleric'
+    card.card_name = 'Cleric'
+    card.text = 'Every 2 seconds: Allies in other lanes get +0/+2.'
+    card.type = 'familiar'
+    card.element = 'water'
+    card.cost = 0
+    card.at = 1
+    card.hp = 4
+    card.battlecry = 'battlecry__every_2_allies_other_lanes_plus_0_plus_2'
 
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------

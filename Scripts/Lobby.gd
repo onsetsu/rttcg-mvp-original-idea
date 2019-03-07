@@ -2,9 +2,10 @@ extends Node
 
 var game_scene = preload("res://Scenes/Game.tscn")
 
+#onready var enemy_difficulty = ButtomGroup
 
 func deck_config(key):
-    return $MarginContainer/VBoxContainer/PanelContainer/deck_config.get_node(key).pressed
+    return find_node(key, true).pressed
 
 func player_deck_from_config(player_deck):
     var list = []
@@ -28,20 +29,28 @@ func player_deck_from_config(player_deck):
     if deck_config("sabotage"):
         lists.PLAYER_SABOTAGE
     if deck_config("position"):
-        lists.PLAYER_POSITION
+        list += lists.PLAYER_POSITION
     if deck_config("ignition"):
         lists.PLAYER_IGNITION
+    if deck_config("delayed"):
+        list += lists.PLAYER_DELAYED
 
     player_deck.set_deck_list(lists.PLAYER_FIRST + utils.shuffle(list))
+
+# ---------------------------------------------------------------------------------------------
 
 func enemy_deck_from_config(enemy_deck):
     enemy_deck.set_deck_list(lists.ENEMY_DECK)
 
+# ---------------------------------------------------------------------------------------------
+
 func extra_deck_from_config(extra_deck):
     extra_deck.set_deck_list(lists.EXTRA_DECK)
 
+# ---------------------------------------------------------------------------------------------
 
 func _on_play_button_pressed():
     var root = get_tree().get_root()
     var game = game_scene.instance()
     root.add_child(game)
+    $CenterContainer.hide()

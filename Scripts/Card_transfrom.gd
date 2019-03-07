@@ -129,24 +129,6 @@ func _process(delta):
     # --- attacking ---    
     if is_in_group('field') && !(attack_timer_running || attacking):
         setup_charge_to_attack()
-    
-#func _process(delta):
-#    if(mouseIn && Input.is_action_just_pressed('click')):
-#        isDragging = true
-#        start_offset = get_local_mouse_position() * get_transform().get_scale()
-#    if(Input.is_action_just_released('click')):
-#        isDragging = false
-#
-#    if(isDragging && Input.is_action_pressed('click')):
-#        set_position(get_viewport().get_mouse_position() - start_offset)
-
-#func _on_Area2D_mouse_entered():
-#    mouseIn = true
-#    print('mouseIn')
-
-#func _on_Area2D_mouse_exited():
-#    mouseIn = false
-#    print('mouseOut')
 
 func organize_timer_positions():
     var i = 0
@@ -159,7 +141,12 @@ func create_timer():
     $timers.add_child(timer)
     organize_timer_positions()
     return timer
-    
+
+func start_timer(duration, method_to_invoke, label):
+    var t = create_timer()
+    t.init(label, duration, self, method_to_invoke)
+    t.start()
+
 func add_approaching_timer(method_to_invoke, label):
     var t = create_timer()
     t.init(label, 5, self, method_to_invoke)
@@ -273,6 +260,9 @@ func targets_familiar_combo_not_required(target_field):
         return targets_not_required(target_field)
     else:
         return targets_familiar(target_field)
+
+func targets_familiar_with_empty_field_to_the_right(target_field):
+    return targets_familiar(target_field) and target_field.field_to_the_right_in_ring().is_empty()
 
 # play from hand
 # ---------------------------------------------------------------------------------------------
@@ -466,8 +456,7 @@ func sorcery__return_to_hand(target_field):
     target_field.card.return_to_hand()
 
 func sorcery__shift_to_right(target_field):
-    #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO 
-    pass #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO #TODO 
+    target_field.card.move_to_field(target_field.field_to_the_right_in_ring())
 
 # battlecries
 # ---------------------------------------------------------------------------------------------
@@ -509,6 +498,37 @@ func battlecry__return_others_to_hand():
         if f != self:
             f.return_to_hand()
 
+func battlecry__deal_2_familiars_in_other_lanes():
+    if not field:
+        return
+    var this_lane = field.lane
+
+    var familiars = Game.familiars_on_field()
+    for familiar in familiars:
+        if familiar.field and familiar.field.lane != this_lane:
+            deal_x_familiar(familiar, 2)
+
+func battlecry__delay_10_become_a_dragon():
+    start_timer(10, 'timed_become_a_dragon', 'become dragon')
+func timed_become_a_dragon(timer):
+    clear_timer(timer)
+    become_a_dragon()
+
+func battlecry__every_2_allies_other_lanes_plus_0_plus_2():
+    start_timer(2, 'timed_allies_other_lanes_plus_0_plus_2', 'heal 2')
+func timed_allies_other_lanes_plus_0_plus_2(timer):
+    clear_timer(timer)
+    
+    if not field:
+        return
+
+    var allies = Game.friendly_familiars()
+    for ally in allies:
+        if ally.field and ally.field.lane != field.lane:
+            ally.buff(0, 2)
+
+    battlecry__every_2_allies_other_lanes_plus_0_plus_2()
+    
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -663,10 +683,10 @@ func attack_immediately():
     attacking(null) # argument does not matter
 
 func become_a_dragon():
-    become_a('Dragon')
+    become('Dragon')
 
-func become_a(name):
-    Game.apply_onto(self, name)
+func become(name):
+    cards.apply_onto(name, self)
     
 func return_to_hand():
     remove_from_field()
@@ -677,6 +697,14 @@ func return_to_hand():
 
 func is_approaching():
     return is_in_group('approaching')
+
+func move_to_field(new_field):
+    if field:
+        field.card = null
+        field = null
+    field = new_field
+    field.card = self
+    go_to(field.center_position(), 0.3)
 
 func add_to_field(field):
     add_to_group('field')
@@ -711,8 +739,12 @@ func remove_from_hand():
     remove_from_group('hand')
 
 func clear_timers():
-    for child in $timers.get_children():
-        child.queue_free()
+    for timer in $timers.get_children():
+        clear_timer(timer)
+
+func clear_timer(timer):
+    $timers.remove_child(timer)
+    timer.queue_free()
 
 # comboing
 # ---------------------------------------------------------------------------------------------

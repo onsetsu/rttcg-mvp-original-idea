@@ -1,36 +1,39 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Lobby.gd" type="Script" id=1]
 
-[node name="Lobby" type="Node"]
+[sub_resource type="ButtonGroup" id=1]
+
+resource_local_to_scene = true
+
+[node name="Lobby" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
-[node name="MarginContainer" type="MarginContainer" parent="." index="0"]
+[node name="CenterContainer" type="CenterContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 191.0
-margin_bottom = 332.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Margin" ]
+use_top_left = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 8.0
-margin_right = 191.0
-margin_bottom = 332.0
+margin_left = 345.0
+margin_top = 120.0
+margin_right = 679.0
+margin_bottom = 480.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -39,7 +42,56 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="deck_configuration" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 334.0
+margin_bottom = 336.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 191.0
+margin_bottom = 336.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 191.0
+margin_bottom = 336.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="deck_configuration" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -60,7 +112,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" index="1"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -68,7 +120,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
 margin_right = 183.0
-margin_bottom = 308.0
+margin_bottom = 336.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -76,7 +128,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="deck_config" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer" index="0"]
+[node name="deck_config" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -85,7 +137,7 @@ anchor_bottom = 0.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 176.0
-margin_bottom = 283.0
+margin_bottom = 311.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -94,7 +146,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="simple" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="0"]
+[node name="simple" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -110,7 +162,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -118,7 +169,7 @@ text = "Simple cards"
 flat = false
 align = 0
 
-[node name="complex" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="1"]
+[node name="complex" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -135,7 +186,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -143,7 +193,7 @@ text = "Complex cards"
 flat = false
 align = 0
 
-[node name="battlecry" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="2"]
+[node name="battlecry" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -161,7 +211,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
@@ -171,7 +220,7 @@ flat = false
 align = 0
 _sections_unfolded = [ "Hint" ]
 
-[node name="deathrottle" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="3"]
+[node name="deathrottle" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -188,7 +237,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -196,7 +244,7 @@ text = "Deathrottle effects"
 flat = false
 align = 0
 
-[node name="combo" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="4"]
+[node name="combo" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -213,7 +261,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -221,7 +268,7 @@ text = "Combo effects"
 flat = false
 align = 0
 
-[node name="inspire" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="5"]
+[node name="inspire" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -238,7 +285,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -246,7 +292,7 @@ text = "Inspire effects"
 flat = false
 align = 0
 
-[node name="approaching" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="6"]
+[node name="approaching" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -265,7 +311,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -274,7 +319,7 @@ flat = false
 align = 0
 _sections_unfolded = [ "Hint" ]
 
-[node name="sabotage" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="7"]
+[node name="sabotage" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -291,7 +336,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -299,7 +343,7 @@ text = "Sabotage effects"
 flat = false
 align = 0
 
-[node name="position" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="8"]
+[node name="position" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -316,7 +360,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -324,7 +367,7 @@ text = "Position based effects"
 flat = false
 align = 0
 
-[node name="ignition" type="CheckBox" parent="MarginContainer/VBoxContainer/PanelContainer/deck_config" index="9"]
+[node name="ignition" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="9"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -341,7 +384,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-pressed = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -349,15 +391,174 @@ text = "Ignition effects"
 flat = false
 align = 0
 
-[node name="play_button" type="Button" parent="MarginContainer/VBoxContainer" index="2"]
+[node name="delayed" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="10"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 312.0
-margin_right = 183.0
-margin_bottom = 332.0
+margin_top = 280.0
+margin_right = 169.0
+margin_bottom = 304.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Delayed effects"
+flat = false
+align = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 195.0
+margin_right = 334.0
+margin_bottom = 336.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 139.0
+margin_bottom = 336.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="enemy_configuration" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 131.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Enemy Configuration"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 131.0
+margin_bottom = 84.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 124.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="CheckBox" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 117.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 1 )
+text = "foo"
+flat = false
+align = 0
+
+[node name="CheckBox2" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 28.0
+margin_right = 117.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 1 )
+text = "bar"
+flat = false
+align = 0
+
+[node name="play_button" type="Button" parent="CenterContainer/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 340.0
+margin_right = 334.0
+margin_bottom = 360.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -373,6 +574,6 @@ text = "Play!"
 flat = false
 align = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 
 

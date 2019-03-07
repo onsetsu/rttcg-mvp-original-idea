@@ -3,8 +3,8 @@ extends Node
 # ---------------------------------------------------------------------------------------------
 
 var PLAYER_FIRST = [
-    'RightShift',
-
+    'Cleric',
+    'DragonHatchling'
 ]
 
 var PLAYER_DEFAULT = [
@@ -78,6 +78,8 @@ var PLAYER_APPROACHING = [
 
 var PLAYER_POSITION = [
     'PillarOfFire',
+    'RightShift',
+    'Golem',
 
 ]
 
@@ -91,6 +93,10 @@ var PLAYER_IGNITION = [
     'Bomber',
     'CarnivorousOoze',
 
+]
+
+var PLAYER_DELAYED = [
+    'DragonHatchling'
 ]
 
 # ---------------------------------------------------------------------------------------------
@@ -110,6 +116,8 @@ var ENEMY_DECK = [
     'RareHunter',
     'BearTrap',
 ]
+
+# ---------------------------------------------------------------------------------------------
 
 var EXTRA_DECK = [
     'QuickForge',

@@ -29,14 +29,10 @@ func create_card(pos=Vector2(100, 100)):
     add_child(card)
     return card
 
-func apply_onto(card, name):
-    funcref(cards, name).call_func(card)
-
 func create_card_by_name(pos, name, side):
     var card = create_card(pos)
     card.add_to_group(side)
-
-    apply_onto(card, name)
+    card.become(name)
 
     return card
 
@@ -250,7 +246,7 @@ func make_combo_card(name):
     card.add_to_group("friendly")
     card.add_to_group("combo")
 
-    apply_onto(card, name)
+    card.become(name)
     
     var timer = card.create_timer()
     timer.init("combo", 3, card, "remove_combo_card")

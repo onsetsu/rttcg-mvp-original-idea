@@ -65,5 +65,15 @@ func friendly_tower_field():
 func all_fields_in_same_lane():
     return utils.filter_prop(Game.fields(), 'lane', lane)
 
+func field_to_the_right_in_ring():
+    var query_lane
+    if lane == 'left': query_lane = 'middle'
+    if lane == 'middle': query_lane = 'right'
+    if lane == 'right': query_lane = 'left'
+    
+    for field in Game.fields():
+        if field.type == type && field.side == side && field.lane == query_lane:
+            return field
+
 func receive_damage(x):
     pass
