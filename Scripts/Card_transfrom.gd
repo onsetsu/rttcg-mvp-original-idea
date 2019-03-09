@@ -8,8 +8,6 @@ var card_name = 'Flamekin'
 var text = 'No text here.'
 var element = 'fire' setget set_element, get_element # water, earth 
 
-var cost = 1
-
 var type = 'familiar' # sorcery
 
 # for sorceries
@@ -93,12 +91,6 @@ func update_appearance():
     $frame.region_rect.position.x = get_frame_offset()
     $frame/text.text = str(text)
 
-    if cost == 0:
-        $frame/cost.hide()
-        $frame/mana_symbol.hide()
-    else:
-        $frame/cost.text = str(cost)
-
     if is_familiar():
         $frame/at.text = str(at)
         $frame/hp.text = str(hp)
@@ -107,6 +99,9 @@ func update_appearance():
         $frame/hp.hide()
 
 func _process(delta):
+    if at < 0:
+        at = 0
+
     update_appearance()
     
     # --- ignition ---
@@ -438,8 +433,7 @@ func draw_one_for_each_enemy_familiar(target_field):
 func opponent_discards_all_sorceries(target_field):
     for card in utils.get_nodes_in_groups(['hand', 'friendly']):
         if card.is_sorcery():
-            card.remove_from_hand()
-            card.queue_free()
+            card.discard()
     Game.organize_hand()
 
 func deal_3_if_approching_fire_deal_6(target_field):
@@ -457,6 +451,38 @@ func sorcery__return_to_hand(target_field):
 
 func sorcery__shift_to_right(target_field):
     target_field.card.move_to_field(target_field.field_to_the_right_in_ring())
+
+func sorcery__minus_4_minus_2(target_field):
+    target_field.card.debuff(4, 2)
+
+func sorcery__all_minus_4_minus_4_delay_plus_4_plus_4(target_field):
+    for familiar in Game.familiars_on_field():
+        familiar.start_timer(5, 'timed_plus_4_plus_4', '+4/+4')
+        familiar.debuff(4, 4)
+func timed_plus_4_plus_4(timer):
+    clear_timer(timer)
+    buff(4, 4)
+
+func sorcery__plus_5_plus_5_delay_selfdestruct(target_field):
+    target_field.card.start_timer(5, 'timed_selfdestruct', 'self-destruct')
+    target_field.card.buff(5, 5)
+func timed_selfdestruct(timer):
+    clear_timer(timer)
+    die()
+
+func sorcery__draw_3_delay_discard(target_field):
+    for i in [1,2,3]:
+        var card = Game.draw_a_card()
+        card.start_timer(5, 'timed_discard', 'discard')
+func timed_discard(timer):
+    discard()
+
+func sorcery__deal_3_delay_deal_3(target_field):
+    var familiar = target_field.card
+    familiar.start_timer(3, 'timed_receive_3_damage', '3 damage')
+    familiar.receive_damage(3)
+func timed_receive_3_damage(timer):
+    receive_damage(3)
 
 # battlecries
 # ---------------------------------------------------------------------------------------------
@@ -508,8 +534,8 @@ func battlecry__deal_2_familiars_in_other_lanes():
         if familiar.field and familiar.field.lane != this_lane:
             deal_x_familiar(familiar, 2)
 
-func battlecry__delay_10_become_a_dragon():
-    start_timer(10, 'timed_become_a_dragon', 'become dragon')
+func battlecry__delay_8_become_a_dragon():
+    start_timer(8, 'timed_become_a_dragon', 'become dragon')
 func timed_become_a_dragon(timer):
     clear_timer(timer)
     become_a_dragon()
@@ -528,7 +554,34 @@ func timed_allies_other_lanes_plus_0_plus_2(timer):
             ally.buff(0, 2)
 
     battlecry__every_2_allies_other_lanes_plus_0_plus_2()
+
+func battlecry__every_4_draw_1_discard_leftmost():
+    start_timer(4, 'timed_draw_1_discard_leftmost', 'draw, discard')
+func timed_draw_1_discard_leftmost(timer):
+    clear_timer(timer)
     
+    if not field:
+        return
+
+    Game.draw_a_card()
+    Game.discard_leftmost_card()
+
+    battlecry__every_4_draw_1_discard_leftmost()
+
+func battlecry__opponent_discard_leftmost():
+    Game.discard_leftmost_card()
+
+func battlecry__every_4_create_a_shiv():
+    start_timer(4, 'timed_create_a_shiv', 'shiv')
+func timed_create_a_shiv(timer):
+    clear_timer(timer)
+    
+    if not field:
+        return
+
+    create_x_shivs(1)
+    battlecry__every_4_create_a_shiv()
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -671,6 +724,11 @@ func buff(at_improvement, hp_improvement):
     at += at_improvement
     hp += hp_improvement
 
+func debuff(at_improvement, hp_improvement):
+    at -= at_improvement
+    hp -= hp_improvement
+    check_for_death()
+
 func create_x_shivs(x):
     for i in range(x):
         create('Shiv').add_to_hand()
@@ -688,6 +746,14 @@ func become_a_dragon():
 func become(name):
     cards.apply_onto(name, self)
     
+func discard():
+    if is_in_group('hand') and is_in_group('friendly'):
+        remove_from_hand()
+        queue_free()
+        Game.organize_hand()
+    else:
+        print('could not discard')
+
 func return_to_hand():
     remove_from_field()
     add_to_hand()
@@ -847,7 +913,11 @@ func attack_released(unused, unused2):
 
 func check_for_death():
     if hp <= 0:
-        cancel_attacking()
-        var removed_from = remove_from_field()
-        exec_deathrottle(removed_from)
-        queue_free()
+        die()
+
+func die():
+    cancel_attacking()
+    var removed_from = remove_from_field()
+    exec_deathrottle(removed_from)
+    queue_free()
+    

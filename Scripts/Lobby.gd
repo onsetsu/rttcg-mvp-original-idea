@@ -2,7 +2,19 @@ extends Node
 
 var game_scene = preload("res://Scenes/Game.tscn")
 
+var speed_up = 0.8
+
 #onready var enemy_difficulty = ButtomGroup
+
+func _ready():
+    update_speed_info()
+
+func update_speed_info():
+    find_node('speed-info').text = "%1.1f" % [speed_up]
+
+func _on_speedslider_value_changed(value):
+    speed_up = value
+    update_speed_info()
 
 func deck_config(key):
     return find_node(key, true).pressed

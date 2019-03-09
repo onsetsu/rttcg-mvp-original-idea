@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Lato-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/card.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/mana.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Timer.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Field.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Deck.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Field.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Deck.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -17,19 +15,9 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=2]
-
-size = 20
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
-mana_delay = 1.75
-mana_generation = 1
 
 [node name="Mockups & Placement" type="Node" parent="." index="0"]
 
@@ -185,9 +173,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 5.0
 margin_top = 140.0
-margin_right = 188.0
+margin_right = 183.0
 margin_bottom = 310.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -280,7 +267,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 320.0
 margin_top = 20.0
-margin_right = 470.0
+margin_right = 460.0
 margin_bottom = 420.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -326,7 +313,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 490.0
 margin_top = 20.0
-margin_right = 640.0
+margin_right = 630.0
 margin_bottom = 420.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -372,7 +359,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 660.0
 margin_top = 20.0
-margin_right = 810.0
+margin_right = 800.0
 margin_bottom = 420.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -565,9 +552,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 50.0
+margin_left = 45.0
 margin_top = 170.0
-margin_right = 178.0
+margin_right = 173.0
 margin_bottom = 298.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -778,56 +765,9 @@ position = Vector2( -170, 0 )
 
 [node name="tower_right_enemy" parent="towers" index="5" instance=ExtResource( 4 )]
 
-[node name="mana" type="Node2D" parent="." index="12"]
+[node name="field" type="Node2D" parent="." index="12"]
 
-editor/display_folded = true
-position = Vector2( 200, 370 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="mana_symbol" type="Sprite" parent="mana" index="0"]
-
-position = Vector2( 48.749, 20.776 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="mana_label" type="Label" parent="mana" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 30.0
-margin_top = 10.0
-margin_right = 70.0
-margin_bottom = 35.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "0"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
-
-[node name="mana_timer" parent="mana" index="2" instance=ExtResource( 6 )]
-
-position = Vector2( 22.216, 17.784 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="field" type="Node2D" parent="." index="13"]
-
-editor/display_folded = true
-
-[node name="field_left_enemy_tower" parent="field" index="0" instance=ExtResource( 7 )]
+[node name="field_left_enemy_tower" parent="field" index="0" instance=ExtResource( 5 )]
 
 margin_left = 320.0
 margin_top = 20.0
@@ -835,7 +775,7 @@ margin_right = 462.0
 margin_bottom = 60.0
 _sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 
-[node name="field_left_enemy_familiar" parent="field" index="1" instance=ExtResource( 7 )]
+[node name="field_left_enemy_familiar" parent="field" index="1" instance=ExtResource( 5 )]
 
 margin_left = 320.0
 margin_top = 60.0
@@ -843,7 +783,7 @@ margin_right = 462.0
 margin_bottom = 203.0
 type = "familiar"
 
-[node name="field_left_ally_familiar" parent="field" index="2" instance=ExtResource( 7 )]
+[node name="field_left_ally_familiar" parent="field" index="2" instance=ExtResource( 5 )]
 
 margin_left = 320.0
 margin_top = 230.0
@@ -852,7 +792,7 @@ margin_bottom = 373.0
 side = "friendly"
 type = "familiar"
 
-[node name="field_left_ally_tower" parent="field" index="3" instance=ExtResource( 7 )]
+[node name="field_left_ally_tower" parent="field" index="3" instance=ExtResource( 5 )]
 
 margin_left = 320.0
 margin_top = 380.0
@@ -860,7 +800,7 @@ margin_right = 462.0
 margin_bottom = 420.0
 side = "friendly"
 
-[node name="field_middle_enemy_tower" parent="field" index="4" instance=ExtResource( 7 )]
+[node name="field_middle_enemy_tower" parent="field" index="4" instance=ExtResource( 5 )]
 
 margin_left = 490.0
 margin_top = 20.0
@@ -869,7 +809,7 @@ margin_bottom = 60.0
 _sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 lane = "middle"
 
-[node name="field_middle_enemy_familiar" parent="field" index="5" instance=ExtResource( 7 )]
+[node name="field_middle_enemy_familiar" parent="field" index="5" instance=ExtResource( 5 )]
 
 margin_left = 490.0
 margin_top = 60.0
@@ -878,7 +818,7 @@ margin_bottom = 203.0
 lane = "middle"
 type = "familiar"
 
-[node name="field_middle_ally_familiar" parent="field" index="6" instance=ExtResource( 7 )]
+[node name="field_middle_ally_familiar" parent="field" index="6" instance=ExtResource( 5 )]
 
 margin_left = 490.0
 margin_top = 230.0
@@ -888,7 +828,7 @@ lane = "middle"
 side = "friendly"
 type = "familiar"
 
-[node name="field_middle_ally_tower" parent="field" index="7" instance=ExtResource( 7 )]
+[node name="field_middle_ally_tower" parent="field" index="7" instance=ExtResource( 5 )]
 
 margin_left = 490.0
 margin_top = 380.0
@@ -897,7 +837,7 @@ margin_bottom = 420.0
 lane = "middle"
 side = "friendly"
 
-[node name="field_right_enemy_tower" parent="field" index="8" instance=ExtResource( 7 )]
+[node name="field_right_enemy_tower" parent="field" index="8" instance=ExtResource( 5 )]
 
 margin_left = 660.0
 margin_top = 20.0
@@ -906,7 +846,7 @@ margin_bottom = 60.0
 _sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 lane = "right"
 
-[node name="field_right_enemy_familiar" parent="field" index="9" instance=ExtResource( 7 )]
+[node name="field_right_enemy_familiar" parent="field" index="9" instance=ExtResource( 5 )]
 
 margin_left = 660.0
 margin_top = 60.0
@@ -915,7 +855,7 @@ margin_bottom = 203.0
 lane = "right"
 type = "familiar"
 
-[node name="field_right_ally_familiar" parent="field" index="10" instance=ExtResource( 7 )]
+[node name="field_right_ally_familiar" parent="field" index="10" instance=ExtResource( 5 )]
 
 margin_left = 660.0
 margin_top = 230.0
@@ -925,7 +865,7 @@ lane = "right"
 side = "friendly"
 type = "familiar"
 
-[node name="field_right_ally_tower" parent="field" index="11" instance=ExtResource( 7 )]
+[node name="field_right_ally_tower" parent="field" index="11" instance=ExtResource( 5 )]
 
 margin_left = 660.0
 margin_top = 380.0
@@ -934,18 +874,18 @@ margin_bottom = 420.0
 lane = "right"
 side = "friendly"
 
-[node name="player_deck" parent="." index="14" instance=ExtResource( 8 )]
+[node name="player_deck" parent="." index="13" instance=ExtResource( 6 )]
 
 position = Vector2( 924, 374 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="enemy_deck" parent="." index="15" instance=ExtResource( 8 )]
+[node name="enemy_deck" parent="." index="14" instance=ExtResource( 6 )]
 
 position = Vector2( 924, 74 )
 _sections_unfolded = [ "Transform" ]
 side = "enemy"
 
-[node name="extra_deck" parent="." index="16" instance=ExtResource( 8 )]
+[node name="extra_deck" parent="." index="15" instance=ExtResource( 6 )]
 
 position = Vector2( 104, 514 )
 _sections_unfolded = [ "Transform" ]

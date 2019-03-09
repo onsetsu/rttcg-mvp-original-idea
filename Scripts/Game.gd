@@ -15,10 +15,6 @@ var ELEMENT_SEQUENCE_HAVE_POS_START = Vector2(30, 320)
 var ELEMENT_SEQUENCE_GOAL_POS_START = Vector2(30, 350)
 var ELEMENT_SEQUENCE_GOAL_POS_OFFSET = Vector2(24, 0)
 
-var mana = 0
-export var mana_delay = 1.75
-export var mana_generation = 1
-
 # ---------------------------------------------------------------------------------------------
 
 func create_card(pos=Vector2(100, 100)):
@@ -48,6 +44,13 @@ func create_card_from_extra_deck():
 func draw_a_card():
     var card = create_card_from_deck()
     card.add_to_hand()
+    return card
+
+func discard_leftmost_card():
+    var hand = utils.get_nodes_in_groups(['hand', 'friendly'])
+    if not hand.empty():
+        var leftmost_card = hand[0]
+        leftmost_card.discard()
 
 func _ready():
     Lobby.player_deck_from_config($player_deck)
@@ -61,19 +64,8 @@ func _ready():
     $towers/tower_left_enemy.add_to_field($field/field_left_enemy_tower)
     $towers/tower_left_ally.add_to_field($field/field_left_ally_tower)
     
-    $mana/mana_timer.init('generate', mana_delay, self, 'generate_mana')
-    restart_mana_timer()
-    
     draw_a_card()
     draw_a_card()
-
-func restart_mana_timer():
-    $mana/mana_timer.reset()
-    $mana/mana_timer.start()
-
-func generate_mana(unused):
-    mana += mana_generation
-    restart_mana_timer()
 
 func organize_hand():
     var index = 0
@@ -144,8 +136,6 @@ func _process(delta):
     refill_approaching_card_player()
     refill_approaching_card_enemy()
     refill_lingering_extra_deck_card()
-
-    $mana/mana_label.text = str(mana)
 
 # extra deck activation
 # ---------------------------------------------------------------------------------------------
@@ -262,9 +252,6 @@ func get_combo_card():
 # ---------------------------------------------------------------------------------------------
 
 func try_to_play_card(card):
-    if card.cost > mana: return
-    mana -= card.cost
-    
     var field = get_hovered_field()
     if card.check_targeting(field):
         card.remove_from_hand()

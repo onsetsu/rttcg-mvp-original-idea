@@ -1,7 +1,7 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
+onready var Lobby = get_tree().get_root().get_node('Lobby')
+
 var countdown = false
 var current_time = 0
 var target_time = 0
@@ -15,7 +15,7 @@ func _ready():
 
 func _process(delta):
     if not running: return
-    current_time += delta
+    current_time += delta * Lobby.speed_up
     $gauge.value = current_time
     $time.text = "%.1f s" % (target_time - current_time)
     if(current_time > target_time):

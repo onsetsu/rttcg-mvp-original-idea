@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Card_transfrom.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/card.png" type="Texture" id=2]
 [ext_resource path="res://Lato-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/Element.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/mana.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -135,40 +134,7 @@ _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
 position = Vector2( 64, 120 )
 
-[node name="mana_symbol" type="Sprite" parent="frame" index="3"]
-
-position = Vector2( 64.2663, 35.5661 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="cost" type="Label" parent="frame" index="4"]
-
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -72.0
-margin_top = 23.0
-margin_right = -58.0
-margin_bottom = 47.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "5"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Margin", "custom_colors", "custom_fonts" ]
-
-[node name="at" type="Label" parent="frame" index="5"]
+[node name="at" type="Label" parent="frame" index="3"]
 
 anchor_left = 0.0
 anchor_top = 1.0
@@ -193,7 +159,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "custom_colors", "custom_fonts" ]
 
-[node name="hp" type="Label" parent="frame" index="6"]
+[node name="hp" type="Label" parent="frame" index="4"]
 
 anchor_left = 0.0
 anchor_top = 1.0

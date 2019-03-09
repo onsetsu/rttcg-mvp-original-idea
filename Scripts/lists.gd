@@ -3,8 +3,6 @@ extends Node
 # ---------------------------------------------------------------------------------------------
 
 var PLAYER_FIRST = [
-    'Cleric',
-    'DragonHatchling'
 ]
 
 var PLAYER_DEFAULT = [
@@ -96,7 +94,15 @@ var PLAYER_IGNITION = [
 ]
 
 var PLAYER_DELAYED = [
-    'DragonHatchling'
+    'DragonHatchling',
+    'Cleric',
+    'DoubleShot',
+    'CrystalForge',
+    'Languish',
+    'Disarm',
+    'CreativeBurst',
+    'PowerOverwhelming',
+    'FateWeaver',
 ]
 
 # ---------------------------------------------------------------------------------------------
@@ -105,6 +111,7 @@ var ENEMY_DECK = [
     'Goblin',
     'Juggernaut',
     'ManaSapling',
+    'Saboteur',
     'BatteringRam',
     'SiegeTower',
     'RockThrow',
