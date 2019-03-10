@@ -91,7 +91,7 @@ func has_approaching_card():
 func create_approaching_card():
     var approaching_card = create_card_from_deck()
     approaching_card.add_to_group("approaching")
-    approaching_card.add_approaching_timer("draw_approaching_card", "draw")
+    approaching_card.start_timer(5, "draw_approaching_card", "draw")
     
 func refill_approaching_card_player():
     if not has_approaching_card():
@@ -103,7 +103,7 @@ func has_approaching_card_enemy():
 func create_approaching_card_enemy():
     var approaching_card = create_card_from_enemy_deck()
     approaching_card.add_to_group("approaching")
-    approaching_card.add_approaching_timer("play_enemy_card", "play")
+    approaching_card.start_timer(5, "play_enemy_card", "play")
     
 func refill_approaching_card_enemy():
     if not has_approaching_card_enemy():
@@ -237,10 +237,7 @@ func make_combo_card(name):
     card.add_to_group("combo")
 
     card.become(name)
-    
-    var timer = card.create_timer()
-    timer.init("combo", 3, card, "remove_combo_card")
-    timer.start()
+    card.start_timer(3, "remove_combo_card", "combo")
 
 func has_combo_card():
     return not get_tree().get_nodes_in_group('combo').empty()

@@ -5,7 +5,7 @@
 [ext_resource path="res://Sprites/timer-front.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/timer-progress-green.png" type="Texture" id=4]
 
-[node name="Timer" type="Node2D"]
+[node name="Timer" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 

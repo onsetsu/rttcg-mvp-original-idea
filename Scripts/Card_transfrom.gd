@@ -131,31 +131,28 @@ func organize_timer_positions():
         timer.position = i * Vector2(-40, 0)
         i += 1
 
-func create_timer():
+func _create_timer():
     var timer = timer_scene.instance()
     $timers.add_child(timer)
     organize_timer_positions()
     return timer
 
 func start_timer(duration, method_to_invoke, label):
-    var t = create_timer()
-    t.init(label, duration, self, method_to_invoke)
-    t.start()
+    var timer = _create_timer()
+    timer.init(label, duration, self, method_to_invoke)
+    timer.start()
+    return timer
 
 func add_approaching_timer(method_to_invoke, label):
-    var t = create_timer()
-    t.init(label, 5, self, method_to_invoke)
-    t.start()
+    start_timer(5, method_to_invoke, label)
 
 # callback
-func draw_approaching_card(timer):
-    timer.queue_free()
+func draw_approaching_card():
     remove_from_group("approaching")
     add_to_hand()
 
 #callback
-func play_enemy_card(timer):
-    timer.queue_free()
+func play_enemy_card():
     remove_from_group("approaching")
     var successfully_played = Game.try_to_play_enemy_card(self)
     if not successfully_played:
@@ -459,29 +456,27 @@ func sorcery__all_minus_4_minus_4_delay_plus_4_plus_4(target_field):
     for familiar in Game.familiars_on_field():
         familiar.start_timer(5, 'timed_plus_4_plus_4', '+4/+4')
         familiar.debuff(4, 4)
-func timed_plus_4_plus_4(timer):
-    clear_timer(timer)
+func timed_plus_4_plus_4():
     buff(4, 4)
 
 func sorcery__plus_5_plus_5_delay_selfdestruct(target_field):
     target_field.card.start_timer(5, 'timed_selfdestruct', 'self-destruct')
     target_field.card.buff(5, 5)
-func timed_selfdestruct(timer):
-    clear_timer(timer)
+func timed_selfdestruct():
     die()
 
 func sorcery__draw_3_delay_discard(target_field):
     for i in [1,2,3]:
         var card = Game.draw_a_card()
         card.start_timer(5, 'timed_discard', 'discard')
-func timed_discard(timer):
+func timed_discard():
     discard()
 
 func sorcery__deal_3_delay_deal_3(target_field):
     var familiar = target_field.card
     familiar.start_timer(3, 'timed_receive_3_damage', '3 damage')
     familiar.receive_damage(3)
-func timed_receive_3_damage(timer):
+func timed_receive_3_damage():
     receive_damage(3)
 
 # battlecries
@@ -536,15 +531,12 @@ func battlecry__deal_2_familiars_in_other_lanes():
 
 func battlecry__delay_8_become_a_dragon():
     start_timer(8, 'timed_become_a_dragon', 'become dragon')
-func timed_become_a_dragon(timer):
-    clear_timer(timer)
+func timed_become_a_dragon():
     become_a_dragon()
 
 func battlecry__every_2_allies_other_lanes_plus_0_plus_2():
     start_timer(2, 'timed_allies_other_lanes_plus_0_plus_2', 'heal 2')
-func timed_allies_other_lanes_plus_0_plus_2(timer):
-    clear_timer(timer)
-    
+func timed_allies_other_lanes_plus_0_plus_2():
     if not field:
         return
 
@@ -557,9 +549,7 @@ func timed_allies_other_lanes_plus_0_plus_2(timer):
 
 func battlecry__every_4_draw_1_discard_leftmost():
     start_timer(4, 'timed_draw_1_discard_leftmost', 'draw, discard')
-func timed_draw_1_discard_leftmost(timer):
-    clear_timer(timer)
-    
+func timed_draw_1_discard_leftmost():
     if not field:
         return
 
@@ -573,9 +563,7 @@ func battlecry__opponent_discard_leftmost():
 
 func battlecry__every_4_create_a_shiv():
     start_timer(4, 'timed_create_a_shiv', 'shiv')
-func timed_create_a_shiv(timer):
-    clear_timer(timer)
-    
+func timed_create_a_shiv():
     if not field:
         return
 
@@ -738,7 +726,7 @@ func create(name):
 
 func attack_immediately():
     cancel_attacking()
-    attacking(null) # argument does not matter
+    attacking()
 
 func become_a_dragon():
     become('Dragon')
@@ -806,11 +794,7 @@ func remove_from_hand():
 
 func clear_timers():
     for timer in $timers.get_children():
-        clear_timer(timer)
-
-func clear_timer(timer):
-    $timers.remove_child(timer)
-    timer.queue_free()
+        timer.remove_me()
 
 # comboing
 # ---------------------------------------------------------------------------------------------
@@ -819,7 +803,7 @@ func make_copy_the_combo_card():
     Game.make_combo_card(key)
 
 #callback
-func remove_combo_card(unused):
+func remove_combo_card():
     queue_free()
 
 # attacking
@@ -827,7 +811,7 @@ func remove_combo_card(unused):
 
 func clear_attack_charge_timer():
     if attack_charge_timer != null:
-        attack_charge_timer.get_parent().remove_child(attack_charge_timer)
+        attack_charge_timer.remove_me()
         attack_charge_timer = null
     
     attack_timer_running = false
@@ -848,12 +832,10 @@ func cancel_attacking():
 
 func setup_charge_to_attack():
     attack_timer_running = true
-    attack_charge_timer = create_timer()
-    attack_charge_timer.init("attack", 3, self, "attacking")
-    attack_charge_timer.start()
+    attack_charge_timer = start_timer(3, 'attacking', 'attack')
 
 #callback
-func attacking(unused_timer):
+func attacking():
     clear_attack_charge_timer()
     start_attacking()
     

@@ -4,20 +4,25 @@ onready var Lobby = get_tree().get_root().get_node('Lobby')
 
 var countdown = false
 var current_time = 0
-var target_time = 0
+var target_time = 1
 var running = false
 signal reach_target_time
+
+var s_receiver
+var s_message
+
+var removed = false
 
 func _ready():
     # Called every time the node is added to the scene.
     # Initialization here
-    pass
+    $gauge.max_value = target_time
 
 func _process(delta):
     if not running: return
     current_time += delta * Lobby.speed_up
     $gauge.value = current_time
-    $time.text = "%.1f s" % (target_time - current_time)
+    $time.text = "%1d" % (target_time - current_time + 1)
     if(current_time > target_time):
         current_time = target_time
         stop()
@@ -30,7 +35,25 @@ func init(action_name, target_time_, signal_receiver, signal_message):
     target_time = target_time_
     $gauge.min_value = 0
     $gauge.max_value = target_time
-    connect("reach_target_time", signal_receiver, signal_message)
+
+    s_receiver = signal_receiver
+    s_message = signal_message
+    connect("reach_target_time", self, 'reached_time')
+
+func reached_time(timer):
+    remove_me()
+    funcref(s_receiver, s_message).call_func()
+
+func remove_me():
+    if removed: return
+    removed = true
+    
+    pause()
+    get_parent().remove_child(self)
+    queue_free()
+
+    if s_receiver:
+        s_receiver.organize_timer_positions()
 
 func start():
     running = true
