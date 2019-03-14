@@ -40,7 +40,8 @@ func _process(delta):
     else:
         hide()
 
-func center_position(): return rect_position + rect_size / 2
+func center_position():
+    return rect_position + rect_size / 2
 
 func opposing_familiar_field():
     for field in Game.fields():

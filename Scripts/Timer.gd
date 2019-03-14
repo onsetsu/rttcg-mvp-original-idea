@@ -54,6 +54,8 @@ func remove_me():
 
     if s_receiver:
         s_receiver.organize_timer_positions()
+        if s_receiver.charge_timer == self:
+            s_receiver.charge_timer = null
 
 func start():
     running = true

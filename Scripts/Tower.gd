@@ -21,3 +21,6 @@ func _process(delta):
 
 func receive_damage(amount):
     hp -= amount
+
+func heal(amount):
+    hp += amount

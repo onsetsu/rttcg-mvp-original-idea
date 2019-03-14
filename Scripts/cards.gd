@@ -559,6 +559,117 @@ func DoubleShot(card):
     card.targeting = 'targets_familiar'
     card.effect = 'sorcery__deal_3_delay_deal_3'
 
+func Catapult(card):
+    card.key = 'Catapult'
+    card.card_name = 'Catapult'
+    card.text = 'Every 2 seconds: Deal 1 Damage to opposing side.'
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.at = 0
+    card.hp = 5
+    card.battlecry = 'battlecry__every_2_deal_1_opposing_side'
+
+func Sapling(card):
+    card.key = 'Sapling'
+    card.card_name = 'Sapling'
+    card.text = 'Become a 4/6 Treant after 10 seconds in hand.'
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.at = 0
+    card.hp = 2
+    card.whenever = { add_to_hand = 'in_hand__delay_10_transform__to_treant'}
+
+func Treant(card):
+    card.key = 'Treant'
+    card.card_name = 'Treant'
+    card.text = ''
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.at = 4
+    card.hp = 6
+
+func Poison(card):
+    card.key = 'Poison'
+    card.card_name = 'Poison'
+    card.text = 'Target familiar takes 1 damage every 2 seconds.'
+    card.element = 'water'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__deal_1_every_2_seconds'
+
+func FlameArrow(card):
+    card.key = 'FlameArrow'
+    card.card_name = 'Flame Arrow'
+    card.text = 'Deal 5 Damage. Discard after 2 seconds.'
+    card.element = 'water'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__deal_5'
+    card.whenever = { add_to_hand = 'in_hand__delay_5_discard'}
+
+func Carpenter(card):
+    card.key = 'Carpenter'
+    card.card_name = 'Carpenter'
+    card.text = 'Battlecry: Heal 5 HP to guarded Tower.'
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.at = 3
+    card.hp = 5
+    card.battlecry = 'battlecry__heal_5_guarded_tower'
+
+func LightningBolt(card):
+    card.key = 'LightningBolt'
+    card.card_name = 'Lightning Bolt'
+    card.text = 'Deal 3 Damage. Charge 5: Deal 6 Damage instead.'
+    card.element = 'fire'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar_or_tower'
+    card.effect = 'sorcery__deal_3_charged_6'
+    card.charge_time = 5
+
+func InvertedRager(card):
+    card.key = 'InvertedRager'
+    card.card_name = 'Inverted Rager'
+    card.text = 'Charge 3: Swap its AT and HP.'
+    card.type = 'familiar'
+    card.element = 'fire'
+    card.at = 2
+    card.hp = 5
+    card.battlecry = 'battlecry__charged_swap_at_hp'
+    card.charge_time = 3
+
+func Brawler(card):
+    card.key = 'Brawler'
+    card.card_name = 'Brawler'
+    card.text = 'Attacks Immediately. Charge 3: Gain +3/+3 instead.'
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.at = 3
+    card.hp = 1
+    card.battlecry = 'battlecry__attacks_immediately_charged_instead_plus_3_plus_3'
+    card.charge_time = 3
+
+func InfiniteBlades(card):
+    card.key = 'InfiniteBlades'
+    card.card_name = 'Infinite Blades'
+    card.text = 'Give a Familiar +2/+2. Charge 4: Add this to your hand.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__plus_2_plus_2_charged_return_to_hand'
+    card.charge_time = 5
+
+func UndeadHorde(card):
+    card.key = 'UndeadHorde'
+    card.card_name = 'UndeadHorde'
+    card.text = 'Charge 5: Fill your board with copies of this.'
+    card.type = 'familiar'
+    card.element = 'water'
+    card.at = 3
+    card.hp = 4
+    card.battlecry = 'battlecry__charged_fill_your_board_with_copies_of_this'
+    card.charge_time = 5
+
 
 
 # Enemy Cards

@@ -26,6 +26,10 @@ var inspire
 var whenever = {}
 var ignition
 
+var charged = false
+var charge_time = -1
+var charge_timer
+
 var extra = false
 var extra_effect
 var element_sequence = []
@@ -98,6 +102,33 @@ func update_appearance():
         $frame/at.hide()
         $frame/hp.hide()
 
+func drag_start():
+    add_to_group('drag')
+
+    start_offset = get_local_mouse_position() * scale
+    cancel_go_to()
+    
+    if charge_time > 0:
+        charge_timer = start_timer(charge_time, 'charge_complete', 'charge')
+
+func charge_complete():
+    charged = true
+
+func drag():
+    set_position(get_viewport().get_mouse_position() - start_offset)
+    print(charge_timer)
+
+func drag_end():
+    remove_from_group('drag')
+
+    Game.try_to_play_card(self)
+    
+    charged = false
+    if charge_timer != null:
+        charge_timer.remove_me()
+    
+    Game.organize_hand() # need to reorganize hand regardless whether actually played or not
+
 func _process(delta):
     if at < 0:
         at = 0
@@ -110,16 +141,11 @@ func _process(delta):
     
     # --- drag from hand ---
     if Input.is_action_just_pressed('click') && is_in_group('hand') && get_tree().get_nodes_in_group("drag").size() == 0 && is_hovered():
-        add_to_group('drag')
-        start_offset = get_local_mouse_position() * scale
-        cancel_go_to()
-    if(Input.is_action_just_released('click') && is_in_group('drag')):
-        remove_from_group('drag')
-        # TODO: potentially play the card
-        Game.try_to_play_card(self)
-        Game.organize_hand() # need to reorganize regardless whether actually played or not
-    if(is_in_group('drag') && Input.is_action_pressed('click')):
-        set_position(get_viewport().get_mouse_position() - start_offset)
+        drag_start()
+    if Input.is_action_pressed('click') && is_in_group('drag'):
+        drag()
+    if Input.is_action_just_released('click') && is_in_group('drag'):
+        drag_end()
 
     # --- attacking ---    
     if is_in_group('field') && !(attack_timer_running || attacking):
@@ -341,6 +367,18 @@ func approaching__deal_2_to_familiar(card):
     if is_approaching() && card.is_familiar() && side() != card.side():
         deal_x_familiar(card, 2)
 
+func in_hand__delay_10_transform__to_treant(card):
+    if self == card:
+        start_timer(10, 'timed_transform_to_treant', 'grow')
+func timed_transform_to_treant():
+    become('Treant')
+
+func in_hand__delay_5_discard(card):
+    if self == card:
+        start_timer(5, 'timed_discard_self', 'discard')
+func timed_discard_self():
+    discard()
+
 # extra deck effects
 # ---------------------------------------------------------------------------------------------
 
@@ -388,9 +426,18 @@ func deal_3(target_field):
 func deal_4(target_field):
     deal_x(target_field, 4)
 
+func sorcery__deal_5(target_field):
+    deal_x(target_field, 5)
+
 func deal_6(target_field):
     deal_x(target_field, 6)
 
+func sorcery__deal_3_charged_6(target_field):
+    if charged:
+        deal_x(target_field, 6)
+    else:
+        deal_x(target_field, 3)
+    
 func deal_5_all_enemy_familiars(target_field):
     for familiar in Game.enemy_familiars():
         deal_x_familiar(familiar, 5)
@@ -479,6 +526,19 @@ func sorcery__deal_3_delay_deal_3(target_field):
 func timed_receive_3_damage():
     receive_damage(3)
 
+func sorcery__deal_1_every_2_seconds(target_field):
+    target_field.card.add_poison()
+func add_poison():
+    start_timer(2, 'timed_poison', 'poison')
+func timed_poison():
+    add_poison()
+    receive_damage(1)
+
+func sorcery__plus_2_plus_2_charged_return_to_hand(target_field):
+    target_field.card.buff(2, 2)
+    if charged:
+        create(key).add_to_hand()
+
 # battlecries
 # ---------------------------------------------------------------------------------------------
 
@@ -502,8 +562,7 @@ func battlecry__deal_8_in_lane():
     deal_x_in_lane(8)
 
 func battlecry__fill_board_with_sheeps():
-    for unoccupied_field in Game.unoccupied_friendly_familiar_fields():
-        create('Sheep').add_to_field(unoccupied_field)
+    fill_your_board_with('Sheep')
 
 func battlecry__swap_hp_opposing_familiar():
     if not field.opposing_familiar_field().is_empty():
@@ -570,6 +629,35 @@ func timed_create_a_shiv():
     create_x_shivs(1)
     battlecry__every_4_create_a_shiv()
 
+func battlecry__every_2_deal_1_opposing_side():
+    start_timer(2, 'timed_deal_1_opposing_side', 'deal 1')
+func timed_deal_1_opposing_side():
+    if not field:
+        return
+
+    deal_x_in_lane(1)
+    battlecry__every_2_deal_1_opposing_side()
+
+func battlecry__heal_5_guarded_tower():
+    if not field:
+        return
+
+    field.friendly_tower_field().tower.heal(5)
+
+func battlecry__charged_swap_at_hp():
+    if charged:
+        swap_at_hp()
+
+func battlecry__attacks_immediately_charged_instead_plus_3_plus_3():
+    if charged:
+        buff(3, 3)
+    else:
+        attack_immediately()
+
+func battlecry__charged_fill_your_board_with_copies_of_this():
+    if charged:
+        fill_your_board_with(key)
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -591,8 +679,7 @@ func deathrottle__blazing_phoenix(from_field):
     create('BlazingPhoenix').add_to_hand()
 
 func deathrottle__fill_board_with_hobgoblins(from_field):
-    for unoccupied_field in Game.unoccupied_enemy_familiar_fields():
-        create('Hobgoblin').add_to_field(unoccupied_field)
+    fill_your_board_with('Hobgoblin')
 
 # sabotage
 # ---------------------------------------------------------------------------------------------
@@ -717,6 +804,12 @@ func debuff(at_improvement, hp_improvement):
     hp -= hp_improvement
     check_for_death()
 
+func swap_at_hp():
+    var temp_at = at
+    at = hp
+    hp = temp_at
+    check_for_death()
+    
 func create_x_shivs(x):
     for i in range(x):
         create('Shiv').add_to_hand()
@@ -745,6 +838,15 @@ func discard():
 func return_to_hand():
     remove_from_field()
     add_to_hand()
+
+func fill_your_board_with(card_key):
+    var fields
+    if is_enemy():
+        fields = Game.unoccupied_enemy_familiar_fields()
+    else:
+        fields = Game.unoccupied_friendly_familiar_fields()
+    for unoccupied_field in fields:
+        create(card_key).add_to_field(unoccupied_field)
 
 # zone changes
 # ---------------------------------------------------------------------------------------------
@@ -787,6 +889,7 @@ func on_field():
 func add_to_hand():
     add_to_group("hand")
     Game.organize_hand()
+    Game.event("add_to_hand", self)
 
 func remove_from_hand():
     clear_timers()

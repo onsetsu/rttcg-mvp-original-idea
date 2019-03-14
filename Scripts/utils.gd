@@ -14,6 +14,19 @@ func get_nodes_in_groups(groups):
             cards_in_first_group = new_group
     return cards_in_first_group
 
+func node_exists(node):
+    if node == null:
+      return false
+
+    var ref = weakref(node).get_ref()
+
+    if ref == null:
+      return false
+
+    if ref.is_queued_for_deletion():
+      return false
+
+    return true
 # array utils
 # ---------------------------------------------------------------------------------------------
 

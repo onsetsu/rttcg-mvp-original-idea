@@ -34,6 +34,7 @@ var PLAYER_BATTLECRY = [
     'ElvenArcher',
     'LoneChampion',
     'VolJin',
+    'Carpenter',
 
     'Retreat',
 
@@ -103,7 +104,20 @@ var PLAYER_DELAYED = [
     'CreativeBurst',
     'PowerOverwhelming',
     'FateWeaver',
+    'Catapult',
+    'Sapling',
+    'Poison',
+    'FlameArrow',
 ]
+
+var PLAYER_CHARGE = [
+    'UndeadHorde',
+    'InfiniteBlades',
+    'Brawler',
+    'LightningBolt',
+    'InvertedRager',
+]
+
 
 # ---------------------------------------------------------------------------------------------
 

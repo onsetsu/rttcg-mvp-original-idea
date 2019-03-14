@@ -6,7 +6,7 @@
 
 resource_local_to_scene = true
 
-[node name="Lobby" type="Node"]
+[node name="Lobby" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -32,9 +32,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 345.0
-margin_top = 120.0
+margin_top = 106.0
 margin_right = 679.0
-margin_bottom = 480.0
+margin_bottom = 494.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -50,7 +50,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 334.0
-margin_bottom = 336.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -66,7 +66,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 191.0
-margin_bottom = 336.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -83,7 +83,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
 margin_right = 191.0
-margin_bottom = 336.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -121,7 +121,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
 margin_right = 183.0
-margin_bottom = 336.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -138,7 +138,7 @@ anchor_bottom = 0.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 176.0
-margin_bottom = 311.0
+margin_bottom = 339.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -417,6 +417,31 @@ text = "Delayed effects"
 flat = false
 align = 0
 
+[node name="charge" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/deck_config" index="11"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 308.0
+margin_right = 169.0
+margin_bottom = 332.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Charge up Effects"
+flat = false
+align = 0
+
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" index="1"]
 
 anchor_left = 0.0
@@ -425,7 +450,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 195.0
 margin_right = 334.0
-margin_bottom = 336.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -441,7 +466,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
 margin_right = 139.0
-margin_bottom = 336.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -557,9 +582,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 340.0
+margin_top = 368.0
 margin_right = 334.0
-margin_bottom = 360.0
+margin_bottom = 388.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

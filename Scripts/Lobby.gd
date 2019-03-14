@@ -46,6 +46,8 @@ func player_deck_from_config(player_deck):
         lists.PLAYER_IGNITION
     if deck_config("delayed"):
         list += lists.PLAYER_DELAYED
+    if deck_config("charge"):
+        list += lists.PLAYER_CHARGE
 
     player_deck.set_deck_list(lists.PLAYER_FIRST + utils.shuffle(list))
 
