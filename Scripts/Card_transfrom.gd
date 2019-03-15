@@ -26,6 +26,9 @@ var inspire
 var whenever = {}
 var ignition
 
+var haste = false
+var slow = false
+
 var charged = false
 var charge_time = -1
 var charge_timer
@@ -48,6 +51,7 @@ var enemy_ai = 'enemy_ai__any_possible_target'
 var start_offset
 onready var Game = get_tree().get_root().get_node('Game')
 var timer_scene = preload("res://Scenes/Timer.tscn")
+var hint_scene = preload("res://Scenes/Damage_Number.tscn")
 
 func _ready():
     update_appearance()
@@ -116,7 +120,6 @@ func charge_complete():
 
 func drag():
     set_position(get_viewport().get_mouse_position() - start_offset)
-    print(charge_timer)
 
 func drag_end():
     remove_from_group('drag')
@@ -174,6 +177,7 @@ func add_approaching_timer(method_to_invoke, label):
 
 # callback
 func draw_approaching_card():
+    clear_timers()
     remove_from_group("approaching")
     add_to_hand()
 
@@ -183,7 +187,6 @@ func play_enemy_card():
     var successfully_played = Game.try_to_play_enemy_card(self)
     if not successfully_played:
         queue_free()
-
 
 # accessing/querying
 # ---------------------------------------------------------------------------------------------
@@ -426,6 +429,9 @@ func deal_3(target_field):
 func deal_4(target_field):
     deal_x(target_field, 4)
 
+func deal_5(target_field):
+    deal_x(target_field, 5)
+
 func sorcery__deal_5(target_field):
     deal_x(target_field, 5)
 
@@ -657,6 +663,9 @@ func battlecry__attacks_immediately_charged_instead_plus_3_plus_3():
 func battlecry__charged_fill_your_board_with_copies_of_this():
     if charged:
         fill_your_board_with(key)
+
+func battlecry__draw_approaching_card():
+    Game.ensure_approaching_card_player().draw_approaching_card()
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------
@@ -985,6 +994,7 @@ func attack_that_familiar(familiar):
     receive_damage(familiar.at)
 
 func receive_damage(amount):
+    Game.add_child(hint_scene.instance().start(self, amount, Color(1,0,0)))
     hp -= amount
     check_for_death()
 

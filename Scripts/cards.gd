@@ -397,6 +397,36 @@ func Cinderstorm(card):
     card.targeting = 'targets_familiar_or_tower'
     card.effect = 'deal_3_if_approching_fire_deal_6'
 
+func Apprentice(card):
+    card.key = 'Apprentice'
+    card.card_name = 'Apprentice'
+    card.text = 'Battlecry: Draw your approaching card.'
+    card.type = 'familiar'
+    card.element = 'water'
+    card.at = 2
+    card.hp = 4
+    card.battlecry = 'battlecry__draw_approaching_card'
+
+func Troll(card):
+    card.key = 'Troll'
+    card.card_name = 'Troll'
+    card.text = 'Slow.'
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.at = 4
+    card.hp = 6
+    card.slow = true
+
+func QuickBlast(card):
+    card.key = 'QuickBlast'
+    card.card_name = 'Quick Blast'
+    card.text = 'Deal 3 Damage. Haste.'
+    card.element = 'fire'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'deal_3'
+    card.haste = true
+
 func PillarOfFire(card):
     card.key = 'PillarOfFire'
     card.card_name = 'Pillar of Fire'
@@ -739,7 +769,7 @@ func RockThrow(card):
     card.element = 'earth'
     card.type = 'sorcery'
     card.targeting = 'targets_familiar'
-    card.effect = 'deal_6'
+    card.effect = 'deal_5'
 
 func ManaSapling(card):
     card.key = 'ManaSapling'
@@ -799,6 +829,16 @@ func Saboteur(card):
     card.at = 2
     card.hp = 6
     card.battlecry = 'battlecry__opponent_discard_leftmost'
+
+func Swiftblade(card):
+    card.key = 'Swiftblade'
+    card.card_name = 'Swiftblade'
+    card.text = 'Haste.'
+    card.type = 'familiar'
+    card.element = 'fire'
+    card.at = 3
+    card.hp = 3
+    card.haste = true
 
 # Extra Deck Cards
 # ---------------------------------------------------------------------------------------------

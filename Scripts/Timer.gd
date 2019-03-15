@@ -13,6 +13,9 @@ var s_message
 
 var removed = false
 
+var slow_multiplier = 0.6
+var haste_multiplier = 1.6
+
 func _ready():
     # Called every time the node is added to the scene.
     # Initialization here
@@ -20,7 +23,14 @@ func _ready():
 
 func _process(delta):
     if not running: return
-    current_time += delta * Lobby.speed_up
+    
+    var multiplier = 1.0
+    if s_receiver and s_receiver.haste and $name.text != 'combo':
+        multiplier *= haste_multiplier
+    if s_receiver and s_receiver.slow and $name.text != 'combo':
+        multiplier *= slow_multiplier
+    current_time += delta * Lobby.speed_up * multiplier
+    
     $gauge.value = current_time
     $time.text = "%1d" % (target_time - current_time + 1)
     if(current_time > target_time):

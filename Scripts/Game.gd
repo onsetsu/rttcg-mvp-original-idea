@@ -97,6 +97,10 @@ func refill_approaching_card_player():
     if not has_approaching_card():
         create_approaching_card()
 
+func ensure_approaching_card_player():
+    refill_approaching_card_player()
+    return get_approaching_card()
+
 func has_approaching_card_enemy():
     return utils.get_nodes_in_groups(["approaching", "enemy"]).size() >= 1
 

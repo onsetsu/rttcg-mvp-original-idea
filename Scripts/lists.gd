@@ -3,6 +3,9 @@ extends Node
 # ---------------------------------------------------------------------------------------------
 
 var PLAYER_FIRST = [
+    'Apprentice',
+    'Troll',
+    'QuickBlast',
 ]
 
 var PLAYER_DEFAULT = [
@@ -123,6 +126,7 @@ var PLAYER_CHARGE = [
 
 var ENEMY_DECK = [
     'Goblin',
+    'Swiftblade',
     'Juggernaut',
     'ManaSapling',
     'Saboteur',

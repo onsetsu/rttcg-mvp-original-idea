@@ -6,7 +6,7 @@
 
 resource_local_to_scene = true
 
-[node name="Lobby" type="Node" index="0"]
+[node name="Lobby" type="Node"]
 
 script = ExtResource( 1 )
 
