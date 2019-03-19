@@ -53,6 +53,8 @@ func discard_leftmost_card():
         leftmost_card.discard()
 
 func _ready():
+    $"win-lose-box".hide()
+    
     Lobby.player_deck_from_config($player_deck)
     Lobby.enemy_deck_from_config($enemy_deck)
     Lobby.extra_deck_from_config($extra_deck)
@@ -141,6 +143,22 @@ func _process(delta):
     refill_approaching_card_enemy()
     refill_lingering_extra_deck_card()
 
+func check_game_end():
+    if $"win-lose-box".is_visible(): return
+    
+    var enemy_towers = [$towers/tower_left_enemy, $towers/tower_middle_enemy, $towers/tower_right_enemy]
+    var ally_towers = [$towers/tower_left_ally, $towers/tower_middle_ally, $towers/tower_right_ally]
+    
+    var win = utils.filter_func(enemy_towers, 'is_destroyed', true).size() >= 2
+    var lose = utils.filter_func(ally_towers, 'is_destroyed', true).size() >= 2
+    
+    if win or lose:
+        $"win-lose-box".show()
+        if lose:
+            var message = $"win-lose-box".find_node('message')
+            message.text = 'You Lose!'
+            message.set("custom_colors/font_color", Color(1,0,0))
+            
 # extra deck activation
 # ---------------------------------------------------------------------------------------------
 
@@ -271,3 +289,7 @@ func play_extra_deck_card():
     var lingering_card = get_tree().get_nodes_in_group('lingering')[0]
     lingering_card.play_extra()
 
+
+
+func _on_returnbutton_pressed():
+    Lobby.end_game()

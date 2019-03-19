@@ -14,7 +14,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 [sub_resource type="Animation" id=2]
 
 resource_name = "simple_hint"
-length = 0.5
+length = 3.0
 loop = false
 step = 0.02
 tracks/0/type = "value"
@@ -24,10 +24,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.38 ),
-"transitions": PoolRealArray( 1, 0.25 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -148, -32 ), Vector2( -148, -123 ) ]
+"values": [ Vector2( -148, -32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("text:rect_rotation")
@@ -60,16 +60,28 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.32, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 0.383048 ),
+"times": PoolRealArray( 0, 1.48, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 4, 0.25 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
 }
 
 [node name="Damage_Number" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Anchor", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Transform", "custom_colors", "custom_fonts" ]
 
 [node name="text" type="Label" parent="." index="0"]
 
@@ -96,7 +108,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 

@@ -3,9 +3,6 @@ extends Node
 # ---------------------------------------------------------------------------------------------
 
 var PLAYER_FIRST = [
-    'Apprentice',
-    'Troll',
-    'QuickBlast',
 ]
 
 var PLAYER_DEFAULT = [
@@ -75,7 +72,7 @@ var PLAYER_INSPIRE = [
 var PLAYER_APPROACHING = [
     'Cinderstorm',
     'Blacksmith',
-
+    'Apprentice',
 ]
 
 var PLAYER_POSITION = [
@@ -119,6 +116,11 @@ var PLAYER_CHARGE = [
     'Brawler',
     'LightningBolt',
     'InvertedRager',
+]
+
+var PLAYER_HASTE_SLOW = [
+    'Troll',
+    'QuickBlast',
 ]
 
 

@@ -48,6 +48,8 @@ func player_deck_from_config(player_deck):
         list += lists.PLAYER_DELAYED
     if deck_config("charge"):
         list += lists.PLAYER_CHARGE
+    if deck_config("haste-slow"):
+        list += lists.PLAYER_HASTE_SLOW
 
     player_deck.set_deck_list(lists.PLAYER_FIRST + utils.shuffle(list))
 
@@ -68,3 +70,8 @@ func _on_play_button_pressed():
     var game = game_scene.instance()
     root.add_child(game)
     $CenterContainer.hide()
+
+func end_game():
+    var root = get_tree().get_root()
+    root.remove_child(root.get_node('Game'))
+    $CenterContainer.show()

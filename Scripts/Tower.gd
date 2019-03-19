@@ -23,10 +23,17 @@ func _process(delta):
     hp = max(hp, 0)
     $hp.text = str(hp)
 
+func display_hint(message, color):
+    Game.add_child(hint_scene.instance().start(self, message, color))
+    
 func receive_damage(amount):
-    Game.add_child(hint_scene.instance().start(self, amount, Color(1,0,0)))
+    display_hint(amount, Color(1,0,0))
     hp -= amount
+    Game.check_game_end()
 
 func heal(amount):
-    Game.add_child(hint_scene.instance().start(self, "+%1d" % amount, Color(0,1,0)))
+    display_hint("+%1d" % amount, Color(0,1,0))
     hp += amount
+
+func is_destroyed():
+    return hp <= 0

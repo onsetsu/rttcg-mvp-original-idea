@@ -116,6 +116,7 @@ func drag_start():
         charge_timer = start_timer(charge_time, 'charge_complete', 'charge')
 
 func charge_complete():
+    display_hint('charged', Color(1,1,1))
     charged = true
 
 func drag():
@@ -187,6 +188,11 @@ func play_enemy_card():
     var successfully_played = Game.try_to_play_enemy_card(self)
     if not successfully_played:
         queue_free()
+
+# animation and juice
+# ---------------------------------------------------------------------------------------------
+func display_hint(message, color):
+    Game.add_child(hint_scene.instance().start(self, message, color))
 
 # accessing/querying
 # ---------------------------------------------------------------------------------------------
@@ -672,6 +678,7 @@ func battlecry__draw_approaching_card():
 
 func exec_deathrottle(from_field):
     if deathrottle != null:
+        display_hint('deathrottle', Color(1,0,1))
         funcref(self, deathrottle).call_func(from_field)
 
 func deathrottle__split_into_2_4s(from_field):
@@ -805,10 +812,12 @@ func deal_x_all_in_lane(target_field, amount):
             deal_x(f, amount)
 
 func buff(at_improvement, hp_improvement):
+    display_hint('+%1d/+%1d' % [at_improvement, hp_improvement], Color(0,1,0))
     at += at_improvement
     hp += hp_improvement
 
 func debuff(at_improvement, hp_improvement):
+    display_hint('-%1d/-%1d' % [at_improvement, hp_improvement], Color(0.7,0,0.7))
     at -= at_improvement
     hp -= hp_improvement
     check_for_death()
@@ -838,6 +847,7 @@ func become(name):
     
 func discard():
     if is_in_group('hand') and is_in_group('friendly'):
+        display_hint('discard', Color(1,0,1))
         remove_from_hand()
         queue_free()
         Game.organize_hand()
@@ -994,7 +1004,7 @@ func attack_that_familiar(familiar):
     receive_damage(familiar.at)
 
 func receive_damage(amount):
-    Game.add_child(hint_scene.instance().start(self, amount, Color(1,0,0)))
+    display_hint(amount, Color(1,0,0))
     hp -= amount
     check_for_death()
 
