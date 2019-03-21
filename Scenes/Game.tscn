@@ -22,7 +22,7 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 2 )
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -978,6 +978,12 @@ group = null
 text = "Return to Menu."
 flat = false
 align = 1
+
+[node name="cards" type="Node" parent="." index="17"]
+
+[node name="elements" type="Node" parent="." index="18"]
+
+[node name="effects" type="Node" parent="." index="19"]
 
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
 
