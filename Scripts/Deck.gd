@@ -15,7 +15,7 @@ func create_next_card():
     card.add_to_group(side)
 
     var card_name = deck_list[index%deck_list.size()]
-    cards.apply_onto(card_name, card)
+    card.become(card_name)
 
     index += 1
 

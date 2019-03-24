@@ -3,6 +3,8 @@ extends Node2D
 var mouseIn = false
 var isDragging = false
 
+var deck = 'player'
+
 var key = 'Flamekin'
 var card_name = 'Flamekin'
 var text = 'No text here.'
@@ -51,7 +53,6 @@ var enemy_ai = 'enemy_ai__any_possible_target'
 var start_offset
 onready var Game = get_tree().get_root().get_node('Game')
 var timer_scene = preload("res://Scenes/Timer.tscn")
-var hint_scene = preload("res://Scenes/Damage_Number.tscn")
 
 func _ready():
     update_appearance()
@@ -192,7 +193,7 @@ func play_enemy_card():
 # animation and juice
 # ---------------------------------------------------------------------------------------------
 func display_hint(message, color):
-    Game.add_child(hint_scene.instance().start(self, message, color))
+    Game.display_hint(self, message, color)
 
 # accessing/querying
 # ---------------------------------------------------------------------------------------------
@@ -843,8 +844,8 @@ func become_a_dragon():
     become('Dragon')
 
 func become(name):
-    cards.apply_onto(name, self)
-    
+    funcref(cards, name).call_func(self)
+
 func discard():
     if is_in_group('hand') and is_in_group('friendly'):
         display_hint('discard', Color(1,0,1))

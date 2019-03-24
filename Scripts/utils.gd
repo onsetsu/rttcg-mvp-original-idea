@@ -44,11 +44,9 @@ func shuffle(list):
 
     return shuffledList
 
+# #TODO: remove this util
 func arr_copy(array):
-    var result = []
-    for item in array:
-        result.append(item)
-    return result
+    return array.duplicate()
     
 func pluck(array, prop):
     var result = []

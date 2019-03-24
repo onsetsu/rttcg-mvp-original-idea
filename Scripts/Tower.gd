@@ -24,7 +24,7 @@ func _process(delta):
     $hp.text = str(hp)
 
 func display_hint(message, color):
-    Game.add_child(hint_scene.instance().start(self, message, color))
+    Game.display_hint(self, message, color)
     
 func receive_damage(amount):
     display_hint(amount, Color(1,0,0))

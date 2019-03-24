@@ -1,8 +1,5 @@
 extends Node
 
-func apply_onto(name, card):
-    funcref(self, name).call_func(card)
-
 # ==============================================================================
 # ================================= CARDS ======================================
 # ==============================================================================
@@ -687,7 +684,7 @@ func InfiniteBlades(card):
     card.type = 'sorcery'
     card.targeting = 'targets_familiar'
     card.effect = 'sorcery__plus_2_plus_2_charged_return_to_hand'
-    card.charge_time = 5
+    card.charge_time = 4
 
 func UndeadHorde(card):
     card.key = 'UndeadHorde'
@@ -706,6 +703,8 @@ func UndeadHorde(card):
 # ---------------------------------------------------------------------------------------------
 
 func Goblin(card):
+    card.deck = 'enemy'
+    
     card.key = 'Goblin'
     card.card_name = 'Goblin'
     card.text = ''
@@ -715,6 +714,8 @@ func Goblin(card):
     card.hp = 3
     
 func Hobgoblin(card):
+    card.deck = 'enemy'
+    
     card.key = 'Hobgoblin'
     card.card_name = 'Hobgoblin'
     card.text = ''
@@ -724,6 +725,8 @@ func Hobgoblin(card):
     card.hp = 6
 
 func Kirin(card):
+    card.deck = 'enemy'
+    
     card.key = 'Kirin'
     card.card_name = 'Kirin'
     card.text = 'Battlecry: Deal 4 Damage to opposing side.'
@@ -734,6 +737,8 @@ func Kirin(card):
     card.battlecry = 'battlecry__deal_4_in_lane'
 
 func BatteringRam(card):
+    card.deck = 'enemy'
+    
     card.key = 'BatteringRam'
     card.card_name = 'Battering Ram'
     card.text = 'Battlecry: Deal 4 Damage to opposing side.'
@@ -744,6 +749,8 @@ func BatteringRam(card):
     card.battlecry = 'battlecry__deal_4_in_lane'
 
 func SiegeTower(card):
+    card.deck = 'enemy'
+    
     card.key = 'SiegeTower'
     card.card_name = 'Siege Tower'
     card.text = 'Deathrottle: Fill your board with Hobgoblins.'
@@ -754,6 +761,8 @@ func SiegeTower(card):
     card.deathrottle = 'deathrottle__fill_board_with_hobgoblins'
 
 func Halberd(card):
+    card.deck = 'enemy'
+    
     card.key = 'Halberd'
     card.card_name = 'Halberd'
     card.text = 'Target Familiar gets +3/+3 and attacks.'
@@ -763,6 +772,8 @@ func Halberd(card):
     card.effect = 'plus_3_plus_3_then_attack'
 
 func RockThrow(card):
+    card.deck = 'enemy'
+    
     card.key = 'RockThrow'
     card.card_name = 'Rock Throw'
     card.text = 'Deal 5 Damage to a familiar.'
@@ -772,6 +783,8 @@ func RockThrow(card):
     card.effect = 'deal_5'
 
 func ManaSapling(card):
+    card.deck = 'enemy'
+    
     card.key = 'ManaSapling'
     card.card_name = 'Mana Sapling'
     card.text = 'Whenever a card is played, gain +1/+1.'
@@ -782,6 +795,8 @@ func ManaSapling(card):
     card.whenever = { play_card = 'on_field__plus_1_plus_1'}
 
 func Juggernaut(card):
+    card.deck = 'enemy'
+    
     card.key = 'Juggernaut'
     card.card_name = 'Juggernaut'
     card.text = 'Whenever this attacks, gain +3/+0.'
@@ -792,6 +807,8 @@ func Juggernaut(card):
     card.whenever = { attack = 'this__plus_3_plus_0'}
 
 func Counterspell(card): # Rename to Disarm?
+    card.deck = 'enemy'
+    
     card.key = 'Counterspell'
     card.card_name = 'Counterspell'
     card.text = 'Opponent discards all Sorceries.'
@@ -801,6 +818,8 @@ func Counterspell(card): # Rename to Disarm?
     card.effect = 'opponent_discards_all_sorceries'
 
 func BearTrap(card):
+    card.deck = 'enemy'
+    
     card.key = 'BearTrap'
     card.card_name = 'Bear Trap'
     card.text = 'Deal 4 Damage. Approching: Cast on first played familiar played.'
@@ -811,6 +830,8 @@ func BearTrap(card):
     card.whenever = { play_card = 'approaching__cast_on_familiar'}
 
 func RareHunter(card):
+    card.deck = 'enemy'
+    
     card.key = 'RareHunter'
     card.card_name = 'Rare Hunter'
     card.text = 'Approching: Deal 2 Damage to played familiars.'
@@ -821,6 +842,8 @@ func RareHunter(card):
     card.whenever = { play_card = 'approaching__deal_2_to_familiar'}
 
 func Saboteur(card):
+    card.deck = 'enemy'
+    
     card.key = 'Saboteur'
     card.card_name = 'Saboteur'
     card.text = 'Battlecry: Opponent discards his/her leftmost card.'
@@ -831,6 +854,8 @@ func Saboteur(card):
     card.battlecry = 'battlecry__opponent_discard_leftmost'
 
 func Swiftblade(card):
+    card.deck = 'enemy'
+    
     card.key = 'Swiftblade'
     card.card_name = 'Swiftblade'
     card.text = 'Haste.'
@@ -844,6 +869,8 @@ func Swiftblade(card):
 # ---------------------------------------------------------------------------------------------
 
 func QuickForge(card):
+    card.deck = 'extra'
+    
     card.key = 'QuickForge'
     card.card_name = 'Quick Forge'
     card.text = 'Add 3 Shivs to your hand.'
@@ -853,6 +880,8 @@ func QuickForge(card):
     card.element_sequence = ['earth', 'earth', 'earth']
 
 func BraveCharge(card):
+    card.deck = 'extra'
+    
     card.key = 'BraveCharge'
     card.card_name = 'Brave Charge'
     card.text = 'Your familiars on the field and in hand gain +2/+2.'
@@ -862,6 +891,8 @@ func BraveCharge(card):
     card.element_sequence = ['fire', 'fire', 'fire']
 
 func Dethrone(card):
+    card.deck = 'extra'
+    
     card.key = 'Dethrone'
     card.card_name = 'Dethrone'
     card.text = 'Deal 3 Damage to the familiar(s) with highest HP.'
@@ -871,6 +902,8 @@ func Dethrone(card):
     card.element_sequence = ['fire']
 
 func Duplicate(card):
+    card.deck = 'extra'
+    
     card.key = 'Duplicate'
     card.card_name = 'Duplicate'
     card.text = 'Copy the leftmost card in your hand.'

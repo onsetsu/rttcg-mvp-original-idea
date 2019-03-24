@@ -91,7 +91,6 @@ var PLAYER_SABOTAGE = [
 var PLAYER_IGNITION = [
     'Bomber',
     'CarnivorousOoze',
-
 ]
 
 var PLAYER_DELAYED = [

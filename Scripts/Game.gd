@@ -2,6 +2,7 @@ extends Node
 
 var card_scene = preload("res://Scenes/Card.tscn")
 var element_scene = preload("res://Scenes/Element.tscn")
+var hint_scene = preload("res://Scenes/Damage_Number.tscn")
 onready var Lobby = get_tree().get_root().get_node('Lobby')
 
 var CARD_EXTENT_HALF = Vector2(128/2, 128/2)
@@ -17,12 +18,18 @@ var ELEMENT_SEQUENCE_GOAL_POS_OFFSET = Vector2(24, 0)
 
 # ---------------------------------------------------------------------------------------------
 
+func display_hint(target, message, color):
+    $effects.add_child(hint_scene.instance().start(target, message, color))
+
+func add_card(card):
+    $cards.add_child(card)
+
 func create_card(pos=Vector2(100, 100)):
     var card = card_scene.instance()
     card.set_name("card")
     card.add_to_group('card')
     card.position = pos
-    add_child(card)
+    add_card(card)
     return card
 
 func create_card_by_name(pos, name, side):
@@ -134,7 +141,7 @@ func renew_element_sequence():
         var element = element_scene.instance()
         element.set_element(e_string)
         element.add_to_group('element_sequence_should')
-        add_child(element)
+        $elements.add_child(element)
         element.position = ELEMENT_SEQUENCE_GOAL_POS_START + index * ELEMENT_SEQUENCE_GOAL_POS_OFFSET
         index += 1
 
