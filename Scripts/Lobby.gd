@@ -16,25 +16,42 @@ func card_names():
             result.append(fun["name"])
     return result
 
+func grid_for_type(type):
+    if type == 'player':
+        return find_node('player_deck_grid')
+    else: if type == 'extra':
+        return find_node('extra_deck_grid')
+    else: if type == 'enemy':
+        return find_node('enemy_deck_grid')
+    
 func deck_for_card_name(card_name):
     var temp_card = card_scene.instance()
     temp_card.become(card_name)
+    return grid_for_type(temp_card.deck)
+
+func dict_name_for_card_name(card_name):
+    var temp_card = card_scene.instance()
+    temp_card.become(card_name)
     if temp_card.deck == 'player':
-        return find_node('player_deck_grid')
+        return 'player_deck'
     else: if temp_card.deck == 'extra':
-        return find_node('extra_deck_grid')
+        return 'extra_deck'
     else: if temp_card.deck == 'enemy':
-        return find_node('enemy_deck_grid')
+        return 'enemy_deck'
 
 func _ready():
     update_speed_info()
 
+    var saved_decks = load_deck()
+    
     # setup cards
     for c_name in card_names():
         var deck_slot = deck_slot_scene.instance()
         var grid = deck_for_card_name(c_name)
         grid.add_child(deck_slot)
-        deck_slot.set_card(c_name)
+        
+        var num_copies = utils.get_or_create(saved_decks[dict_name_for_card_name(c_name)], c_name, 0)
+        deck_slot.set_card(c_name, num_copies)
 
 func update_speed_info():
     find_node('speed-info').text = "%1.1f" % [speed_up]
@@ -46,31 +63,74 @@ func _on_speedslider_value_changed(value):
 func deck_config(key):
     return find_node(key, true).pressed
 
-func deck_list_from_grid(grid):
-    var list = []
+func grid_to_dict(grid):
+    var dict = {}
     
     for slot in grid.get_children():
         if slot.num_copies >= 1:
-            list.append(slot.card_name)
+            dict[slot.card_name] = slot.num_copies
 
+    return dict
+
+func dict_to_list(dict):
+    var list = []
+    
+    for key in dict.keys():
+        var num_copies = dict[key]
+        while num_copies > 0:
+            list.append(key)
+            num_copies -= 1
+    
+    return list
+
+func deck_list_from_grid(grid):
+    var dict = grid_to_dict(grid)
+    var list = dict_to_list(dict)
     return utils.shuffle(list)
 
-func player_deck_from_config(player_deck):
-    player_deck.set_deck_list(lists.PLAYER_FIRST + deck_list_from_grid(find_node('player_deck_grid')))
+# type = {'player', 'enemy', 'extra'}
+func set_deck_from_config(deck, type):
+    deck.set_deck_list(deck_list_from_grid(grid_for_type(type)))
 
 # ---------------------------------------------------------------------------------------------
 
-func enemy_deck_from_config(enemy_deck):
-    enemy_deck.set_deck_list(lists.ENEMY_DECK)
+func init_default_deck():
+    save_deck({
+        "player_deck" : {
+            "Flamekin" : 2,
+            "Dragon" : 1,
+        },
+        "extra_deck" : {
+            "QuickForge" : 1,
+        },
+        "enemy_deck" : {
+            "Goblin" : 1,
+        },
+    })
 
-# ---------------------------------------------------------------------------------------------
+func save_deck(dict):
+    var save_deck = File.new()
+    save_deck.open("user://deck.save", File.WRITE)
+    save_deck.store_string(to_json(dict))
+    save_deck.close()
 
-func extra_deck_from_config(extra_deck):
-    extra_deck.set_deck_list(lists.EXTRA_DECK)
+func save_decks():
+    pass
+
+func load_deck():
+    var save_deck = File.new()
+    if not save_deck.file_exists("user://deck.save"):
+        init_default_deck()
+    save_deck.open("user://deck.save", File.READ)
+    var dict = parse_json(save_deck.get_as_text())
+    save_deck.close()
+    return dict
 
 # ---------------------------------------------------------------------------------------------
 
 func _on_play_button_pressed():
+    save_decks()
+    
     var root = get_tree().get_root()
     var game = game_scene.instance()
     root.add_child(game)

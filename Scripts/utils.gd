@@ -27,6 +27,7 @@ func node_exists(node):
       return false
 
     return true
+
 # array utils
 # ---------------------------------------------------------------------------------------------
 
@@ -98,3 +99,11 @@ func min(list):
             if val < ret:
                 ret = val
     return ret
+
+# dict utils
+# ---------------------------------------------------------------------------------------------
+
+func get_or_create(dict, key, default_value):
+    if not dict.has(key):
+        dict[key] = default_value
+    return dict[key]

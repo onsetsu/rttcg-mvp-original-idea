@@ -22,6 +22,7 @@ func set_card(name, copies = 0):
 func _process(delta):
     find_node('num_label').text = str(num_copies)
 
+# detect left and rightclicks using combination of https://www.reddit.com/r/godot/comments/6wlqb5/how_to_make_a_button_node_also_react_to_mouse/
 func _input(event):
     # make sure we click inside the visible area of  our scroll parent
     var parent = self

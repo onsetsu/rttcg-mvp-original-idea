@@ -62,9 +62,9 @@ func discard_leftmost_card():
 func _ready():
     $"win-lose-box".hide()
     
-    Lobby.player_deck_from_config($player_deck)
-    Lobby.enemy_deck_from_config($enemy_deck)
-    Lobby.extra_deck_from_config($extra_deck)
+    Lobby.set_deck_from_config($player_deck, 'player')
+    Lobby.set_deck_from_config($enemy_deck, 'enemy')
+    Lobby.set_deck_from_config($extra_deck, 'extra')
 
     $towers/tower_right_enemy.add_to_field($field/field_right_enemy_tower)
     $towers/tower_right_ally.add_to_field($field/field_right_ally_tower)
