@@ -6,8 +6,6 @@ var deck_slot_scene = preload("res://Scenes/DeckSlot.tscn")
 
 var speed_up = 0.8
 
-#onready var enemy_difficulty = ButtomGroup
-
 func card_names():
     var result = []
     for fun in cards.get_method_list():
@@ -19,8 +17,6 @@ func card_names():
 func grid_for_type(type):
     if type == 'player':
         return find_node('player_deck_grid')
-    else: if type == 'extra':
-        return find_node('extra_deck_grid')
     else: if type == 'enemy':
         return find_node('enemy_deck_grid')
     
@@ -34,8 +30,6 @@ func dict_name_for_card_name(card_name):
     temp_card.become(card_name)
     if temp_card.deck == 'player':
         return 'player_deck'
-    else: if temp_card.deck == 'extra':
-        return 'extra_deck'
     else: if temp_card.deck == 'enemy':
         return 'enemy_deck'
 
@@ -88,7 +82,7 @@ func deck_list_from_grid(grid):
     var list = dict_to_list(dict)
     return utils.shuffle(list)
 
-# type = {'player', 'enemy', 'extra'}
+# type = {'player', 'enemy'}
 func set_deck_from_config(deck, type):
     deck.set_deck_list(deck_list_from_grid(grid_for_type(type)))
 
@@ -99,9 +93,6 @@ func init_default_deck():
         "player_deck" : {
             "Flamekin" : 2,
             "Dragon" : 1,
-        },
-        "extra_deck" : {
-            "QuickForge" : 1,
         },
         "enemy_deck" : {
             "Goblin" : 1,
@@ -115,7 +106,10 @@ func save_deck(dict):
     save_deck.close()
 
 func save_decks():
-    pass
+    save_deck({
+        "player_deck": grid_to_dict(grid_for_type('player')),
+        "enemy_deck" : grid_to_dict(grid_for_type('enemy')),
+    })
 
 func load_deck():
     var save_deck = File.new()
@@ -134,11 +128,9 @@ func _on_play_button_pressed():
     var root = get_tree().get_root()
     var game = game_scene.instance()
     root.add_child(game)
-    $CenterContainer.hide()
     $PanelContainer.hide()
 
 func end_game():
     var root = get_tree().get_root()
     root.remove_child(root.get_node('Game'))
-    $CenterContainer.show()
     $PanelContainer.show()

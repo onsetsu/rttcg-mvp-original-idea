@@ -35,10 +35,6 @@ var charged = false
 var charge_time = -1
 var charge_timer
 
-var extra = false
-var extra_effect
-var element_sequence = []
-
 var effect_store = {}
 
 var field
@@ -315,14 +311,8 @@ func play(target_field, allied):
             Game.get_combo_card().exec_inspire(self)
     
         make_copy_the_combo_card()
-        
-        $frame/element.init_chain()
     
     Game.event('play_card', self)
-
-func play_extra():
-    exec_extra()
-    queue_free()
 
 func play_ally(target_field):
     return play(target_field, true)
@@ -389,41 +379,6 @@ func in_hand__delay_5_discard(card):
 func timed_discard_self():
     discard()
 
-# extra deck effects
-# ---------------------------------------------------------------------------------------------
-
-func exec_extra():
-    if extra_effect != null:
-        funcref(self, extra_effect).call_func()
-
-func extra__create_3_shivs():
-    create_x_shivs(3)
-
-func extra__plus_2_plus_2_hand_field():
-    for card in utils.get_nodes_in_groups(['hand', 'friendly']):
-        if card.is_familiar():
-            card.buff(2, 2)
-
-    for card in utils.get_nodes_in_groups(['field', 'friendly']):
-        if card.is_familiar():
-            card.buff(2, 2)
-
-func extra__deal_3_to_highest_hp_familiar():
-    var familiars = Game.familiars_on_field()
-    
-    if familiars.size() == 0:
-        return
-    
-    var max_hp = utils.max(utils.pluck(familiars, 'hp'))
-    
-    for f in utils.filter_prop(familiars, 'hp', max_hp):
-        deal_x_familiar(f, 3)
-
-func extra__copy_leftmost_card():
-    var cards = utils.get_nodes_in_groups(['friendly', 'hand'])
-    if cards.size() >= 1:
-        create(cards[0].key).add_to_hand()
-    
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
 

@@ -46,7 +46,8 @@ func create_card_from_enemy_deck():
     return $enemy_deck.create_next_card()
 
 func create_card_from_extra_deck():
-    return $extra_deck.create_next_card()
+    pass
+    #return $extra_deck.create_next_card()
 
 func draw_a_card():
     var card = create_card_from_deck()
@@ -64,7 +65,6 @@ func _ready():
     
     Lobby.set_deck_from_config($player_deck, 'player')
     Lobby.set_deck_from_config($enemy_deck, 'enemy')
-    Lobby.set_deck_from_config($extra_deck, 'extra')
 
     $towers/tower_right_enemy.add_to_field($field/field_right_enemy_tower)
     $towers/tower_right_ally.add_to_field($field/field_right_ally_tower)
@@ -122,33 +122,12 @@ func refill_approaching_card_enemy():
     if not has_approaching_card_enemy():
         create_approaching_card_enemy()
 
-func has_lingering_extra_deck_card():
-    return utils.get_nodes_in_groups(["lingering", "friendly"]).size() >= 1
-
-func create_lingering_extra_deck_card():
-    var approaching_card = create_card_from_extra_deck()
-    approaching_card.add_to_group("lingering")
-    
-func refill_lingering_extra_deck_card():
-    if not has_lingering_extra_deck_card():
-        create_lingering_extra_deck_card()
-        renew_element_sequence()
-
 func renew_element_sequence():
-    var lingering_card = get_tree().get_nodes_in_group('lingering')[0]
-    var index = 0
-    for e_string in lingering_card.element_sequence:
-        var element = element_scene.instance()
-        element.set_element(e_string)
-        element.add_to_group('element_sequence_should')
-        $elements.add_child(element)
-        element.position = ELEMENT_SEQUENCE_GOAL_POS_START + index * ELEMENT_SEQUENCE_GOAL_POS_OFFSET
-        index += 1
+    pass
 
 func _process(delta):
     refill_approaching_card_player()
     refill_approaching_card_enemy()
-    refill_lingering_extra_deck_card()
 
 func check_game_end():
     if $"win-lose-box".is_visible(): return
@@ -165,42 +144,6 @@ func check_game_end():
             var message = $"win-lose-box".find_node('message')
             message.text = 'You Lose!'
             message.set("custom_colors/font_color", Color(1,0,0))
-            
-# extra deck activation
-# ---------------------------------------------------------------------------------------------
-
-func check_sequence(unused, unused2):
-    if matches_sequence():
-        clear_element_sequences()
-        play_extra_deck_card()
-
-func matches_sequence():
-    var have = utils.arr_copy(utils.pluck(get_tree().get_nodes_in_group('element_sequence'), 'type'))
-
-    refill_lingering_extra_deck_card()
-    var lingering_card = get_tree().get_nodes_in_group('lingering')[0]
-    var should = utils.arr_copy(lingering_card.element_sequence)
-
-    if have.size() < should.size():
-        return false
-
-    have.invert()
-    should.invert()
-
-    var index = 0
-    for s in should:
-        var h = have[index]
-        index += 1
-        if s != h:
-            return false
-    return true
-
-func clear_element_sequences():
-    for element in get_tree().get_nodes_in_group('element_sequence'):
-        element.queue_free()
-
-    for element in get_tree().get_nodes_in_group('element_sequence_should'):
-        element.queue_free()
 
 # querying
 # ---------------------------------------------------------------------------------------------
@@ -292,11 +235,7 @@ func try_to_play_enemy_card(card):
     card.play_enemy(target_field)
     return true
 
-func play_extra_deck_card():
-    var lingering_card = get_tree().get_nodes_in_group('lingering')[0]
-    lingering_card.play_extra()
-
-
+# ---------------------------------------------------------------------------------------------
 
 func _on_returnbutton_pressed():
     Lobby.end_game()

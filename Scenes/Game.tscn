@@ -28,63 +28,7 @@ script = ExtResource( 1 )
 
 [node name="Mockups & Placement" type="Node" parent="." index="0"]
 
-[node name="sequence_should" type="Label" parent="Mockups & Placement" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -10.0
-margin_top = 340.0
-margin_right = -914.0
-margin_bottom = 354.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "sequence"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="sequence_have" type="Label" parent="Mockups & Placement" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -10.0
-margin_top = 360.0
-margin_right = -914.0
-margin_bottom = 374.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "current"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="<Return to Hand>" type="ColorRect" parent="Mockups & Placement" index="2"]
+[node name="<Return to Hand>" type="ColorRect" parent="Mockups & Placement" index="0"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -128,7 +72,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Support Zone" type="ColorRect" parent="Mockups & Placement" index="3"]
+[node name="Support Zone" type="ColorRect" parent="Mockups & Placement" index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -173,7 +117,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="4"]
+[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="2"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -218,7 +162,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="5"]
+[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="3"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -265,7 +209,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="6"]
+[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="4"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -311,7 +255,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane2" type="ColorRect" parent="Mockups & Placement" index="7"]
+[node name="Left Lane2" type="ColorRect" parent="Mockups & Placement" index="5"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -357,7 +301,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane3" type="ColorRect" parent="Mockups & Placement" index="8"]
+[node name="Left Lane3" type="ColorRect" parent="Mockups & Placement" index="6"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -403,7 +347,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="9"]
+[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="7"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -449,7 +393,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="10"]
+[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="8"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -892,12 +836,7 @@ position = Vector2( 924, 74 )
 _sections_unfolded = [ "Transform" ]
 side = "enemy"
 
-[node name="extra_deck" parent="." index="15" instance=ExtResource( 6 )]
-
-position = Vector2( 104, 514 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="win-lose-box" type="PanelContainer" parent="." index="16"]
+[node name="win-lose-box" type="PanelContainer" parent="." index="15"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -979,11 +918,11 @@ text = "Return to Menu."
 flat = false
 align = 1
 
-[node name="cards" type="Node" parent="." index="17"]
+[node name="cards" type="Node" parent="." index="16"]
 
-[node name="elements" type="Node" parent="." index="18"]
+[node name="elements" type="Node" parent="." index="17"]
 
-[node name="effects" type="Node" parent="." index="19"]
+[node name="effects" type="Node" parent="." index="18"]
 
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
 
