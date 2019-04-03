@@ -22,7 +22,7 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 2 )
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -72,61 +72,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Support Zone" type="ColorRect" parent="Mockups & Placement" index="1"]
+[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 20.0
-margin_top = 400.0
-margin_right = 190.0
-margin_bottom = 590.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0.0604095, 0.417969, 0.200081, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Label" type="Label" parent="Mockups & Placement/Support Zone" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Support Zone"
-align = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="2"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 140.0
+margin_top = 430.0
 margin_right = 183.0
-margin_bottom = 310.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -162,7 +117,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="3"]
+[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="2"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -209,7 +164,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="4"]
+[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="3"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -255,7 +210,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane2" type="ColorRect" parent="Mockups & Placement" index="5"]
+[node name="Left Lane2" type="ColorRect" parent="Mockups & Placement" index="4"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -301,7 +256,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane3" type="ColorRect" parent="Mockups & Placement" index="6"]
+[node name="Left Lane3" type="ColorRect" parent="Mockups & Placement" index="5"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -347,7 +302,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="7"]
+[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="6"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -393,7 +348,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="8"]
+[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="7"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -504,9 +459,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 45.0
-margin_top = 170.0
+margin_top = 460.0
 margin_right = 173.0
-margin_bottom = 298.0
+margin_bottom = 588.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2

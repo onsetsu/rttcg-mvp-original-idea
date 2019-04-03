@@ -44,7 +44,7 @@ var attack_timer_running = false
 var attacking = false
 var attacks_a_tower = false
 
-var enemy_ai = 'enemy_ai__any_possible_target'
+var enemy_ai = 'enemy_ai__random_possible_target'
 
 var start_offset
 onready var Game = get_tree().get_root().get_node('Game')
@@ -338,6 +338,12 @@ func enemy_ai__any_possible_target():
     if targets.empty():
         return false
     return targets[0]
+
+func enemy_ai__random_possible_target():
+    var targets = possible_targets()
+    if targets.empty():
+        return false
+    return utils.shuffle(targets)[0]
 
 # whenever effects
 # ---------------------------------------------------------------------------------------------
