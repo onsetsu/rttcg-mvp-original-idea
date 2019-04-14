@@ -31,19 +31,29 @@ func node_exists(node):
 # array utils
 # ---------------------------------------------------------------------------------------------
 
-func shuffle(list):
-    var shuffledList = [] + list
+func _sort_pairs(a, b):
+    return a[0] < b[0]
 
-    for i in range(list.size() - 1, 0, -1):
+func shuffle(list):
+    var pairs = []
+    var shuffledList = []
+
+    for value in list:
         randomize()
-        var x = randi()%i
-        
-        # swap
-        var temp = shuffledList[x]
-        shuffledList[x] = shuffledList[i]
-        shuffledList[i] = temp
+        pairs.append([randf(), value])
+
+    pairs.sort_custom(self, '_sort_pairs')
+
+    for value in pairs:
+        shuffledList.append(value[1])
 
     return shuffledList
+
+func sample(list):
+    if list.empty():
+        return null
+    else:
+        return shuffle(list)[0]
 
 # #TODO: remove this util
 func arr_copy(array):

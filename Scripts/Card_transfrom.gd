@@ -276,6 +276,9 @@ func targets_field(target_field):
 func targets_not_required(target_field):
     return true
 
+func no_target_required_and_is_charged(target_field):
+    return charged and targets_not_required(target_field)
+
 func targets_unoccupied_friendly_field():
     pass
 
@@ -343,7 +346,7 @@ func enemy_ai__random_possible_target():
     var targets = possible_targets()
     if targets.empty():
         return false
-    return utils.shuffle(targets)[0]
+    return utils.sample(targets)
 
 # whenever effects
 # ---------------------------------------------------------------------------------------------
@@ -513,6 +516,40 @@ func sorcery__plus_2_plus_2_charged_return_to_hand(target_field):
     if charged:
         create(key).add_to_hand()
 
+func sorcery__discard_hand_deal_3_for_each_discarded(target_field):
+    var num_cards = Game.cards_in_player_hand().size()
+    Game.discard_player_hand()
+
+    for familiar in Game.enemy_familiars():
+        deal_x_familiar(familiar, 3*num_cards)
+
+func sorcery__destroy_all_familiars_with_4_at_or_hp(target_field):
+    var familiars = Game.familiars_on_field()
+    for familiar in familiars:
+        if familiar.at == 4 or familiar.hp == 4:
+            familiar.die()
+
+func sorcery__deal_7_to_enemy_tower_with_highest_hp(target_field):
+    var target
+    for tower in utils.shuffle(Game.enemy_towers()):
+        if not target or tower.hp > target.hp:
+            target = tower
+    deal_x_tower(target, 7)
+
+func sorcery__if_charged_create_a_djinn(target_field):
+    if charged:
+        create('Djinn').add_to_hand()
+
+func sorcery__deal_1_to_all_if_any_dies_return_to_hand(target_field):
+    var familiars_before = Game.familiars_on_field()
+    for familiar in familiars_before:
+        deal_x_familiar(familiar, 1)
+    for familiar in familiars_before:
+        if familiar.hp <= 0:
+            create('Defile').add_to_hand()
+            return
+
+
 # battlecries
 # ---------------------------------------------------------------------------------------------
 
@@ -635,6 +672,14 @@ func battlecry__charged_fill_your_board_with_copies_of_this():
 func battlecry__draw_approaching_card():
     Game.ensure_approaching_card_player().draw_approaching_card()
 
+func battlecry__opponents_card_is_sorcery_plus_3_plus_3():
+    if Game.ensure_approaching_card_enemy().is_sorcery():
+        buff(3,3)
+
+func battlecry__create_random_spell():
+    var player_sorceries = Game.all_cards({type = 'sorcery', deck = 'player'})
+    create(utils.sample(player_sorceries)).add_to_hand()
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -658,6 +703,13 @@ func deathrottle__blazing_phoenix(from_field):
 
 func deathrottle__fill_board_with_hobgoblins(from_field):
     fill_your_board_with('Hobgoblin')
+
+func deathrottle__if_no_lamp_create_a_lamp(from_field):
+    var lamp_key = 'Lamp'
+    for card in Game.cards_in_player_hand():
+        if card.key == lamp_key:
+            return
+    create(lamp_key).add_to_hand()
 
 # sabotage
 # ---------------------------------------------------------------------------------------------
@@ -733,6 +785,10 @@ func inspire__create_a_shiv(inspired_card):
 func inspire__become_a_dragon(inspired_card):
     inspired_card.become_a_dragon()
 
+func inspire__familiar_deals_3_opposing_side(inspired_card):
+    if inspired_card.is_familiar():
+        inspired_card.deal_x_in_lane(3)
+
 # ignition
 # ---------------------------------------------------------------------------------------------
 
@@ -758,6 +814,9 @@ func deal_x(target_field, amount):
 
 func deal_x_familiar(familiar, amount):
     familiar.receive_damage(amount)
+
+func deal_x_tower(tower, amount):
+    tower.receive_damage(amount)
 
 func deal_x_in_lane(x, f = field):
     var familiar_field = f.opposing_familiar_field()

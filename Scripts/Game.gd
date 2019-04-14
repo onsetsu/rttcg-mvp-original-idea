@@ -21,6 +21,16 @@ var ELEMENT_SEQUENCE_GOAL_POS_OFFSET = Vector2(24, 0)
 func display_hint(target, message, color):
     $effects.add_child(hint_scene.instance().start(target, message, color))
 
+func all_cards(condition):
+    var result = []
+    var card_names = Lobby.card_names()
+    for card_name in card_names:
+        var card = card_scene.instance()
+        card.become(card_name)
+        result.append(card)
+    var filtered = utils.filter_props(result, condition)
+    return utils.pluck(filtered, 'key')
+
 func add_card(card):
     $cards.add_child(card)
 
@@ -54,8 +64,16 @@ func draw_a_card():
     card.add_to_hand()
     return card
 
+func cards_in_player_hand():
+    return utils.get_nodes_in_groups(['hand', 'friendly'])
+
+func discard_player_hand():
+    var hand = cards_in_player_hand()
+    for card in hand:
+        card.discard()
+
 func discard_leftmost_card():
-    var hand = utils.get_nodes_in_groups(['hand', 'friendly'])
+    var hand = cards_in_player_hand()
     if not hand.empty():
         var leftmost_card = hand[0]
         leftmost_card.discard()
@@ -94,6 +112,13 @@ func get_approaching_card():
     else:
         return null
 
+func get_approaching_card_enemy():
+    var approaching_cards = utils.get_nodes_in_groups(["approaching", "enemy"])
+    if approaching_cards.size() >= 1:
+        return approaching_cards[0]
+    else:
+        return null
+
 func has_approaching_card():
     return get_approaching_cards().size() >= 1
 
@@ -113,6 +138,10 @@ func ensure_approaching_card_player():
 func has_approaching_card_enemy():
     return utils.get_nodes_in_groups(["approaching", "enemy"]).size() >= 1
 
+func ensure_approaching_card_enemy():
+    refill_approaching_card_enemy()
+    return get_approaching_card_enemy()
+
 func create_approaching_card_enemy():
     var approaching_card = create_card_from_enemy_deck()
     approaching_card.add_to_group("approaching")
@@ -121,9 +150,6 @@ func create_approaching_card_enemy():
 func refill_approaching_card_enemy():
     if not has_approaching_card_enemy():
         create_approaching_card_enemy()
-
-func renew_element_sequence():
-    pass
 
 func _process(delta):
     refill_approaching_card_player()
@@ -167,6 +193,10 @@ func occupied_enemy_familiar_fields():
 
 func enemy_familiars():
     return utils.pluck(occupied_enemy_familiar_fields(), 'card')
+
+func enemy_towers():
+    var tower_fields = utils.filter_props(fields(), {side = 'enemy', type = 'tower'})
+    return utils.pluck(tower_fields, 'tower')
 
 func friendly_familiar_fields():
     return utils.filter_props(fields(), {side = 'friendly', type = 'familiar'})

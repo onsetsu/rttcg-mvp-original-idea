@@ -316,6 +316,16 @@ func IdolOfDragon(card):
     card.hp = 2
     card.inspire = 'inspire__become_a_dragon'
     
+func FlashForward(card):
+    card.key = 'FlashForward'
+    card.card_name = 'Flash Forward'
+    card.text = 'Deal 3 Damage. Inspired Familiar deal 3 Damage to opposing side.'
+    card.element = 'fire'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar_or_tower'
+    card.effect = 'deal_3'
+    card.inspire = 'inspire__familiar_deals_3_opposing_side'
+
 func TheShepherd(card):
     card.key = 'TheShepherd'
     card.card_name = 'The Shepherd'
@@ -697,6 +707,81 @@ func UndeadHorde(card):
     card.battlecry = 'battlecry__charged_fill_your_board_with_copies_of_this'
     card.charge_time = 5
 
+func CollectiveStrike(card):
+    card.key = 'CollectiveStrike'
+    card.card_name = 'Collective Strike'
+    card.text = 'Discard your hand. Deal 3 Damage for each card discarded to all enemy familiars.'
+    card.element = 'fire'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__discard_hand_deal_3_for_each_discarded'
+
+func SpellEater(card):
+    card.key = 'SpellEater'
+    card.card_name = 'Spell Eater'
+    card.text = 'Battlecry: If your opponent\'s approaching card in a sorcery: Gain +3/+3.'
+    card.element = 'water'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 3
+    card.battlecry ='battlecry__opponents_card_is_sorcery_plus_3_plus_3'
+
+func ShadowWord(card):
+    card.key = 'ShadowWord'
+    card.card_name = 'Shadow Word'
+    card.text = 'Destroy all Familiars with 4 AT or HP.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__destroy_all_familiars_with_4_at_or_hp'
+
+func Crumble(card):
+    card.key = 'Crumble'
+    card.card_name = 'Crumble'
+    card.text = 'Deal 7 Damage to enemy tower with highest HP.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__deal_7_to_enemy_tower_with_highest_hp'
+
+func CuriousExperimenter(card):
+    card.key = 'CuriousExperimenter'
+    card.card_name = 'Curious Experimenter'
+    card.text = 'Battlecry: Create a random sorcery.'
+    card.element = 'water'
+    card.type = 'familiar'
+    card.at = 3
+    card.hp = 2
+    card.battlecry ='battlecry__create_random_spell'
+
+func Djinn(card):
+    card.key = 'Djinn'
+    card.card_name = 'Djinn'
+    card.text = 'Deathrottle: If you have no Lamp: Create a Lamp.'
+    card.element = 'water'
+    card.type = 'familiar'
+    card.at = 5
+    card.hp = 3
+    card.deathrottle ='deathrottle__if_no_lamp_create_a_lamp'
+
+func Lamp(card):
+    card.key = 'Lamp'
+    card.card_name = 'Lamp'
+    card.text = 'Charge 3: Create a Djinn.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'no_target_required_and_is_charged'
+    card.effect = 'sorcery__if_charged_create_a_djinn'
+    card.charge_time = 3
+
+func Defile(card):
+    card.key = 'Defile'
+    card.card_name = 'Defile'
+    card.text = 'Deal 1 Damage to all Familiars. If any die: add this to your hand.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__deal_1_to_all_if_any_dies_return_to_hand'
 
 
 # Enemy Cards
