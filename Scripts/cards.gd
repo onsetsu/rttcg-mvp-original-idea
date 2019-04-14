@@ -950,3 +950,14 @@ func Swiftblade(card):
     card.hp = 3
     card.haste = true
 
+func PlagueRats(card):
+    card.deck = 'enemy'
+    
+    card.key = 'PlagueRats'
+    card.card_name = 'Plague Rats'
+    card.text = '+1/+1 for each Plague Rats played before.'
+    card.type = 'familiar'
+    card.element = 'earth'
+    card.at = 1
+    card.hp = 1
+

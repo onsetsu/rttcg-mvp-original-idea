@@ -16,6 +16,8 @@ var ELEMENT_SEQUENCE_HAVE_POS_START = Vector2(30, 320)
 var ELEMENT_SEQUENCE_GOAL_POS_START = Vector2(30, 350)
 var ELEMENT_SEQUENCE_GOAL_POS_OFFSET = Vector2(24, 0)
 
+var effect_store = {}
+
 # ---------------------------------------------------------------------------------------------
 
 func display_hint(target, message, color):
@@ -112,13 +114,6 @@ func get_approaching_card():
     else:
         return null
 
-func get_approaching_card_enemy():
-    var approaching_cards = utils.get_nodes_in_groups(["approaching", "enemy"])
-    if approaching_cards.size() >= 1:
-        return approaching_cards[0]
-    else:
-        return null
-
 func has_approaching_card():
     return get_approaching_cards().size() >= 1
 
@@ -135,25 +130,68 @@ func ensure_approaching_card_player():
     refill_approaching_card_player()
     return get_approaching_card()
 
-func has_approaching_card_enemy():
-    return utils.get_nodes_in_groups(["approaching", "enemy"]).size() >= 1
+# enemy approaching and in-wait cards
+# ---------------------------------------------------------------------------------------------
 
-func ensure_approaching_card_enemy():
-    refill_approaching_card_enemy()
-    return get_approaching_card_enemy()
+func in_wait_cards():
+    return utils.get_nodes_in_groups(["in_wait", "enemy"])
+
+func refill_in_wait_card_enemy():
+    if in_wait_cards().empty():
+        var card = create_card_from_enemy_deck()
+        card.add_to_group("in_wait")
+
+func get_in_wait_card_enemy():
+    var cards = in_wait_cards()
+    if cards.size() >= 1:
+        return cards[0]
+    else:
+        return null
+
+func ensure_in_wait_card_enemy():
+    refill_in_wait_card_enemy()
+    return get_in_wait_card_enemy()
+
+func enemy_approaching_cards():
+    return utils.get_nodes_in_groups(["approaching", "enemy"])
+
+func get_approaching_card_enemy():
+    var approaching_cards = enemy_approaching_cards()
+    if approaching_cards.size() >= 1:
+        return approaching_cards[0]
+    else:
+        return null
+
+func has_approaching_card_enemy():
+    return enemy_approaching_cards().size() >= 1
+
+func in_wait_to_approaching_enemy_card(card):
+    card.go_to($back_enemy_approaching.rect_position + CARD_EXTENT_HALF)
+    
+    card.remove_from_group("in_wait")
+    card.add_to_group("approaching")
+    
+    card.start_timer(5, "play_enemy_card", "play")
 
 func create_approaching_card_enemy():
-    var approaching_card = create_card_from_enemy_deck()
-    approaching_card.add_to_group("approaching")
-    approaching_card.start_timer(5, "play_enemy_card", "play")
+    var approaching_card = ensure_in_wait_card_enemy()
+    in_wait_to_approaching_enemy_card(approaching_card)
     
 func refill_approaching_card_enemy():
     if not has_approaching_card_enemy():
         create_approaching_card_enemy()
 
+func ensure_approaching_card_enemy():
+    refill_approaching_card_enemy()
+    return get_approaching_card_enemy()
+
+# process & game end
+# ---------------------------------------------------------------------------------------------
+
 func _process(delta):
     refill_approaching_card_player()
     refill_approaching_card_enemy()
+    ensure_in_wait_card_enemy()
 
 func check_game_end():
     if $"win-lose-box".is_visible(): return

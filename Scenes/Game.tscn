@@ -74,7 +74,6 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -471,7 +470,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -495,7 +494,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -519,7 +518,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -543,7 +542,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -567,7 +566,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -591,7 +590,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -615,7 +614,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -639,7 +638,7 @@ size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
-patch_margin_top = 38
+patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
@@ -672,6 +671,9 @@ position = Vector2( -170, 0 )
 [node name="tower_right_enemy" parent="towers" index="5" instance=ExtResource( 4 )]
 
 [node name="field" type="Node2D" parent="." index="12"]
+
+editor/display_folded = true
+visible = false
 
 [node name="field_left_enemy_tower" parent="field" index="0" instance=ExtResource( 5 )]
 
