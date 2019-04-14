@@ -783,6 +783,37 @@ func Defile(card):
     card.targeting = 'targets_not_required'
     card.effect = 'sorcery__deal_1_to_all_if_any_dies_return_to_hand'
 
+func WarChant(card):
+    card.key = 'WarChant'
+    card.card_name = 'WarChant'
+    card.text = 'For 6 seconds: Familiars you play gain +1/+1.'
+    card.element = 'fire'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.enchantment_duration = 6
+    card.whenever = { play_card = 'active_enchantment__plus_1_plus_1_to_friendly_familiars'}
+
+    card.enchantment_cease_effect
+
+func MirrorImage(card):
+    card.key = 'MirrorImage'
+    card.card_name = 'Mirror Image'
+    card.text = 'Battlecry: Copy opposing familiar\'s stats.'
+    card.element = 'water'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 1
+    card.battlecry ='battlecry__copy_opposing_familiars_stats'
+
+func PlanAhead(card):
+    card.key = 'PlanAhead'
+    card.card_name = 'Plan Ahead'
+    card.text = 'In 4 seconds: Your familiars gain +2/+4.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.enchantment_duration = 4
+    card.enchantment_cease_effect = 'enchantment_cease__your_familiars_gain_plus_2_plus_4'
 
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------

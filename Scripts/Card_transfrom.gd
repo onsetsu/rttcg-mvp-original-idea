@@ -31,6 +31,11 @@ var ignition
 var haste = false
 var slow = false
 
+var keep_alive = false
+
+var enchantment_duration
+var enchantment_cease_effect
+
 var charged = false
 var charge_time = -1
 var charge_timer
@@ -215,6 +220,11 @@ func is_enemy():
 func is_fire():
     return element == 'fire'
 
+func opposing_familiar():
+    if not field: return null
+    if field.opposing_familiar_field().is_empty(): return null
+    return field.opposing_familiar_field().card
+
 # targeting
 # ---------------------------------------------------------------------------------------------
 
@@ -300,21 +310,22 @@ func play(target_field, allied):
         exec_battlecry()
         if allied && Game.has_combo_card():
             exec_combo(target_field)
-        #Game.event('play_familiar', self)
     else:
         if allied && Game.has_combo_card() && combo != null:
             exec_combo(target_field)
-        else:
+        elif effect:
             funcref(self, effect).call_func(target_field)
-        #Game.event('cast_sorcery', self)
-        queue_free()
+        if enchantment_duration != null:
+            init_enchantment()
+        else:
+            queue_free()
 
     if allied:
         if Game.has_combo_card():
             Game.get_combo_card().exec_inspire(self)
-    
+
         make_copy_the_combo_card()
-    
+
     Game.event('play_card', self)
 
 func play_ally(target_field):
@@ -322,6 +333,21 @@ func play_ally(target_field):
 
 func play_enemy(target_field):
     return play(target_field, false)
+
+func init_enchantment():
+    add_to_group('active_enchantment')
+    start_timer(enchantment_duration, 'cease_enchantment', 'active')
+
+func cease_enchantment():
+    remove_from_group('active_enchantment')
+    if enchantment_cease_effect != null:
+        funcref(self, enchantment_cease_effect).call_func()
+    queue_free()
+
+func enchantment_cease__your_familiars_gain_plus_2_plus_4():
+    var allies = Game.friendly_familiars()
+    for ally in allies:
+        ally.buff(2, 4)
 
 # enemy ai
 # ---------------------------------------------------------------------------------------------
@@ -387,6 +413,10 @@ func in_hand__delay_5_discard(card):
         start_timer(5, 'timed_discard_self', 'discard')
 func timed_discard_self():
     discard()
+
+func active_enchantment__plus_1_plus_1_to_friendly_familiars(card):
+    if is_active_enchantment() && card.is_familiar() && side() == card.side():
+        card.buff(1, 1)
 
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
@@ -576,13 +606,11 @@ func battlecry__fill_board_with_sheeps():
     fill_your_board_with('Sheep')
 
 func battlecry__swap_hp_opposing_familiar():
-    if not field.opposing_familiar_field().is_empty():
-        var opposing_familiar = field.opposing_familiar_field().card
+    var opposing_familiar = opposing_familiar()
+    if opposing_familiar:
         var opposing_hp = opposing_familiar.hp
         opposing_familiar.hp = hp
         hp = opposing_hp
-    else:
-        print('no familiar found')
     
 func battlecry__return_others_to_hand():
     for f in Game.friendly_familiars():
@@ -679,6 +707,12 @@ func battlecry__opponents_card_is_sorcery_plus_3_plus_3():
 func battlecry__create_random_spell():
     var player_sorceries = Game.all_cards({type = 'sorcery', deck = 'player'})
     create(utils.sample(player_sorceries)).add_to_hand()
+
+func battlecry__copy_opposing_familiars_stats():
+    var opposing_familiar = opposing_familiar()
+    if opposing_familiar:
+        at = opposing_familiar.at
+        hp = opposing_familiar.hp
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------
@@ -893,6 +927,9 @@ func fill_your_board_with(card_key):
 
 func is_approaching():
     return is_in_group('approaching')
+
+func is_active_enchantment():
+    return is_in_group('active_enchantment')
 
 func move_to_field(new_field):
     if field:
