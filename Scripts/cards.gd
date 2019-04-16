@@ -232,11 +232,12 @@ func Pyrokinesis(card):
 func IceWall(card):
     card.key = 'IceWall'
     card.card_name = 'Ice Wall'
-    card.text = '' # #TODO: Can't attack.
+    card.text = 'Doesn\'t attack.'
     card.element = 'water'
     card.type = 'familiar'
     card.at = 0
     card.hp = 20
+    card.attacks = false
 
 func GiantGrowth(card):
     card.key = 'GiantGrowth'
@@ -793,8 +794,6 @@ func WarChant(card):
     card.enchantment_duration = 6
     card.whenever = { play_card = 'active_enchantment__plus_1_plus_1_to_friendly_familiars'}
 
-    card.enchantment_cease_effect
-
 func MirrorImage(card):
     card.key = 'MirrorImage'
     card.card_name = 'Mirror Image'
@@ -808,12 +807,22 @@ func MirrorImage(card):
 func PlanAhead(card):
     card.key = 'PlanAhead'
     card.card_name = 'Plan Ahead'
-    card.text = 'In 4 seconds: Your familiars gain +2/+4.'
+    card.text = 'In 4 seconds: Your familiars gain +2/+2.'
     card.element = 'earth'
     card.type = 'sorcery'
     card.targeting = 'targets_not_required'
     card.enchantment_duration = 4
-    card.enchantment_cease_effect = 'enchantment_cease__your_familiars_gain_plus_2_plus_4'
+    card.enchantment_cease_effect = 'enchantment_cease__your_familiars_gain_plus_2_plus_2'
+
+func HealingWave(card):
+    card.key = 'HealingWave'
+    card.card_name = 'Healing Wave'
+    card.text = 'Your familiars gain +0/+4.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__your_familiars_gain_plus_0_plus_4'
+
 
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------

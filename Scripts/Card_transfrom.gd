@@ -31,7 +31,7 @@ var ignition
 var haste = false
 var slow = false
 
-var keep_alive = false
+var attacks = true
 
 var enchantment_duration
 var enchantment_cease_effect
@@ -102,11 +102,11 @@ func update_appearance():
     $frame/text.text = str(text)
 
     if is_familiar():
-        $frame/at.text = str(at)
-        $frame/hp.text = str(hp)
+        $frame/attack/at.text = str(at)
+        $frame/health/hp.text = str(hp)
     else:
-        $frame/at.hide()
-        $frame/hp.hide()
+        $frame/attack.hide()
+        $frame/health.hide()
 
 func drag_start():
     add_to_group('drag')
@@ -154,7 +154,7 @@ func _process(delta):
         drag_end()
 
     # --- attacking ---    
-    if is_in_group('field') && !(attack_timer_running || attacking):
+    if attacks && is_in_group('field') && !(attack_timer_running || attacking):
         setup_charge_to_attack()
 
 func organize_timer_positions():
@@ -344,10 +344,10 @@ func cease_enchantment():
         funcref(self, enchantment_cease_effect).call_func()
     queue_free()
 
-func enchantment_cease__your_familiars_gain_plus_2_plus_4():
+func enchantment_cease__your_familiars_gain_plus_2_plus_2():
     var allies = Game.friendly_familiars()
     for ally in allies:
-        ally.buff(2, 4)
+        ally.buff(2, 2)
 
 # enemy ai
 # ---------------------------------------------------------------------------------------------
@@ -579,6 +579,9 @@ func sorcery__deal_1_to_all_if_any_dies_return_to_hand(target_field):
             create('Defile').add_to_hand()
             return
 
+func sorcery__your_familiars_gain_plus_0_plus_4(target_field):
+    for familiar in Game.friendly_familiars():
+        familiar.buff(0, 4)
 
 # battlecries
 # ---------------------------------------------------------------------------------------------

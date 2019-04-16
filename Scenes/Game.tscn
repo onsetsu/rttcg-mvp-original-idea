@@ -74,6 +74,7 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -672,9 +673,6 @@ position = Vector2( -170, 0 )
 
 [node name="field" type="Node2D" parent="." index="12"]
 
-editor/display_folded = true
-visible = false
-
 [node name="field_left_enemy_tower" parent="field" index="0" instance=ExtResource( 5 )]
 
 margin_left = 320.0
@@ -880,6 +878,24 @@ align = 1
 [node name="elements" type="Node" parent="." index="17"]
 
 [node name="effects" type="Node" parent="." index="18"]
+
+[node name="ColorRect" type="ColorRect" parent="." index="19"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 820.0
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
 
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
 

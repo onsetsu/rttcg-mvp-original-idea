@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Card_transfrom.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/card.png" type="Texture" id=2]
 [ext_resource path="res://Lato-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/Element.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/card_template/heart.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/card_template/circle_bg.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/card_template/sword_02.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -134,14 +137,27 @@ _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
 position = Vector2( 64, 120 )
 
-[node name="at" type="Label" parent="frame" index="3"]
+[node name="health" type="Node2D" parent="frame" index="3"]
+
+position = Vector2( 111.5, 111 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="heart" type="Sprite" parent="frame/health" index="0"]
+
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="hp" type="Label" parent="frame/health" index="1"]
 
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-margin_top = -34.0
-margin_right = 29.0
+margin_left = -16.0
+margin_top = -81.0
+margin_right = 17.0
+margin_bottom = -47.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -157,17 +173,36 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Margin", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Margin", "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="hp" type="Label" parent="frame" index="4"]
+[node name="attack" type="Node2D" parent="frame" index="4"]
+
+position = Vector2( 8, 114 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bg" type="Sprite" parent="frame/attack" index="0"]
+
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sword" type="Sprite" parent="frame/attack" index="1"]
+
+position = Vector2( 0, 20 )
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="at" type="Label" parent="frame/attack" index="2"]
 
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-margin_left = 96.0
-margin_top = -34.0
-margin_right = 129.0
+margin_left = -15.0
+margin_top = -81.0
+margin_right = 14.0
+margin_bottom = -47.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -183,7 +218,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Margin", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="pos_tween" type="Tween" parent="." index="2"]
 
