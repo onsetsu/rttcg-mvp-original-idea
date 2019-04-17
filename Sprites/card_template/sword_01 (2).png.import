@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/sword_01 (2).png-39e0aff6d907371e6de0ef95fcd2b085.stex"
+
+[deps]
+
+source_file="res://Sprites/card_template/sword_01 (2).png"
+source_md5="fa20f8e3e597440de8e813c4f4ac334e"
+
+dest_files=[ "res://.import/sword_01 (2).png-39e0aff6d907371e6de0ef95fcd2b085.stex" ]
+dest_md5="3fbbb8cb1665418baa05312f9a9705d2"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
