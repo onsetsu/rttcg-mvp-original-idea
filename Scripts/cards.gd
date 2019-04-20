@@ -883,6 +883,16 @@ func ShieldMage(card):
     card.battlecry ='battlecry__create_a_shield'
     card.deathrottle ='deathrottle__create_a_shield'
 
+func SagittariusShot(card):
+    card.key = 'SagittariusShot'
+    card.card_name = 'Sagittarius Shot'
+    card.text = 'In 5 seconds: Deal 5 damage to familiars with highest HP.'
+    card.element = 'fire'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.enchantment_duration = 5
+    card.enchantment_cease_effect = 'enchantment_cease__deal_5_to_highest_hp_familiars'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 
@@ -1066,3 +1076,16 @@ func PlagueRats(card):
         var num_rats = Game.effect_store.num_rats
         card.at += num_rats
         card.hp += num_rats
+
+func ShapeThief(card):
+    card.deck = 'enemy'
+    
+    card.key = 'ShapeThief'
+    card.card_name = 'Shape Thief'
+    card.text = 'Battlecry: Opponent discards a random familiar. Copy its stats.'
+    card.type = 'familiar'
+    card.element = 'water'
+    card.at = 3
+    card.hp = 3
+    
+    card.battlecry = 'battlecry__opponent_discards_familiar_gain_its_stats'

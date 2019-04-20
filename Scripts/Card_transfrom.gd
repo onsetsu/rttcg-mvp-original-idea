@@ -344,11 +344,6 @@ func cease_enchantment():
         funcref(self, enchantment_cease_effect).call_func()
     queue_free()
 
-func enchantment_cease__your_familiars_gain_plus_2_plus_2():
-    var allies = Game.friendly_familiars()
-    for ally in allies:
-        ally.buff(2, 2)
-
 # enemy ai
 # ---------------------------------------------------------------------------------------------
 
@@ -599,6 +594,21 @@ func sorcery__plus_1_plus_4_or_summon_a_1_4(target_field):
     else:
         target_field.card.buff(1,4)
 
+# enchantment cease
+# ---------------------------------------------------------------------------------------------
+
+func enchantment_cease__your_familiars_gain_plus_2_plus_2():
+    var allies = Game.friendly_familiars()
+    for ally in allies:
+        ally.buff(2, 2)
+
+func enchantment_cease__deal_5_to_highest_hp_familiars():
+    var familiars = Game.familiars_on_field()
+    if not familiars.empty():
+        var highest_hp = utils.max(utils.pluck(familiars, 'hp'))
+        for familiar in utils.filter_prop(familiars, 'hp', highest_hp):
+            deal_x_familiar(familiar, 5)
+
 # battlecries
 # ---------------------------------------------------------------------------------------------
 
@@ -738,6 +748,14 @@ func battlecry__rat_played():
 
 func battlecry__create_a_shield():
     create('Shield').add_to_hand()
+
+func battlecry__opponent_discards_familiar_gain_its_stats():
+    var enemy_familiars_in_hand = utils.filter_func(Game.cards_in_player_hand(), 'is_familiar', true)
+    if not enemy_familiars_in_hand.empty():
+        var familiar_to_discard = utils.sample(enemy_familiars_in_hand)
+        at = familiar_to_discard.at
+        hp = familiar_to_discard.hp
+        familiar_to_discard.discard()
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------
