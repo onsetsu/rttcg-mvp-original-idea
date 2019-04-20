@@ -823,6 +823,65 @@ func HealingWave(card):
     card.targeting = 'targets_not_required'
     card.effect = 'sorcery__your_familiars_gain_plus_0_plus_4'
 
+func ShadeArmor(card):
+    card.key = 'ShadeArmor'
+    card.card_name = 'Shade Armor'
+    card.text = 'Transform allied familiar into a 7/5 Black Knight.'
+    card.element = 'water'
+    card.type = 'sorcery'
+    card.targeting = 'targets_friendly_familiar'
+    card.effect = 'sorcery__transform_into_fafnir_knight'
+
+func BlackKnight(card):
+    card.key = 'BlackKnight'
+    card.card_name = 'Black Knight'
+    card.text = 'Deathrottle: Resummon transformed familiar.'
+    card.element = 'water'
+    card.type = 'familiar'
+    card.at = 7
+    card.hp = 5
+    card.attacks = true
+    card.deathrottle ='deathrottle__fafnir_knight_resummon_transformed_familiar'
+
+func Reiterate(card):
+    card.key = 'Reiterate'
+    card.card_name = 'Reiterate'
+    card.text = 'For 5 seconds: Draw a card whenever you play a sorcery.'
+    card.element = 'water'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.enchantment_duration = 5
+    card.whenever = { play_card = 'active_enchantment__draw_1_if_played_a_sorcery'}
+
+func Shield(card):
+    card.key = 'Shield'
+    card.card_name = 'Shield'
+    card.text = 'Give a Familiar +1/+4, or summon a 1/4 Plate Shield.'
+    card.element = 'earth'
+    card.type = 'sorcery'
+    card.targeting = 'targets_field'
+    card.effect = 'sorcery__plus_1_plus_4_or_summon_a_1_4'
+
+func PlateShield(card):
+    card.key = 'PlateShield'
+    card.card_name = 'Plate Shield'
+    card.text = ''
+    card.element = 'earth'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 4
+    card.attacks = true
+
+func ShieldMage(card):
+    card.key = 'ShieldMage'
+    card.card_name = 'Shield Mage'
+    card.text = 'Battlecry and Deathrottle: Create a Shield.'
+    card.element = 'earth'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 3
+    card.battlecry ='battlecry__create_a_shield'
+    card.deathrottle ='deathrottle__create_a_shield'
 
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
@@ -1000,4 +1059,10 @@ func PlagueRats(card):
     card.element = 'earth'
     card.at = 1
     card.hp = 1
-
+    
+    card.battlecry = 'battlecry__rat_played'
+    var Game = get_tree().get_root().get_node('Game')
+    if Game != null:
+        var num_rats = Game.effect_store.num_rats
+        card.at += num_rats
+        card.hp += num_rats

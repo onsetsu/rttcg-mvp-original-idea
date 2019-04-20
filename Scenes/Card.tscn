@@ -146,7 +146,7 @@ position = Vector2( 64, 120 )
 
 [node name="health" type="Node2D" parent="frame" index="4"]
 
-position = Vector2( 111.5, 111 )
+position = Vector2( 118.5, 111 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="heart" type="Sprite" parent="frame/health" index="0"]

@@ -16,7 +16,9 @@ var ELEMENT_SEQUENCE_HAVE_POS_START = Vector2(30, 320)
 var ELEMENT_SEQUENCE_GOAL_POS_START = Vector2(30, 350)
 var ELEMENT_SEQUENCE_GOAL_POS_OFFSET = Vector2(24, 0)
 
-var effect_store = {}
+var effect_store = {
+    num_rats = 0
+}
 
 # ---------------------------------------------------------------------------------------------
 

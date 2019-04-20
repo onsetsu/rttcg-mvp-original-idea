@@ -418,6 +418,10 @@ func active_enchantment__plus_1_plus_1_to_friendly_familiars(card):
     if is_active_enchantment() && card.is_familiar() && side() == card.side():
         card.buff(1, 1)
 
+func active_enchantment__draw_1_if_played_a_sorcery(card):
+    if is_active_enchantment() && card.is_sorcery() && side() == card.side():
+        Game.draw_a_card()
+
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
 
@@ -583,6 +587,18 @@ func sorcery__your_familiars_gain_plus_0_plus_4(target_field):
     for familiar in Game.friendly_familiars():
         familiar.buff(0, 4)
 
+func sorcery__transform_into_fafnir_knight(target_field):
+    var card = target_field.card
+    var transformed_card_key = card.key
+    card.become('BlackKnight')
+    card.effect_store['fafnir_knight_transformed_card_key'] = transformed_card_key
+
+func sorcery__plus_1_plus_4_or_summon_a_1_4(target_field):
+    if target_field.is_empty():
+        create('PlateShield').add_to_field(target_field)
+    else:
+        target_field.card.buff(1,4)
+
 # battlecries
 # ---------------------------------------------------------------------------------------------
 
@@ -717,6 +733,12 @@ func battlecry__copy_opposing_familiars_stats():
         at = opposing_familiar.at
         hp = opposing_familiar.hp
 
+func battlecry__rat_played():
+    Game.effect_store.num_rats += 1
+
+func battlecry__create_a_shield():
+    create('Shield').add_to_hand()
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -747,6 +769,13 @@ func deathrottle__if_no_lamp_create_a_lamp(from_field):
         if card.key == lamp_key:
             return
     create(lamp_key).add_to_hand()
+
+func deathrottle__fafnir_knight_resummon_transformed_familiar(from_field):
+    if effect_store.has('fafnir_knight_transformed_card_key'):
+        create(effect_store['fafnir_knight_transformed_card_key']).add_to_field(from_field)
+
+func deathrottle__create_a_shield(from_field):
+    create('Shield').add_to_hand()
 
 # sabotage
 # ---------------------------------------------------------------------------------------------

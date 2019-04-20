@@ -2,22 +2,23 @@ extends Node2D
 
 onready var Game = get_tree().get_root().get_node('Game')
 
-var index = 0
 export var side = 'friendly' # enemy
 
+var current_cards = []
 var deck_list
 
-# Separator
-# ---------------------------------------------------------------------------------------------
+func reshuffle_deck():
+    current_cards = utils.shuffle(deck_list)
 
 func create_next_card():
     var card = Game.create_card(position)
     card.add_to_group(side)
 
-    var card_name = deck_list[index%deck_list.size()]
-    card.become(card_name)
+    if current_cards.empty():
+        reshuffle_deck()
 
-    index += 1
+    var card_name = current_cards.pop_front()
+    card.become(card_name)
 
     return card
 
