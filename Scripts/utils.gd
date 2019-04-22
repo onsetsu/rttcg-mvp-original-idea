@@ -1,5 +1,8 @@
 extends Node
 
+func get_main_node(name):
+    return get_tree().get_root().get_node(name)
+
 func get_nodes_in_groups(groups):
     var cards_in_first_group = get_tree().get_nodes_in_group(groups[0])
     var first = true

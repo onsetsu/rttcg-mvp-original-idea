@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Card_transfrom.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/card.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/card_template/title.png" type="Texture" id=3]
-[ext_resource path="res://Lato-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Scenes/Element.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/card_template/cards/Tex_HP.PNG" type="Texture" id=2]
+[ext_resource path="res://Sprites/card_template/frames/frame_s_01.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/card_template/title.png" type="Texture" id=4]
+[ext_resource path="res://Lato-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Sprites/card_template/heart.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/card_template/sword_02.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/card_template/circle_bg.png" type="Texture" id=8]
@@ -19,7 +19,7 @@ extents = Vector2( 64, 64 )
 size = 18
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -27,7 +27,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 16
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -35,16 +35,17 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 size = 18
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Card" type="Node2D" index="0"]
+[node name="Card" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="area" type="Area2D" parent="." index="0"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -57,46 +58,84 @@ audio_bus_name = "Master"
 
 shape = SubResource( 1 )
 
-[node name="frame" type="NinePatchRect" parent="." index="1"]
+[node name="image_holder" type="Node2D" parent="." index="1"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="image" type="Sprite" parent="image_holder" index="0"]
+
+scale = Vector2( 0.055, 0.055 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 500, 2281, 2281 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="ColorRect" type="ColorRect" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -64.0
+margin_left = -60.0
+margin_top = -9.0
+margin_right = 59.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.917969, 0.831853, 0.709991, 0.475137 )
+
+[node name="frame" type="NinePatchRect" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -65.0
 margin_top = -64.0
-margin_right = 64.0
-margin_bottom = 64.0
+margin_right = 451.0
+margin_bottom = 448.0
+rect_scale = Vector2( 0.25, 0.25 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 192, 192 )
-patch_margin_left = 8
-patch_margin_top = 38
-patch_margin_right = 8
-patch_margin_bottom = 8
+texture = ExtResource( 3 )
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
 _sections_unfolded = [ "Patch Margin", "Rect" ]
 
-[node name="title_bg" type="Sprite" parent="frame" index="0"]
+[node name="title" type="Node2D" parent="." index="4"]
 
-position = Vector2( 63.3975, 23.4971 )
+editor/display_folded = true
+position = Vector2( 0, -7.54706 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="background" type="Sprite" parent="title" index="0"]
+
+position = Vector2( -0.602501, -40.5029 )
 scale = Vector2( 0.335553, 0.371359 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
-[node name="name" type="Label" parent="frame" index="1"]
+[node name="name" type="Label" parent="title" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = 29.0
+margin_left = -64.0
+margin_top = -60.0
+margin_right = -2.0
+margin_bottom = -35.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -113,16 +152,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="text" type="Label" parent="frame" index="2"]
+[node name="text" type="Label" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 37.0
-margin_right = -4.0
-margin_bottom = 119.0
+margin_left = -57.0
+margin_top = -14.0
+margin_right = -8.0
+margin_bottom = 66.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -140,22 +179,19 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="element" parent="frame" index="3" instance=ExtResource( 5 )]
+[node name="health" type="Node2D" parent="." index="6"]
 
-position = Vector2( 64, 120 )
-
-[node name="health" type="Node2D" parent="frame" index="4"]
-
-position = Vector2( 118.5, 111 )
+editor/display_folded = true
+position = Vector2( 54.5, 52.1638 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="heart" type="Sprite" parent="frame/health" index="0"]
+[node name="heart" type="Sprite" parent="health" index="0"]
 
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="hp" type="Label" parent="frame/health" index="1"]
+[node name="hp" type="Label" parent="health" index="1"]
 
 anchor_left = 0.0
 anchor_top = 1.0
@@ -182,25 +218,26 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="attack" type="Node2D" parent="frame" index="5"]
+[node name="attack" type="Node2D" parent="." index="7"]
 
-position = Vector2( 10, 112 )
+editor/display_folded = true
+position = Vector2( -54, 53.1638 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="sword" type="Sprite" parent="frame/attack" index="0"]
+[node name="sword" type="Sprite" parent="attack" index="0"]
 
 rotation = 4.99107e-05
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="bg" type="Sprite" parent="frame/attack" index="1"]
+[node name="bg" type="Sprite" parent="attack" index="1"]
 
 scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="at" type="Label" parent="frame/attack" index="2"]
+[node name="at" type="Label" parent="attack" index="2"]
 
 anchor_left = 0.0
 anchor_top = 1.0
@@ -227,7 +264,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="pos_tween" type="Tween" parent="." index="2"]
+[node name="pos_tween" type="Tween" parent="." index="8"]
 
 repeat = false
 playback_process_mode = 1
@@ -236,7 +273,7 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="timers" type="Node2D" parent="." index="3"]
+[node name="timers" type="Node2D" parent="." index="9"]
 
 position = Vector2( -90, 0 )
 

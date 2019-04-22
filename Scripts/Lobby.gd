@@ -1,6 +1,8 @@
 extends Node
 
 var card_scene = preload("res://Scenes/Card.tscn")
+var card_images_scene = preload("res://Scenes/CardImages.tscn")
+onready var card_images = card_images_scene.instance()
 var game_scene = preload("res://Scenes/Game.tscn")
 var deck_slot_scene = preload("res://Scenes/DeckSlot.tscn")
 
@@ -35,6 +37,14 @@ func dict_name_for_card_name(card_name):
 
 func _ready():
     update_speed_info()
+
+    #var root = get_tree().get_root()
+    #var card_images = card_images_scene.instance()
+    #card_images.name = "foo"
+    #card_images.hide()
+    #root.add_child(card_images)
+    
+    print(get_tree().get_root(), get_tree().get_root().get_node('foo'))
 
     var saved_decks = load_deck()
     

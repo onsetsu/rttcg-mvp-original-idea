@@ -1,5 +1,7 @@
 extends Node2D
 
+# full region rect: 2281x3190
+
 var mouseIn = false
 var isDragging = false
 
@@ -8,7 +10,6 @@ var deck = 'player'
 var key = 'Flamekin'
 var card_name = 'Flamekin'
 var text = 'No text here.'
-var element = 'fire' setget set_element, get_element # water, earth 
 
 var type = 'familiar' # sorcery
 
@@ -81,39 +82,23 @@ func is_hovered():
             hovered = true
     return hovered
 
-func set_element(e):
-    element = e
-    $frame/element.set_element(e)
-
-func get_element():
-    return element
-
-func get_frame_offset():
-    var width = 192
-    if element == 'fire': return 0
-    if element == 'water': return width
-    if element == 'earth': return 2 * width
-    return 0
-
 func update_appearance():
-    $frame/name.text = card_name
-    $frame/element.set_element(element)
-    $frame.region_rect.position.x = get_frame_offset()
-    $frame/text.text = str(text)
+    $title/name.text = card_name
+    $text.text = str(text)
 
     if is_familiar():
-        $frame/attack/at.text = str(at)
-        $frame/health/hp.text = str(hp)
+        $attack/at.text = str(at)
+        $health/hp.text = str(hp)
     else:
-        $frame/attack.hide()
-        $frame/health.hide()
+        $attack.hide()
+        $health.hide()
 
 func drag_start():
     add_to_group('drag')
 
     start_offset = get_local_mouse_position() * scale
     cancel_go_to()
-    
+
     if charge_time > 0:
         charge_timer = start_timer(charge_time, 'charge_complete', 'charge')
 
@@ -128,11 +113,11 @@ func drag_end():
     remove_from_group('drag')
 
     Game.try_to_play_card(self)
-    
+
     charged = false
     if charge_timer != null:
         charge_timer.remove_me()
-    
+
     Game.organize_hand() # need to reorganize hand regardless whether actually played or not
 
 func _process(delta):
@@ -177,6 +162,7 @@ func start_timer(duration, method_to_invoke, label):
 
 func add_approaching_timer(method_to_invoke, label):
     start_timer(5, method_to_invoke, label)
+    $image.duplicate(DUPLICATE_USE_INSTANCING)
 
 # callback
 func draw_approaching_card():
@@ -216,9 +202,6 @@ func is_allied():
 
 func is_enemy():
     return is_in_group('enemy')
-
-func is_fire():
-    return element == 'fire'
 
 func opposing_familiar():
     if not field: return null
@@ -380,9 +363,9 @@ func on_field__plus_1_plus_1(arg):
     if is_in_group('field'):
         buff(1, 1)
 
-func this__plus_3_plus_0(arg):
+func this__plus_2_plus_0(arg):
     if self == arg:
-        buff(3, 0)
+        buff(2, 0)
 
 func own_familiar__plus_2_plus_2(card):
     if is_approaching() && card.is_familiar() && side() == card.side():
@@ -486,9 +469,9 @@ func opponent_discards_all_sorceries(target_field):
             card.discard()
     Game.organize_hand()
 
-func deal_3_if_approching_fire_deal_6(target_field):
-    var approaching_card = Game.get_approaching_card()
-    if  approaching_card && approaching_card.is_fire():
+func deal_3_if_approching_sorcery_deal_6(target_field):
+    var approaching_card = Game.ensure_approaching_card_player()
+    if  approaching_card && approaching_card.is_sorcery():
         deal_x(target_field, 6)
     else:
         deal_x(target_field, 3)
@@ -757,6 +740,19 @@ func battlecry__opponent_discards_familiar_gain_its_stats():
         hp = familiar_to_discard.hp
         familiar_to_discard.discard()
 
+func battlecry__fill_your_board_with_1_3_bombs():
+    for mine in fill_your_board_with('ExplosiveMine'):
+        mine.start_timer(3, 'timed_die_and_deal_6_in_lane', 'explode')
+func timed_die_and_deal_6_in_lane():
+    var prev_field = field
+    die()
+    deal_x_in_lane(6, prev_field)
+
+func battlecry__summon_a_skeleton():
+    var unoccupied_fields = Game.unoccupied_enemy_familiar_fields()
+    if not unoccupied_fields.empty():
+        create('Skeleton').add_to_field(utils.sample(unoccupied_fields))
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -778,8 +774,8 @@ func deathrottle__great_phoenix(from_field):
 func deathrottle__blazing_phoenix(from_field):
     create('BlazingPhoenix').add_to_hand()
 
-func deathrottle__fill_board_with_hobgoblins(from_field):
-    fill_your_board_with('Hobgoblin')
+func deathrottle__summon_a_skeleton(from_field):
+    create('Skeleton').add_to_field(from_field)
 
 func deathrottle__if_no_lamp_create_a_lamp(from_field):
     var lamp_key = 'Lamp'
@@ -947,8 +943,20 @@ func attack_immediately():
 func become_a_dragon():
     become('Dragon')
 
+func update_card_image():
+    $image_holder.remove_child($image_holder/image)
+    var card_images = utils.get_main_node('Lobby').card_images
+    var image_to_copy = card_images.find_node(key)
+    if image_to_copy == null:
+        image_to_copy = card_images.find_node('default')
+    var new_image = image_to_copy.duplicate(DUPLICATE_USE_INSTANCING)
+    new_image.name = 'image'
+    new_image.position = Vector2(0,0)
+    $image_holder.add_child(new_image)
+
 func become(name):
     funcref(cards, name).call_func(self)
+    update_card_image()
 
 func discard():
     if is_in_group('hand') and is_in_group('friendly'):
@@ -965,12 +973,16 @@ func return_to_hand():
 
 func fill_your_board_with(card_key):
     var fields
+    var new_cards = []
     if is_enemy():
         fields = Game.unoccupied_enemy_familiar_fields()
     else:
         fields = Game.unoccupied_friendly_familiar_fields()
     for unoccupied_field in fields:
-        create(card_key).add_to_field(unoccupied_field)
+        var card = create(card_key)
+        card.add_to_field(unoccupied_field)
+        new_cards.append(card)
+    return new_cards
 
 # zone changes
 # ---------------------------------------------------------------------------------------------
