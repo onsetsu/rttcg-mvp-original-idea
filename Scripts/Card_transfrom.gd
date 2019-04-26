@@ -605,8 +605,8 @@ func battlecry__attack_immediately():
 func create_a_shiv():
     create_x_shivs(1)
 
-func battlecry__deal_2_in_lane():
-    deal_x_in_lane(2)
+func battlecry__deal_1_in_lane():
+    deal_x_in_lane(1)
 
 func battlecry__deal_4_in_lane():
     deal_x_in_lane(4)
@@ -752,6 +752,17 @@ func battlecry__summon_a_skeleton():
     var unoccupied_fields = Game.unoccupied_enemy_familiar_fields()
     if not unoccupied_fields.empty():
         create('Skeleton').add_to_field(utils.sample(unoccupied_fields))
+
+func battlecry__middle_lane_plus_2_at_others_plus_2_hp():
+    if field.lane == 'middle':
+        buff(2, 0)
+    else:
+        buff(0, 2)
+
+func battlecry__summon_pack_wolf():
+    var unoccupied_fields = Game.unoccupied_enemy_familiar_fields()
+    if not unoccupied_fields.empty():
+        create('PackWolf').add_to_field(utils.sample(unoccupied_fields))
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------

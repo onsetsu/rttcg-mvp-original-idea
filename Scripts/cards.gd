@@ -7,19 +7,19 @@ extends Node
 # Friendly Cards
 # ---------------------------------------------------------------------------------------------
 
-func ElvenArcher(card):
-    card.key = 'ElvenArcher'
-    card.card_name = 'Elven Archer'
-    card.text = 'Battlecry: Deal 2 Damage to opposing side.'
+func FelineRaider(card):
+    card.key = 'FelineRaider'
+    card.card_name = 'Feline Raider'
+    card.text = 'Battlecry: Deal 1 Damage to opposing side.'
     card.type = 'familiar'
-    card.at = 2
-    card.hp = 2
-    card.battlecry = 'battlecry__deal_2_in_lane'
+    card.at = 1
+    card.hp = 1
+    card.battlecry = 'battlecry__deal_1_in_lane'
     
 func FormOfDragon(card):
     card.key = 'FormOfDragon'
     card.card_name = 'Form of Dragon'
-    card.text = 'Your Familiars become 5/5 Dragons.'
+    card.text = 'Your Familiars become 4/4 Dragons.'
     card.type = 'sorcery'
     card.targeting = 'targets_not_required'
     card.effect = 'transform_allies_into_dragons'
@@ -27,7 +27,7 @@ func FormOfDragon(card):
 func DracoKnight(card):
     card.key = 'DracoKnight'
     card.card_name = 'Draco-Knight'
-    card.text = 'Sabotage: Become a 5/5 Dragon.'
+    card.text = 'Sabotage: Become a 4/4 Dragon.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 5
@@ -38,8 +38,8 @@ func Adventurer(card):
     card.card_name = 'Adventurer'
     card.text = ''
     card.type = 'familiar'
-    card.at = 3
-    card.hp = 4
+    card.at = 2
+    card.hp = 3
 
 func Anafenza(card):
     card.key = 'Anafenza'
@@ -97,10 +97,10 @@ func AsuraPriest(card):
 func Shiv(card):
     card.key = 'Shiv'
     card.card_name = 'Shiv'
-    card.text = 'Deal 3 damage.'
+    card.text = 'Deal 2 damage.'
     card.type = 'sorcery'
     card.targeting = 'targets_familiar_or_tower'
-    card.effect = 'deal_3'
+    card.effect = 'deal_2'
 
 func Bumerang(card):
     card.key = 'Bumerang'
@@ -182,22 +182,24 @@ func Dragon(card):
     card.card_name = 'Dragon'
     card.text = ''
     card.type = 'familiar'
-    card.at = 5
-    card.hp = 5
+    card.at = 4
+    card.hp = 4
     card.targeting = null
     card.effect = null
     card.combo = null
     card.battlecry = null
     card.deathrottle = null
     card.sabotage = null
+    card.attacks = true
+    # #TODO: crystal forge's delayed ability still goes off indefinitely
 
 func Fireball(card):
     card.key = 'Fireball'
     card.card_name = 'Fireball'
-    card.text = 'Deal 4 Damage to a familiar.'
+    card.text = 'Deal 3 Damage to a familiar.'
     card.type = 'sorcery'
     card.targeting = 'targets_familiar'
-    card.effect = 'deal_4'
+    card.effect = 'deal_3'
 
 func MeteorStrike(card):
     card.key = 'MeteorStrike'
@@ -280,7 +282,7 @@ func IdolOfBlades(card):
 func IdolOfDragon(card):
     card.key = 'IdolOfDragon'
     card.card_name = 'Idol of Dragon'
-    card.text = 'Inspired Familiar becomes a 5/5 Dragon.'
+    card.text = 'Inspired Familiar becomes a 4/4 Dragon.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 2
@@ -464,7 +466,7 @@ func Golem(card):
 func DragonHatchling(card):
     card.key = 'DragonHatchling'
     card.card_name = 'Dragon Hatchling'
-    card.text = 'In 8 seconds: Becomes a 5/5 Dragon.'
+    card.text = 'In 8 seconds: Becomes a 4/4 Dragon.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 3
@@ -523,10 +525,11 @@ func CreativeBurst(card):
 func CrystalForge(card):
     card.key = 'CrystalForge'
     card.card_name = 'Crystal Forge'
-    card.text = 'Every 4 seconds: Create a Shiv.'
+    card.text = 'Doesn\'t attack. Every 4 seconds: Create a Shiv.'
     card.type = 'familiar'
     card.at = 0
     card.hp = 6
+    card.attacks = false
     card.battlecry = 'battlecry__every_4_create_a_shiv'
 
 func DoubleShot(card):
@@ -778,11 +781,11 @@ func Shield(card):
 func PlateShield(card):
     card.key = 'PlateShield'
     card.card_name = 'Plate Shield'
-    card.text = ''
+    card.text = 'Doesn\'t attack.'
     card.type = 'familiar'
     card.at = 1
     card.hp = 4
-    card.attacks = true
+    card.attacks = false
 
 func ShieldMage(card):
     card.key = 'ShieldMage'
@@ -803,6 +806,15 @@ func SagittariusShot(card):
     card.enchantment_duration = 5
     card.enchantment_cease_effect = 'enchantment_cease__deal_5_to_highest_hp_familiars'
 
+func Tactician(card):
+    card.key = 'Tactician'
+    card.card_name = 'Tactician'
+    card.text = 'Battlecry: On Middle Lane: +2/+0. Otherwise: +0+2.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 2
+    card.battlecry ='battlecry__middle_lane_plus_2_at_others_plus_2_hp'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 
@@ -813,8 +825,8 @@ func Skeleton(card):
     card.card_name = 'Skeleton'
     card.text = ''
     card.type = 'familiar'
-    card.at = 4
-    card.hp = 3
+    card.at = 3
+    card.hp = 2
     
 func SkeletonElite(card):
     card.deck = 'enemy'
@@ -823,8 +835,8 @@ func SkeletonElite(card):
     card.card_name = 'Skeleton Elite'
     card.text = ''
     card.type = 'familiar'
-    card.at = 6
-    card.hp = 6
+    card.at = 4
+    card.hp = 3
 
 func Kirin(card):
     card.deck = 'enemy'
@@ -1009,3 +1021,49 @@ func ExplosiveMine(card):
     card.at = 1
     card.hp = 3
     card.attacks = false
+
+func WolfRaider(card):
+    card.deck = 'enemy'
+    
+    card.key = 'WolfRaider'
+    card.card_name = 'Wolf Raider'
+    card.text = 'Haste. Attacks immediately.'
+    card.type = 'familiar'
+    card.at = 3
+    card.hp = 1
+    card.haste = true
+    card.battlecry = 'battlecry__attack_immediately'
+
+func PackWolf(card):
+    card.deck = 'enemy'
+    
+    card.key = 'PackWolf'
+    card.card_name = 'PackWolf'
+    card.text = 'Battlecry: Summon another 2/2 Pack Wolf.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 2
+    card.battlecry = 'battlecry__summon_pack_wolf'
+
+func SewerDweller(card):
+    card.deck = 'enemy'
+    
+    card.key = 'SewerDweller'
+    card.card_name = 'Sewer Dweller'
+    card.text = 'Slow.'
+    card.type = 'familiar'
+    card.at = 4
+    card.hp = 5
+    card.slow = true
+
+func SpikedWall(card):
+    card.deck = 'enemy'
+    
+    card.key = 'SpikedWall'
+    card.card_name = 'SpikedWall'
+    card.text = 'Doesn\'t attack.'
+    card.type = 'familiar'
+    card.at = 3
+    card.hp = 6
+    card.attacks = false
+

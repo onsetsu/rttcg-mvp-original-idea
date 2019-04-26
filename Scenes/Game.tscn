@@ -25,6 +25,9 @@ font_data = ExtResource( 2 )
 [node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="Mockups & Placement" type="Node" parent="." index="0"]
 
@@ -171,10 +174,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 320.0
-margin_top = 20.0
-margin_right = 460.0
-margin_bottom = 420.0
+margin_left = 225.0
+margin_top = 10.0
+margin_right = 365.0
+margin_bottom = 430.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -182,6 +185,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.381654, 0.417969, 0.0604095, 1 )
+_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -217,10 +221,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 490.0
-margin_top = 20.0
-margin_right = 630.0
-margin_bottom = 420.0
+margin_left = 435.0
+margin_top = 10.0
+margin_right = 575.0
+margin_bottom = 430.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -228,6 +232,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.381654, 0.417969, 0.0604095, 1 )
+_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -263,10 +268,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 660.0
-margin_top = 20.0
-margin_right = 800.0
-margin_bottom = 420.0
+margin_left = 645.0
+margin_top = 10.0
+margin_right = 785.0
+margin_bottom = 430.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -274,6 +279,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.381654, 0.417969, 0.0604095, 1 )
+_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -506,10 +512,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 330.0
-margin_top = 240.0
-margin_right = 458.0
-margin_bottom = 368.0
+margin_left = 260.0
+margin_top = 242.0
+margin_right = 388.0
+margin_bottom = 370.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -530,10 +536,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 330.0
-margin_top = 70.0
-margin_right = 458.0
-margin_bottom = 198.0
+margin_left = 260.0
+margin_top = 72.0
+margin_right = 388.0
+margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -554,10 +560,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 500.0
-margin_top = 70.0
-margin_right = 628.0
-margin_bottom = 198.0
+margin_left = 470.0
+margin_top = 72.0
+margin_right = 598.0
+margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -602,10 +608,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 500.0
-margin_top = 240.0
-margin_right = 628.0
-margin_bottom = 368.0
+margin_left = 470.0
+margin_top = 242.0
+margin_right = 598.0
+margin_bottom = 370.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -647,136 +653,144 @@ _sections_unfolded = [ "Rect" ]
 [node name="towers" type="Node2D" parent="." index="11"]
 
 editor/display_folded = true
-position = Vector2( 740, 40 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="tower_left_ally" parent="towers" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( -350, 360 )
+position = Vector2( 295, 405 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="tower_middle_ally" parent="towers" index="1" instance=ExtResource( 4 )]
 
-position = Vector2( -180, 360 )
+position = Vector2( 505, 405 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="tower_right_ally" parent="towers" index="2" instance=ExtResource( 4 )]
 
-position = Vector2( -10, 360 )
+position = Vector2( 715, 405 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="tower_left_enemy" parent="towers" index="3" instance=ExtResource( 4 )]
 
-position = Vector2( -350, 0 )
+position = Vector2( 295, 35 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="tower_middle_enemy" parent="towers" index="4" instance=ExtResource( 4 )]
 
-position = Vector2( -170, 0 )
+position = Vector2( 505, 35 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="tower_right_enemy" parent="towers" index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 715, 35 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="field" type="Node2D" parent="." index="12"]
 
 [node name="field_left_enemy_tower" parent="field" index="0" instance=ExtResource( 5 )]
 
-margin_left = 320.0
-margin_top = 20.0
-margin_right = 462.0
+margin_left = 190.0
+margin_top = 10.0
+margin_right = 400.0
 margin_bottom = 60.0
 _sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 
 [node name="field_left_enemy_familiar" parent="field" index="1" instance=ExtResource( 5 )]
 
-margin_left = 320.0
+margin_left = 190.0
 margin_top = 60.0
-margin_right = 462.0
-margin_bottom = 203.0
+margin_right = 400.0
+margin_bottom = 220.0
 type = "familiar"
 
 [node name="field_left_ally_familiar" parent="field" index="2" instance=ExtResource( 5 )]
 
-margin_left = 320.0
-margin_top = 230.0
-margin_right = 462.0
-margin_bottom = 373.0
+margin_left = 190.0
+margin_top = 220.0
+margin_right = 400.0
+margin_bottom = 380.0
 side = "friendly"
 type = "familiar"
 
 [node name="field_left_ally_tower" parent="field" index="3" instance=ExtResource( 5 )]
 
-margin_left = 320.0
+margin_left = 190.0
 margin_top = 380.0
-margin_right = 462.0
-margin_bottom = 420.0
+margin_right = 400.0
+margin_bottom = 430.0
 side = "friendly"
 
 [node name="field_middle_enemy_tower" parent="field" index="4" instance=ExtResource( 5 )]
 
-margin_left = 490.0
-margin_top = 20.0
-margin_right = 632.0
+margin_left = 400.0
+margin_top = 10.0
+margin_right = 610.0
 margin_bottom = 60.0
 _sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 lane = "middle"
 
 [node name="field_middle_enemy_familiar" parent="field" index="5" instance=ExtResource( 5 )]
 
-margin_left = 490.0
+margin_left = 400.0
 margin_top = 60.0
-margin_right = 632.0
-margin_bottom = 203.0
+margin_right = 610.0
+margin_bottom = 220.0
 lane = "middle"
 type = "familiar"
 
 [node name="field_middle_ally_familiar" parent="field" index="6" instance=ExtResource( 5 )]
 
-margin_left = 490.0
-margin_top = 230.0
-margin_right = 632.0
-margin_bottom = 373.0
+margin_left = 400.0
+margin_top = 220.0
+margin_right = 610.0
+margin_bottom = 380.0
 lane = "middle"
 side = "friendly"
 type = "familiar"
 
 [node name="field_middle_ally_tower" parent="field" index="7" instance=ExtResource( 5 )]
 
-margin_left = 490.0
+margin_left = 400.0
 margin_top = 380.0
-margin_right = 632.0
-margin_bottom = 420.0
+margin_right = 610.0
+margin_bottom = 430.0
 lane = "middle"
 side = "friendly"
 
 [node name="field_right_enemy_tower" parent="field" index="8" instance=ExtResource( 5 )]
 
-margin_left = 660.0
-margin_top = 20.0
-margin_right = 802.0
+margin_left = 610.0
+margin_top = 10.0
+margin_right = 820.0
 margin_bottom = 60.0
 _sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 lane = "right"
 
 [node name="field_right_enemy_familiar" parent="field" index="9" instance=ExtResource( 5 )]
 
-margin_left = 660.0
+margin_left = 610.0
 margin_top = 60.0
-margin_right = 802.0
-margin_bottom = 203.0
+margin_right = 820.0
+margin_bottom = 220.0
 lane = "right"
 type = "familiar"
 
 [node name="field_right_ally_familiar" parent="field" index="10" instance=ExtResource( 5 )]
 
-margin_left = 660.0
-margin_top = 230.0
-margin_right = 802.0
-margin_bottom = 373.0
+margin_left = 610.0
+margin_top = 220.0
+margin_right = 820.0
+margin_bottom = 380.0
 lane = "right"
 side = "friendly"
 type = "familiar"
 
 [node name="field_right_ally_tower" parent="field" index="11" instance=ExtResource( 5 )]
 
-margin_left = 660.0
+margin_left = 610.0
 margin_top = 380.0
-margin_right = 802.0
-margin_bottom = 420.0
+margin_right = 820.0
+margin_bottom = 430.0
 lane = "right"
 side = "friendly"
 
@@ -878,24 +892,6 @@ align = 1
 [node name="elements" type="Node" parent="." index="17"]
 
 [node name="effects" type="Node" parent="." index="18"]
-
-[node name="ColorRect" type="ColorRect" parent="." index="19"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 200.0
-margin_top = 200.0
-margin_right = 820.0
-margin_bottom = 230.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
 
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
 
