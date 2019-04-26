@@ -7,9 +7,9 @@ extends Node
 # Friendly Cards
 # ---------------------------------------------------------------------------------------------
 
-func FelineRaider(card):
-    card.key = 'FelineRaider'
-    card.card_name = 'Feline Raider'
+func Duelist(card):
+    card.key = 'Duelist'
+    card.card_name = 'Duelist'
     card.text = 'Battlecry: Deal 1 Damage to opposing side.'
     card.type = 'familiar'
     card.at = 1
@@ -1067,3 +1067,13 @@ func SpikedWall(card):
     card.hp = 6
     card.attacks = false
 
+func StoneGiant(card):
+    card.deck = 'enemy'
+    
+    card.key = 'StoneGiant'
+    card.card_name = 'Stone Giant'
+    card.text = 'Whenever your opponent plays a card: gain -1/-1.'
+    card.type = 'familiar'
+    card.at = 10
+    card.hp = 10
+    card.whenever = { play_card = 'opponent__minus_1_minus_1'}

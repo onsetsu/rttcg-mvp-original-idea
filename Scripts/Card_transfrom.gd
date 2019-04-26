@@ -400,6 +400,10 @@ func active_enchantment__draw_1_if_played_a_sorcery(card):
     if is_active_enchantment() && card.is_sorcery() && side() == card.side():
         Game.draw_a_card()
 
+func opponent__minus_1_minus_1(card):
+    if side() != card.side():
+        debuff(1, 1)
+
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
 
@@ -1153,7 +1157,8 @@ func check_for_death():
 
 func die():
     cancel_attacking()
-    var removed_from = remove_from_field()
-    exec_deathrottle(removed_from)
+    if on_field():
+        var removed_from = remove_from_field()
+        exec_deathrottle(removed_from)
     queue_free()
     
