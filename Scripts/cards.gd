@@ -815,6 +815,24 @@ func Tactician(card):
     card.hp = 2
     card.battlecry ='battlecry__middle_lane_plus_2_at_others_plus_2_hp'
 
+func ShieldFormOoze(card):
+    card.key = 'ShieldFormOoze'
+    card.card_name = 'Shield-Form Ooze'
+    card.text = 'Click to become a 3/1 Sword-Form.'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 3
+    card.ignition = 'ignition__become_sword_form'
+
+func SwordFormOoze(card):
+    card.key = 'SwordFormOoze'
+    card.card_name = 'Sword-Form Ooze'
+    card.text = 'Click to become a 1/3 Shield-Form.'
+    card.type = 'familiar'
+    card.at = 3
+    card.hp = 1
+    card.ignition = 'ignition__become_shield_form'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 

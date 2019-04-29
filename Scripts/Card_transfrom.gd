@@ -319,6 +319,7 @@ func play_enemy(target_field):
 
 func init_enchantment():
     add_to_group('active_enchantment')
+    Game.organize_enchantment()
     start_timer(enchantment_duration, 'cease_enchantment', 'active')
 
 func cease_enchantment():
@@ -326,6 +327,7 @@ func cease_enchantment():
     if enchantment_cease_effect != null:
         funcref(self, enchantment_cease_effect).call_func()
     queue_free()
+    Game.organize_enchantment()
 
 # enemy ai
 # ---------------------------------------------------------------------------------------------
@@ -895,8 +897,11 @@ func ignition__plus_1_minus_1():
     buff(1, -1)
     check_for_death()
 
-func ignition__deal_2_all_in_lane():
-    deal_x_all_in_lane(field, 2)
+func ignition__become_shield_form():
+    become('ShieldFormOoze')
+
+func ignition__become_sword_form():
+    become('SwordFormOoze')
 
 # effect utils
 # ---------------------------------------------------------------------------------------------

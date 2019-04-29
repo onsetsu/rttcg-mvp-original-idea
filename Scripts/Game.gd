@@ -106,6 +106,15 @@ func organize_hand():
             c.go_to(HAND_POS_START + index * HAND_POS_OFFSET, 2.0)
         index += 1
 
+func organize_enchantment():
+    var ENCHANTMENT_POS_START = Vector2(45, 50) + CARD_EXTENT_HALF
+    var ENCHANTMENT_POS_OFFSET = Vector2(0, 150)
+    var index = 0
+    var active_enchantments = get_tree().get_nodes_in_group("active_enchantment")
+    for card in active_enchantments:
+        card.go_to(ENCHANTMENT_POS_START + index * ENCHANTMENT_POS_OFFSET, 2.0)
+        index += 1
+
 func get_approaching_cards():
     return utils.get_nodes_in_groups(["approaching", "friendly"])
 
