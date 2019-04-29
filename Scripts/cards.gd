@@ -215,7 +215,7 @@ func IceWall(card):
     card.text = 'Doesn\'t attack.'
     card.type = 'familiar'
     card.at = 0
-    card.hp = 20
+    card.hp = 10
     card.attacks = false
 
 func PowerPotion(card):
@@ -833,6 +833,14 @@ func SwordFormOoze(card):
     card.hp = 1
     card.ignition = 'ignition__become_shield_form'
 
+func UnitedAssault(card):
+    card.key = 'UnitedAssault'
+    card.card_name = 'United Assault'
+    card.text = 'Your familiars deal damage equal to their AT to opposing side.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__friendly_familiars_deal_damage_to_opposing_side'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 
@@ -1092,6 +1100,6 @@ func StoneGiant(card):
     card.card_name = 'Stone Giant'
     card.text = 'Whenever your opponent plays a card: gain -1/-1.'
     card.type = 'familiar'
-    card.at = 10
-    card.hp = 10
+    card.at = 8
+    card.hp = 8
     card.whenever = { play_card = 'opponent__minus_1_minus_1'}

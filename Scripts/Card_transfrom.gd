@@ -309,7 +309,7 @@ func play(target_field, allied):
 
         make_copy_the_combo_card()
 
-    Game.event('play_card', self)
+    Game.executed_event('play_card', self)
 
 func play_ally(target_field):
     return play(target_field, true)
@@ -517,7 +517,7 @@ func timed_discard():
 func sorcery__deal_3_delay_deal_3(target_field):
     var familiar = target_field.card
     familiar.start_timer(3, 'timed_receive_3_damage', '3 damage')
-    familiar.receive_damage(3)
+    deal_x_familiar(familiar, 3)
 func timed_receive_3_damage():
     receive_damage(3)
 
@@ -582,6 +582,10 @@ func sorcery__plus_1_plus_4_or_summon_a_1_4(target_field):
         create('PlateShield').add_to_field(target_field)
     else:
         target_field.card.buff(1,4)
+
+func sorcery__friendly_familiars_deal_damage_to_opposing_side(target_field):
+    for familiar in Game.friendly_familiars():
+        familiar.deal_x_in_lane(familiar.at)
 
 # enchantment cease
 # ---------------------------------------------------------------------------------------------
@@ -1048,7 +1052,7 @@ func on_field():
 func add_to_hand():
     add_to_group("hand")
     Game.organize_hand()
-    Game.event("add_to_hand", self)
+    Game.executed_event("add_to_hand", self)
 
 func remove_from_hand():
     clear_timers()
@@ -1121,7 +1125,7 @@ func start_attacking():
 func attack_contact(unused, unused2):
     $pos_tween.disconnect('tween_completed', self, 'attack_contact')
     
-    Game.event('attack', self)
+    Game.executed_event('attack', self)
     
     if(attacks_a_tower):
         attack_that_tower(field.opposing_tower_field().tower)

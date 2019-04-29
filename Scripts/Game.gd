@@ -273,7 +273,10 @@ func familiars_on_field():
 func cards():
     return get_tree().get_nodes_in_group('card')
 
-func event(name, arg):
+func event():
+    pass #TODO#TODO#TODO
+
+func executed_event(name, arg):
     for card in cards():
         card.exec_whenever(name, arg)
 
