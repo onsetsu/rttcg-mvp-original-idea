@@ -26,6 +26,7 @@ var deathrottle
 var sabotage
 var combo
 var inspire
+var effect_damage_modifier = 0
 var whenever = {}
 var ignition
 
@@ -354,6 +355,7 @@ func enemy_ai__random_possible_target():
         return false
     return utils.sample(targets)
 
+
 # whenever effects
 # ---------------------------------------------------------------------------------------------
 
@@ -405,6 +407,7 @@ func active_enchantment__draw_1_if_played_a_sorcery(card):
 func opponent__minus_1_minus_1(card):
     if side() != card.side():
         debuff(1, 1)
+
 
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
@@ -587,6 +590,9 @@ func sorcery__friendly_familiars_deal_damage_to_opposing_side(target_field):
     for familiar in Game.friendly_familiars():
         familiar.deal_x_in_lane(familiar.at)
 
+func sorcery__create_a_shiv(target_field):
+    create_x_shivs(1)
+
 # enchantment cease
 # ---------------------------------------------------------------------------------------------
 
@@ -601,6 +607,7 @@ func enchantment_cease__deal_5_to_highest_hp_familiars():
         var highest_hp = utils.max(utils.pluck(familiars, 'hp'))
         for familiar in utils.filter_prop(familiars, 'hp', highest_hp):
             deal_x_familiar(familiar, 5)
+
 
 # battlecries
 # ---------------------------------------------------------------------------------------------
@@ -774,6 +781,7 @@ func battlecry__summon_pack_wolf():
     if not unoccupied_fields.empty():
         create('PackWolf').add_to_field(utils.sample(unoccupied_fields))
 
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -812,6 +820,7 @@ func deathrottle__fafnir_knight_resummon_transformed_familiar(from_field):
 func deathrottle__create_a_shield(from_field):
     create('Shield').add_to_hand()
 
+
 # sabotage
 # ---------------------------------------------------------------------------------------------
 
@@ -826,6 +835,7 @@ func sabotage__draw_a_card():
 
 func sabotage__become_a_dragon():
     become_a_dragon()
+
 
 # combo
 # ---------------------------------------------------------------------------------------------
@@ -862,6 +872,7 @@ func combo__plus_1_plus_0_to_all(target_field):
     for familiar in Game.friendly_familiars():
         familiar.buff(1, 0)
 
+
 # inspire
 # ---------------------------------------------------------------------------------------------
 
@@ -890,6 +901,7 @@ func inspire__familiar_deals_3_opposing_side(inspired_card):
     if inspired_card.is_familiar():
         inspired_card.deal_x_in_lane(3)
 
+
 # ignition
 # ---------------------------------------------------------------------------------------------
 
@@ -907,20 +919,30 @@ func ignition__become_shield_form():
 func ignition__become_sword_form():
     become('SwordFormOoze')
 
+
 # effect utils
 # ---------------------------------------------------------------------------------------------
 
+func apply_effect_damage_modifier(amount):
+    var modifier = 0
+    
+    for allied_card in get_tree().get_nodes_in_group(side()):
+        if allied_card.on_field() or allied_card.is_active_enchantment():
+            modifier += allied_card.effect_damage_modifier
+    
+    return utils.max([0, amount + modifier])
+
 func deal_x(target_field, amount):
     if target_field.type == 'familiar' && target_field.card != null:
-        target_field.card.receive_damage(amount)
+        deal_x_familiar(target_field.card, amount)
     else:
-        target_field.tower.receive_damage(amount)
+        deal_x_tower(target_field.tower, amount)
 
 func deal_x_familiar(familiar, amount):
-    familiar.receive_damage(amount)
+    familiar.receive_damage(apply_effect_damage_modifier(amount))
 
 func deal_x_tower(tower, amount):
-    tower.receive_damage(amount)
+    tower.receive_damage(apply_effect_damage_modifier(amount))
 
 func deal_x_in_lane(x, f = field):
     var familiar_field = f.opposing_familiar_field()

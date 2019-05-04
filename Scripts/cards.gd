@@ -191,6 +191,7 @@ func Dragon(card):
     card.deathrottle = null
     card.sabotage = null
     card.attacks = true
+    card.effect_damage_modifier = 0
     # #TODO: crystal forge's delayed ability still goes off indefinitely
 
 func Fireball(card):
@@ -759,6 +760,7 @@ func BlackKnight(card):
     card.at = 7
     card.hp = 5
     card.attacks = true
+    card.effect_damage_modifier = 0
     card.deathrottle ='deathrottle__fafnir_knight_resummon_transformed_familiar'
 
 func Reiterate(card):
@@ -840,6 +842,25 @@ func UnitedAssault(card):
     card.type = 'sorcery'
     card.targeting = 'targets_not_required'
     card.effect = 'sorcery__friendly_familiars_deal_damage_to_opposing_side'
+
+func Arcanist(card):
+    card.key = 'Arcanist'
+    card.card_name = 'Arcanist'
+    card.text = 'Effect Damage +1.'
+    card.type = 'familiar'
+    card.at = 0
+    card.hp = 2
+    card.effect_damage_modifier = +1
+
+func Concentate(card):
+    card.key = 'Concentate'
+    card.card_name = 'Concentate'
+    card.text = 'Create a Shiv. Effect Damage +1 for 5 seconds.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__create_a_shiv'
+    card.enchantment_duration = 5
+    card.effect_damage_modifier = +1
 
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
