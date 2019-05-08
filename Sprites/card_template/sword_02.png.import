@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sword_02.png-c8b032da0489fe5b91df0d4b4e3c82a4.stex"
+path.s3tc="res://.import/sword_02.png-c8b032da0489fe5b91df0d4b4e3c82a4.s3tc.stex"
+path.etc2="res://.import/sword_02.png-c8b032da0489fe5b91df0d4b4e3c82a4.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/sword_02.png"
 source_md5="52beb324abe8aab71dce5345baf8fd02"
 
-dest_files=[ "res://.import/sword_02.png-c8b032da0489fe5b91df0d4b4e3c82a4.stex" ]
-dest_md5="629303158cf6eac23c0afc17abd6186b"
+dest_files=[ "res://.import/sword_02.png-c8b032da0489fe5b91df0d4b4e3c82a4.s3tc.stex", "res://.import/sword_02.png-c8b032da0489fe5b91df0d4b4e3c82a4.etc2.stex" ]
+dest_md5="025a358195fd8c3d1cbc10b52da5be95"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

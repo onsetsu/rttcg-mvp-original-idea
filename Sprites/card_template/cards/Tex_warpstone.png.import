@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tex_warpstone.png-9dd2b1d212cab167c5d47e55957467b1.stex"
+path.s3tc="res://.import/Tex_warpstone.png-9dd2b1d212cab167c5d47e55957467b1.s3tc.stex"
+path.etc2="res://.import/Tex_warpstone.png-9dd2b1d212cab167c5d47e55957467b1.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_warpstone.png"
 source_md5="6162891db6a880ebdf6423cfcf17eb39"
 
-dest_files=[ "res://.import/Tex_warpstone.png-9dd2b1d212cab167c5d47e55957467b1.stex" ]
-dest_md5="8051588657ddae1d1fe65051c2a60bc7"
+dest_files=[ "res://.import/Tex_warpstone.png-9dd2b1d212cab167c5d47e55957467b1.s3tc.stex", "res://.import/Tex_warpstone.png-9dd2b1d212cab167c5d47e55957467b1.etc2.stex" ]
+dest_md5="5a7951a5279c55ecdab2560a3392f5e7"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

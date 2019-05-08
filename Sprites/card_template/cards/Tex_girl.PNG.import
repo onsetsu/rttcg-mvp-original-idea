@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tex_girl.PNG-2c7fe5feb45249ff961812dfa184eda9.stex"
+path.s3tc="res://.import/Tex_girl.PNG-2c7fe5feb45249ff961812dfa184eda9.s3tc.stex"
+path.etc2="res://.import/Tex_girl.PNG-2c7fe5feb45249ff961812dfa184eda9.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_girl.PNG"
 source_md5="5e22bc9af54126f9782670415acb8ad9"
 
-dest_files=[ "res://.import/Tex_girl.PNG-2c7fe5feb45249ff961812dfa184eda9.stex" ]
-dest_md5="e8311dbc01e8598079a71030f7c6a4d3"
+dest_files=[ "res://.import/Tex_girl.PNG-2c7fe5feb45249ff961812dfa184eda9.s3tc.stex", "res://.import/Tex_girl.PNG-2c7fe5feb45249ff961812dfa184eda9.etc2.stex" ]
+dest_md5="569a7c470659983938edd45c7c68cc6f"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

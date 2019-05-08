@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.stex"
+path.s3tc="res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.s3tc.stex"
+path.etc2="res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_star_fire.PNG"
 source_md5="f5a6693c30c31f3f2e785f345e94f15e"
 
-dest_files=[ "res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.stex" ]
-dest_md5="63db1e9b1a6561d964ca279b22a8726d"
+dest_files=[ "res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.s3tc.stex", "res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.etc2.stex" ]
+dest_md5="bfbaeb16002a0ca6f8f790c3946b82e4"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

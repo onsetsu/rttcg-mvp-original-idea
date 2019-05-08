@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tex_Marauder.PNG-e20a7e3045c94a4e75501998eedc36cd.stex"
+path.s3tc="res://.import/Tex_Marauder.PNG-e20a7e3045c94a4e75501998eedc36cd.s3tc.stex"
+path.etc2="res://.import/Tex_Marauder.PNG-e20a7e3045c94a4e75501998eedc36cd.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_Marauder.PNG"
 source_md5="a81fe5560e2105d6fb2b81b78a8c9170"
 
-dest_files=[ "res://.import/Tex_Marauder.PNG-e20a7e3045c94a4e75501998eedc36cd.stex" ]
-dest_md5="bc535f271038fadca915dbd459fb486a"
+dest_files=[ "res://.import/Tex_Marauder.PNG-e20a7e3045c94a4e75501998eedc36cd.s3tc.stex", "res://.import/Tex_Marauder.PNG-e20a7e3045c94a4e75501998eedc36cd.etc2.stex" ]
+dest_md5="7f27efc061c6ce23cff1e01a75ef9d07"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

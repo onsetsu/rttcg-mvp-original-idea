@@ -59,11 +59,15 @@ func _ready():
         deck_slot.set_num_copies(num_copies)
     
     dict_to_grid({
-        "Flamekin" : 2,
-        "Dragon" : 1,
+        "Adventurer" : 2,
+        "FormOfDragon" : 1,
     }, 'player')
-    sort_grid('player')
-    sort_grid('enemy')
+    dict_to_grid({
+        "PackWolf" : 2,
+        "StoneGiant" : 1,
+    }, 'enemy')
+    
+    sort_grids()
 
 func update_speed_info():
     find_node('speed-info').text = "%1.1f" % [speed_up]
@@ -75,15 +79,21 @@ func _on_speedslider_value_changed(value):
 func deck_config(key):
     return find_node(key, true).pressed
 
-func num_copies_compare(slotA, slotB):
-    return slotA.get_num_copies() < slotB.get_num_copies()
+func deck_slot_compare(slotA, slotB):
+    if slotA.get_num_copies() == slotB.get_num_copies():
+        return slotA.card_name > slotB.card_name
+    else:
+        return slotA.get_num_copies() < slotB.get_num_copies()
 func sort_grid(type):
     var grid = grid_for_type(type)
     var slots = [] + grid.get_children()
-    slots.sort_custom(self, "num_copies_compare")
+    slots.sort_custom(self, "deck_slot_compare")
     slots.invert()
     for idx in range(slots.size()):
         grid.move_child(slots[idx], idx)
+func sort_grids():
+    sort_grid('player')
+    sort_grid('enemy')
     
 func dict_to_grid(dict, type):
     var grid = grid_for_type(type)
@@ -154,6 +164,10 @@ func load_deck():
     var dict = parse_json(save_deck.get_as_text())
     save_deck.close()
     return dict
+
+# ---------------------------------------------------------------------------------------------
+
+# #TODO: use deck presets via buttons
 
 # ---------------------------------------------------------------------------------------------
 

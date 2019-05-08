@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame_s_04.png-517c1d7f7f80508fc03080ba761ab353.stex"
+path.s3tc="res://.import/frame_s_04.png-517c1d7f7f80508fc03080ba761ab353.s3tc.stex"
+path.etc2="res://.import/frame_s_04.png-517c1d7f7f80508fc03080ba761ab353.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/frames/frame_s_04.png"
 source_md5="b67604b84db44379318e77e1f958aaf8"
 
-dest_files=[ "res://.import/frame_s_04.png-517c1d7f7f80508fc03080ba761ab353.stex" ]
-dest_md5="1f528bed1583511cfa992942fd080b4c"
+dest_files=[ "res://.import/frame_s_04.png-517c1d7f7f80508fc03080ba761ab353.s3tc.stex", "res://.import/frame_s_04.png-517c1d7f7f80508fc03080ba761ab353.etc2.stex" ]
+dest_md5="64588b5cb5af0aa40d71f4ad48061324"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame_s_03.png-d5e9b29c1ed33bf70e7c0aa5df20c115.stex"
+path.s3tc="res://.import/frame_s_03.png-d5e9b29c1ed33bf70e7c0aa5df20c115.s3tc.stex"
+path.etc2="res://.import/frame_s_03.png-d5e9b29c1ed33bf70e7c0aa5df20c115.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/frames/frame_s_03.png"
 source_md5="537d3d4ab71e4d4d32ad1924d08e7bd5"
 
-dest_files=[ "res://.import/frame_s_03.png-d5e9b29c1ed33bf70e7c0aa5df20c115.stex" ]
-dest_md5="29d8cccae1a0c1f7a7cf3f9aec7c4539"
+dest_files=[ "res://.import/frame_s_03.png-d5e9b29c1ed33bf70e7c0aa5df20c115.s3tc.stex", "res://.import/frame_s_03.png-d5e9b29c1ed33bf70e7c0aa5df20c115.etc2.stex" ]
+dest_md5="e7b812ceb58f666fd850014bbf4f80ad"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

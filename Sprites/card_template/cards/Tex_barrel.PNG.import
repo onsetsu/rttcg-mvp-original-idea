@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.stex"
+path.s3tc="res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.s3tc.stex"
+path.etc2="res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_barrel.PNG"
 source_md5="f266342c5edf8c2108c1b9625a429d29"
 
-dest_files=[ "res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.stex" ]
-dest_md5="9df8012642c9382fcd5563105da12699"
+dest_files=[ "res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.s3tc.stex", "res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.etc2.stex" ]
+dest_md5="abe963e6691180800207bdbe7162b4df"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

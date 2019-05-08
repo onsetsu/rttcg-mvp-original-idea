@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tex_fireball.PNG-ef5d88280de6b4a924a3a7b386c3af6b.stex"
+path.s3tc="res://.import/Tex_fireball.PNG-ef5d88280de6b4a924a3a7b386c3af6b.s3tc.stex"
+path.etc2="res://.import/Tex_fireball.PNG-ef5d88280de6b4a924a3a7b386c3af6b.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_fireball.PNG"
 source_md5="da15e33dadc0f0eecd84b5c31371d84d"
 
-dest_files=[ "res://.import/Tex_fireball.PNG-ef5d88280de6b4a924a3a7b386c3af6b.stex" ]
-dest_md5="42c991b93acf877bdcfd9dcd4171ddf7"
+dest_files=[ "res://.import/Tex_fireball.PNG-ef5d88280de6b4a924a3a7b386c3af6b.s3tc.stex", "res://.import/Tex_fireball.PNG-ef5d88280de6b4a924a3a7b386c3af6b.etc2.stex" ]
+dest_md5="3fee3e5100f7ba64c7f06a136be80641"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

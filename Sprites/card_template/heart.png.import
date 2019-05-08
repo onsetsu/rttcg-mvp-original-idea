@@ -2,24 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heart.png-e8fafe4806b3a98c459cf70b6ac63846.stex"
+path.s3tc="res://.import/heart.png-e8fafe4806b3a98c459cf70b6ac63846.s3tc.stex"
+path.etc2="res://.import/heart.png-e8fafe4806b3a98c459cf70b6ac63846.etc2.stex"
 
 [deps]
 
 source_file="res://Sprites/card_template/heart.png"
 source_md5="e21805f32d95a52e0d94412e3b929b9d"
 
-dest_files=[ "res://.import/heart.png-e8fafe4806b3a98c459cf70b6ac63846.stex" ]
-dest_md5="1978ea16e43d389a8bb1d8a576b4a25f"
+dest_files=[ "res://.import/heart.png-e8fafe4806b3a98c459cf70b6ac63846.s3tc.stex", "res://.import/heart.png-e8fafe4806b3a98c459cf70b6ac63846.etc2.stex" ]
+dest_md5="a3befbd781d53a7c067e5c9f7da8c349"
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=0.05
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
