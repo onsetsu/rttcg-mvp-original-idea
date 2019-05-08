@@ -14,10 +14,15 @@ func _ready():
     card_container.add_child(card)
     card.position = card_container.rect_size / 2
 
-func set_card(name, copies = 0):
+func set_card(name):
     self.card_name = name
     card.become(name)
+    
+func set_num_copies(copies = 0):
     num_copies = copies
+    
+func get_num_copies():
+    return num_copies
     
 func _process(delta):
     find_node('num_label').text = str(num_copies)

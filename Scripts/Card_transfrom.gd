@@ -29,6 +29,7 @@ var inspire
 var effect_damage_modifier = 0
 var whenever = {}
 var ignition
+var on_drag_start
 
 var haste = false
 var slow = false
@@ -103,9 +104,24 @@ func drag_start():
     if charge_time > 0:
         charge_timer = start_timer(charge_time, 'charge_complete', 'charge')
 
+# ---------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
+
+# drag start
+# ---------------------------------------------------------------------------------------------
+
+func exec_drag_start(name):
+    if on_drag_start != null:
+        funcref(self, on_drag_start).call_func()
+
 func charge_complete():
     display_hint('charged', Color(1,1,1))
     charged = true
+
+# ---------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
 
 func drag():
     set_position(get_viewport().get_mouse_position() - start_offset)
@@ -119,7 +135,8 @@ func drag_end():
     if charge_timer != null:
         charge_timer.remove_me()
 
-    Game.organize_hand() # need to reorganize hand regardless whether actually played or not
+    # need to reorganize hand regardless whether actually played or not
+    Game.organize_hand()
 
 func _process(delta):
     if at < 0:
@@ -180,6 +197,7 @@ func play_enemy_card():
 
 # animation and juice
 # ---------------------------------------------------------------------------------------------
+
 func display_hint(message, color):
     Game.display_hint(self, message, color)
 

@@ -55,7 +55,15 @@ func _ready():
         grid.add_child(deck_slot)
         
         var num_copies = utils.get_or_create(saved_decks[dict_name_for_card_name(c_name)], c_name, 0)
-        deck_slot.set_card(c_name, num_copies)
+        deck_slot.set_card(c_name)
+        deck_slot.set_num_copies(num_copies)
+    
+    dict_to_grid({
+        "Flamekin" : 2,
+        "Dragon" : 1,
+    }, 'player')
+    sort_grid('player')
+    sort_grid('enemy')
 
 func update_speed_info():
     find_node('speed-info').text = "%1.1f" % [speed_up]
@@ -66,6 +74,23 @@ func _on_speedslider_value_changed(value):
 
 func deck_config(key):
     return find_node(key, true).pressed
+
+func num_copies_compare(slotA, slotB):
+    return slotA.get_num_copies() < slotB.get_num_copies()
+func sort_grid(type):
+    var grid = grid_for_type(type)
+    var slots = [] + grid.get_children()
+    slots.sort_custom(self, "num_copies_compare")
+    slots.invert()
+    for idx in range(slots.size()):
+        grid.move_child(slots[idx], idx)
+    
+func dict_to_grid(dict, type):
+    var grid = grid_for_type(type)
+    
+    for slot in grid.get_children():
+        var num_copies = utils.get_or_create(dict, slot.card_name, 0)
+        slot.set_num_copies(num_copies)
 
 func grid_to_dict(grid):
     var dict = {}
@@ -138,9 +163,9 @@ func _on_play_button_pressed():
     var root = get_tree().get_root()
     var game = game_scene.instance()
     root.add_child(game)
-    $PanelContainer.hide()
+    $menu.hide()
 
 func end_game():
     var root = get_tree().get_root()
     root.remove_child(root.get_node('Game'))
-    $PanelContainer.show()
+    $menu.show()

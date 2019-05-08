@@ -305,9 +305,13 @@ func get_combo_card():
 
 func try_to_play_card(card):
     var field = get_hovered_field()
-    if card.check_targeting(field):
+    var play_this_card = card.check_targeting(field)
+    if play_this_card:
         card.remove_from_hand()
         card.play_ally(field)
+    else:
+        pass
+    return play_this_card
 
 func try_to_play_enemy_card(card):
     var target_field = card.exec_enemy_ai()

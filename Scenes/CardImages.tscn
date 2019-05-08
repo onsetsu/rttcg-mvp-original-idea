@@ -20,7 +20,7 @@
 [ext_resource path="res://Sprites/card_template/cards/Tex_frost_weapon.PNG" type="Texture" id=18]
 [ext_resource path="res://Sprites/card_template/cards/Tex_HP.PNG" type="Texture" id=19]
 
-[node name="CardImages" type="Node2D" index="0"]
+[node name="CardImages" type="Node2D"]
 
 [node name="default" type="Sprite" parent="." index="0"]
 
