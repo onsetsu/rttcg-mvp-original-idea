@@ -799,6 +799,12 @@ func battlecry__summon_pack_wolf():
     if not unoccupied_fields.empty():
         create('PackWolf').add_to_field(utils.sample(unoccupied_fields))
 
+func battlecry__discard_your_hand_gain_plus_1_plus_1_each():
+    var hand = Game.cards_in_player_hand()
+    var num_cards = Game.cards_in_player_hand().size()
+    Game.discard_player_hand()
+    buff(num_cards, num_cards)
+    effect_store['discarded_cards'] = utils.pluck(hand, 'key')
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------
@@ -838,6 +844,10 @@ func deathrottle__fafnir_knight_resummon_transformed_familiar(from_field):
 func deathrottle__create_a_shield(from_field):
     create('Shield').add_to_hand()
 
+func deathrottle__return_discarded_cards(from_field):
+    if effect_store.has('discarded_cards'):
+        for key in effect_store['discarded_cards']:
+            create(key).add_to_hand()
 
 # sabotage
 # ---------------------------------------------------------------------------------------------

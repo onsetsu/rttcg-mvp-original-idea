@@ -862,6 +862,16 @@ func Concentate(card):
     card.enchantment_duration = 5
     card.effect_damage_modifier = +1
 
+func CardEater(card):
+    card.key = 'CardEater'
+    card.card_name = 'Card Eater'
+    card.text = 'Battlecry: Discard your hand. Gain +1/+1 for each card. Deathrottle: Return discarded cards.'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 1
+    card.battlecry = 'battlecry__discard_your_hand_gain_plus_1_plus_1_each'
+    card.deathrottle = 'deathrottle__return_discarded_cards'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 
