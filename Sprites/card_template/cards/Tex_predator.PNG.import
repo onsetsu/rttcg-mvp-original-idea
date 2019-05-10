@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_predator.PNG"
 source_md5="2b698bdecc730bf00af1290f35654d28"
 
 dest_files=[ "res://.import/Tex_predator.PNG-70de9dd8ab8333b4078dbe0c66af77a2.s3tc.stex", "res://.import/Tex_predator.PNG-70de9dd8ab8333b4078dbe0c66af77a2.etc2.stex" ]
-dest_md5="e1bba8657880d74c0c33d624b6e61401"
+dest_md5="dc4e554464afe25ab4f909a3046108b8"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

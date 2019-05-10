@@ -197,9 +197,9 @@ func Dragon(card):
 func Fireball(card):
     card.key = 'Fireball'
     card.card_name = 'Fireball'
-    card.text = 'Deal 3 Damage to a familiar.'
+    card.text = 'Deal 3 Damage.'
     card.type = 'sorcery'
-    card.targeting = 'targets_familiar'
+    card.targeting = 'targets_familiar_or_tower'
     card.effect = 'deal_3'
 
 func MeteorStrike(card):
@@ -872,6 +872,15 @@ func TheMaw(card):
     card.battlecry = 'battlecry__discard_your_hand_gain_plus_1_plus_1_each'
     card.deathrottle = 'deathrottle__return_discarded_cards'
 
+func FlankCrusher(card):
+    card.key = 'FlankCrusher'
+    card.card_name = 'Flank Crusher'
+    card.text = 'Battlecry: +2/+2 if played to left lane.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 2
+    card.battlecry = 'battlecry__if_left_lane_plus_2_plus_2'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 
@@ -922,11 +931,10 @@ func Cultist(card):
     
     card.key = 'Cultist'
     card.card_name = 'Cultist'
-    card.text = 'Battlecry and Deathrottle: Summon a Skeleton.'
+    card.text = 'Deathrottle: Summon a Skeleton.'
     card.type = 'familiar'
     card.at = 1
     card.hp = 3
-    card.battlecry = 'battlecry__summon_a_skeleton'
     card.deathrottle = 'deathrottle__summon_a_skeleton'
 
 func Halberd(card):
@@ -1134,3 +1142,13 @@ func StoneGiant(card):
     card.at = 8
     card.hp = 8
     card.whenever = { play_card = 'opponent__minus_1_minus_1'}
+
+func Crawler(card):
+    card.deck = 'enemy'
+    
+    card.key = 'Crawler'
+    card.card_name = 'Crawler'
+    card.text = ''
+    card.type = 'familiar'
+    card.at = 5
+    card.hp = 1

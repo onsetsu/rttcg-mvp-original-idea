@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_Adventurer.PNG"
 source_md5="6a5d0515fee65de5c8b349297f80a2c6"
 
 dest_files=[ "res://.import/Tex_Adventurer.PNG-fd6181ac1ac158caac5fa201d6f31058.s3tc.stex", "res://.import/Tex_Adventurer.PNG-fd6181ac1ac158caac5fa201d6f31058.etc2.stex" ]
-dest_md5="698cdb508da4b39392687e87dda6bc15"
+dest_md5="2ba8c96038ebb8b86f72b44886385fa6"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

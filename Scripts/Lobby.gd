@@ -191,8 +191,8 @@ func _on_RookieParty_pressed():
         "IceWall" : 1,
         "Fireball" : 1,
         "PowerPotion" : 1,
+        "FormOfDragon" : 1,
         "Scout" : 1,
-        "CreativeBurst" : 1,
     }, 'player')
     sort_grid('player')
 
@@ -207,6 +207,7 @@ func _on_ArcaneArmy_pressed():
         "SharedGrowth" : 1,
         "ComboFighter" : 1,
         "QuickBlast" : 1,
+        "CreativeBurst" : 1,
     }, 'player')
     sort_grid('player')
 
@@ -225,6 +226,7 @@ func _on_DarkCultists_pressed():
         "Cultist" : 1,
         "SkeletonElite" : 1,
         "SewerDweller": 1,
+        "Crawler": 1,
     }, 'enemy')
     sort_grid('enemy')
 

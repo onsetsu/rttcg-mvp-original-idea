@@ -783,11 +783,6 @@ func timed_die_and_deal_6_in_lane():
     die()
     deal_x_in_lane(6, prev_field)
 
-func battlecry__summon_a_skeleton():
-    var unoccupied_fields = Game.unoccupied_enemy_familiar_fields()
-    if not unoccupied_fields.empty():
-        create('Skeleton').add_to_field(utils.sample(unoccupied_fields))
-
 func battlecry__middle_lane_plus_2_at_others_plus_2_hp():
     if field.lane == 'middle':
         buff(2, 0)
@@ -805,6 +800,10 @@ func battlecry__discard_your_hand_gain_plus_1_plus_1_each():
     Game.discard_player_hand()
     buff(num_cards, num_cards)
     effect_store['discarded_cards'] = utils.pluck(hand, 'key')
+
+func battlecry__if_left_lane_plus_2_plus_2():
+    if field != null and field.is_left():
+        buff(2, 2)
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------

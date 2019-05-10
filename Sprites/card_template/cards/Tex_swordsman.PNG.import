@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_swordsman.PNG"
 source_md5="cc1e2a74d5cada0da1ab25ab6bccc15f"
 
 dest_files=[ "res://.import/Tex_swordsman.PNG-f21a6a3f66fa4d00a0af32d5663c82af.s3tc.stex", "res://.import/Tex_swordsman.PNG-f21a6a3f66fa4d00a0af32d5663c82af.etc2.stex" ]
-dest_md5="42dc719722a3c446a0f163569be024a9"
+dest_md5="fbc96b5cf37db300d0fe3dcb601b2bfd"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

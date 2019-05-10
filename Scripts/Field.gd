@@ -14,6 +14,10 @@ func _ready():
     # Initialization here
     hide()
 
+func is_left(): return lane == 'left'
+func is_middle(): return lane == 'middle'
+func is_right(): return lane == 'right'
+
 func is_empty():
     return type == 'familiar' && card == null
 

@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_skeleton.PNG"
 source_md5="9b3edcbbe26affa5065f3838654fb87f"
 
 dest_files=[ "res://.import/Tex_skeleton.PNG-51b603f8978f6e9aab5df10a398edeb0.s3tc.stex", "res://.import/Tex_skeleton.PNG-51b603f8978f6e9aab5df10a398edeb0.etc2.stex" ]
-dest_md5="3e09e97e329021b5459db9dd860d5bff"
+dest_md5="e83c35d869cc6a8aa857a27a60405087"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

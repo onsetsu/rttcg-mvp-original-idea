@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_golem.PNG"
 source_md5="86af9224ea8e4146b4113026c837eb1d"
 
 dest_files=[ "res://.import/Tex_golem.PNG-f589f28783a5d10afa0c164395c93427.s3tc.stex", "res://.import/Tex_golem.PNG-f589f28783a5d10afa0c164395c93427.etc2.stex" ]
-dest_md5="7ad2af3911ad24ebd21e4ee7475acb48"
+dest_md5="afa53ad37e9f0e122dcde39a41655deb"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

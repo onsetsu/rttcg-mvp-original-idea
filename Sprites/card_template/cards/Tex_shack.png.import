@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_shack.png"
 source_md5="f42abbef10fd9902ae92554c14e05706"
 
 dest_files=[ "res://.import/Tex_shack.png-e5a768a94e7e1fc46a59ee81eb54bb17.s3tc.stex", "res://.import/Tex_shack.png-e5a768a94e7e1fc46a59ee81eb54bb17.etc2.stex" ]
-dest_md5="13ac6177fc5839b5029a55f139e49fc0"
+dest_md5="1fe36edb9611a383ec0e8bc363b51223"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

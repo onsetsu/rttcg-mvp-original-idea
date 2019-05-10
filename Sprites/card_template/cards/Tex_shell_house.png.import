@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_shell_house.png"
 source_md5="bc4b2ebfd3d9b4910ec748c22d8946e1"
 
 dest_files=[ "res://.import/Tex_shell_house.png-708bde1667614ffd71e2f4148dca7a1b.s3tc.stex", "res://.import/Tex_shell_house.png-708bde1667614ffd71e2f4148dca7a1b.etc2.stex" ]
-dest_md5="f41a4598bc1649f1061f8f3235136104"
+dest_md5="39c15bf1f8a1e645bbd0eca70fd16287"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

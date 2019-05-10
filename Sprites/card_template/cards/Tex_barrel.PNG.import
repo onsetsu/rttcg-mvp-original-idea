@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_barrel.PNG"
 source_md5="f266342c5edf8c2108c1b9625a429d29"
 
 dest_files=[ "res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.s3tc.stex", "res://.import/Tex_barrel.PNG-93c2f4531f06c2bc9de86950ececd1e2.etc2.stex" ]
-dest_md5="abe963e6691180800207bdbe7162b4df"
+dest_md5="983b68b1a1de78e75c69bc20c781c448"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

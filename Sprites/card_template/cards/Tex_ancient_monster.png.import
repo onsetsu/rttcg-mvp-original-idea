@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_ancient_monster.png"
 source_md5="dac03242cea6caf43a10e1372fdc6721"
 
 dest_files=[ "res://.import/Tex_ancient_monster.png-e328e13d41d11785ea004973f1e297d9.s3tc.stex", "res://.import/Tex_ancient_monster.png-e328e13d41d11785ea004973f1e297d9.etc2.stex" ]
-dest_md5="5547c0d63e91b17ba4d66097cb9699b4"
+dest_md5="2f23bf5b4ec3913800c3ae3bcc886b89"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

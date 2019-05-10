@@ -11,12 +11,12 @@ source_file="res://Sprites/card_template/cards/Tex_meteor.png"
 source_md5="a0bcdff87d1025f2482997c89f5e0fd2"
 
 dest_files=[ "res://.import/Tex_meteor.png-b2fd0546b26f0c0a0f0bdfb46add4ad2.s3tc.stex", "res://.import/Tex_meteor.png-b2fd0546b26f0c0a0f0bdfb46add4ad2.etc2.stex" ]
-dest_md5="35286836ea7f2137b45eca55c8271ab8"
+dest_md5="fc073ccf7f9422f6f723a65cc11c3d6c"
 
 [params]
 
 compress/mode=2
-compress/lossy_quality=0.05
+compress/lossy_quality=0.03
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
@@ -29,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
