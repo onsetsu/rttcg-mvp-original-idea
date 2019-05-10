@@ -20,7 +20,7 @@
 [ext_resource path="res://Sprites/card_template/cards/Tex_frost_weapon.PNG" type="Texture" id=18]
 [ext_resource path="res://Sprites/card_template/cards/Tex_HP.PNG" type="Texture" id=19]
 
-[node name="CardImages" type="Node2D"]
+[node name="CardImages" type="Node2D" index="0"]
 
 [node name="default" type="Sprite" parent="." index="0"]
 
@@ -251,7 +251,18 @@ region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="SewerDweller" type="Sprite" parent="." index="23"]
+[node name="TheMaw" type="Sprite" parent="." index="23"]
+
+modulate = Color( 1, 0.995483, 0.710938, 1 )
+self_modulate = Color( 0.636719, 0.701996, 1, 1 )
+position = Vector2( 1249.04, 137.833 )
+scale = Vector2( 0.11, 0.11 )
+texture = ExtResource( 16 )
+region_enabled = true
+region_rect = Rect2( 1000, 350, 1140, 1140 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="SewerDweller" type="Sprite" parent="." index="24"]
 
 modulate = Color( 0.403333, 1, 1, 1 )
 self_modulate = Color( 0.636719, 1.1, 0.542206, 1 )
@@ -262,7 +273,7 @@ region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="SpikedWall" type="Sprite" parent="." index="24"]
+[node name="SpikedWall" type="Sprite" parent="." index="25"]
 
 modulate = Color( 0.403333, 1, 1, 1 )
 self_modulate = Color( 0.636719, 1.1, 0.542206, 1 )
@@ -273,7 +284,7 @@ region_enabled = true
 region_rect = Rect2( 50, 500, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="IceWall" type="Sprite" parent="." index="25"]
+[node name="IceWall" type="Sprite" parent="." index="26"]
 
 position = Vector2( 559.02, 137.833 )
 scale = Vector2( 0.24993, 0.140221 )
@@ -283,7 +294,7 @@ region_rect = Rect2( 250, 550, 500, 900 )
 region_filter_clip = true
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="PowerPotion" type="Sprite" parent="." index="26"]
+[node name="PowerPotion" type="Sprite" parent="." index="27"]
 
 position = Vector2( 141.011, 0 )
 scale = Vector2( 0.055, 0.055 )

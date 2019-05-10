@@ -852,9 +852,9 @@ func Arcanist(card):
     card.hp = 2
     card.effect_damage_modifier = +1
 
-func Concentate(card):
-    card.key = 'Concentate'
-    card.card_name = 'Concentate'
+func Concentrate(card):
+    card.key = 'Concentrate'
+    card.card_name = 'Concentrate'
     card.text = 'Create a Shiv. Effect Damage +1 for 5 seconds.'
     card.type = 'sorcery'
     card.targeting = 'targets_not_required'
@@ -862,9 +862,9 @@ func Concentate(card):
     card.enchantment_duration = 5
     card.effect_damage_modifier = +1
 
-func CardEater(card):
-    card.key = 'CardEater'
-    card.card_name = 'Card Eater'
+func TheMaw(card):
+    card.key = 'TheMaw'
+    card.card_name = 'TheMaw'
     card.text = 'Battlecry: Discard your hand. Gain +1/+1 for each card. Deathrottle: Return discarded cards.'
     card.type = 'familiar'
     card.at = 1

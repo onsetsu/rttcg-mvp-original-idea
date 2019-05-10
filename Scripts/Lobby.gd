@@ -37,37 +37,17 @@ func dict_name_for_card_name(card_name):
 
 func _ready():
     update_speed_info()
-
-    #var root = get_tree().get_root()
-    #var card_images = card_images_scene.instance()
-    #card_images.name = "foo"
-    #card_images.hide()
-    #root.add_child(card_images)
     
     print(get_tree().get_root(), get_tree().get_root().get_node('foo'))
 
-    var saved_decks = load_deck()
-    
     # setup cards
     for c_name in card_names():
         var deck_slot = deck_slot_scene.instance()
         var grid = deck_for_card_name(c_name)
         grid.add_child(deck_slot)
-        
-        var num_copies = utils.get_or_create(saved_decks[dict_name_for_card_name(c_name)], c_name, 0)
         deck_slot.set_card(c_name)
-        deck_slot.set_num_copies(num_copies)
     
-    dict_to_grid({
-        "Adventurer" : 2,
-        "FormOfDragon" : 1,
-    }, 'player')
-    dict_to_grid({
-        "PackWolf" : 2,
-        "StoneGiant" : 1,
-    }, 'enemy')
-    
-    sort_grids()
+    apply_last_decks()
 
 func update_speed_info():
     find_node('speed-info').text = "%1.1f" % [speed_up]
@@ -102,6 +82,9 @@ func dict_to_grid(dict, type):
         var num_copies = utils.get_or_create(dict, slot.card_name, 0)
         slot.set_num_copies(num_copies)
 
+func dict_for_type(type):
+    return grid_to_dict(grid_for_type(type))
+
 func grid_to_dict(grid):
     var dict = {}
     
@@ -131,48 +114,62 @@ func deck_list_from_grid(grid):
 func set_deck_from_config(deck, type):
     deck.set_deck_list(deck_list_from_grid(grid_for_type(type)))
 
+# Saving/Loading facilities for decks
 # ---------------------------------------------------------------------------------------------
 
-func init_default_deck():
-    save_deck({
-        "player_deck" : {
-            "Flamekin" : 2,
-            "Dragon" : 1,
-        },
-        "enemy_deck" : {
-            "Goblin" : 1,
-        },
-    })
+func file_name_deck_player_custom(): return "user://player_custom.deck"
+func file_name_deck_player_last(): return "user://player_last.deck"
+func file_name_deck_enemy_custom(): return "user://enemy_custom.deck"
+func file_name_deck_enemy_last(): return "user://enemy_last.deck"
 
-func save_deck(dict):
+func init_default_deck(file_name):
+    var default_deck = {}
+    if file_name.match('*player*'):
+        default_deck = {
+            "Adventurer" : 15,
+            "Dragon" : 1,
+        }
+    else: if file_name.match('*enemy*'):
+        default_deck = {
+            "Skeleton" : 11,
+        }
+    save_deck(file_name, default_deck)
+
+func load_deck(file_name):
+    var deck_file = File.new()
+    if not deck_file.file_exists(file_name):
+        init_default_deck(file_name)
+    deck_file.open(file_name, File.READ)
+    var dict = parse_json(deck_file.get_as_text())
+    deck_file.close()
+    return dict
+
+func save_deck(file_name, dict):
     var save_deck = File.new()
-    save_deck.open("user://deck.save", File.WRITE)
+    save_deck.open(file_name, File.WRITE)
     save_deck.store_string(to_json(dict))
     save_deck.close()
 
-func save_decks():
-    save_deck({
-        "player_deck": grid_to_dict(grid_for_type('player')),
-        "enemy_deck" : grid_to_dict(grid_for_type('enemy')),
-    })
-
-func load_deck():
-    var save_deck = File.new()
-    if not save_deck.file_exists("user://deck.save"):
-        init_default_deck()
-    save_deck.open("user://deck.save", File.READ)
-    var dict = parse_json(save_deck.get_as_text())
-    save_deck.close()
-    return dict
-
 # ---------------------------------------------------------------------------------------------
 
-# #TODO: use deck presets via buttons
+func save_as_last_decks():
+    save_deck(file_name_deck_player_last(), dict_for_type('player'))
+    save_deck(file_name_deck_enemy_last(), dict_for_type('enemy'))
 
+func apply_last_decks():
+    var last_player_deck = load_deck(file_name_deck_player_last())
+    var last_enemy_deck = load_deck(file_name_deck_enemy_last())
+
+    dict_to_grid(last_player_deck, 'player')
+    dict_to_grid(last_enemy_deck, 'enemy')
+    
+    sort_grids()
+
+# Game START and END
 # ---------------------------------------------------------------------------------------------
 
 func _on_play_button_pressed():
-    save_decks()
+    save_as_last_decks()
     
     var root = get_tree().get_root()
     var game = game_scene.instance()
@@ -183,3 +180,66 @@ func end_game():
     var root = get_tree().get_root()
     root.remove_child(root.get_node('Game'))
     $menu.show()
+
+# Button Callbacks
+# ---------------------------------------------------------------------------------------------
+
+func _on_RookieParty_pressed():
+    dict_to_grid({
+        "Adventurer" : 2,
+        "Duelist" : 1,
+        "IceWall" : 1,
+        "Fireball" : 1,
+        "PowerPotion" : 1,
+        "Scout" : 1,
+        "CreativeBurst" : 1,
+    }, 'player')
+    sort_grid('player')
+
+func _on_ArcaneArmy_pressed():
+    dict_to_grid({
+        "BladeDance" : 1,
+        "Arcanist" : 1,
+        "Concentrate" : 1,
+        "Duelist" : 1,
+        "KnifeJuggler" : 1,
+        "AsuraPriest" : 1,
+        "SharedGrowth" : 1,
+        "ComboFighter" : 1,
+        "QuickBlast" : 1,
+    }, 'player')
+    sort_grid('player')
+
+func _on_LoadCustomPlayer_pressed():
+    var last_player_deck = load_deck(file_name_deck_player_custom())
+    dict_to_grid(last_player_deck, 'player')
+    sort_grid('player')
+
+func _on_SaveCustomPlayer_pressed():
+    save_deck(file_name_deck_player_custom(), dict_for_type('player'))
+    sort_grid('player')
+
+func _on_DarkCultists_pressed():
+    dict_to_grid({
+        "Skeleton" : 2,
+        "Cultist" : 1,
+        "SkeletonElite" : 1,
+        "SewerDweller": 1,
+    }, 'enemy')
+    sort_grid('enemy')
+
+func _on_ForestWildlife_pressed():
+    dict_to_grid({
+        "PackWolf" : 2,
+        "StoneGiant" : 1,
+    }, 'enemy')
+    sort_grid('enemy')
+
+func _on_LoadCustomEnemy_pressed():
+    var enemy_deck = load_deck(file_name_deck_enemy_custom())
+    dict_to_grid(enemy_deck, 'enemy')
+    sort_grid('enemy')
+
+func _on_SaveCustomEnemy_pressed():
+    save_deck(file_name_deck_enemy_custom(), dict_for_type('enemy'))
+    sort_grid('enemy')
