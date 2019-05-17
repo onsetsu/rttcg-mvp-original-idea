@@ -10,6 +10,7 @@ var deck = 'player'
 var key = 'Flamekin'
 var card_name = 'Flamekin'
 var text = 'No text here.'
+var text_fn
 
 var type = 'familiar' # sorcery
 
@@ -30,6 +31,7 @@ var effect_damage_modifier = 0
 var whenever = {}
 var ignition
 var on_drag_start
+var on_snap_back
 
 var haste = false
 var slow = false
@@ -84,9 +86,29 @@ func is_hovered():
             hovered = true
     return hovered
 
+func text_fn__deal_x_damage():
+    return 'Deal %d Damage. (hold to power up)' % effect_store.charges
+func text_fn__plus_x_plus_x():
+    return 'Give a Familiar +%d/+%d. (hold to power up)' % [effect_store.charges, effect_store.charges]
+func text_fn__heal_x_friendly_towers():
+    return 'Heal %d HP to all your towers. (hold to power up)' % effect_store.charges
+func text_fn__draw_x_cards():
+    if effect_store.charges > 1:
+        return 'Draw %d cards. (hold to power up)' % effect_store.charges
+    else:
+        return 'Draw 1 card. (hold to power up)'
+func text_fn__create_x_shivs():
+    if effect_store.charges > 1:
+        return 'Create %d Shivs. (hold to power up)' % effect_store.charges
+    else:
+        return 'Create 1 Shiv. (hold to power up)'
+
 func update_appearance():
     $title/name.text = card_name
-    $text.text = str(text)
+    if text_fn != null:
+        $text.text = funcref(self, text_fn).call_func()
+    else:
+        $text.text = str(text)
 
     if is_familiar():
         $attack/at.text = str(at)
@@ -104,6 +126,8 @@ func drag_start():
     if charge_time > 0:
         charge_timer = start_timer(charge_time, 'charge_complete', 'charge')
 
+    exec_drag_start()
+
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
@@ -111,7 +135,7 @@ func drag_start():
 # drag start
 # ---------------------------------------------------------------------------------------------
 
-func exec_drag_start(name):
+func exec_drag_start():
     if on_drag_start != null:
         funcref(self, on_drag_start).call_func()
 
@@ -119,6 +143,10 @@ func charge_complete():
     display_hint('charged', Color(1,1,1))
     charged = true
 
+func exec_snap_back():
+    if on_snap_back != null:
+        funcref(self, on_snap_back).call_func()
+    
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
@@ -129,8 +157,11 @@ func drag():
 func drag_end():
     remove_from_group('drag')
 
-    Game.try_to_play_card(self)
+    var played = Game.try_to_play_card(self)
 
+    if not played:
+        exec_snap_back()
+        
     charged = false
     if charge_timer != null:
         charge_timer.remove_me()
@@ -611,6 +642,61 @@ func sorcery__friendly_familiars_deal_damage_to_opposing_side(target_field):
 func sorcery__create_a_shiv(target_field):
     create_x_shivs(1)
 
+func sorcery__draw_2_discard_leftmost(target_field):
+    Game.draw_a_card()
+    Game.draw_a_card()
+    Game.discard_leftmost_card()
+
+func sorcery__discard_opponents_approaching_card(target_field):
+    Game.ensure_approaching_card_enemy().queue_free()
+
+
+# power up cards
+# ---------------------------------------------------------------------------------------------
+
+# charged bolt
+func sorcery__deal_1_power_up(target_field):
+    deal_x(target_field, effect_store.charges)
+    
+# charged growth
+func sorcery__plus_1_plus_1_power_up(target_field):
+    target_field.card.buff(effect_store.charges, effect_store.charges)
+
+# charged blessing
+func sorcery__heal_1_all_friendly_towers_power_up(target_field):
+    for tower in Game.friendly_towers():
+        tower.heal(effect_store.charges)
+
+# charged insight
+func sorcery__draw_1_card_power_up(target_field):
+    for i in range(effect_store.charges):
+        Game.draw_a_card()
+
+# charged knife
+func sorcery__create_1_shiv_power_up(target_field):
+    create_x_shivs(effect_store.charges)
+
+# charged beast
+func on_charges_timer_tick_charged_beast():
+    buff(1,1)
+    power_up_tick()
+func snap_back__charge_beast():
+    debuff(effect_store.charges-1, effect_store.charges-1)
+    reset_charges_remove_power_up_timer()
+
+# power up utilities
+func start_power_up_timer():
+    effect_store.power_up_timer = start_timer(effect_store.power_up_time, effect_store.power_up_callback, effect_store.power_up_label)
+func power_up_tick():
+    effect_store.charges += 1
+    start_power_up_timer()
+func reset_charges_remove_power_up_timer():
+    effect_store.charges = 1
+    if effect_store.has('power_up_timer'):
+        if effect_store.power_up_timer != null:
+            effect_store.power_up_timer.remove_me()
+        effect_store.erase('power_up_timer')
+
 # enchantment cease
 # ---------------------------------------------------------------------------------------------
 
@@ -775,13 +861,13 @@ func battlecry__opponent_discards_familiar_gain_its_stats():
         hp = familiar_to_discard.hp
         familiar_to_discard.discard()
 
-func battlecry__fill_your_board_with_1_3_bombs():
+func battlecry__fill_your_board_with_1_1_bombs():
     for mine in fill_your_board_with('ExplosiveMine'):
-        mine.start_timer(3, 'timed_die_and_deal_6_in_lane', 'explode')
-func timed_die_and_deal_6_in_lane():
+        mine.start_timer(3, 'timed_die_and_deal_5_in_lane', 'explode')
+func timed_die_and_deal_5_in_lane():
     var prev_field = field
     die()
-    deal_x_in_lane(6, prev_field)
+    deal_x_in_lane(5, prev_field)
 
 func battlecry__middle_lane_plus_2_at_others_plus_2_hp():
     if field.lane == 'middle':
@@ -804,6 +890,13 @@ func battlecry__discard_your_hand_gain_plus_1_plus_1_each():
 func battlecry__if_left_lane_plus_2_plus_2():
     if field != null and field.is_left():
         buff(2, 2)
+
+func battlecry__plus_1_plus_1_for_other_familiars():
+    var num_other_familiars = 0
+    for f in Game.familiars_on_field():
+        if f != self:
+            num_other_familiars += 1
+    buff(num_other_familiars, num_other_familiars)
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------
@@ -847,6 +940,18 @@ func deathrottle__return_discarded_cards(from_field):
     if effect_store.has('discarded_cards'):
         for key in effect_store['discarded_cards']:
             create(key).add_to_hand()
+
+func deathrottle__summon_2_2_2_slimes(from_field):
+    create('Slime2').add_to_field(from_field)
+    var unoccupied_fields = Game.unoccupied_enemy_familiar_fields()
+    if not unoccupied_fields.empty():
+        create('Slime2').add_to_field(utils.sample(unoccupied_fields))
+
+func deathrottle__summon_2_1_1_slimes(from_field):
+    create('Slime1').add_to_field(from_field)
+    var unoccupied_fields = Game.unoccupied_enemy_familiar_fields()
+    if not unoccupied_fields.empty():
+        create('Slime1').add_to_field(utils.sample(unoccupied_fields))
 
 # sabotage
 # ---------------------------------------------------------------------------------------------
@@ -924,9 +1029,9 @@ func inspire__create_a_shiv(inspired_card):
 func inspire__become_a_dragon(inspired_card):
     inspired_card.become_a_dragon()
 
-func inspire__familiar_deals_3_opposing_side(inspired_card):
+func inspire__familiar_deals_2_opposing_side(inspired_card):
     if inspired_card.is_familiar():
-        inspired_card.deal_x_in_lane(3)
+        inspired_card.deal_x_in_lane(2)
 
 
 # ignition
@@ -939,6 +1044,9 @@ func exec_ignition():
 func ignition__plus_1_minus_1():
     buff(1, -1)
     check_for_death()
+
+func ignition__deal_2_all_in_lane():
+    deal_x_all_in_lane(field, 2)
 
 func ignition__become_shield_form():
     become('ShieldFormOoze')

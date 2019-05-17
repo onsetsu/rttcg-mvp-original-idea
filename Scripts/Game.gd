@@ -250,6 +250,10 @@ func enemy_towers():
 func friendly_familiar_fields():
     return utils.filter_props(fields(), {side = 'friendly', type = 'familiar'})
 
+func friendly_towers():
+    var tower_fields = utils.filter_props(fields(), {side = 'friendly', type = 'tower'})
+    return utils.pluck(tower_fields, 'tower')
+
 func unoccupied_friendly_familiar_fields():
     return utils.filter_func(friendly_familiar_fields(), 'is_empty', true)
 

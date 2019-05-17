@@ -292,11 +292,11 @@ func IdolOfDragon(card):
 func FlashForward(card):
     card.key = 'FlashForward'
     card.card_name = 'Flash Forward'
-    card.text = 'Deal 3 Damage. Inspired Familiar deal 3 Damage to opposing side.'
+    card.text = 'Deal 2 Damage. Inspired Familiar deal 2 Damage to opposing side.'
     card.type = 'sorcery'
     card.targeting = 'targets_familiar_or_tower'
-    card.effect = 'deal_3'
-    card.inspire = 'inspire__familiar_deals_3_opposing_side'
+    card.effect = 'deal_2'
+    card.inspire = 'inspire__familiar_deals_2_opposing_side'
 
 func TheShepherd(card):
     card.key = 'TheShepherd'
@@ -881,6 +881,141 @@ func FlankCrusher(card):
     card.hp = 2
     card.battlecry = 'battlecry__if_left_lane_plus_2_plus_2'
 
+func Well(card):
+    card.key = 'Well'
+    card.card_name = 'Well'
+    card.text = 'Draw 2 cards. Discard your leftmost card.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__draw_2_discard_leftmost'
+
+func Strategist(card):
+    card.key = 'Strategist'
+    card.card_name = 'Strategist'
+    card.text = 'Battlecry: Gain +1/+1 for each other familiar.'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 1
+    card.battlecry = 'battlecry__plus_1_plus_1_for_other_familiars'
+
+func Negate(card):
+    card.key = 'Negate'
+    card.card_name = 'Negate'
+    card.text = 'Discard opponent\'s approaching card.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__discard_opponents_approaching_card'
+
+func ChargedBolt(card):
+    card.key = 'ChargedBolt'
+    card.card_name = 'Charged Bolt'
+    card.text = 'Deal 1 Damage. (hold to power up)'
+    card.text_fn = 'text_fn__deal_x_damage'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar_or_tower'
+    
+    card.effect = 'sorcery__deal_1_power_up'
+    card.effect_store = {
+        charges = 1,
+        power_up_time = 2,
+        power_up_callback = 'power_up_tick',
+        power_up_label = '+1 damage'
+    }
+    card.on_drag_start = 'start_power_up_timer'
+    card.on_snap_back = 'reset_charges_remove_power_up_timer'
+    
+func ChargedGrowth(card):
+    card.key = 'ChargedGrowth'
+    card.card_name = 'Charged Growth'
+    card.text = 'Give a Familiar +1/+1. (hold to power up)'
+    card.text_fn = 'text_fn__plus_x_plus_x'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    
+    card.effect = 'sorcery__plus_1_plus_1_power_up'
+    card.effect_store = {
+        charges = 1,
+        power_up_time = 2,
+        power_up_callback = 'power_up_tick',
+        power_up_label = '+1/+1'
+    }
+    card.on_drag_start = 'start_power_up_timer'
+    card.on_snap_back = 'reset_charges_remove_power_up_timer'
+    
+func ChargedBlessing(card):
+    card.key = 'ChargedBlessing'
+    card.card_name = 'Charged Blessing'
+    card.text = 'Heal 1 HP to all your towers. (hold to power up)'
+    card.text_fn = 'text_fn__heal_x_friendly_towers'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    
+    card.effect = 'sorcery__heal_1_all_friendly_towers_power_up'
+    card.effect_store = {
+        charges = 1,
+        power_up_time = 2,
+        power_up_callback = 'power_up_tick',
+        power_up_label = '+1 heal'
+    }
+    card.on_drag_start = 'start_power_up_timer'
+    card.on_snap_back = 'reset_charges_remove_power_up_timer'
+    
+func ChargedInsight(card):
+    card.key = 'ChargedInsight'
+    card.card_name = 'Charged Insight'
+    card.text = 'Draw 1 card. (hold to power up)'
+    card.text_fn = 'text_fn__draw_x_cards'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    
+    card.effect = 'sorcery__draw_1_card_power_up'
+    card.effect_store = {
+        charges = 1,
+        power_up_time = 2,
+        power_up_callback = 'power_up_tick',
+        power_up_label = '+1 card'
+    }
+    card.on_drag_start = 'start_power_up_timer'
+    card.on_snap_back = 'reset_charges_remove_power_up_timer'
+    
+func ChargedKnife(card):
+    card.key = 'ChargedKnife'
+    card.card_name = 'Charged Knife'
+    card.text = 'Create 1 Shiv. (hold to power up)'
+    card.text_fn = 'text_fn__create_x_shivs'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    
+    card.effect = 'sorcery__create_1_shiv_power_up'
+    card.effect_store = {
+        charges = 1,
+        power_up_time = 2,
+        power_up_callback = 'power_up_tick',
+        power_up_label = '+1 Shiv'
+    }
+    card.on_drag_start = 'start_power_up_timer'
+    card.on_snap_back = 'reset_charges_remove_power_up_timer'
+    
+func ChargedBeast(card):
+    card.key = 'ChargedBeast'
+    card.card_name = 'Charged Beast'
+    card.text = '(hold to power up)'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 1
+    
+    card.effect_store = {
+        charges = 1,
+        power_up_time = 2,
+        power_up_callback = 'on_charges_timer_tick_charged_beast',
+        power_up_label = '+1/+1'
+    }
+    card.on_drag_start = 'start_power_up_timer'
+    card.on_snap_back = 'snap_back__charge_beast'
+    
+
+
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 
@@ -1066,11 +1201,11 @@ func MiningBot(card):
     
     card.key = 'MiningBot'
     card.card_name = 'Mining Bot'
-    card.text = 'Battlecry: Fill your board with 1/3 Mines.'
+    card.text = 'Battlecry: Fill your board with 1/1 Mines.'
     card.type = 'familiar'
-    card.at = 3
+    card.at = 2
     card.hp = 2
-    card.battlecry = 'battlecry__fill_your_board_with_1_3_bombs'
+    card.battlecry = 'battlecry__fill_your_board_with_1_1_bombs'
 
 # #Design
 # they explode in 3-4 seconds (before next approaching card)
@@ -1081,10 +1216,10 @@ func ExplosiveMine(card):
     
     card.key = 'ExplosiveMine'
     card.card_name = 'Explosive Mine'
-    card.text = 'In 3 Seconds: Selfdestruct to deal 6 Damage in its lane.'
+    card.text = 'In 3 Seconds: Selfdestruct to deal 5 Damage in its lane.'
     card.type = 'familiar'
     card.at = 1
-    card.hp = 3
+    card.hp = 1
     card.attacks = false
 
 func WolfRaider(card):
@@ -1104,7 +1239,7 @@ func PackWolf(card):
     
     card.key = 'PackWolf'
     card.card_name = 'PackWolf'
-    card.text = 'Battlecry: Summon another 2/2 Pack Wolf.'
+    card.text = 'Battlecry: Summon a 2/2 Pack Wolf.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 2
@@ -1152,3 +1287,36 @@ func Crawler(card):
     card.type = 'familiar'
     card.at = 5
     card.hp = 1
+
+func Slime4(card):
+    card.deck = 'enemy'
+    
+    card.key = 'Slime4'
+    card.card_name = 'Giant Slime'
+    card.text = 'Deathrottle: Summon 2 2/2 Slimes.'
+    card.type = 'familiar'
+    card.at = 4
+    card.hp = 4
+    card.deathrottle = 'deathrottle__summon_2_2_2_slimes'
+
+func Slime2(card):
+    card.deck = 'enemy'
+    
+    card.key = 'Slime2'
+    card.card_name = 'Slime'
+    card.text = 'Deathrottle: Summon 2 1/1 Slimes.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 2
+    card.deathrottle = 'deathrottle__summon_2_1_1_slimes'
+
+func Slime1(card):
+    card.deck = 'enemy'
+    
+    card.key = 'Slime1'
+    card.card_name = 'Tiny Slime'
+    card.text = ''
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 1
+

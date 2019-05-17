@@ -31,51 +31,7 @@ __meta__ = {
 
 [node name="Mockups & Placement" type="Node" parent="." index="0"]
 
-[node name="<Return to Hand>" type="ColorRect" parent="Mockups & Placement" index="0"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 430.0
-margin_right = 1030.0
-margin_bottom = 600.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0.182648, 0.742188, 0.584817, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Label" type="Label" parent="Mockups & Placement/<Return to Hand>" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "<Return to Hand>"
-align = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="1"]
+[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="0"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -120,7 +76,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="2"]
+[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -129,7 +85,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 210.0
 margin_top = 450.0
-margin_right = 1070.0
+margin_right = 1030.0
 margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -167,7 +123,101 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="3"]
+[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="2"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 190.0
+margin_top = 230.0
+margin_right = 820.0
+margin_bottom = 430.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Player Field" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Player Field"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="3"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 190.0
+margin_top = 10.0
+margin_right = 820.0
+margin_bottom = 210.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0604095, 0.417969, 0.200081, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Mockups & Placement/Enemy Field" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Enemy Field"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="4"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -175,9 +225,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 225.0
-margin_top = 10.0
+margin_top = 20.0
 margin_right = 365.0
-margin_bottom = 430.0
+margin_bottom = 420.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -214,7 +264,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane2" type="ColorRect" parent="Mockups & Placement" index="4"]
+[node name="Middle Lane" type="ColorRect" parent="Mockups & Placement" index="5"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -222,9 +272,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 435.0
-margin_top = 10.0
+margin_top = 20.0
 margin_right = 575.0
-margin_bottom = 430.0
+margin_bottom = 420.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -237,7 +287,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Left Lane2" index="0"]
+[node name="Label" type="Label" parent="Mockups & Placement/Middle Lane" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -261,7 +311,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane3" type="ColorRect" parent="Mockups & Placement" index="5"]
+[node name="Right Lane" type="ColorRect" parent="Mockups & Placement" index="6"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -269,9 +319,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 645.0
-margin_top = 10.0
+margin_top = 20.0
 margin_right = 785.0
-margin_bottom = 430.0
+margin_bottom = 420.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -284,7 +334,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Left Lane3" index="0"]
+[node name="Label" type="Label" parent="Mockups & Placement/Right Lane" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -300,98 +350,6 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Right Lane"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="6"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 310.0
-margin_top = 230.0
-margin_right = 820.0
-margin_bottom = 380.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0.0604095, 0.417969, 0.200081, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Label" type="Label" parent="Mockups & Placement/Player Field" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Player Field"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="7"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 310.0
-margin_top = 60.0
-margin_right = 820.0
-margin_bottom = 210.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0.0604095, 0.417969, 0.200081, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Label" type="Label" parent="Mockups & Placement/Enemy Field" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Enemy Field"
 align = 1
 valign = 1
 autowrap = true
@@ -506,16 +464,16 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
 
-[node name="NinePatchRect6" type="NinePatchRect" parent="." index="5"]
+[node name="enemy_left_backdrop" type="NinePatchRect" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 260.0
-margin_top = 242.0
-margin_right = 388.0
-margin_bottom = 370.0
+margin_left = 231.0
+margin_top = 76.0
+margin_right = 359.0
+margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -530,16 +488,16 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
 
-[node name="NinePatchRect7" type="NinePatchRect" parent="." index="6"]
+[node name="enemy_middle_backdrop" type="NinePatchRect" parent="." index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 260.0
-margin_top = 72.0
-margin_right = 388.0
-margin_bottom = 200.0
+margin_left = 441.0
+margin_top = 76.0
+margin_right = 569.0
+margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -554,16 +512,16 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
 
-[node name="NinePatchRect8" type="NinePatchRect" parent="." index="7"]
+[node name="enemy_right_backdrop" type="NinePatchRect" parent="." index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 470.0
-margin_top = 72.0
-margin_right = 598.0
-margin_bottom = 200.0
+margin_left = 651.0
+margin_top = 76.0
+margin_right = 779.0
+margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -578,16 +536,16 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
 
-[node name="NinePatchRect9" type="NinePatchRect" parent="." index="8"]
+[node name="player_left_backdrop" type="NinePatchRect" parent="." index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 670.0
-margin_top = 70.0
-margin_right = 798.0
-margin_bottom = 198.0
+margin_left = 231.0
+margin_top = 236.0
+margin_right = 359.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -602,16 +560,16 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
 
-[node name="NinePatchRect10" type="NinePatchRect" parent="." index="9"]
+[node name="player_middle_backdrop" type="NinePatchRect" parent="." index="9"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 470.0
-margin_top = 242.0
-margin_right = 598.0
-margin_bottom = 370.0
+margin_left = 441.0
+margin_top = 236.0
+margin_right = 569.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -626,16 +584,16 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 _sections_unfolded = [ "Rect" ]
 
-[node name="NinePatchRect11" type="NinePatchRect" parent="." index="10"]
+[node name="player_right_backdrop" type="NinePatchRect" parent="." index="10"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 670.0
-margin_top = 240.0
-margin_right = 798.0
-margin_bottom = 368.0
+margin_left = 651.0
+margin_top = 236.0
+margin_right = 779.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -701,6 +659,7 @@ margin_left = 190.0
 margin_top = 60.0
 margin_right = 400.0
 margin_bottom = 220.0
+_sections_unfolded = [ "Rect" ]
 type = "familiar"
 
 [node name="field_left_ally_familiar" parent="field" index="2" instance=ExtResource( 5 )]
@@ -735,6 +694,7 @@ margin_left = 400.0
 margin_top = 60.0
 margin_right = 610.0
 margin_bottom = 220.0
+_sections_unfolded = [ "Rect" ]
 lane = "middle"
 type = "familiar"
 
@@ -763,7 +723,7 @@ margin_left = 610.0
 margin_top = 10.0
 margin_right = 820.0
 margin_bottom = 60.0
-_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
+_sections_unfolded = [ "Focus", "Hint", "Rect", "Size Flags", "Theme" ]
 lane = "right"
 
 [node name="field_right_enemy_familiar" parent="field" index="9" instance=ExtResource( 5 )]
@@ -772,6 +732,7 @@ margin_left = 610.0
 margin_top = 60.0
 margin_right = 820.0
 margin_bottom = 220.0
+_sections_unfolded = [ "Rect" ]
 lane = "right"
 type = "familiar"
 
@@ -781,6 +742,7 @@ margin_left = 610.0
 margin_top = 220.0
 margin_right = 820.0
 margin_bottom = 380.0
+_sections_unfolded = [ "Rect" ]
 lane = "right"
 side = "friendly"
 type = "familiar"
@@ -807,6 +769,7 @@ side = "enemy"
 
 [node name="win-lose-box" type="PanelContainer" parent="." index="15"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

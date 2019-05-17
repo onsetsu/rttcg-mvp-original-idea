@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Sprites/card_template/cards/Tex_barrel.PNG" type="Texture" id=1]
 [ext_resource path="res://Sprites/card_template/cards/Tex_Marauder.PNG" type="Texture" id=2]
@@ -15,13 +15,17 @@
 [ext_resource path="res://Sprites/card_template/cards/Tex_Adventurer.PNG" type="Texture" id=13]
 [ext_resource path="res://Sprites/card_template/cards/Tex_shack.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/card_template/cards/Tex_insect.PNG" type="Texture" id=15]
-[ext_resource path="res://Sprites/card_template/cards/Tex_golem.PNG" type="Texture" id=16]
-[ext_resource path="res://Sprites/card_template/cards/Tex_predator.PNG" type="Texture" id=17]
-[ext_resource path="res://Sprites/card_template/cards/Tex_shell_house.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/card_template/cards/Tex_sight.PNG" type="Texture" id=16]
+[ext_resource path="res://Sprites/card_template/cards/Tex_well.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/card_template/cards/Tex_mana_storm.PNG" type="Texture" id=18]
 [ext_resource path="res://Sprites/card_template/cards/Tex_frost_weapon.PNG" type="Texture" id=19]
-[ext_resource path="res://Sprites/card_template/cards/Tex_HP.PNG" type="Texture" id=20]
+[ext_resource path="res://Sprites/card_template/cards/Tex_telekinesis.PNG" type="Texture" id=20]
+[ext_resource path="res://Sprites/card_template/cards/Tex_golem.PNG" type="Texture" id=21]
+[ext_resource path="res://Sprites/card_template/cards/Tex_predator.PNG" type="Texture" id=22]
+[ext_resource path="res://Sprites/card_template/cards/Tex_shell_house.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/card_template/cards/Tex_HP.PNG" type="Texture" id=24]
 
-[node name="CardImages" type="Node2D"]
+[node name="CardImages" type="Node2D" index="0"]
 
 [node name="default" type="Sprite" parent="." index="0"]
 
@@ -228,51 +232,116 @@ region_enabled = true
 region_rect = Rect2( 0, 50, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="StoneGiant" type="Sprite" parent="." index="21"]
+[node name="Slime4" type="Sprite" parent="." index="21"]
+
+position = Vector2( 1249.04, 412.757 )
+scale = Vector2( 0.11, 0.11 )
+texture = ExtResource( 16 )
+region_enabled = true
+region_rect = Rect2( 1000, 900, 1140, 1140 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Slime2" type="Sprite" parent="." index="22"]
+
+position = Vector2( 1107.9, 412.757 )
+scale = Vector2( 0.0825, 0.0825 )
+texture = ExtResource( 16 )
+region_enabled = true
+region_rect = Rect2( 750, 500, 1520.67, 1520.67 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Slime1" type="Sprite" parent="." index="23"]
+
+position = Vector2( 973.384, 412.757 )
+scale = Vector2( 0.055, 0.055 )
+texture = ExtResource( 16 )
+region_enabled = true
+region_rect = Rect2( 0, 50, 2281, 2281 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Well" type="Sprite" parent="." index="24"]
+
+position = Vector2( 835.922, 412.757 )
+scale = Vector2( 0.055, 0.055 )
+texture = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 0, 800, 2281, 2281 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Negate" type="Sprite" parent="." index="25"]
+
+position = Vector2( 695.52, 412.757 )
+scale = Vector2( 0.055, 0.055 )
+texture = ExtResource( 18 )
+region_enabled = true
+region_rect = Rect2( 0, 300, 2281, 2281 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Shiv" type="Sprite" parent="." index="26"]
+
+modulate = Color( 1.18, 1.29, 1.16, 1 )
+self_modulate = Color( 0.39997, 0.96875, 0.367065, 1 )
+position = Vector2( 560.999, 412.757 )
+scale = Vector2( 0.055, 0.055 )
+texture = ExtResource( 19 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2281, 2281 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="BladeDance" type="Sprite" parent="." index="27"]
+
+position = Vector2( 424.272, 412.757 )
+scale = Vector2( 0.165, 0.165 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( -50, 350, 735.806, 760.333 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="StoneGiant" type="Sprite" parent="." index="28"]
 
 modulate = Color( 1, 0.75, 0.75, 1 )
 self_modulate = Color( 1, 1.2, 0.6, 1 )
 position = Vector2( 835.92, 274.56 )
 scale = Vector2( 0.055, 0.055 )
-texture = ExtResource( 16 )
+texture = ExtResource( 21 )
 region_enabled = true
 region_rect = Rect2( 0, -100, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="Dragon" type="Sprite" parent="." index="22"]
+[node name="Dragon" type="Sprite" parent="." index="29"]
 
 modulate = Color( 0.878906, 0.418854, 0.418854, 1 )
 self_modulate = Color( 1.1, 0.696259, 0.696259, 1 )
 position = Vector2( 696.988, 137.833 )
 scale = Vector2( 0.055, 0.055 )
-texture = ExtResource( 17 )
+texture = ExtResource( 22 )
 region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="FormOfDragon" type="Sprite" parent="." index="23"]
+[node name="FormOfDragon" type="Sprite" parent="." index="30"]
 
 modulate = Color( 1, 0.995483, 0.710938, 1 )
 self_modulate = Color( 0.636719, 0.701996, 1, 1 )
 position = Vector2( 835.185, 137.833 )
 scale = Vector2( 0.055, 0.055 )
-texture = ExtResource( 17 )
+texture = ExtResource( 22 )
 region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="TheMaw" type="Sprite" parent="." index="24"]
+[node name="TheMaw" type="Sprite" parent="." index="31"]
 
 modulate = Color( 1, 0.995483, 0.710938, 1 )
 self_modulate = Color( 0.636719, 0.701996, 1, 1 )
 position = Vector2( 1249.04, 137.833 )
 scale = Vector2( 0.11, 0.11 )
-texture = ExtResource( 17 )
+texture = ExtResource( 22 )
 region_enabled = true
 region_rect = Rect2( 1000, 350, 1140, 1140 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="SewerDweller" type="Sprite" parent="." index="25"]
+[node name="SewerDweller" type="Sprite" parent="." index="32"]
 
 modulate = Color( 0.403333, 1, 1, 1 )
 self_modulate = Color( 0.636719, 1.1, 0.542206, 1 )
@@ -283,18 +352,18 @@ region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="SpikedWall" type="Sprite" parent="." index="26"]
+[node name="SpikedWall" type="Sprite" parent="." index="33"]
 
 modulate = Color( 0.403333, 1, 1, 1 )
 self_modulate = Color( 0.636719, 1.1, 0.542206, 1 )
 position = Vector2( 421.33, 137.833 )
 scale = Vector2( 0.055, 0.055 )
-texture = ExtResource( 18 )
+texture = ExtResource( 23 )
 region_enabled = true
 region_rect = Rect2( 50, 500, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="IceWall" type="Sprite" parent="." index="27"]
+[node name="IceWall" type="Sprite" parent="." index="34"]
 
 position = Vector2( 559.02, 137.833 )
 scale = Vector2( 0.24993, 0.140221 )
@@ -304,11 +373,11 @@ region_rect = Rect2( 250, 550, 500, 900 )
 region_filter_clip = true
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="PowerPotion" type="Sprite" parent="." index="28"]
+[node name="PowerPotion" type="Sprite" parent="." index="35"]
 
 position = Vector2( 141.011, 0 )
 scale = Vector2( 0.055, 0.055 )
-texture = ExtResource( 20 )
+texture = ExtResource( 24 )
 region_enabled = true
 region_rect = Rect2( 0, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform" ]

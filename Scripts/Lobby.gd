@@ -208,6 +208,9 @@ func _on_ArcaneArmy_pressed():
         "ComboFighter" : 1,
         "QuickBlast" : 1,
         "CreativeBurst" : 1,
+        "Well" : 1,
+        "ChargedBolt" : 1,
+        "ChargedGrowth" : 1,
     }, 'player')
     sort_grid('player')
 
@@ -232,8 +235,9 @@ func _on_DarkCultists_pressed():
 
 func _on_ForestWildlife_pressed():
     dict_to_grid({
-        "PackWolf" : 2,
+        "PackWolf" : 1,
         "StoneGiant" : 1,
+        "Slime4": 1
     }, 'enemy')
     sort_grid('enemy')
 
