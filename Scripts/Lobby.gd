@@ -7,6 +7,7 @@ var game_scene = preload("res://Scenes/Game.tscn")
 var deck_slot_scene = preload("res://Scenes/DeckSlot.tscn")
 
 var speed_up = 0.8
+var speed_pause_modifier = 1.0
 
 func card_names():
     var result = []
@@ -48,6 +49,12 @@ func _ready():
         deck_slot.set_card(c_name)
     
     apply_last_decks()
+
+func _process(delta):
+    if Input.is_action_pressed("pause"):
+        speed_pause_modifier = 0.0
+    else:
+        speed_pause_modifier = 1.0
 
 func update_speed_info():
     find_node('speed-info').text = "%1.1f" % [speed_up]
@@ -196,7 +203,22 @@ func _on_RookieParty_pressed():
     }, 'player')
     sort_grid('player')
 
-func _on_ArcaneArmy_pressed():
+func _on_LordsOfTheArena_pressed():
+    dict_to_grid({
+        "Adventurer" : 1,
+        "BattleBot" : 1,
+        "BladeDance" : 1,
+        "BuyARound" : 1,
+        #"CuriousExperimenter" : 1,
+        "HiredArm" : 1,
+        "LoneChampion" : 1,
+        "Scout" : 1,
+        "Smash" : 1,
+        "ToKu" : 1,
+    }, 'player')
+    sort_grid('player')
+
+func __unused__():
     dict_to_grid({
         "BladeDance" : 1,
         "Arcanist" : 1,
@@ -211,6 +233,7 @@ func _on_ArcaneArmy_pressed():
         "Well" : 1,
         "ChargedBolt" : 1,
         "ChargedGrowth" : 1,
+        "FlashForward": 1,
     }, 'player')
     sort_grid('player')
 
@@ -235,9 +258,12 @@ func _on_DarkCultists_pressed():
 
 func _on_ForestWildlife_pressed():
     dict_to_grid({
+        "FlyingBoar" : 1,
+        "Juggernaut" : 1,
         "PackWolf" : 1,
+        "ScytheCrawler" : 1,
+        "SpiderKing" : 1,
         "StoneGiant" : 1,
-        "Slime4": 1
     }, 'enemy')
     sort_grid('enemy')
 

@@ -75,13 +75,13 @@ func BladeDance(card):
     card.targeting = 'targets_not_required'
     card.effect = 'create_2_shivs'
 
-func KnifeJuggler(card):
-    card.key = 'KnifeJuggler'
-    card.card_name = 'Knife Juggler'
+func HiredArm(card):
+    card.key = 'HiredArm'
+    card.card_name = 'Hired Arm'
     card.text = 'Battlecry: Add a Shiv to your hand.'
     card.type = 'familiar'
-    card.at = 3
-    card.hp = 4
+    card.at = 2
+    card.hp = 2
     card.battlecry = 'create_a_shiv'
 
 # #design: too similar to knife juggler
@@ -132,9 +132,9 @@ func GoblinForerunner(card):
     card.combo = 'combo__attacks_immediately'
 
 # Sorcery: Give a Familiar +2/+2. Combo: affects all allies.
-func SharedGrowth(card):
-    card.key = 'SharedGrowth'
-    card.card_name = 'Shared Growth'
+func BuyARound(card):
+    card.key = 'BuyARound'
+    card.card_name = 'Buy a Round'
     card.text = 'Give a Familiar +2/+2. Combo: Affect all allies.'
     card.type = 'sorcery'
     card.targeting = 'targets_familiar_combo_not_required'
@@ -168,13 +168,13 @@ func Multiply(card):
     card.effect = 'copy_twice'
 
 # Familiar: Combo: +2/+2.
-func ComboFighter(card):
-    card.key = 'ComboFighter'
-    card.card_name = 'Combo Fighter'
+func ToKu(card):
+    card.key = 'ToKu'
+    card.card_name = 'To-Ku'
     card.text = 'Combo: +2/+2.'
     card.type = 'familiar'
     card.at = 2
-    card.hp = 3
+    card.hp = 2
     card.combo = 'combo__plus_2_plus_2'
 
 func Dragon(card):
@@ -403,14 +403,23 @@ func PillarOfFire(card):
     card.targeting = 'targets_field'
     card.effect = 'deal_4_all_in_lane'
 
-func CarnivorousOoze(card):
-    card.key = 'CarnivorousOoze'
-    card.card_name = 'Carnivorous Ooze'
+func MorphingOoze(card):
+    card.key = 'MorphingOoze'
+    card.card_name = 'MorphingOoze'
     card.text = 'Click to gain +1/-1.'
     card.type = 'familiar'
     card.at = 0
-    card.hp = 7
+    card.hp = 5
     card.ignition = 'ignition__plus_1_minus_1'
+
+func SpellShaper(card):
+    card.key = 'SpellShaper'
+    card.card_name = 'Spell Shaper'
+    card.text = 'Click: your leftmost card becomes a Fireball.'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 3
+    card.ignition = 'ignition__leftmost_card_becomes_a_fireball'
 
 func Bomber(card):
     card.key = 'Bomber'
@@ -441,10 +450,10 @@ func Retreat(card):
 func LoneChampion(card):
     card.key = 'LoneChampion'
     card.card_name = 'Lone Champion'
-    card.text = 'Battlecry: Return your other Familiars to your hand.'
+    card.text = 'Battlecry: Return all allies to your hand.'
     card.type = 'familiar'
-    card.at = 6
-    card.hp = 6
+    card.at = 3
+    card.hp = 3
     card.battlecry = 'battlecry__return_others_to_hand'
     
 func RightShift(card):
@@ -906,9 +915,9 @@ func Negate(card):
     card.targeting = 'targets_not_required'
     card.effect = 'sorcery__discard_opponents_approaching_card'
 
-func ChargedBolt(card):
-    card.key = 'ChargedBolt'
-    card.card_name = 'Charged Bolt'
+func Smash(card):
+    card.key = 'Smash'
+    card.card_name = 'Smash'
     card.text = 'Deal 1 Damage. (hold to power up)'
     card.text_fn = 'text_fn__deal_x_damage'
     card.type = 'sorcery'
@@ -996,9 +1005,9 @@ func ChargedKnife(card):
     card.on_drag_start = 'start_power_up_timer'
     card.on_snap_back = 'reset_charges_remove_power_up_timer'
     
-func ChargedBeast(card):
-    card.key = 'ChargedBeast'
-    card.card_name = 'Charged Beast'
+func BattleBot(card):
+    card.key = 'BattleBot'
+    card.card_name = 'BattleBot'
     card.text = '(hold to power up)'
     card.type = 'familiar'
     card.at = 1
@@ -1111,7 +1120,7 @@ func Juggernaut(card):
     card.text = 'Whenever this attacks, gain +2/+0.'
     card.type = 'familiar'
     card.at = 1
-    card.hp = 7
+    card.hp = 4
     card.whenever = { attack = 'this__plus_2_plus_0'}
 
 func Counterspell(card): # Rename to Disarm?
@@ -1135,15 +1144,15 @@ func BearTrap(card):
     card.effect = 'deal_4'
     card.whenever = { play_card = 'approaching__cast_on_familiar'}
 
-func RareHunter(card):
+func WoodSpider(card):
     card.deck = 'enemy'
     
-    card.key = 'RareHunter'
-    card.card_name = 'Rare Hunter'
+    card.key = 'WoodSpider'
+    card.card_name = 'Wood Spider'
     card.text = 'Approching: Deal 2 Damage to played familiars.'
     card.type = 'familiar'
     card.at = 2
-    card.hp = 5
+    card.hp = 3
     card.whenever = { play_card = 'approaching__deal_2_to_familiar'}
 
 func Saboteur(card):
@@ -1151,17 +1160,17 @@ func Saboteur(card):
     
     card.key = 'Saboteur'
     card.card_name = 'Saboteur'
-    card.text = 'Battlecry: Opponent discards his/her leftmost card.'
+    card.text = 'Battlecry: Discard an enemy familiar.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 6
     card.battlecry = 'battlecry__opponent_discard_leftmost'
 
-func Swiftblade(card):
+func FlyingBoar(card):
     card.deck = 'enemy'
     
-    card.key = 'Swiftblade'
-    card.card_name = 'Swiftblade'
+    card.key = 'FlyingBoar'
+    card.card_name = 'FlyingBoar'
     card.text = 'Haste.'
     card.type = 'familiar'
     card.at = 3
@@ -1190,10 +1199,10 @@ func ShapeThief(card):
     
     card.key = 'ShapeThief'
     card.card_name = 'Shape Thief'
-    card.text = 'Battlecry: Opponent discards a random familiar. Copy its stats.'
+    card.text = 'Battlecry: Discard an enemy familiar. Copy its stats.'
     card.type = 'familiar'
-    card.at = 3
-    card.hp = 3
+    card.at = 1
+    card.hp = 1
     card.battlecry = 'battlecry__opponent_discards_familiar_gain_its_stats'
 
 func MiningBot(card):
@@ -1238,7 +1247,7 @@ func PackWolf(card):
     card.deck = 'enemy'
     
     card.key = 'PackWolf'
-    card.card_name = 'PackWolf'
+    card.card_name = 'Pack Wolf'
     card.text = 'Battlecry: Summon a 2/2 Pack Wolf.'
     card.type = 'familiar'
     card.at = 2
@@ -1272,10 +1281,10 @@ func StoneGiant(card):
     
     card.key = 'StoneGiant'
     card.card_name = 'Stone Giant'
-    card.text = 'Whenever your opponent plays a card: gain -1/-1.'
+    card.text = 'Whenever enemy plays a card: gain -1/-1.'
     card.type = 'familiar'
-    card.at = 8
-    card.hp = 8
+    card.at = 6
+    card.hp = 6
     card.whenever = { play_card = 'opponent__minus_1_minus_1'}
 
 func Crawler(card):
@@ -1319,4 +1328,26 @@ func Slime1(card):
     card.type = 'familiar'
     card.at = 1
     card.hp = 1
+
+func SpiderKing(card):
+    card.deck = 'enemy'
+    
+    card.key = 'SpiderKing'
+    card.card_name = 'Spider King'
+    card.text = 'Battlecry: Deal 2 Damage to other familiars.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 4
+    card.battlecry = 'battlecry__deal_2_to_other_familiars'
+
+func ScytheCrawler(card):
+    card.deck = 'enemy'
+    
+    card.key = 'ScytheCrawler'
+    card.card_name = 'Scythe Crawler'
+    card.text = 'In 4 seconds: Gain +2/+2.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 3
+    card.battlecry = 'battlecry__delay_4_plus_2_plus_2'
 

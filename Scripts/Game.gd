@@ -76,10 +76,14 @@ func discard_player_hand():
     for card in hand:
         card.discard()
 
-func discard_leftmost_card():
+func leftmost_card():
     var hand = cards_in_player_hand()
     if not hand.empty():
-        var leftmost_card = hand[0]
+        return hand[0]
+
+func discard_leftmost_card():
+    var leftmost_card = leftmost_card()
+    if leftmost_card != null:
         leftmost_card.discard()
 
 func _ready():

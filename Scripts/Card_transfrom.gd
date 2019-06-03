@@ -765,6 +765,11 @@ func battlecry__delay_8_become_a_dragon():
 func timed_become_a_dragon():
     become_a_dragon()
 
+func battlecry__delay_4_plus_2_plus_2():
+    start_timer(4, 'timed_plus_2_plus_2', '+2/+2')
+func timed_plus_2_plus_2():
+    buff(2, 2)
+
 func battlecry__every_2_allies_other_lanes_plus_0_plus_2():
     start_timer(2, 'timed_allies_other_lanes_plus_0_plus_2', 'heal 2')
 func timed_allies_other_lanes_plus_0_plus_2():
@@ -897,6 +902,11 @@ func battlecry__plus_1_plus_1_for_other_familiars():
         if f != self:
             num_other_familiars += 1
     buff(num_other_familiars, num_other_familiars)
+
+func battlecry__deal_2_to_other_familiars():
+    for f in Game.familiars_on_field():
+        if f != self:
+            deal_x_familiar(f, 2)
 
 # deathrottle
 # ---------------------------------------------------------------------------------------------
@@ -1054,6 +1064,10 @@ func ignition__become_shield_form():
 func ignition__become_sword_form():
     become('SwordFormOoze')
 
+func ignition__leftmost_card_becomes_a_fireball():
+    var leftmost_card = Game.leftmost_card()
+    if leftmost_card != null:
+        leftmost_card.become('Fireball')
 
 # effect utils
 # ---------------------------------------------------------------------------------------------

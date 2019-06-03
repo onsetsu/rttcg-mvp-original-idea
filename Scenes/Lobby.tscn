@@ -266,7 +266,7 @@ text = "Rookie Party"
 flat = false
 align = 1
 
-[node name="ArcaneArmy" type="Button" parent="menu/VBoxContainer" index="1"]
+[node name="LordsOfTheArena" type="Button" parent="menu/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -286,7 +286,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Arcane Army"
+text = "Lords of the Arena"
 flat = false
 align = 1
 
@@ -609,7 +609,7 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="menu/VBoxContainer/RookieParty" to="." method="_on_RookieParty_pressed"]
 
-[connection signal="pressed" from="menu/VBoxContainer/ArcaneArmy" to="." method="_on_ArcaneArmy_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/LordsOfTheArena" to="." method="_on_LordsOfTheArena_pressed"]
 
 [connection signal="pressed" from="menu/VBoxContainer/HBoxContainer/LoadCustomPlayer" to="." method="_on_LoadCustomPlayer_pressed"]
 

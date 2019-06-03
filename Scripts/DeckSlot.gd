@@ -35,7 +35,7 @@ func _input(event):
         parent = parent.get_parent()
     var visible_in_container = parent.get_global_rect().has_point(get_global_mouse_position())
 
-    if is_visible_in_tree() && event.is_pressed() && event.button_index > 0 && event.button_index <= 2 && visible_in_container && get_global_rect().has_point(get_global_mouse_position()):
+    if is_visible_in_tree() && event.is_pressed() && event.get('button_index') && event.button_index > 0 && event.button_index <= 2 && visible_in_container && get_global_rect().has_point(get_global_mouse_position()):
         var diff = 1
         if event.button_index == 2:
             diff = -1
