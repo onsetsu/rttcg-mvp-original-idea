@@ -1160,7 +1160,7 @@ func Saboteur(card):
     
     card.key = 'Saboteur'
     card.card_name = 'Saboteur'
-    card.text = 'Battlecry: Discard an enemy familiar.'
+    card.text = 'Battlecry: Discard leftmost enemy card.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 6
