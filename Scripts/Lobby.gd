@@ -51,10 +51,11 @@ func _ready():
     apply_last_decks()
 
 func _process(delta):
-    if Input.is_action_pressed("pause"):
-        speed_pause_modifier = 0.0
-    else:
-        speed_pause_modifier = 1.0
+    if Input.is_action_just_pressed("pause"):
+        if speed_pause_modifier == 0.0:
+            speed_pause_modifier = 1.0
+        else:
+            speed_pause_modifier = 0.0
 
 func update_speed_info():
     find_node('speed-info').text = "%1.1f" % [speed_up]

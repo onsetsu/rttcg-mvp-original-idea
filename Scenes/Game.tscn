@@ -659,7 +659,6 @@ margin_left = 190.0
 margin_top = 60.0
 margin_right = 400.0
 margin_bottom = 220.0
-_sections_unfolded = [ "Rect" ]
 type = "familiar"
 
 [node name="field_left_ally_familiar" parent="field" index="2" instance=ExtResource( 5 )]
@@ -694,7 +693,6 @@ margin_left = 400.0
 margin_top = 60.0
 margin_right = 610.0
 margin_bottom = 220.0
-_sections_unfolded = [ "Rect" ]
 lane = "middle"
 type = "familiar"
 
@@ -723,7 +721,7 @@ margin_left = 610.0
 margin_top = 10.0
 margin_right = 820.0
 margin_bottom = 60.0
-_sections_unfolded = [ "Focus", "Hint", "Rect", "Size Flags", "Theme" ]
+_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 lane = "right"
 
 [node name="field_right_enemy_familiar" parent="field" index="9" instance=ExtResource( 5 )]
@@ -732,7 +730,6 @@ margin_left = 610.0
 margin_top = 60.0
 margin_right = 820.0
 margin_bottom = 220.0
-_sections_unfolded = [ "Rect" ]
 lane = "right"
 type = "familiar"
 
@@ -742,7 +739,6 @@ margin_left = 610.0
 margin_top = 220.0
 margin_right = 820.0
 margin_bottom = 380.0
-_sections_unfolded = [ "Rect" ]
 lane = "right"
 side = "friendly"
 type = "familiar"
@@ -769,7 +765,6 @@ side = "enemy"
 
 [node name="win-lose-box" type="PanelContainer" parent="." index="15"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -850,11 +845,69 @@ text = "Return to Menu."
 flat = false
 align = 1
 
-[node name="cards" type="Node" parent="." index="16"]
+[node name="pause_container" type="PanelContainer" parent="." index="16"]
 
-[node name="elements" type="Node" parent="." index="17"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 560.0
+margin_right = 240.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="effects" type="Node" parent="." index="18"]
+[node name="Panel" type="Panel" parent="pause_container" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 233.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label" type="Label" parent="pause_container/Panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = "Game paused (Space to resume)"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Grow Direction", "Size Flags" ]
+
+[node name="cards" type="Node" parent="." index="17"]
+
+[node name="elements" type="Node" parent="." index="18"]
+
+[node name="effects" type="Node" parent="." index="19"]
 
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
 

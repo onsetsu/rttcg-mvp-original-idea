@@ -204,9 +204,16 @@ func ensure_approaching_card_enemy():
 # ---------------------------------------------------------------------------------------------
 
 func _process(delta):
+    update_pause_container()
     refill_approaching_card_player()
     refill_approaching_card_enemy()
     ensure_in_wait_card_enemy()
+
+func update_pause_container():
+    if Lobby.speed_pause_modifier == 1.0:
+        $pause_container.hide()
+    else:
+        $pause_container.show()
 
 func check_game_end():
     if $"win-lose-box".is_visible(): return
