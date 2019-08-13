@@ -78,7 +78,7 @@ func BladeDance(card):
 func HiredArm(card):
     card.key = 'HiredArm'
     card.card_name = 'Hired Arm'
-    card.text = 'Battlecry: Add a Shiv to your hand.'
+    card.text = 'Battlecry: Create a Shiv.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 2
@@ -88,7 +88,7 @@ func HiredArm(card):
 func AsuraPriest(card):
     card.key = 'AsuraPriest'
     card.card_name = 'Asura Priest'
-    card.text = 'Combo: Add a Shiv to your hand.'
+    card.text = 'Combo: Create a Shiv to your hand.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 4
@@ -710,6 +710,15 @@ func Lamp(card):
     card.effect = 'sorcery__if_charged_create_a_djinn'
     card.charge_time = 3
 
+func ArcaneGatling(card):
+    card.key = 'ArcaneGatling'
+    card.card_name = 'Arcane Gatling'
+    card.text = 'Deal 5 Damage to random enemies over 2 seconds.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__if_charged_deal_1_damage_each_half_second'
+    card.enchantment_duration = 2
+
 func Defile(card):
     card.key = 'Defile'
     card.card_name = 'Defile'
@@ -726,6 +735,15 @@ func WarChant(card):
     card.targeting = 'targets_not_required'
     card.enchantment_duration = 6
     card.whenever = { play_card = 'active_enchantment__plus_1_plus_1_to_friendly_familiars'}
+
+func ResonanceOrb(card):
+    card.key = 'ResonanceOrb'
+    card.card_name = 'Resonance Orb'
+    card.text = 'For 10 seconds: Whenever you play a card: Deal 1 Damage to all enemy familiars.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.enchantment_duration = 10
+    card.whenever = { play_card = 'active_enchantment__deal_1_to_all_enemy_familiars'}
 
 func MirrorImage(card):
     card.key = 'MirrorImage'

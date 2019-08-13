@@ -845,7 +845,9 @@ text = "Return to Menu."
 flat = false
 align = 1
 
-[node name="pause_container" type="PanelContainer" parent="." index="16"]
+[node name="cards" type="Node" parent="." index="16"]
+
+[node name="pause_container" type="PanelContainer" parent="." index="17"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -902,8 +904,6 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Grow Direction", "Size Flags" ]
-
-[node name="cards" type="Node" parent="." index="17"]
 
 [node name="elements" type="Node" parent="." index="18"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Lobby.gd" type="Script" id=1]
 
-[node name="Lobby" type="Node"]
+[node name="Lobby" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -83,6 +83,7 @@ text = "Player Deck"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
 
 [node name="player_deck_grid" type="GridContainer" parent="menu/PanelContainer/ScrollContainer/VBoxContainer2" index="1"]
 

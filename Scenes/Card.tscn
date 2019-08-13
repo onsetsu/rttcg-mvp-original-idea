@@ -277,6 +277,189 @@ playback/speed = 1.0
 
 position = Vector2( -90, 0 )
 
+[node name="mechanics_hint" type="Node2D" parent="." index="10"]
+
+visible = false
+position = Vector2( 84.0639, -60.2972 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="mechanics_container" type="PanelContainer" parent="mechanics_hint" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 247.0
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="mechanics_panel" type="Panel" parent="mechanics_hint/mechanics_container" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 304.0
+margin_bottom = 127.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="mechanics_vbox" type="VBoxContainer" parent="mechanics_hint/mechanics_container/mechanics_panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 297.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Shiv: A Sorcery dealing 2 damage."
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label2" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 297.0
+margin_bottom = 49.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Battlecry: The effect trigger when you play this card from your hand."
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label3" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 53.0
+margin_right = 297.0
+margin_bottom = 84.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Deathrottle: Do something when this familiar dies."
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label4" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 88.0
+margin_right = 297.0
+margin_bottom = 102.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Do even more"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label5" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 106.0
+margin_right = 297.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Yet Another Text"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label6" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 124.0
+margin_right = 297.0
+margin_bottom = 138.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Breaking the Layout!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [connection signal="mouse_entered" from="area" to="." method="_on_Area2D_mouse_entered"]
 
 [connection signal="mouse_exited" from="area" to="." method="_on_Area2D_mouse_exited"]

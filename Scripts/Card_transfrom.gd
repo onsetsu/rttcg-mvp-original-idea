@@ -457,6 +457,11 @@ func opponent__minus_1_minus_1(card):
     if side() != card.side():
         debuff(1, 1)
 
+func active_enchantment__deal_1_to_all_enemy_familiars(card):
+    if is_active_enchantment() && side() == card.side():
+        for familiar in Game.enemy_familiars():
+            deal_x_familiar(familiar, 1)
+
 
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
@@ -580,6 +585,23 @@ func add_poison():
 func timed_poison():
     add_poison()
     receive_damage(1)
+
+func sorcery__if_charged_deal_1_damage_each_half_second(target_field):
+    timed_missile()
+func ready_missile():
+    start_timer(2.0/5.0, 'timed_missile', 'fire')
+func timed_missile():
+    var amount = 1
+    
+    var familiars = Game.enemy_familiars()
+    if familiars.empty():
+        var tower = utils.sample(Game.enemy_towers())
+        deal_x_tower(tower, amount)
+    else:
+        var familiar = utils.sample(familiars)
+        deal_x_familiar(familiar, amount)
+        
+    ready_missile()
 
 func sorcery__plus_2_plus_2_charged_return_to_hand(target_field):
     target_field.card.buff(2, 2)

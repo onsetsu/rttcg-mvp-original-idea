@@ -317,7 +317,17 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="FlyingBoar" type="Sprite" parent="." index="29"]
+[node name="ArcaneGatling" type="Sprite" parent="." index="29"]
+
+modulate = Color( 1.1, 0.3, 1.1, 1 )
+position = Vector2( 0.126114, 684.005 )
+scale = Vector2( 0.055, 0.055 )
+texture = ExtResource( 18 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2281, 2281 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="FlyingBoar" type="Sprite" parent="." index="30"]
 
 position = Vector2( 141.998, 549.484 )
 scale = Vector2( 0.055, 0.055 )
@@ -326,7 +336,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="PackWolf" type="Sprite" parent="." index="30"]
+[node name="PackWolf" type="Sprite" parent="." index="31"]
 
 position = Vector2( 427.213, 549.484 )
 scale = Vector2( 0.055, 0.055 )
@@ -335,7 +345,7 @@ region_enabled = true
 region_rect = Rect2( 100, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="Spearman" type="Sprite" parent="." index="31"]
+[node name="Spearman" type="Sprite" parent="." index="32"]
 
 position = Vector2( 560.999, 549.484 )
 scale = Vector2( 0.055, 0.055 )
@@ -344,7 +354,7 @@ region_enabled = true
 region_rect = Rect2( -100, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="BuyARound" type="Sprite" parent="." index="32"]
+[node name="BuyARound" type="Sprite" parent="." index="33"]
 
 position = Vector2( 696.255, 549.484 )
 scale = Vector2( 0.055, 0.055 )
@@ -353,7 +363,7 @@ region_enabled = true
 region_rect = Rect2( -50, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="ToKu" type="Sprite" parent="." index="33"]
+[node name="ToKu" type="Sprite" parent="." index="34"]
 
 position = Vector2( 836.657, 549.484 )
 scale = Vector2( 0.055, 0.055 )
@@ -362,7 +372,7 @@ region_enabled = true
 region_rect = Rect2( -50, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="HiredArm" type="Sprite" parent="." index="34"]
+[node name="HiredArm" type="Sprite" parent="." index="35"]
 
 position = Vector2( 973.384, 548.748 )
 scale = Vector2( 0.055, 0.055 )
@@ -371,7 +381,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="Smash" type="Sprite" parent="." index="35"]
+[node name="Smash" type="Sprite" parent="." index="36"]
 
 position = Vector2( 1108.64, 548.748 )
 scale = Vector2( 0.055, 0.055 )
@@ -380,7 +390,7 @@ region_enabled = true
 region_rect = Rect2( -100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="BattleBot" type="Sprite" parent="." index="36"]
+[node name="BattleBot" type="Sprite" parent="." index="37"]
 
 position = Vector2( 1248.31, 548.748 )
 scale = Vector2( 0.055, 0.055 )
@@ -390,7 +400,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
 
-[node name="ScytheCrawler" type="Sprite" parent="." index="37"]
+[node name="ScytheCrawler" type="Sprite" parent="." index="38"]
 
 modulate = Color( 0.875, 0.641724, 0.587891, 1 )
 self_modulate = Color( 1.2, 0.9, 0.92, 1 )
@@ -401,7 +411,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="SpellShaper" type="Sprite" parent="." index="38"]
+[node name="SpellShaper" type="Sprite" parent="." index="39"]
 
 position = Vector2( 143.468, 412.757 )
 scale = Vector2( 0.055, 0.055 )
@@ -410,7 +420,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="Shiv" type="Sprite" parent="." index="39"]
+[node name="Shiv" type="Sprite" parent="." index="40"]
 
 modulate = Color( 1.18, 1.29, 1.16, 1 )
 self_modulate = Color( 0.39997, 0.96875, 0.367065, 1 )
@@ -421,7 +431,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="BladeDance" type="Sprite" parent="." index="40"]
+[node name="BladeDance" type="Sprite" parent="." index="41"]
 
 position = Vector2( 424.272, 412.757 )
 scale = Vector2( 0.165, 0.165 )
@@ -430,7 +440,7 @@ region_enabled = true
 region_rect = Rect2( -50, 350, 735.806, 760.333 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="StoneGiant" type="Sprite" parent="." index="41"]
+[node name="StoneGiant" type="Sprite" parent="." index="42"]
 
 modulate = Color( 1, 0.75, 0.75, 1 )
 self_modulate = Color( 1, 1.2, 0.6, 1 )
@@ -441,7 +451,7 @@ region_enabled = true
 region_rect = Rect2( 0, -100, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="Dragon" type="Sprite" parent="." index="42"]
+[node name="Dragon" type="Sprite" parent="." index="43"]
 
 modulate = Color( 0.878906, 0.418854, 0.418854, 1 )
 self_modulate = Color( 1.1, 0.696259, 0.696259, 1 )
@@ -452,7 +462,7 @@ region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="FormOfDragon" type="Sprite" parent="." index="43"]
+[node name="FormOfDragon" type="Sprite" parent="." index="44"]
 
 modulate = Color( 1, 0.995483, 0.710938, 1 )
 self_modulate = Color( 0.636719, 0.701996, 1, 1 )
@@ -463,7 +473,7 @@ region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="TheMaw" type="Sprite" parent="." index="44"]
+[node name="TheMaw" type="Sprite" parent="." index="45"]
 
 modulate = Color( 1, 0.995483, 0.710938, 1 )
 self_modulate = Color( 0.636719, 0.701996, 1, 1 )
@@ -474,7 +484,7 @@ region_enabled = true
 region_rect = Rect2( 1000, 350, 1140, 1140 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="SewerDweller" type="Sprite" parent="." index="45"]
+[node name="SewerDweller" type="Sprite" parent="." index="46"]
 
 modulate = Color( 0.403333, 1, 1, 1 )
 self_modulate = Color( 0.636719, 1.1, 0.542206, 1 )
@@ -485,7 +495,7 @@ region_enabled = true
 region_rect = Rect2( 100, -150, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="SpikedWall" type="Sprite" parent="." index="46"]
+[node name="SpikedWall" type="Sprite" parent="." index="47"]
 
 modulate = Color( 0.403333, 1, 1, 1 )
 self_modulate = Color( 0.636719, 1.1, 0.542206, 1 )
@@ -496,7 +506,7 @@ region_enabled = true
 region_rect = Rect2( 50, 500, 2281, 2281 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="IceWall" type="Sprite" parent="." index="47"]
+[node name="IceWall" type="Sprite" parent="." index="48"]
 
 position = Vector2( 559.02, 137.833 )
 scale = Vector2( 0.24993, 0.140221 )
@@ -506,7 +516,7 @@ region_rect = Rect2( 250, 550, 500, 900 )
 region_filter_clip = true
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
-[node name="PowerPotion" type="Sprite" parent="." index="48"]
+[node name="PowerPotion" type="Sprite" parent="." index="49"]
 
 position = Vector2( 141.011, 0 )
 scale = Vector2( 0.055, 0.055 )
