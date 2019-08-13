@@ -133,14 +133,9 @@ func file_name_deck_enemy_last(): return "user://enemy_last.deck"
 func init_default_deck(file_name):
     var default_deck = {}
     if file_name.match('*player*'):
-        default_deck = {
-            "Adventurer" : 15,
-            "Dragon" : 1,
-        }
+        default_deck = _player_default_deck()
     else: if file_name.match('*enemy*'):
-        default_deck = {
-            "Skeleton" : 11,
-        }
+        default_deck = _enemy_deck_default()
     save_deck(file_name, default_deck)
 
 func load_deck(file_name):
@@ -192,8 +187,8 @@ func end_game():
 # Button Callbacks
 # ---------------------------------------------------------------------------------------------
 
-func _on_RookieParty_pressed():
-    dict_to_grid({
+func _player_default_deck():
+    return {
         "Adventurer" : 2,
         "Duelist" : 1,
         "IceWall" : 1,
@@ -201,7 +196,9 @@ func _on_RookieParty_pressed():
         "PowerPotion" : 1,
         "FormOfDragon" : 1,
         "Scout" : 1,
-    }, 'player')
+    }
+func _on_RookieParty_pressed():
+    dict_to_grid(_player_default_deck(), 'player')
     sort_grid('player')
 
 func _on_LordsOfTheArena_pressed():
@@ -247,14 +244,16 @@ func _on_SaveCustomPlayer_pressed():
     save_deck(file_name_deck_player_custom(), dict_for_type('player'))
     sort_grid('player')
 
-func _on_DarkCultists_pressed():
-    dict_to_grid({
+func _enemy_deck_default():
+    return {
         "Skeleton" : 2,
         "Cultist" : 1,
         "SkeletonElite" : 1,
         "SewerDweller": 1,
         "Crawler": 1,
-    }, 'enemy')
+    }
+func _on_DarkCultists_pressed():
+    dict_to_grid(_enemy_deck_default(), 'enemy')
     sort_grid('enemy')
 
 func _on_ForestWildlife_pressed():
