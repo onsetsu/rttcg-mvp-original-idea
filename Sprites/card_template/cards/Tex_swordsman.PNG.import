@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_swordsman.PNG-f21a6a3f66fa4d00a0af32d5663c82af.s3tc.stex"
 path.etc2="res://.import/Tex_swordsman.PNG-f21a6a3f66fa4d00a0af32d5663c82af.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_swordsman.PNG"
-source_md5="cc1e2a74d5cada0da1ab25ab6bccc15f"
-
 dest_files=[ "res://.import/Tex_swordsman.PNG-f21a6a3f66fa4d00a0af32d5663c82af.s3tc.stex", "res://.import/Tex_swordsman.PNG-f21a6a3f66fa4d00a0af32d5663c82af.etc2.stex" ]
-dest_md5="fbc96b5cf37db300d0fe3dcb601b2bfd"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

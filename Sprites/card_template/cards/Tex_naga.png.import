@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_naga.png-e9a1d536c4c9ead959392e4c950ceaa1.s3tc.stex"
 path.etc2="res://.import/Tex_naga.png-e9a1d536c4c9ead959392e4c950ceaa1.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_naga.png"
-source_md5="d87da0f545544189ce882c02778a9927"
-
 dest_files=[ "res://.import/Tex_naga.png-e9a1d536c4c9ead959392e4c950ceaa1.s3tc.stex", "res://.import/Tex_naga.png-e9a1d536c4c9ead959392e4c950ceaa1.etc2.stex" ]
-dest_md5="a5b07158125d4a11a983c7adc9fe7d81"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

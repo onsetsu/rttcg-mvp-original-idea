@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_Demon.PNG-cd033e6eb3bb5793014a8fde4b4c4e21.s3tc.stex"
 path.etc2="res://.import/Tex_Demon.PNG-cd033e6eb3bb5793014a8fde4b4c4e21.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_Demon.PNG"
-source_md5="3494f124cb0e4c0a1e6bca0070b5a7ee"
-
 dest_files=[ "res://.import/Tex_Demon.PNG-cd033e6eb3bb5793014a8fde4b4c4e21.s3tc.stex", "res://.import/Tex_Demon.PNG-cd033e6eb3bb5793014a8fde4b4c4e21.etc2.stex" ]
-dest_md5="2cebecd056f1318f0ec483aed2770154"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

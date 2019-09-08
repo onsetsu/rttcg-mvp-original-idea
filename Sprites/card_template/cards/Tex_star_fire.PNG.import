@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.s3tc.stex"
 path.etc2="res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_star_fire.PNG"
-source_md5="f5a6693c30c31f3f2e785f345e94f15e"
-
 dest_files=[ "res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.s3tc.stex", "res://.import/Tex_star_fire.PNG-1ed2ac9f671b2f148d7c7af3f678d9e1.etc2.stex" ]
-dest_md5="72733efb74ae9f57535ba7a7a625e7a7"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

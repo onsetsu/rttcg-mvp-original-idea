@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/timer-front2.png-b9f4a35ac0b3304970a2b145eeb562d1.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/timer-front2.png"
-source_md5="ae49c45f3a4e6a477c363a16afaaa551"
-
 dest_files=[ "res://.import/timer-front2.png-b9f4a35ac0b3304970a2b145eeb562d1.stex" ]
-dest_md5="213ecc0a64ea45d03d9f98abf1ba50fd"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

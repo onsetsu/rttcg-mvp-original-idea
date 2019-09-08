@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_frog.PNG-a5613c516f08c0cd65e37d9c8a7d3486.s3tc.stex"
 path.etc2="res://.import/Tex_frog.PNG-a5613c516f08c0cd65e37d9c8a7d3486.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_frog.PNG"
-source_md5="f593ce4c15dc9d86cd7b74b939075732"
-
 dest_files=[ "res://.import/Tex_frog.PNG-a5613c516f08c0cd65e37d9c8a7d3486.s3tc.stex", "res://.import/Tex_frog.PNG-a5613c516f08c0cd65e37d9c8a7d3486.etc2.stex" ]
-dest_md5="7922c821d7d597e3195514db4a4abbff"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

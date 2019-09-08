@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/circle_bg.png-0e60fd886588fceca53827481dcf15df.s3tc.stex"
 path.etc2="res://.import/circle_bg.png-0e60fd886588fceca53827481dcf15df.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/circle_bg.png"
-source_md5="7f5d42cc21ce936f80df62b35cc5fb21"
-
 dest_files=[ "res://.import/circle_bg.png-0e60fd886588fceca53827481dcf15df.s3tc.stex", "res://.import/circle_bg.png-0e60fd886588fceca53827481dcf15df.etc2.stex" ]
-dest_md5="fe86823de06db5e4a4a3c9fbb169cd3d"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.05
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

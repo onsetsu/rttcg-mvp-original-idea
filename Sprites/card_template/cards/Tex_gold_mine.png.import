@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_gold_mine.png-b2d6f57010c1c15ca0cee2341b894b02.s3tc.stex"
 path.etc2="res://.import/Tex_gold_mine.png-b2d6f57010c1c15ca0cee2341b894b02.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_gold_mine.png"
-source_md5="232954424ec7adec3ca0a0a4cd9dcff2"
-
 dest_files=[ "res://.import/Tex_gold_mine.png-b2d6f57010c1c15ca0cee2341b894b02.s3tc.stex", "res://.import/Tex_gold_mine.png-b2d6f57010c1c15ca0cee2341b894b02.etc2.stex" ]
-dest_md5="08f822da9fe97ae35f48b732e6ca9282"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

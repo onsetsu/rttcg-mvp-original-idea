@@ -1,7 +1,7 @@
 extends Node
 
 var card_scene = preload("res://Scenes/Card.tscn")
-var element_scene = preload("res://Scenes/Element.tscn")
+#var element_scene = preload("res://Scenes/Element.tscn")
 var hint_scene = preload("res://Scenes/Damage_Number.tscn")
 onready var Lobby = get_tree().get_root().get_node('Lobby')
 

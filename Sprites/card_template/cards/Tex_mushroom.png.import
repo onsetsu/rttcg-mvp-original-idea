@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_mushroom.png-f586ac62bde7ca7e8121ab1ee6f726a5.s3tc.stex"
 path.etc2="res://.import/Tex_mushroom.png-f586ac62bde7ca7e8121ab1ee6f726a5.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_mushroom.png"
-source_md5="1683348541a7d9ad2f76ef260616ec4f"
-
 dest_files=[ "res://.import/Tex_mushroom.png-f586ac62bde7ca7e8121ab1ee6f726a5.s3tc.stex", "res://.import/Tex_mushroom.png-f586ac62bde7ca7e8121ab1ee6f726a5.etc2.stex" ]
-dest_md5="5ea80ebf3c48ffed6ef0daa2bb29035e"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

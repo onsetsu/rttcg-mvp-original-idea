@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_krakken.PNG-03d1c36268e32e52064967e0d05f6a59.s3tc.stex"
 path.etc2="res://.import/Tex_krakken.PNG-03d1c36268e32e52064967e0d05f6a59.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_krakken.PNG"
-source_md5="02e6ed55796d53f9b37d83b5acc95e2b"
-
 dest_files=[ "res://.import/Tex_krakken.PNG-03d1c36268e32e52064967e0d05f6a59.s3tc.stex", "res://.import/Tex_krakken.PNG-03d1c36268e32e52064967e0d05f6a59.etc2.stex" ]
-dest_md5="b02d4e4ef664e9f42d3a3aff870675ac"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

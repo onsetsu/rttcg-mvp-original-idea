@@ -2,628 +2,199 @@
 
 [ext_resource path="res://Scripts/Lobby.gd" type="Script" id=1]
 
-[node name="Lobby" type="Node" index="0"]
-
+[node name="Lobby" type="Node"]
 script = ExtResource( 1 )
 
-[node name="menu" type="Node2D" parent="." index="0"]
+[node name="menu" type="Node2D" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="menu" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="PanelContainer" type="PanelContainer" parent="menu"]
 margin_left = 10.0
 margin_top = 40.0
 margin_right = 510.0
 margin_bottom = 490.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="menu/PanelContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="ScrollContainer" type="ScrollContainer" parent="menu/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 493.0
 margin_bottom = 443.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="menu/PanelContainer/ScrollContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="menu/PanelContainer/ScrollContainer"]
 margin_right = 75.0
 margin_bottom = 18.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
-[node name="player_deck_label" type="Label" parent="menu/PanelContainer/ScrollContainer/VBoxContainer2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="player_deck_label" type="Label" parent="menu/PanelContainer/ScrollContainer/VBoxContainer2"]
 margin_right = 75.0
 margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Player Deck"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags" ]
 
-[node name="player_deck_grid" type="GridContainer" parent="menu/PanelContainer/ScrollContainer/VBoxContainer2" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="player_deck_grid" type="GridContainer" parent="menu/PanelContainer/ScrollContainer/VBoxContainer2"]
 margin_top = 18.0
 margin_right = 75.0
 margin_bottom = 18.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 1
 columns = 3
-_sections_unfolded = [ "Size Flags" ]
 
-[node name="PanelContainer2" type="PanelContainer" parent="menu" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="PanelContainer2" type="PanelContainer" parent="menu"]
 margin_left = 520.0
 margin_top = 40.0
 margin_right = 1020.0
 margin_bottom = 490.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="menu/PanelContainer2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="ScrollContainer" type="ScrollContainer" parent="menu/PanelContainer2"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 493.0
 margin_bottom = 443.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="menu/PanelContainer2/ScrollContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="menu/PanelContainer2/ScrollContainer"]
 margin_right = 79.0
 margin_bottom = 18.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
-[node name="enemy_deck_label" type="Label" parent="menu/PanelContainer2/ScrollContainer/VBoxContainer2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="enemy_deck_label" type="Label" parent="menu/PanelContainer2/ScrollContainer/VBoxContainer2"]
 margin_right = 79.0
 margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Enemy Deck"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="enemy_deck_grid" type="GridContainer" parent="menu/PanelContainer2/ScrollContainer/VBoxContainer2" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="enemy_deck_grid" type="GridContainer" parent="menu/PanelContainer2/ScrollContainer/VBoxContainer2"]
 margin_top = 18.0
 margin_right = 79.0
 margin_bottom = 18.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 1
 columns = 3
-_sections_unfolded = [ "Size Flags" ]
 
-[node name="play_button" type="Button" parent="menu" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="play_button" type="Button" parent="menu"]
 margin_left = 350.0
 margin_top = 540.0
 margin_right = 684.0
 margin_bottom = 560.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Play!"
-flat = false
-align = 1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="menu" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxContainer" type="VBoxContainer" parent="menu"]
 margin_left = 140.0
 margin_top = 510.0
 margin_right = 333.0
 margin_bottom = 578.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RookieParty" type="Button" parent="menu/VBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="RookieParty" type="Button" parent="menu/VBoxContainer"]
 margin_right = 193.0
 margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Rookie Party"
-flat = false
-align = 1
 
-[node name="LordsOfTheArena" type="Button" parent="menu/VBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="LordsOfTheArena" type="Button" parent="menu/VBoxContainer"]
 margin_top = 24.0
 margin_right = 193.0
 margin_bottom = 44.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Lords of the Arena"
-flat = false
-align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="menu/VBoxContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="HBoxContainer" type="HBoxContainer" parent="menu/VBoxContainer"]
 margin_top = 48.0
 margin_right = 193.0
 margin_bottom = 68.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
-[node name="LoadCustomPlayer" type="Button" parent="menu/VBoxContainer/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="LoadCustomPlayer" type="Button" parent="menu/VBoxContainer/HBoxContainer"]
 margin_right = 95.0
 margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Load Custom"
-flat = false
-align = 1
 
-[node name="SaveCustomPlayer" type="Button" parent="menu/VBoxContainer/HBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="SaveCustomPlayer" type="Button" parent="menu/VBoxContainer/HBoxContainer"]
 margin_left = 99.0
 margin_right = 193.0
 margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Save Custom"
-flat = false
-align = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="menu" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="menu"]
 margin_left = 700.0
 margin_top = 510.0
 margin_right = 893.0
 margin_bottom = 578.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="DarkCultists" type="Button" parent="menu/VBoxContainer2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="DarkCultists" type="Button" parent="menu/VBoxContainer2"]
 margin_right = 193.0
 margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Dark Cultists"
-flat = false
-align = 1
 
-[node name="ForestWildlife" type="Button" parent="menu/VBoxContainer2" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="ForestWildlife" type="Button" parent="menu/VBoxContainer2"]
 margin_top = 24.0
 margin_right = 193.0
 margin_bottom = 44.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Forest Wildlife"
-flat = false
-align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="menu/VBoxContainer2" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="HBoxContainer" type="HBoxContainer" parent="menu/VBoxContainer2"]
 margin_top = 48.0
 margin_right = 193.0
 margin_bottom = 68.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
-[node name="LoadCustomEnemy" type="Button" parent="menu/VBoxContainer2/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="LoadCustomEnemy" type="Button" parent="menu/VBoxContainer2/HBoxContainer"]
 margin_right = 95.0
 margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Load Custom"
-flat = false
-align = 1
 
-[node name="SaveCustomEnemy" type="Button" parent="menu/VBoxContainer2/HBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="SaveCustomEnemy" type="Button" parent="menu/VBoxContainer2/HBoxContainer"]
 margin_left = 99.0
 margin_right = 193.0
 margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Save Custom"
-flat = false
-align = 1
 
-[node name="speed" type="Control" parent="." index="1"]
-
+[node name="speed" type="Control" parent="."]
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="speed" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="PanelContainer" type="PanelContainer" parent="speed"]
 margin_right = 270.0
 margin_bottom = 30.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="speed/PanelContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="HBoxContainer" type="HBoxContainer" parent="speed/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 263.0
 margin_bottom = 23.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
-[node name="speed-slider" type="HSlider" parent="speed/PanelContainer/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="speed-slider" type="HSlider" parent="speed/PanelContainer/HBoxContainer"]
 margin_right = 177.0
 margin_bottom = 16.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 2
-min_value = 0.0
 max_value = 2.0
 step = 0.1
-page = 0.0
 value = 1.0
-exp_edit = false
-rounded = false
-editable = true
 tick_count = 5
 ticks_on_borders = true
-focus_mode = 2
-_sections_unfolded = [ "Size Flags" ]
 
-[node name="speed-info" type="Label" parent="speed/PanelContainer/HBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="speed-info" type="Label" parent="speed/PanelContainer/HBoxContainer"]
 margin_left = 181.0
 margin_top = 1.0
 margin_right = 201.0
 margin_bottom = 15.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "1.0"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="speed-label" type="Label" parent="speed/PanelContainer/HBoxContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="speed-label" type="Label" parent="speed/PanelContainer/HBoxContainer"]
 margin_left = 205.0
 margin_top = 1.0
 margin_right = 256.0
 margin_bottom = 15.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "* speed"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [connection signal="pressed" from="menu/play_button" to="." method="_on_play_button_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer/RookieParty" to="." method="_on_RookieParty_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer/LordsOfTheArena" to="." method="_on_LordsOfTheArena_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer/HBoxContainer/LoadCustomPlayer" to="." method="_on_LoadCustomPlayer_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer/HBoxContainer/SaveCustomPlayer" to="." method="_on_SaveCustomPlayer_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer2/DarkCultists" to="." method="_on_DarkCultists_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer2/ForestWildlife" to="." method="_on_ForestWildlife_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer2/HBoxContainer/LoadCustomEnemy" to="." method="_on_LoadCustomEnemy_pressed"]
-
 [connection signal="pressed" from="menu/VBoxContainer2/HBoxContainer/SaveCustomEnemy" to="." method="_on_SaveCustomEnemy_pressed"]
-
 [connection signal="value_changed" from="speed/PanelContainer/HBoxContainer/speed-slider" to="." method="_on_speedslider_value_changed"]
-
-

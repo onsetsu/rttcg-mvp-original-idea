@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_spear.PNG-a721300890f0b57cefb74d8527787311.s3tc.stex"
 path.etc2="res://.import/Tex_spear.PNG-a721300890f0b57cefb74d8527787311.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_spear.PNG"
-source_md5="5fdc3c934849aa0de6ca0c45f641cc21"
-
 dest_files=[ "res://.import/Tex_spear.PNG-a721300890f0b57cefb74d8527787311.s3tc.stex", "res://.import/Tex_spear.PNG-a721300890f0b57cefb74d8527787311.etc2.stex" ]
-dest_md5="ad6acc1bb3153a57d151999c5e865657"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

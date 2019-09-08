@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/timer-progress-red.png-5ac72fa256a9eb9b37a256239f166649.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/timer-progress-red.png"
-source_md5="01c93a2b3ad7fb8512c63418573e9494"
-
 dest_files=[ "res://.import/timer-progress-red.png-5ac72fa256a9eb9b37a256239f166649.stex" ]
-dest_md5="154b1fefaa165605e87482da5f799fb6"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

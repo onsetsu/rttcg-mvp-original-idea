@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_Tentacle.PNG-18534ff6c8e962cd22e815329402cbd7.s3tc.stex"
 path.etc2="res://.import/Tex_Tentacle.PNG-18534ff6c8e962cd22e815329402cbd7.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_Tentacle.PNG"
-source_md5="f59cf9e6fa015e71c1c3861db14d44ea"
-
 dest_files=[ "res://.import/Tex_Tentacle.PNG-18534ff6c8e962cd22e815329402cbd7.s3tc.stex", "res://.import/Tex_Tentacle.PNG-18534ff6c8e962cd22e815329402cbd7.etc2.stex" ]
-dest_md5="663aa347e10d00f162fa084d6d7482e5"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

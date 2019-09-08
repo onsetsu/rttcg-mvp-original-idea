@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_mercenary.png-4f4dc149ea84072d5f6106d3602bf127.s3tc.stex"
 path.etc2="res://.import/Tex_mercenary.png-4f4dc149ea84072d5f6106d3602bf127.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_mercenary.png"
-source_md5="ecc7627a07c4a629ca3af0dbf28e6582"
-
 dest_files=[ "res://.import/Tex_mercenary.png-4f4dc149ea84072d5f6106d3602bf127.s3tc.stex", "res://.import/Tex_mercenary.png-4f4dc149ea84072d5f6106d3602bf127.etc2.stex" ]
-dest_md5="bb5d03783f7f38e43c59a4f102f949cd"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

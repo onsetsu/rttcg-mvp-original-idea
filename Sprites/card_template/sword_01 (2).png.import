@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/sword_01 (2).png-39e0aff6d907371e6de0ef95fcd2b085.s3tc.stex"
 path.etc2="res://.import/sword_01 (2).png-39e0aff6d907371e6de0ef95fcd2b085.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/sword_01 (2).png"
-source_md5="fa20f8e3e597440de8e813c4f4ac334e"
-
 dest_files=[ "res://.import/sword_01 (2).png-39e0aff6d907371e6de0ef95fcd2b085.s3tc.stex", "res://.import/sword_01 (2).png-39e0aff6d907371e6de0ef95fcd2b085.etc2.stex" ]
-dest_md5="e74f0e6de44180e8de3d35f02548d2f8"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.05
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

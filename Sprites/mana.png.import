@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/mana.png-240c5b33a45957f101cf8f14f6b06a6c.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/mana.png"
-source_md5="859870727f6c6e12e53f32a38c6f65a6"
-
 dest_files=[ "res://.import/mana.png-240c5b33a45957f101cf8f14f6b06a6c.stex" ]
-dest_md5="dbd55201b729cc382d0792c5f158b04a"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

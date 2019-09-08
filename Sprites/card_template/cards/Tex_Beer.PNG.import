@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_Beer.PNG-1107d75d7f0b92d33d9015c52a3e8880.s3tc.stex"
 path.etc2="res://.import/Tex_Beer.PNG-1107d75d7f0b92d33d9015c52a3e8880.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_Beer.PNG"
-source_md5="d526793054c4656a4c7555f88bbe553a"
-
 dest_files=[ "res://.import/Tex_Beer.PNG-1107d75d7f0b92d33d9015c52a3e8880.s3tc.stex", "res://.import/Tex_Beer.PNG-1107d75d7f0b92d33d9015c52a3e8880.etc2.stex" ]
-dest_md5="8a7adfebe103b271c7287f54c4353f04"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

@@ -22,7 +22,7 @@ func grid_for_type(type):
         return find_node('player_deck_grid')
     else: if type == 'enemy':
         return find_node('enemy_deck_grid')
-    
+
 func deck_for_card_name(card_name):
     var temp_card = card_scene.instance()
     temp_card.become(card_name)
@@ -38,7 +38,7 @@ func dict_name_for_card_name(card_name):
 
 func _ready():
     update_speed_info()
-    
+
     print(get_tree().get_root(), get_tree().get_root().get_node('foo'))
 
     # setup cards
@@ -47,7 +47,7 @@ func _ready():
         var grid = deck_for_card_name(c_name)
         grid.add_child(deck_slot)
         deck_slot.set_card(c_name)
-    
+
     apply_last_decks()
 
 func _process(delta):
@@ -82,10 +82,10 @@ func sort_grid(type):
 func sort_grids():
     sort_grid('player')
     sort_grid('enemy')
-    
+
 func dict_to_grid(dict, type):
     var grid = grid_for_type(type)
-    
+
     for slot in grid.get_children():
         var num_copies = utils.get_or_create(dict, slot.card_name, 0)
         slot.set_num_copies(num_copies)
@@ -95,7 +95,7 @@ func dict_for_type(type):
 
 func grid_to_dict(grid):
     var dict = {}
-    
+
     for slot in grid.get_children():
         if slot.num_copies >= 1:
             dict[slot.card_name] = slot.num_copies
@@ -104,13 +104,13 @@ func grid_to_dict(grid):
 
 func dict_to_list(dict):
     var list = []
-    
+
     for key in dict.keys():
         var num_copies = dict[key]
         while num_copies > 0:
             list.append(key)
             num_copies -= 1
-    
+
     return list
 
 func deck_list_from_grid(grid):
@@ -165,7 +165,7 @@ func apply_last_decks():
 
     dict_to_grid(last_player_deck, 'player')
     dict_to_grid(last_enemy_deck, 'enemy')
-    
+
     sort_grids()
 
 # Game START and END

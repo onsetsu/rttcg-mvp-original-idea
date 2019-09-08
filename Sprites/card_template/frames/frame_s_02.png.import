@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/frame_s_02.png-01e52f86c3d23e2da092582461b05f65.s3tc.stex"
 path.etc2="res://.import/frame_s_02.png-01e52f86c3d23e2da092582461b05f65.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/frames/frame_s_02.png"
-source_md5="4e05da6cc9dd85b4b932ecb5ab406c65"
-
 dest_files=[ "res://.import/frame_s_02.png-01e52f86c3d23e2da092582461b05f65.s3tc.stex", "res://.import/frame_s_02.png-01e52f86c3d23e2da092582461b05f65.etc2.stex" ]
-dest_md5="e3a7b193b9d55832faea3ac8b84d49cb"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.05
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

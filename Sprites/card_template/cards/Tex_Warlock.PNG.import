@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_Warlock.PNG-8492eaae967f1fce0c12dbeacd133b1d.s3tc.stex"
 path.etc2="res://.import/Tex_Warlock.PNG-8492eaae967f1fce0c12dbeacd133b1d.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_Warlock.PNG"
-source_md5="8f8cdf0165eb39c66070f0f73f696658"
-
 dest_files=[ "res://.import/Tex_Warlock.PNG-8492eaae967f1fce0c12dbeacd133b1d.s3tc.stex", "res://.import/Tex_Warlock.PNG-8492eaae967f1fce0c12dbeacd133b1d.etc2.stex" ]
-dest_md5="f3294d5ba852c40b4fd806fe46b2a48f"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

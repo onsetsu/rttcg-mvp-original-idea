@@ -1,6 +1,6 @@
 extends Node2D
 
-var element_scene = preload("res://Scenes/Element.tscn")
+#var element_scene = preload("res://Scenes/Element.tscn")
 
 onready var Game = get_tree().get_root().get_node('Game')
 

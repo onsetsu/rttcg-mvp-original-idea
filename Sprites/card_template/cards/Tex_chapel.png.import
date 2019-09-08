@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_chapel.png-52d687cdcbad7a2d21958039e43bca83.s3tc.stex"
 path.etc2="res://.import/Tex_chapel.png-52d687cdcbad7a2d21958039e43bca83.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_chapel.png"
-source_md5="935981b50bfd578a92e74b53688d1e34"
-
 dest_files=[ "res://.import/Tex_chapel.png-52d687cdcbad7a2d21958039e43bca83.s3tc.stex", "res://.import/Tex_chapel.png-52d687cdcbad7a2d21958039e43bca83.etc2.stex" ]
-dest_md5="f7bcbbbfa0888e4999e721919ff4fdb6"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

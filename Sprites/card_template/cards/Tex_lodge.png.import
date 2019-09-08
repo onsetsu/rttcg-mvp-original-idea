@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_lodge.png-9010dddb3097bf4d6b0e29004ac8d737.s3tc.stex"
 path.etc2="res://.import/Tex_lodge.png-9010dddb3097bf4d6b0e29004ac8d737.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_lodge.png"
-source_md5="58956fc1e78679d9386b24dae9499bff"
-
 dest_files=[ "res://.import/Tex_lodge.png-9010dddb3097bf4d6b0e29004ac8d737.s3tc.stex", "res://.import/Tex_lodge.png-9010dddb3097bf4d6b0e29004ac8d737.etc2.stex" ]
-dest_md5="c05c4f7e6c48c7d6bbefd48e11de9281"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

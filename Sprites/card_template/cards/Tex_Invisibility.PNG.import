@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_Invisibility.PNG-587b37116ba6d77004ea497373a1960a.s3tc.stex"
 path.etc2="res://.import/Tex_Invisibility.PNG-587b37116ba6d77004ea497373a1960a.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_Invisibility.PNG"
-source_md5="950ba24a9a46b9e0ed9b7ff3826d56c3"
-
 dest_files=[ "res://.import/Tex_Invisibility.PNG-587b37116ba6d77004ea497373a1960a.s3tc.stex", "res://.import/Tex_Invisibility.PNG-587b37116ba6d77004ea497373a1960a.etc2.stex" ]
-dest_md5="9c70adb4379b7b8195c2d42e00932705"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

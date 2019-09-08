@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_Tower.png-a67c982b5c1ebeb88f5e1239f24c5952.s3tc.stex"
 path.etc2="res://.import/Tex_Tower.png-a67c982b5c1ebeb88f5e1239f24c5952.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_Tower.png"
-source_md5="c81c5e7e4290ffd84f02c5df939401cd"
-
 dest_files=[ "res://.import/Tex_Tower.png-a67c982b5c1ebeb88f5e1239f24c5952.s3tc.stex", "res://.import/Tex_Tower.png-a67c982b5c1ebeb88f5e1239f24c5952.etc2.stex" ]
-dest_md5="65eb0a7ca53c09865063b3912177e576"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

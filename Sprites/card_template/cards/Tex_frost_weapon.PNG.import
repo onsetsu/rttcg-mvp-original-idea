@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_frost_weapon.PNG-d2b6879631925c45eff888a534247b88.s3tc.stex"
 path.etc2="res://.import/Tex_frost_weapon.PNG-d2b6879631925c45eff888a534247b88.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_frost_weapon.PNG"
-source_md5="8dd52119a511f925348fefc7493422bb"
-
 dest_files=[ "res://.import/Tex_frost_weapon.PNG-d2b6879631925c45eff888a534247b88.s3tc.stex", "res://.import/Tex_frost_weapon.PNG-d2b6879631925c45eff888a534247b88.etc2.stex" ]
-dest_md5="900531bc645b8b0f28f550955f9322c1"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

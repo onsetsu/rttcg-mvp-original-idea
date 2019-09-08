@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Tex_valley.png-a15ca94bfb511c3ce8444b3adc7ae13c.s3tc.stex"
 path.etc2="res://.import/Tex_valley.png-a15ca94bfb511c3ce8444b3adc7ae13c.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Sprites/card_template/cards/Tex_valley.png"
-source_md5="ee0411cf16bfa42bdddac87025b6d17c"
-
 dest_files=[ "res://.import/Tex_valley.png-a15ca94bfb511c3ce8444b3adc7ae13c.s3tc.stex", "res://.import/Tex_valley.png-a15ca94bfb511c3ce8444b3adc7ae13c.etc2.stex" ]
-dest_md5="ec95173d7e3949fa0b95057674e0d0db"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.03
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true
