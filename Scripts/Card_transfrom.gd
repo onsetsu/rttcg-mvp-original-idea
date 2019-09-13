@@ -78,14 +78,21 @@ func cancel_go_to():
     $pos_tween.stop_all()
 
 func is_hovered():
+    return modern_is_hovered()
     var hovered = false
     var space = get_world_2d().get_direct_space_state()
-    var results = space.intersect_point( get_global_mouse_position())
+    var results = space.intersect_point(get_global_mouse_position())
+    print(results)
     for result in results:
         if result.collider == find_node('area'):
             hovered = true
     return hovered
 
+func modern_is_hovered():
+    var mouse = get_global_mouse_position()
+    var half_extents = $area/collision.shape.get_extents()
+    return mouse.x > position.x - half_extents.x and mouse.y > position.y - half_extents.y and mouse.x < position.x + half_extents.x and mouse.y < position.y + half_extents.y
+    
 func text_fn__deal_x_damage():
     return 'Deal %d Damage. (hold to power up)' % effect_store.charges
 func text_fn__plus_x_plus_x():
@@ -1364,3 +1371,10 @@ func die():
         exec_deathrottle(removed_from)
     queue_free()
     
+
+func _on_Area2D_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_Area2D_mouse_exited():
+	pass # Replace with function body.

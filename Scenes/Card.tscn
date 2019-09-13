@@ -10,458 +10,212 @@
 [ext_resource path="res://Sprites/card_template/circle_bg.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 64, 64 )
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 18
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 5 )
-_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
-
-size = 16
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
-
 size = 18
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 5 )
-_sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Card" type="Node2D" index="0"]
-
+[node name="Card" type="Node2D"]
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="area" type="Area2D" parent="." index="0"]
+[node name="area" type="Area2D" parent="."]
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="collision" type="CollisionShape2D" parent="area" index="0"]
-
+[node name="collision" type="CollisionShape2D" parent="area"]
 shape = SubResource( 1 )
 
-[node name="image_holder" type="Node2D" parent="." index="1"]
+[node name="image_holder" type="Node2D" parent="."]
 
-_sections_unfolded = [ "Transform" ]
-
-[node name="image" type="Sprite" parent="image_holder" index="0"]
-
+[node name="image" type="Sprite" parent="image_holder"]
 scale = Vector2( 0.055, 0.055 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 500, 2281, 2281 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="ColorRect" type="ColorRect" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -60.0
 margin_top = -9.0
 margin_right = 59.0
 margin_bottom = 59.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.917969, 0.831853, 0.709991, 0.475137 )
 
-[node name="frame" type="NinePatchRect" parent="." index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="frame" type="NinePatchRect" parent="."]
 margin_left = -65.0
 margin_top = -64.0
 margin_right = 451.0
 margin_bottom = 448.0
 rect_scale = Vector2( 0.25, 0.25 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 patch_margin_left = 24
 patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
-_sections_unfolded = [ "Patch Margin", "Rect" ]
 
-[node name="title" type="Node2D" parent="." index="4"]
-
+[node name="title" type="Node2D" parent="."]
 editor/display_folded = true
 position = Vector2( 0, -7.54706 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="background" type="Sprite" parent="title" index="0"]
-
+[node name="background" type="Sprite" parent="title"]
 position = Vector2( -0.602501, -40.5029 )
 scale = Vector2( 0.335553, 0.371359 )
 texture = ExtResource( 4 )
 
-[node name="name" type="Label" parent="title" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="name" type="Label" parent="title"]
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_left = -64.0
 margin_top = -60.0
-margin_right = -2.0
+margin_right = 62.0
 margin_bottom = -35.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+grow_horizontal = 2
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Fireball"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="text" type="Label" parent="." index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="text" type="Label" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_left = -62.0
 margin_top = -14.0
-margin_right = -2.0
+margin_right = 61.0
 margin_bottom = 66.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Deal 2 damage to target familiar."
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="health" type="Node2D" parent="." index="6"]
-
+[node name="health" type="Node2D" parent="."]
 editor/display_folded = true
 position = Vector2( 54.5, 52.1638 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="heart" type="Sprite" parent="health" index="0"]
-
+[node name="heart" type="Sprite" parent="health"]
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 6 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="hp" type="Label" parent="health" index="1"]
-
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
+[node name="hp" type="Label" parent="health"]
 anchor_bottom = 1.0
 margin_left = -16.0
-margin_top = -81.0
+margin_top = -16.0
 margin_right = 17.0
-margin_bottom = -47.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+margin_bottom = 18.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Margin", "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="attack" type="Node2D" parent="." index="7"]
-
+[node name="attack" type="Node2D" parent="."]
 editor/display_folded = true
 position = Vector2( -54, 53.1638 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="sword" type="Sprite" parent="attack" index="0"]
-
-rotation = 4.99107e-05
+[node name="sword" type="Sprite" parent="attack"]
+rotation = 4.99107e-005
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 7 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="bg" type="Sprite" parent="attack" index="1"]
-
+[node name="bg" type="Sprite" parent="attack"]
 scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 8 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="at" type="Label" parent="attack" index="2"]
-
-anchor_left = 0.0
+[node name="at" type="Label" parent="attack"]
 anchor_top = 1.0
-anchor_right = 0.0
 anchor_bottom = 1.0
 margin_left = -15.0
-margin_top = -81.0
+margin_top = -17.0
 margin_right = 14.0
-margin_bottom = -47.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+margin_bottom = 17.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="pos_tween" type="Tween" parent="." index="8"]
+[node name="pos_tween" type="Tween" parent="."]
 
-repeat = false
-playback_process_mode = 1
-playback_speed = 1.0
-playback/active = false
-playback/repeat = false
-playback/speed = 1.0
-
-[node name="timers" type="Node2D" parent="." index="9"]
-
+[node name="timers" type="Node2D" parent="."]
 position = Vector2( -90, 0 )
 
-[node name="mechanics_hint" type="Node2D" parent="." index="10"]
-
+[node name="mechanics_hint" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 84.0639, -60.2972 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="mechanics_container" type="PanelContainer" parent="mechanics_hint" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="mechanics_container" type="PanelContainer" parent="mechanics_hint"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 247.0
 margin_bottom = 70.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="mechanics_panel" type="Panel" parent="mechanics_hint/mechanics_container" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="mechanics_panel" type="Panel" parent="mechanics_hint/mechanics_container"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 304.0
 margin_bottom = 127.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 
-[node name="mechanics_vbox" type="VBoxContainer" parent="mechanics_hint/mechanics_container/mechanics_panel" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="mechanics_vbox" type="VBoxContainer" parent="mechanics_hint/mechanics_container/mechanics_panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-_sections_unfolded = [ "Rect" ]
 
-[node name="Label" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox"]
 margin_right = 297.0
 margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Shiv: A Sorcery dealing 2 damage."
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="Label2" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label2" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox"]
 margin_top = 18.0
 margin_right = 297.0
 margin_bottom = 49.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Battlecry: The effect trigger when you play this card from your hand."
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="Label3" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label3" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox"]
 margin_top = 53.0
 margin_right = 297.0
 margin_bottom = 84.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Deathrottle: Do something when this familiar dies."
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="Label4" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label4" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox"]
 margin_top = 88.0
 margin_right = 297.0
 margin_bottom = 102.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Do even more"
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="Label5" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label5" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox"]
 margin_top = 106.0
 margin_right = 297.0
 margin_bottom = 120.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Yet Another Text"
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="Label6" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label6" type="Label" parent="mechanics_hint/mechanics_container/mechanics_panel/mechanics_vbox"]
 margin_top = 124.0
 margin_right = 297.0
 margin_bottom = 138.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 text = "Breaking the Layout!"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [connection signal="mouse_entered" from="area" to="." method="_on_Area2D_mouse_entered"]
-
 [connection signal="mouse_exited" from="area" to="." method="_on_Area2D_mouse_exited"]
-
-

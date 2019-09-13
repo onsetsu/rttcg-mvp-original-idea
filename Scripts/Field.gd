@@ -22,15 +22,20 @@ func is_empty():
     return type == 'familiar' && card == null
 
 func is_hovered():
-    update_area()
-    var hovered = false
-    var space = get_world_2d().get_direct_space_state()
-    var results = space.intersect_point(get_global_mouse_position())
-    for result in results:
-        if result.collider == find_node('area'):
-            hovered = true
-    return hovered
+    return modern_is_hovered()
+#    update_area()
+#    var hovered = false
+#    var space = get_world_2d().get_direct_space_state()
+#    var results = space.intersect_point(get_global_mouse_position())
+#    for result in results:
+#        if result.collider == find_node('area'):
+#            hovered = true
+#    return hovered
 
+func modern_is_hovered():
+    var mouse = get_global_mouse_position()
+    return mouse.x > margin_left and mouse.y > margin_top and mouse.x < margin_right and mouse.y < margin_bottom
+    
 func update_area():
     var coll = $area/collision
     coll.position = rect_size / 2

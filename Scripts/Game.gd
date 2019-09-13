@@ -186,7 +186,7 @@ func in_wait_to_approaching_enemy_card(card):
     card.remove_from_group("in_wait")
     card.add_to_group("approaching")
     
-    card.start_timer(5, "play_enemy_card", "play")
+    card.start_timer(5.0, "play_enemy_card", "play")
 
 func create_approaching_card_enemy():
     var approaching_card = ensure_in_wait_card_enemy()

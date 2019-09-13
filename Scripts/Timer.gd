@@ -3,8 +3,8 @@ extends Node2D
 onready var Lobby = get_tree().get_root().get_node('Lobby')
 
 var countdown = false
-var current_time = 0
-var target_time = 1
+var current_time = 0.0
+var target_time = 1.0
 var running = false
 signal reach_target_time
 
@@ -41,9 +41,9 @@ func _process(delta):
 # TODO: down ignored for now
 func init(action_name, target_time_, signal_receiver, signal_message):
     $name.text = action_name
-    current_time = 0
+    current_time = 0.0
     target_time = target_time_
-    $gauge.min_value = 0
+    $gauge.min_value = 0.0
     $gauge.max_value = target_time
 
     s_receiver = signal_receiver
@@ -80,4 +80,4 @@ func stop():
     running = false
     
 func reset():
-    current_time = 0
+    current_time = 0.0

@@ -8,109 +8,55 @@
 [ext_resource path="res://Scenes/Deck.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 11
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 34
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 2 )
 
-[node name="Game" type="Node" index="0"]
-
+[node name="Game" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="Mockups & Placement" type="Node" parent="." index="0"]
+[node name="Mockups & Placement" type="Node" parent="."]
 
-[node name="Anschluss" type="ColorRect" parent="Mockups & Placement" index="0"]
-
+[node name="Anschluss" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 430.0
 margin_right = 183.0
 margin_bottom = 600.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.0604095, 0.417969, 0.200081, 1 )
-_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Anschluss" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="Mockups & Placement/Anschluss"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Anschluss"
 align = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Player Hand" type="ColorRect" parent="Mockups & Placement" index="1"]
-
+[node name="Player Hand" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 210.0
 margin_top = 450.0
 margin_right = 1030.0
 margin_bottom = 600.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.0604095, 0.417969, 0.200081, 1 )
-_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Player Hand" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="Mockups & Placement/Player Hand"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -118,46 +64,22 @@ text = "Player Hand"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Player Field" type="ColorRect" parent="Mockups & Placement" index="2"]
-
+[node name="Player Field" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 190.0
 margin_top = 230.0
 margin_right = 820.0
 margin_bottom = 430.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.0604095, 0.417969, 0.200081, 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Player Field" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="Mockups & Placement/Player Field"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -165,46 +87,22 @@ text = "Player Field"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement" index="3"]
-
+[node name="Enemy Field" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 190.0
 margin_top = 10.0
 margin_right = 820.0
 margin_bottom = 210.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.0604095, 0.417969, 0.200081, 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Enemy Field" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="Mockups & Placement/Enemy Field"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -212,46 +110,21 @@ text = "Enemy Field"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Left Lane" type="ColorRect" parent="Mockups & Placement" index="4"]
-
+[node name="Left Lane" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 225.0
 margin_top = 20.0
 margin_right = 365.0
 margin_bottom = 420.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.381654, 0.417969, 0.0604095, 1 )
-_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Left Lane" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="Mockups & Placement/Left Lane"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -259,46 +132,21 @@ text = "Left Lane"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Middle Lane" type="ColorRect" parent="Mockups & Placement" index="5"]
-
+[node name="Middle Lane" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 435.0
 margin_top = 20.0
 margin_right = 575.0
 margin_bottom = 420.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.381654, 0.417969, 0.0604095, 1 )
-_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Middle Lane" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="Mockups & Placement/Middle Lane"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -306,46 +154,21 @@ text = "Middle Lane"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Right Lane" type="ColorRect" parent="Mockups & Placement" index="6"]
-
+[node name="Right Lane" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 645.0
 margin_top = 20.0
 margin_right = 785.0
 margin_bottom = 420.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.381654, 0.417969, 0.0604095, 1 )
-_sections_unfolded = [ "Rect" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Mockups & Placement/Right Lane" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="Mockups & Placement/Right Lane"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -353,28 +176,14 @@ text = "Right Lane"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="player_approaching_label" type="Label" parent="." index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="player_approaching_label" type="Label" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_left = 845.0
 margin_top = 435.0
 margin_right = -59.0
 margin_bottom = 449.0
 rect_rotation = -90.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -382,28 +191,14 @@ text = "Approaching"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="enemy_approaching_label2" type="Label" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="enemy_approaching_label2" type="Label" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_left = 845.0
 margin_top = 274.0
 margin_right = -59.0
 margin_bottom = 288.0
 rect_rotation = -90.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -411,258 +206,140 @@ text = "Approaching"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="." index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
 margin_left = 45.0
 margin_top = 460.0
 margin_right = 173.0
 margin_bottom = 588.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="back_enemy_approaching" type="NinePatchRect" parent="." index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="back_enemy_approaching" type="NinePatchRect" parent="."]
 margin_left = 860.0
 margin_top = 150.0
 margin_right = 988.0
 margin_bottom = 278.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="enemy_left_backdrop" type="NinePatchRect" parent="." index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="enemy_left_backdrop" type="NinePatchRect" parent="."]
 margin_left = 231.0
 margin_top = 76.0
 margin_right = 359.0
 margin_bottom = 204.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="enemy_middle_backdrop" type="NinePatchRect" parent="." index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="enemy_middle_backdrop" type="NinePatchRect" parent="."]
 margin_left = 441.0
 margin_top = 76.0
 margin_right = 569.0
 margin_bottom = 204.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="enemy_right_backdrop" type="NinePatchRect" parent="." index="7"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="enemy_right_backdrop" type="NinePatchRect" parent="."]
 margin_left = 651.0
 margin_top = 76.0
 margin_right = 779.0
 margin_bottom = 204.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="player_left_backdrop" type="NinePatchRect" parent="." index="8"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="player_left_backdrop" type="NinePatchRect" parent="."]
 margin_left = 231.0
 margin_top = 236.0
 margin_right = 359.0
 margin_bottom = 364.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="player_middle_backdrop" type="NinePatchRect" parent="." index="9"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="player_middle_backdrop" type="NinePatchRect" parent="."]
 margin_left = 441.0
 margin_top = 236.0
 margin_right = 569.0
 margin_bottom = 364.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="player_right_backdrop" type="NinePatchRect" parent="." index="10"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="player_right_backdrop" type="NinePatchRect" parent="."]
 margin_left = 651.0
 margin_top = 236.0
 margin_right = 779.0
 margin_bottom = 364.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
 region_rect = Rect2( 576, 0, 192, 192 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-_sections_unfolded = [ "Rect" ]
 
-[node name="towers" type="Node2D" parent="." index="11"]
-
+[node name="towers" type="Node2D" parent="."]
 editor/display_folded = true
-_sections_unfolded = [ "Transform" ]
 
-[node name="tower_left_ally" parent="towers" index="0" instance=ExtResource( 4 )]
-
+[node name="tower_left_ally" parent="towers" instance=ExtResource( 4 )]
 position = Vector2( 295, 405 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="tower_middle_ally" parent="towers" index="1" instance=ExtResource( 4 )]
-
+[node name="tower_middle_ally" parent="towers" instance=ExtResource( 4 )]
 position = Vector2( 505, 405 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="tower_right_ally" parent="towers" index="2" instance=ExtResource( 4 )]
-
+[node name="tower_right_ally" parent="towers" instance=ExtResource( 4 )]
 position = Vector2( 715, 405 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="tower_left_enemy" parent="towers" index="3" instance=ExtResource( 4 )]
-
+[node name="tower_left_enemy" parent="towers" instance=ExtResource( 4 )]
 position = Vector2( 295, 35 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="tower_middle_enemy" parent="towers" index="4" instance=ExtResource( 4 )]
-
+[node name="tower_middle_enemy" parent="towers" instance=ExtResource( 4 )]
 position = Vector2( 505, 35 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="tower_right_enemy" parent="towers" index="5" instance=ExtResource( 4 )]
-
+[node name="tower_right_enemy" parent="towers" instance=ExtResource( 4 )]
 position = Vector2( 715, 35 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="field" type="Node2D" parent="." index="12"]
+[node name="field" type="Node2D" parent="."]
 
-[node name="field_left_enemy_tower" parent="field" index="0" instance=ExtResource( 5 )]
-
+[node name="field_left_enemy_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_top = 10.0
 margin_right = 400.0
 margin_bottom = 60.0
-_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 
-[node name="field_left_enemy_familiar" parent="field" index="1" instance=ExtResource( 5 )]
-
+[node name="field_left_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_top = 60.0
 margin_right = 400.0
 margin_bottom = 220.0
 type = "familiar"
 
-[node name="field_left_ally_familiar" parent="field" index="2" instance=ExtResource( 5 )]
-
+[node name="field_left_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_top = 220.0
 margin_right = 400.0
@@ -670,25 +347,21 @@ margin_bottom = 380.0
 side = "friendly"
 type = "familiar"
 
-[node name="field_left_ally_tower" parent="field" index="3" instance=ExtResource( 5 )]
-
+[node name="field_left_ally_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_top = 380.0
 margin_right = 400.0
 margin_bottom = 430.0
 side = "friendly"
 
-[node name="field_middle_enemy_tower" parent="field" index="4" instance=ExtResource( 5 )]
-
+[node name="field_middle_enemy_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
 margin_top = 10.0
 margin_right = 610.0
 margin_bottom = 60.0
-_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 lane = "middle"
 
-[node name="field_middle_enemy_familiar" parent="field" index="5" instance=ExtResource( 5 )]
-
+[node name="field_middle_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
 margin_top = 60.0
 margin_right = 610.0
@@ -696,8 +369,7 @@ margin_bottom = 220.0
 lane = "middle"
 type = "familiar"
 
-[node name="field_middle_ally_familiar" parent="field" index="6" instance=ExtResource( 5 )]
-
+[node name="field_middle_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
 margin_top = 220.0
 margin_right = 610.0
@@ -706,8 +378,7 @@ lane = "middle"
 side = "friendly"
 type = "familiar"
 
-[node name="field_middle_ally_tower" parent="field" index="7" instance=ExtResource( 5 )]
-
+[node name="field_middle_ally_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
 margin_top = 380.0
 margin_right = 610.0
@@ -715,17 +386,14 @@ margin_bottom = 430.0
 lane = "middle"
 side = "friendly"
 
-[node name="field_right_enemy_tower" parent="field" index="8" instance=ExtResource( 5 )]
-
+[node name="field_right_enemy_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
 margin_top = 10.0
 margin_right = 820.0
 margin_bottom = 60.0
-_sections_unfolded = [ "Axis Stretch", "Focus", "Hint", "Patch Margin", "Rect", "Size Flags", "Theme" ]
 lane = "right"
 
-[node name="field_right_enemy_familiar" parent="field" index="9" instance=ExtResource( 5 )]
-
+[node name="field_right_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
 margin_top = 60.0
 margin_right = 820.0
@@ -733,8 +401,7 @@ margin_bottom = 220.0
 lane = "right"
 type = "familiar"
 
-[node name="field_right_ally_familiar" parent="field" index="10" instance=ExtResource( 5 )]
-
+[node name="field_right_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
 margin_top = 220.0
 margin_right = 820.0
@@ -743,8 +410,7 @@ lane = "right"
 side = "friendly"
 type = "familiar"
 
-[node name="field_right_ally_tower" parent="field" index="11" instance=ExtResource( 5 )]
-
+[node name="field_right_ally_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
 margin_top = 380.0
 margin_right = 820.0
@@ -752,163 +418,65 @@ margin_bottom = 430.0
 lane = "right"
 side = "friendly"
 
-[node name="player_deck" parent="." index="13" instance=ExtResource( 6 )]
-
+[node name="player_deck" parent="." instance=ExtResource( 6 )]
 position = Vector2( 924, 374 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="enemy_deck" parent="." index="14" instance=ExtResource( 6 )]
-
+[node name="enemy_deck" parent="." instance=ExtResource( 6 )]
 position = Vector2( 924, 74 )
-_sections_unfolded = [ "Transform" ]
 side = "enemy"
 
-[node name="win-lose-box" type="PanelContainer" parent="." index="15"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="win-lose-box" type="PanelContainer" parent="."]
 margin_top = 40.0
 margin_right = 190.0
 margin_bottom = 120.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="win-lose-box" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxContainer" type="VBoxContainer" parent="win-lose-box"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 183.0
 margin_bottom = 73.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
-[node name="message" type="Label" parent="win-lose-box/VBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="message" type="Label" parent="win-lose-box/VBoxContainer"]
 margin_right = 176.0
 margin_bottom = 42.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.802696, 0.808594, 0.0536957, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "You Win!"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="return-button" type="Button" parent="win-lose-box/VBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="return-button" type="Button" parent="win-lose-box/VBoxContainer"]
 margin_top = 46.0
 margin_right = 176.0
 margin_bottom = 66.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Return to Menu."
-flat = false
-align = 1
 
-[node name="cards" type="Node" parent="." index="16"]
+[node name="cards" type="Node" parent="."]
 
-[node name="pause_container" type="PanelContainer" parent="." index="17"]
-
+[node name="pause_container" type="PanelContainer" parent="."]
 editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 560.0
 margin_right = 240.0
 margin_bottom = 600.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Panel" type="Panel" parent="pause_container" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Panel" type="Panel" parent="pause_container"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 233.0
 margin_bottom = 33.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
 
-[node name="Label" type="Label" parent="pause_container/Panel" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Label" type="Label" parent="pause_container/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
 size_flags_vertical = 1
 text = "Game paused (Space to resume)"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Grow Direction", "Size Flags" ]
 
-[node name="elements" type="Node" parent="." index="18"]
+[node name="elements" type="Node" parent="."]
 
-[node name="effects" type="Node" parent="." index="19"]
-
+[node name="effects" type="Node" parent="."]
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
-
-
