@@ -76,6 +76,13 @@ margin_right = 684.0
 margin_bottom = 560.0
 text = "Play!"
 
+[node name="test_card_reward" type="Button" parent="menu"]
+margin_left = 396.209
+margin_top = 570.893
+margin_right = 632.209
+margin_bottom = 590.893
+text = "Test Card Reward"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="menu"]
 margin_left = 140.0
 margin_top = 510.0
@@ -188,6 +195,7 @@ margin_right = 256.0
 margin_bottom = 15.0
 text = "* speed"
 [connection signal="pressed" from="menu/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="menu/test_card_reward" to="." method="_on_test_card_reward_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/RookieParty" to="." method="_on_RookieParty_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/LordsOfTheArena" to="." method="_on_LordsOfTheArena_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/HBoxContainer/LoadCustomPlayer" to="." method="_on_LoadCustomPlayer_pressed"]

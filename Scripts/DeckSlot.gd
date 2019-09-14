@@ -2,7 +2,7 @@ extends PanelContainer
 
 var card_scene = preload("res://Scenes/Card.tscn")
 var card
-var card_name
+var card_name # TODO: actually, this is the card key
 var num_copies = 0
 
 func _ready():

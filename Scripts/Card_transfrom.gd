@@ -6,6 +6,7 @@ var mouseIn = false
 var isDragging = false
 
 var deck = 'player'
+var generated = false
 
 var key = 'Flamekin'
 var card_name = 'Flamekin'

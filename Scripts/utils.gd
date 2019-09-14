@@ -68,6 +68,16 @@ func pluck(array, prop):
         result.append(item[prop])
     return result
 
+func find_props(array, props):
+    for item in array:
+        var should_append = true
+        for key in props:
+            if props[key] != item[key]:
+                should_append = false
+        if should_append:
+            return item
+    return
+
 func filter_props(array, props):
     var result = []
     for item in array:

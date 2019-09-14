@@ -5,6 +5,7 @@ var card_images_scene = preload("res://Scenes/CardImages.tscn")
 onready var card_images = card_images_scene.instance()
 var game_scene = preload("res://Scenes/Game.tscn")
 var deck_slot_scene = preload("res://Scenes/DeckSlot.tscn")
+var card_reward_scene = preload("res://Scenes/CardReward.tscn")
 
 var speed_up = 0.8
 var speed_pause_modifier = 1.0
@@ -92,6 +93,14 @@ func dict_to_grid(dict, type):
 
 func dict_for_type(type):
     return grid_to_dict(grid_for_type(type))
+
+func inc_amount_in_grid(key):
+    var grid = grid_for_type('player')
+    var slot = utils.find_props(grid.get_children(), { card_name = key })
+    if slot:
+        slot.num_copies += 1
+    else:
+        print('did not find the card [' + key + ']. Could not increment.')
 
 func grid_to_dict(grid):
     var dict = {}
@@ -275,3 +284,15 @@ func _on_LoadCustomEnemy_pressed():
 func _on_SaveCustomEnemy_pressed():
     save_deck(file_name_deck_enemy_custom(), dict_for_type('enemy'))
     sort_grid('enemy')
+
+
+func _on_test_card_reward_pressed():
+    var root = get_tree().get_root()
+    var card_reward = card_reward_scene.instance()
+    root.add_child(card_reward)
+    $menu.hide()
+
+func return_from_card_reward():
+    var root = get_tree().get_root()
+    root.remove_child(root.get_node('CardReward'))
+    $menu.show()

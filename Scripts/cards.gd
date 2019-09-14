@@ -60,6 +60,8 @@ func SplittingOoze(card):
     card.deathrottle = 'deathrottle__split_into_2_4s'
 
 func Ooze(card):
+    card.generated = true
+    
     card.key = 'Ooze'
     card.card_name = 'Ooze'
     card.text = ''
@@ -95,6 +97,8 @@ func AsuraPriest(card):
     card.combo = 'combo__create_a_shiv'
 
 func Shiv(card):
+    card.generated = true
+    
     card.key = 'Shiv'
     card.card_name = 'Shiv'
     card.text = 'Deal 2 damage.'
@@ -308,6 +312,8 @@ func TheShepherd(card):
     card.battlecry = 'battlecry__fill_board_with_sheeps'
 
 func Sheep(card):
+    card.generated = true
+    
     card.key = 'Sheep'
     card.card_name = 'Sheep'
     card.text = 'Deathrottle: Deal 2 Damage to opposing side.'
@@ -326,6 +332,8 @@ func Phoenix(card):
     card.deathrottle = 'deathrottle__great_phoenix'
 
 func GreatPhoenix(card):
+    card.generated = true
+    
     card.key = 'GreatPhoenix'
     card.card_name = 'Great Phoenix'
     card.text = 'Deathrottle: Return to your hand as 8/8.'
@@ -335,6 +343,8 @@ func GreatPhoenix(card):
     card.deathrottle = 'deathrottle__blazing_phoenix'
 
 func BlazingPhoenix(card):
+    card.generated = true
+    
     card.key = 'BlazingPhoenix'
     card.card_name = 'Blazing Phoenix'
     card.text = 'Battlecry: Deal 8 Damage to opposing side.'
@@ -569,6 +579,8 @@ func Sapling(card):
     card.whenever = { add_to_hand = 'in_hand__delay_10_transform__to_treant'}
 
 func Treant(card):
+    card.generated = true
+    
     card.key = 'Treant'
     card.card_name = 'Treant'
     card.text = ''
@@ -702,6 +714,8 @@ func Djinn(card):
     card.deathrottle ='deathrottle__if_no_lamp_create_a_lamp'
 
 func Lamp(card):
+    card.generated = true
+    
     card.key = 'Lamp'
     card.card_name = 'Lamp'
     card.text = 'Charge 3: Create a Djinn.'
@@ -729,7 +743,7 @@ func Defile(card):
 
 func WarChant(card):
     card.key = 'WarChant'
-    card.card_name = 'WarChant'
+    card.card_name = 'War Chant'
     card.text = 'For 6 seconds: Familiars you play gain +1/+1.'
     card.type = 'sorcery'
     card.targeting = 'targets_not_required'
@@ -780,6 +794,8 @@ func ShadeArmor(card):
     card.effect = 'sorcery__transform_into_fafnir_knight'
 
 func BlackKnight(card):
+    card.generated = true
+    
     card.key = 'BlackKnight'
     card.card_name = 'Black Knight'
     card.text = 'Deathrottle: Resummon transformed familiar.'
@@ -800,6 +816,8 @@ func Reiterate(card):
     card.whenever = { play_card = 'active_enchantment__draw_1_if_played_a_sorcery'}
 
 func Shield(card):
+    card.generated = true
+    
     card.key = 'Shield'
     card.card_name = 'Shield'
     card.text = 'Give a Familiar +1/+4, or summon a 1/4 Plate Shield.'
@@ -808,6 +826,8 @@ func Shield(card):
     card.effect = 'sorcery__plus_1_plus_4_or_summon_a_1_4'
 
 func PlateShield(card):
+    card.generated = true
+    
     card.key = 'PlateShield'
     card.card_name = 'Plate Shield'
     card.text = 'Doesn\'t attack.'
@@ -854,6 +874,8 @@ func ShieldFormOoze(card):
     card.ignition = 'ignition__become_sword_form'
 
 func SwordFormOoze(card):
+    card.generated = true
+    
     card.key = 'SwordFormOoze'
     card.card_name = 'Sword-Form Ooze'
     card.text = 'Click to become a 1/3 Shield-Form.'
@@ -891,7 +913,7 @@ func Concentrate(card):
 
 func TheMaw(card):
     card.key = 'TheMaw'
-    card.card_name = 'TheMaw'
+    card.card_name = 'The Maw'
     card.text = 'Battlecry: Discard your hand. Gain +1/+1 for each card. Deathrottle: Return discarded cards.'
     card.type = 'familiar'
     card.at = 1
@@ -1239,6 +1261,8 @@ func MiningBot(card):
 # should they deal damage on deathrottle, too?
 # -> explode in 4 seconds. Deathrottle: deal 6 in lane.
 func ExplosiveMine(card):
+    card.generated = true
+    
     card.deck = 'enemy'
     
     card.key = 'ExplosiveMine'
@@ -1327,6 +1351,8 @@ func Slime4(card):
     card.deathrottle = 'deathrottle__summon_2_2_2_slimes'
 
 func Slime2(card):
+    card.generated = true
+    
     card.deck = 'enemy'
     
     card.key = 'Slime2'
@@ -1338,6 +1364,8 @@ func Slime2(card):
     card.deathrottle = 'deathrottle__summon_2_1_1_slimes'
 
 func Slime1(card):
+    card.generated = true
+    
     card.deck = 'enemy'
     
     card.key = 'Slime1'
