@@ -41,23 +41,23 @@ func Adventurer(card):
     card.at = 2
     card.hp = 3
 
-func Anafenza(card):
-    card.key = 'Anafenza'
-    card.card_name = 'Anafenza'
+func LineBreaker(card):
+    card.key = 'LineBreaker'
+    card.card_name = 'LineBreaker'
     card.text = 'Attacks immediately.'
     card.type = 'familiar'
-    card.at = 5
-    card.hp = 3
+    card.at = 4
+    card.hp = 2
     card.battlecry = 'battlecry__attack_immediately'
 
 func SplittingOoze(card):
     card.key = 'SplittingOoze'
     card.card_name = 'Splitting Ooze'
-    card.text = 'Deathrottle: Summon a 2/4 Ooze. Add one to your hand.'
+    card.text = 'Deathrottle: Summon a 1/2 Ooze. Add one to your hand.'
     card.type = 'familiar'
-    card.at = 4
-    card.hp = 8
-    card.deathrottle = 'deathrottle__split_into_2_4s'
+    card.at = 2
+    card.hp = 4
+    card.deathrottle = 'deathrottle__split_into_1_2s'
 
 func Ooze(card):
     card.generated = true
@@ -66,8 +66,8 @@ func Ooze(card):
     card.card_name = 'Ooze'
     card.text = ''
     card.type = 'familiar'
-    card.at = 2
-    card.hp = 4
+    card.at = 1
+    card.hp = 2
 
 func BladeDance(card):
     card.key = 'BladeDance'
@@ -151,7 +151,7 @@ func MoonRabbit(card):
     card.text = 'Combo: Add a Moon Rabbit to your hand.'
     card.type = 'familiar'
     card.at = 1
-    card.hp = 3
+    card.hp = 1
     card.combo = 'combo__copy_to_hand'
 
 func Bard(card):
@@ -209,10 +209,10 @@ func Fireball(card):
 func MeteorStrike(card):
     card.key = 'MeteorStrike'
     card.card_name = 'Meteor Strike'
-    card.text = 'Deal 5 Damage to all enemy familiars.'
+    card.text = 'Deal 4 Damage to all enemy familiars.'
     card.type = 'sorcery'
     card.targeting = 'targets_not_required'
-    card.effect = 'deal_5_all_enemy_familiars'
+    card.effect = 'deal_4_all_enemy_familiars'
 
 func IceWall(card):
     card.key = 'IceWall'
@@ -234,10 +234,10 @@ func PowerPotion(card):
 func Raid(card):
     card.key = 'Raid'
     card.card_name = 'Raid'
-    card.text = 'Target Familiar gets +1/+1 and attacks.'
+    card.text = 'Target Familiar gets +2/+2 and attacks.'
     card.type = 'sorcery'
     card.targeting = 'targets_familiar'
-    card.effect = 'plus_1_plus_1_then_attack'
+    card.effect = 'plus_2_plus_2_then_attack'
 
 func GoblinLooter(card):
     card.key = 'GoblinLooter'
@@ -305,10 +305,10 @@ func FlashForward(card):
 func TheShepherd(card):
     card.key = 'TheShepherd'
     card.card_name = 'The Shepherd'
-    card.text = 'Battlecry: Fill your board with exploding 2/2 Sheeps.'
+    card.text = 'Battlecry: Fill your board with exploding 1/1 Sheeps.'
     card.type = 'familiar'
-    card.at = 4
-    card.hp = 5
+    card.at = 1
+    card.hp = 3
     card.battlecry = 'battlecry__fill_board_with_sheeps'
 
 func Sheep(card):
@@ -316,42 +316,34 @@ func Sheep(card):
     
     card.key = 'Sheep'
     card.card_name = 'Sheep'
-    card.text = 'Deathrottle: Deal 2 Damage to opposing side.'
+    card.text = 'Deathrottle: Deal 1 Damage to opposing side.'
     card.type = 'familiar'
-    card.at = 2
-    card.hp = 2
-    card.deathrottle = 'deathrottle__deal_2_in_lane'
+    card.at = 1
+    card.hp = 1
+    card.deathrottle = 'deathrottle__deal_1_in_lane'
 
 func Phoenix(card):
     card.key = 'Phoenix'
     card.card_name = 'Phoenix'
-    card.text = 'Deathrottle: Return to your hand as 6/6.'
+    card.text = 'Deathrottle: Return to your hand as a 0/3 Egg.'
     card.type = 'familiar'
     card.at = 4
-    card.hp = 4
+    card.hp = 2
+    card.attacks = true
     card.deathrottle = 'deathrottle__great_phoenix'
 
-func GreatPhoenix(card):
+func EggOfFlames(card):
     card.generated = true
     
-    card.key = 'GreatPhoenix'
-    card.card_name = 'Great Phoenix'
-    card.text = 'Deathrottle: Return to your hand as 8/8.'
+    card.key = 'EggOfFlames'
+    card.card_name = 'Egg of Flames'
+    card.text = 'Doesn\'t attack. In 5 seconds: Becomes a Phoenix.'
     card.type = 'familiar'
-    card.at = 6
-    card.hp = 6
-    card.deathrottle = 'deathrottle__blazing_phoenix'
-
-func BlazingPhoenix(card):
-    card.generated = true
-    
-    card.key = 'BlazingPhoenix'
-    card.card_name = 'Blazing Phoenix'
-    card.text = 'Battlecry: Deal 8 Damage to opposing side.'
-    card.type = 'familiar'
-    card.at = 8
-    card.hp = 8
-    card.battlecry = 'battlecry__deal_8_in_lane'
+    card.at = 0
+    card.hp = 3
+    card.attacks = false
+    # TODO: when transformed by other means, the hatching is still there
+    card.battlecry = 'battlecry__delay_5_become_a_phoenix'
 
 func Scout(card):
     card.key = 'Scout'
@@ -392,7 +384,7 @@ func GiantSlug(card):
     card.card_name = 'Giant Slug'
     card.text = 'Slow.'
     card.type = 'familiar'
-    card.at = 4
+    card.at = 5
     card.hp = 6
     card.slow = true
 
@@ -440,12 +432,12 @@ func Bomber(card):
     card.hp = 5
     card.ignition = 'ignition__deal_2_all_in_lane'
 
-func VolJin(card):
-    card.key = 'VolJin'
-    card.card_name = 'Vol\'Jin'
+func AdaptiveBrawler(card):
+    card.key = 'AdaptiveBrawler'
+    card.card_name = 'Adaptive Brawler'
     card.text = 'Battlecry: Swap HP with opposing familiar.'
     card.type = 'familiar'
-    card.at = 6
+    card.at = 3
     card.hp = 2
     card.battlecry = 'battlecry__swap_hp_opposing_familiar'
     
@@ -486,11 +478,11 @@ func Golem(card):
 func DragonHatchling(card):
     card.key = 'DragonHatchling'
     card.card_name = 'Dragon Hatchling'
-    card.text = 'In 8 seconds: Becomes a 4/4 Dragon.'
+    card.text = 'In 4 seconds: Becomes a 4/4 Dragon.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 3
-    card.battlecry = 'battlecry__delay_8_become_a_dragon'
+    card.battlecry = 'battlecry__delay_4_become_a_dragon'
 
 func Cleric(card):
     card.key = 'Cleric'
@@ -563,20 +555,21 @@ func DoubleShot(card):
 func Catapult(card):
     card.key = 'Catapult'
     card.card_name = 'Catapult'
-    card.text = 'Every 2 seconds: Deal 1 Damage to opposing side.'
+    card.text = 'Doesn\'t attack. Every 2 seconds: Deal 1 Damage to opposing side.'
     card.type = 'familiar'
     card.at = 0
     card.hp = 5
+    card.attacks = false
     card.battlecry = 'battlecry__every_2_deal_1_opposing_side'
 
 func Sapling(card):
     card.key = 'Sapling'
     card.card_name = 'Sapling'
-    card.text = 'Become a 4/6 Treant after 10 seconds in hand.'
+    card.text = 'Become a 4/6 Treant after 8 seconds in hand.'
     card.type = 'familiar'
     card.at = 0
     card.hp = 2
-    card.whenever = { add_to_hand = 'in_hand__delay_10_transform__to_treant'}
+    card.whenever = { add_to_hand = 'in_hand__delay_8_transform__to_treant'}
 
 func Treant(card):
     card.generated = true
@@ -591,10 +584,10 @@ func Treant(card):
 func Poison(card):
     card.key = 'Poison'
     card.card_name = 'Poison'
-    card.text = 'Target familiar takes 1 damage every 2 seconds.'
+    card.text = 'Target familiar takes 1 damage every 1.5 seconds.'
     card.type = 'sorcery'
     card.targeting = 'targets_familiar'
-    card.effect = 'sorcery__deal_1_every_2_seconds'
+    card.effect = 'sorcery__deal_1_every_1_1_2_seconds'
 
 func FlameArrow(card):
     card.key = 'FlameArrow'
@@ -611,7 +604,7 @@ func Carpenter(card):
     card.text = 'Battlecry: Heal 5 HP to guarded Tower.'
     card.type = 'familiar'
     card.at = 3
-    card.hp = 5
+    card.hp = 4
     card.battlecry = 'battlecry__heal_5_guarded_tower'
 
 func LightningBolt(card):
@@ -676,7 +669,7 @@ func SpellEater(card):
     card.text = 'Battlecry: If your opponent\'s approaching card in a sorcery: Gain +3/+3.'
     card.type = 'familiar'
     card.at = 2
-    card.hp = 3
+    card.hp = 2
     card.battlecry ='battlecry__opponents_card_is_sorcery_plus_3_plus_3'
 
 func ShadowWord(card):
@@ -709,7 +702,7 @@ func Djinn(card):
     card.card_name = 'Djinn'
     card.text = 'Deathrottle: If you have no Lamp: Create a Lamp.'
     card.type = 'familiar'
-    card.at = 5
+    card.at = 3
     card.hp = 3
     card.deathrottle ='deathrottle__if_no_lamp_create_a_lamp'
 
@@ -788,7 +781,7 @@ func HealingWave(card):
 func ShadeArmor(card):
     card.key = 'ShadeArmor'
     card.card_name = 'Shade Armor'
-    card.text = 'Transform allied familiar into a 7/5 Black Knight.'
+    card.text = 'Transform allied familiar into a 2/4 Black Knight.'
     card.type = 'sorcery'
     card.targeting = 'targets_friendly_familiar'
     card.effect = 'sorcery__transform_into_fafnir_knight'
@@ -800,8 +793,8 @@ func BlackKnight(card):
     card.card_name = 'Black Knight'
     card.text = 'Deathrottle: Resummon transformed familiar.'
     card.type = 'familiar'
-    card.at = 7
-    card.hp = 5
+    card.at = 2
+    card.hp = 4
     card.attacks = true
     card.effect_damage_modifier = 0
     card.deathrottle ='deathrottle__fafnir_knight_resummon_transformed_familiar'
@@ -820,10 +813,10 @@ func Shield(card):
     
     card.key = 'Shield'
     card.card_name = 'Shield'
-    card.text = 'Give a Familiar +1/+4, or summon a 1/4 Plate Shield.'
+    card.text = 'Give a Familiar +0/+3, or summon a 0/3 Plate Shield.'
     card.type = 'sorcery'
     card.targeting = 'targets_field'
-    card.effect = 'sorcery__plus_1_plus_4_or_summon_a_1_4'
+    card.effect = 'sorcery__plus_0_plus_3_or_summon_a_0_3'
 
 func PlateShield(card):
     card.generated = true
@@ -832,8 +825,8 @@ func PlateShield(card):
     card.card_name = 'Plate Shield'
     card.text = 'Doesn\'t attack.'
     card.type = 'familiar'
-    card.at = 1
-    card.hp = 4
+    card.at = 0
+    card.hp = 3
     card.attacks = false
 
 func ShieldMage(card):
@@ -841,8 +834,8 @@ func ShieldMage(card):
     card.card_name = 'Shield Mage'
     card.text = 'Battlecry and Deathrottle: Create a Shield.'
     card.type = 'familiar'
-    card.at = 2
-    card.hp = 3
+    card.at = 3
+    card.hp = 1
     card.battlecry ='battlecry__create_a_shield'
     card.deathrottle ='deathrottle__create_a_shield'
 
@@ -867,10 +860,10 @@ func Tactician(card):
 func ShieldFormOoze(card):
     card.key = 'ShieldFormOoze'
     card.card_name = 'Shield-Form Ooze'
-    card.text = 'Click to become a 3/1 Sword-Form.'
+    card.text = 'Click to become a 4/1 Sword-Form.'
     card.type = 'familiar'
     card.at = 1
-    card.hp = 3
+    card.hp = 4
     card.ignition = 'ignition__become_sword_form'
 
 func SwordFormOoze(card):
@@ -878,9 +871,9 @@ func SwordFormOoze(card):
     
     card.key = 'SwordFormOoze'
     card.card_name = 'Sword-Form Ooze'
-    card.text = 'Click to become a 1/3 Shield-Form.'
+    card.text = 'Click to become a 1/4 Shield-Form.'
     card.type = 'familiar'
-    card.at = 3
+    card.at = 4
     card.hp = 1
     card.ignition = 'ignition__become_shield_form'
 
@@ -897,7 +890,7 @@ func Arcanist(card):
     card.card_name = 'Arcanist'
     card.text = 'Effect Damage +1.'
     card.type = 'familiar'
-    card.at = 0
+    card.at = 2
     card.hp = 2
     card.effect_damage_modifier = +1
 
@@ -1020,7 +1013,7 @@ func ChargedInsight(card):
     card.effect = 'sorcery__draw_1_card_power_up'
     card.effect_store = {
         charges = 1,
-        power_up_time = 2,
+        power_up_time = 2.5,
         power_up_callback = 'power_up_tick',
         power_up_label = '+1 card'
     }
@@ -1146,10 +1139,10 @@ func ManaSapling(card):
     
     card.key = 'ManaSapling'
     card.card_name = 'Mana Sapling'
-    card.text = 'Whenever a card is played, gain +1/+1.'
+    card.text = 'Whenever player plays a card, gain +1/+1.'
     card.type = 'familiar'
     card.at = 2
-    card.hp = 5
+    card.hp = 4
     card.whenever = { play_card = 'on_field__plus_1_plus_1'}
 
 func Juggernaut(card):
@@ -1203,7 +1196,7 @@ func Saboteur(card):
     card.text = 'Battlecry: Discard leftmost enemy card.'
     card.type = 'familiar'
     card.at = 2
-    card.hp = 6
+    card.hp = 4
     card.battlecry = 'battlecry__opponent_discard_leftmost'
 
 func FlyingBoar(card):
@@ -1311,7 +1304,7 @@ func SpikedWall(card):
     card.deck = 'enemy'
     
     card.key = 'SpikedWall'
-    card.card_name = 'SpikedWall'
+    card.card_name = 'Spiked Wall'
     card.text = 'Doesn\'t attack.'
     card.type = 'familiar'
     card.at = 3
@@ -1396,4 +1389,63 @@ func ScytheCrawler(card):
     card.at = 2
     card.hp = 3
     card.battlecry = 'battlecry__delay_4_plus_2_plus_2'
+
+func Rampart(card):
+    card.deck = 'enemy'
+    
+    card.key = 'Rampart'
+    card.card_name = 'Rampart'
+    card.text = 'Doesn\'t attack.'
+    card.type = 'familiar'
+    card.at = 0
+    card.hp = 7
+    card.attacks = false
+    #card.battlecry = 'battlecry__delay_4_plus_2_plus_2'
+
+func IceWallEnemy(card):
+    card.deck = 'enemy'
+    
+    card.key = 'IceWallEnemy'
+    card.card_name = 'Ice Wall'
+    card.text = 'Doesn\'t attack.'
+    card.type = 'familiar'
+    card.at = 0
+    card.hp = 10
+    card.attacks = false
+    #card.battlecry = 'battlecry__delay_4_plus_2_plus_2'
+
+func WatchTower(card):
+    card.deck = 'enemy'
+    
+    card.key = 'WatchTower'
+    card.card_name = 'Watch Tower'
+    card.text = 'Doesn\'t attack. When opponent plays a card: Shoot 2.'
+    card.type = 'familiar'
+    card.at = 0
+    card.hp = 7
+    card.attacks = false
+    #card.battlecry = 'battlecry__delay_4_plus_2_plus_2'
+    card.whenever = { play_card = 'opponent__shoot_2'}
+
+func AwakeTheWalls(card):
+    card.deck = 'enemy'
+    
+    card.key = 'AwakeTheWalls'
+    card.card_name = 'Awake The Walls'
+    card.text = 'All AIs shoot with their HP.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__ai_familiars_deal_damage_to_opposing_side_equal_to_hp'
+
+func IntoTheVoid(card):
+    card.deck = 'enemy'
+    
+    card.key = 'IntoTheVoid'
+    card.card_name = 'IntoTheVoid'
+    card.text = 'Cannot be damaged. When player plays a card: +1/-1.'
+    card.type = 'familiar'
+    card.at = 0
+    card.hp = 5
+    card.no_damage = true
+    card.whenever = { play_card = 'opponent__plus_1_minus_1'}
 

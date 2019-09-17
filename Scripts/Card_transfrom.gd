@@ -38,6 +38,7 @@ var haste = false
 var slow = false
 
 var attacks = true
+var no_damage = false
 
 var enchantment_duration
 var enchantment_cease_effect
@@ -420,8 +421,8 @@ func exec_whenever(name, arg):
     if whenever.has(name):
         funcref(self, whenever[name]).call_func(arg)
 
-func on_field__plus_1_plus_1(arg):
-    if is_in_group('field'):
+func on_field__plus_1_plus_1(card):
+    if is_in_group('field') && side() == card.side():
         buff(1, 1)
 
 func this__plus_2_plus_0(arg):
@@ -441,9 +442,9 @@ func approaching__deal_2_to_familiar(card):
     if is_approaching() && card.is_familiar() && side() != card.side():
         deal_x_familiar(card, 2)
 
-func in_hand__delay_10_transform__to_treant(card):
+func in_hand__delay_8_transform__to_treant(card):
     if self == card:
-        start_timer(10, 'timed_transform_to_treant', 'grow')
+        start_timer(8, 'timed_transform_to_treant', 'grow')
 func timed_transform_to_treant():
     become('Treant')
 
@@ -470,6 +471,13 @@ func active_enchantment__deal_1_to_all_enemy_familiars(card):
         for familiar in Game.enemy_familiars():
             deal_x_familiar(familiar, 1)
 
+func opponent__shoot_2(card):
+    if is_in_group('field') && side() != card.side():
+        deal_x_in_lane(2)
+
+func opponent__plus_1_minus_1(card):
+    if is_in_group('field') && side() != card.side():
+        buff(1, -1)
 
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
@@ -498,7 +506,7 @@ func sorcery__deal_3_charged_6(target_field):
     else:
         deal_x(target_field, 3)
     
-func deal_5_all_enemy_familiars(target_field):
+func deal_4_all_enemy_familiars(target_field):
     for familiar in Game.enemy_familiars():
         deal_x_familiar(familiar, 5)
 
@@ -508,7 +516,7 @@ func plus_2_plus_2(target_field):
 func plus_3_plus_3(target_field):
     target_field.card.buff(3, 3)
 
-func plus_1_plus_1_then_attack(target_field):
+func plus_2_plus_2_then_attack(target_field):
     var familiar = target_field.card
     familiar.buff(1, 1)
     familiar.attack_immediately()
@@ -586,7 +594,7 @@ func sorcery__deal_3_delay_deal_3(target_field):
 func timed_receive_3_damage():
     receive_damage(3)
 
-func sorcery__deal_1_every_2_seconds(target_field):
+func sorcery__deal_1_every_1_1_2_seconds(target_field):
     target_field.card.add_poison()
 func add_poison():
     start_timer(2, 'timed_poison', 'poison')
@@ -659,11 +667,11 @@ func sorcery__transform_into_fafnir_knight(target_field):
     card.become('BlackKnight')
     card.effect_store['fafnir_knight_transformed_card_key'] = transformed_card_key
 
-func sorcery__plus_1_plus_4_or_summon_a_1_4(target_field):
+func sorcery__plus_0_plus_3_or_summon_a_0_3(target_field):
     if target_field.is_empty():
         create('PlateShield').add_to_field(target_field)
     else:
-        target_field.card.buff(1,4)
+        target_field.card.buff(0,3)
 
 func sorcery__friendly_familiars_deal_damage_to_opposing_side(target_field):
     for familiar in Game.friendly_familiars():
@@ -679,6 +687,10 @@ func sorcery__draw_2_discard_leftmost(target_field):
 
 func sorcery__discard_opponents_approaching_card(target_field):
     Game.ensure_approaching_card_enemy().queue_free()
+
+func sorcery__ai_familiars_deal_damage_to_opposing_side_equal_to_hp(target_field):
+    for familiar in Game.enemy_familiars():
+        familiar.deal_x_in_lane(familiar.hp)
 
 
 # power up cards
@@ -762,9 +774,6 @@ func battlecry__deal_1_in_lane():
 func battlecry__deal_4_in_lane():
     deal_x_in_lane(4)
 
-func battlecry__deal_8_in_lane():
-    deal_x_in_lane(8)
-
 func battlecry__fill_board_with_sheeps():
     fill_your_board_with('Sheep')
 
@@ -790,8 +799,8 @@ func battlecry__deal_2_familiars_in_other_lanes():
         if familiar.field and familiar.field.lane != this_lane:
             deal_x_familiar(familiar, 2)
 
-func battlecry__delay_8_become_a_dragon():
-    start_timer(8, 'timed_become_a_dragon', 'become dragon')
+func battlecry__delay_4_become_a_dragon():
+    start_timer(4, 'timed_become_a_dragon', 'become dragon')
 func timed_become_a_dragon():
     become_a_dragon()
 
@@ -938,6 +947,11 @@ func battlecry__deal_2_to_other_familiars():
         if f != self:
             deal_x_familiar(f, 2)
 
+func battlecry__delay_5_become_a_phoenix():
+    start_timer(5, 'timed_become_a_phoenix', 'hatch')
+func timed_become_a_phoenix():
+    become('Phoenix')
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -946,18 +960,15 @@ func exec_deathrottle(from_field):
         display_hint('deathrottle', Color(1,0,1))
         funcref(self, deathrottle).call_func(from_field)
 
-func deathrottle__split_into_2_4s(from_field):
+func deathrottle__split_into_1_2s(from_field):
     create('Ooze').add_to_field(from_field)
     create('Ooze').add_to_hand()
 
-func deathrottle__deal_2_in_lane(from_field):
+func deathrottle__deal_1_in_lane(from_field):
     deal_x_in_lane(2, from_field)
 
 func deathrottle__great_phoenix(from_field):
-    create('GreatPhoenix').add_to_hand()
-
-func deathrottle__blazing_phoenix(from_field):
-    create('BlazingPhoenix').add_to_hand()
+    create('EggOfFlames').add_to_hand()
 
 func deathrottle__summon_a_skeleton(from_field):
     create('Skeleton').add_to_field(from_field)
@@ -1141,6 +1152,7 @@ func buff(at_improvement, hp_improvement):
     display_hint('+%1d/+%1d' % [at_improvement, hp_improvement], Color(0,1,0))
     at += at_improvement
     hp += hp_improvement
+    check_for_death()
 
 func debuff(at_improvement, hp_improvement):
     display_hint('-%1d/-%1d' % [at_improvement, hp_improvement], Color(0.7,0,0.7))
@@ -1349,9 +1361,12 @@ func attack_that_familiar(familiar):
     receive_damage(familiar.at)
 
 func receive_damage(amount):
-    display_hint(amount, Color(1,0,0))
-    hp -= amount
-    check_for_death()
+    if no_damage:
+        display_hint('immune', Color(1,1,0))
+    else:
+        display_hint(amount, Color(1,0,0))
+        hp -= amount
+        check_for_death()
 
 func attack_that_tower(tower):
     tower.receive_damage(at)
