@@ -139,10 +139,16 @@ margin_right = 193.0
 margin_bottom = 44.0
 text = "Forest Wildlife"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="menu/VBoxContainer2"]
+[node name="EndlessWall" type="Button" parent="menu/VBoxContainer2"]
 margin_top = 48.0
 margin_right = 193.0
 margin_bottom = 68.0
+text = "Endless Wall"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="menu/VBoxContainer2"]
+margin_top = 72.0
+margin_right = 193.0
+margin_bottom = 92.0
 
 [node name="LoadCustomEnemy" type="Button" parent="menu/VBoxContainer2/HBoxContainer"]
 margin_right = 95.0
@@ -203,6 +209,7 @@ text = "* speed"
 [connection signal="pressed" from="menu/VBoxContainer/HBoxContainer/SaveCustomPlayer" to="." method="_on_SaveCustomPlayer_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer2/DarkCultists" to="." method="_on_DarkCultists_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer2/ForestWildlife" to="." method="_on_ForestWildlife_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer2/EndlessWall" to="." method="_on_EndlessWall_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer2/HBoxContainer/LoadCustomEnemy" to="." method="_on_LoadCustomEnemy_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer2/HBoxContainer/SaveCustomEnemy" to="." method="_on_SaveCustomEnemy_pressed"]
 [connection signal="value_changed" from="speed/PanelContainer/HBoxContainer/speed-slider" to="." method="_on_speedslider_value_changed"]

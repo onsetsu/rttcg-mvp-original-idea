@@ -276,6 +276,16 @@ func _on_ForestWildlife_pressed():
     }, 'enemy')
     sort_grid('enemy')
 
+func _on_EndlessWall_pressed():
+    dict_to_grid({
+        "SpikedWall" : 1,
+        'Rampart': 1,
+        'IceWallEnemy': 1,
+        'WatchTower': 1,
+        'AwakeTheWalls': 1
+    }, 'enemy')
+    sort_grid('enemy')
+
 func _on_LoadCustomEnemy_pressed():
     var enemy_deck = load_deck(file_name_deck_enemy_custom())
     dict_to_grid(enemy_deck, 'enemy')
@@ -296,3 +306,4 @@ func return_from_card_reward():
     var root = get_tree().get_root()
     root.remove_child(root.get_node('CardReward'))
     $menu.show()
+
