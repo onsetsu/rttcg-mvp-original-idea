@@ -194,6 +194,7 @@ margin_top = 1.0
 margin_right = 256.0
 margin_bottom = 15.0
 text = "* speed"
+
 [connection signal="pressed" from="menu/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="menu/test_card_reward" to="." method="_on_test_card_reward_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/RookieParty" to="." method="_on_RookieParty_pressed"]
