@@ -48,6 +48,7 @@ var charge_time = -1
 var charge_timer
 
 var effect_store = {}
+var effects = []
 
 var field
 
@@ -754,6 +755,26 @@ func enchantment_cease__deal_5_to_highest_hp_familiars():
         for familiar in utils.filter_prop(familiars, 'hp', highest_hp):
             deal_x_familiar(familiar, 5)
 
+# effect interpreter
+# ---------------------------------------------------------------------------------------------
+
+func process_event(name, args):
+    for effect in effects:
+        if effect.trigger == name:
+            exec_effect(effect.effect)
+
+func exec_effect(effect):
+    match effect[0]:
+        'shoot':
+            deal_x_in_lane(effect[1])
+        'hand_buff_all':
+            for card in Game.cards_in_player_hand():
+                if card.is_familiar():
+                    card.buff(effect[1], effect[2])
+        'battlecry__every_4_minus_1_minus_1':
+            battlecry__every_4_minus_1_minus_1()
+        _:
+            print("UNknown effect type " + effect[0])
 
 # battlecries
 # ---------------------------------------------------------------------------------------------
@@ -761,6 +782,7 @@ func enchantment_cease__deal_5_to_highest_hp_familiars():
 func exec_battlecry():
     if battlecry != null:
         funcref(self, battlecry).call_func()
+    process_event('battlecry', [self])
 
 func battlecry__attack_immediately():
     attack_immediately()
@@ -832,6 +854,12 @@ func timed_draw_1_discard_leftmost():
     Game.discard_leftmost_card()
 
     battlecry__every_4_draw_1_discard_leftmost()
+
+func battlecry__every_4_minus_1_minus_1():
+    start_timer(4, 'timed_minus_1_minus_1', '-1/-1')
+func timed_minus_1_minus_1():
+    debuff(1, 1)
+    battlecry__every_4_minus_1_minus_1()
 
 func battlecry__opponent_discard_leftmost():
     Game.discard_leftmost_card()
