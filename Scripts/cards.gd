@@ -4,7 +4,10 @@ extends Node
 # ================================= CARDS ======================================
 # ==============================================================================
 
+# ---------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
 # Friendly Cards
+# ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
 
 func Duelist(card):
@@ -14,8 +17,11 @@ func Duelist(card):
     card.type = 'familiar'
     card.at = 1
     card.hp = 1
-    card.battlecry = 'battlecry__deal_1_in_lane'
-    
+    card.effects = [{
+        trigger = 'battlecry',
+        effect = ['shoot', 1],
+    }]
+
 func FormOfDragon(card):
     card.key = 'FormOfDragon'
     card.card_name = 'Form of Dragon'
@@ -1072,10 +1078,36 @@ func BattleBot(card):
     card.on_drag_start = 'start_power_up_timer'
     card.on_snap_back = 'snap_back__charge_beast'
     
+func Gardener(card):
+    card.key = 'Gardener'
+    card.card_name = 'Gardener'
+    card.text = 'Battlecry: Familiars in your hand gain +1/+1.'
+    card.type = 'familiar'
+    card.at = 1
+    card.hp = 4
+    card.effects = [{
+        trigger = 'battlecry',
+        effect = ['hand_buff_all', 1, 1],
+    }]
+
+func ForgottenSoul(card):
+    card.key = 'ForgottenSoul'
+    card.card_name = 'Forgotten Soul'
+    card.text = 'Cannot be damaged. Gain -1/-1 every 4 seconds.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 2
+    card.no_damage = true
+    card.effects = [{
+        trigger = 'battlecry',
+        effect = ['battlecry__every_4_minus_1_minus_1'],
+    }]
 
 
-
+# ---------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
 # Enemy Cards
+# ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
 
 func Skeleton(card):
