@@ -320,7 +320,15 @@ func Sheep(card):
     card.type = 'familiar'
     card.at = 1
     card.hp = 1
+    card.targeting = null
+    card.effect = null
+    card.combo = null
+    card.battlecry = null
     card.deathrottle = 'deathrottle__deal_1_in_lane'
+    card.sabotage = null
+    card.attacks = true
+    card.effect_damage_modifier = 0
+    card.whenever = {}
 
 func Phoenix(card):
     card.key = 'Phoenix'
@@ -847,6 +855,15 @@ func SagittariusShot(card):
     card.targeting = 'targets_not_required'
     card.enchantment_duration = 5
     card.enchantment_cease_effect = 'enchantment_cease__deal_5_to_highest_hp_familiars'
+
+func Burst(card):
+    card.key = 'Burst'
+    card.card_name = 'Burst'
+    card.text = 'Create copies of the next 2 sorceries you play.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.enchantment_duration = -1
+    card.whenever = { play_card = 'active_enchantment__twice_copy_own_sorcery'}
 
 func Tactician(card):
     card.key = 'Tactician'
@@ -1449,3 +1466,24 @@ func IntoTheVoid(card):
     card.no_damage = true
     card.whenever = { play_card = 'opponent__plus_1_minus_1'}
 
+func CopyCat(card):
+    card.deck = 'enemy'
+    
+    card.key = 'CopyCat'
+    card.card_name = 'CopyCat'
+    card.text = 'Whenever player plays a familiar: Copy its stats.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 3
+    card.whenever = { play_card = 'opponent__copy_stats'}
+
+func EvilShepherd(card):
+    card.deck = 'enemy'
+    
+    card.key = 'EvilShepherd'
+    card.card_name = 'Evil Shepherd'
+    card.text = 'Whenever player plays a card: Player\' approaching card becomes a Sheep.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 4
+    card.whenever = { play_card = 'opponent__approaching_player_card_becomes_sheep'}

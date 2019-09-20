@@ -122,6 +122,8 @@ func update_appearance():
     if is_familiar():
         $attack/at.text = str(at)
         $health/hp.text = str(hp)
+        $attack.show()
+        $health.show()
     else:
         $attack.hide()
         $health.hide()
@@ -379,7 +381,8 @@ func play_enemy(target_field):
 func init_enchantment():
     add_to_group('active_enchantment')
     Game.organize_enchantment()
-    start_timer(enchantment_duration, 'cease_enchantment', 'active')
+    if enchantment_duration > 0:
+        start_timer(enchantment_duration, 'cease_enchantment', 'active')
 
 func cease_enchantment():
     remove_from_group('active_enchantment')
@@ -478,6 +481,25 @@ func opponent__shoot_2(card):
 func opponent__plus_1_minus_1(card):
     if is_in_group('field') && side() != card.side():
         buff(1, -1)
+
+func opponent__copy_stats(card):
+    if card.is_familiar() && is_in_group('field') && side() != card.side():
+        set_stats(card.at, card.hp)
+
+func active_enchantment__twice_copy_own_sorcery(card):
+    if self != card && is_in_group('active_enchantment') && card.is_sorcery() && side() == card.side():
+        if not effect_store.has('burst_first_card'):
+            effect_store['burst_first_card'] = card.key
+        else:
+            create(effect_store['burst_first_card']).add_to_hand()
+            create(card.key).add_to_hand()
+            cease_enchantment()
+
+func opponent__approaching_player_card_becomes_sheep(card):
+    if is_in_group('field') && side() != card.side():
+        var approaching_card = Game.ensure_approaching_card_player()
+        if  approaching_card:
+            approaching_card.become('Sheep')
 
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
@@ -965,7 +987,7 @@ func deathrottle__split_into_1_2s(from_field):
     create('Ooze').add_to_hand()
 
 func deathrottle__deal_1_in_lane(from_field):
-    deal_x_in_lane(2, from_field)
+    deal_x_in_lane(1, from_field)
 
 func deathrottle__great_phoenix(from_field):
     create('EggOfFlames').add_to_hand()
@@ -1147,6 +1169,12 @@ func deal_x_all_in_lane(target_field, amount):
             pass
         else:
             deal_x(f, amount)
+
+func set_stats(at, hp):
+    display_hint('%1d/%1d' % [at, hp], Color(0,1,0))
+    self.at = at
+    self.hp = hp
+    check_for_death()
 
 func buff(at_improvement, hp_improvement):
     display_hint('+%1d/+%1d' % [at_improvement, hp_improvement], Color(0,1,0))
