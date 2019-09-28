@@ -1149,6 +1149,19 @@ func ForgottenSoul(card):
         effect = ['battlecry__every_4_minus_1_minus_1'],
     }]
 
+# TODO: text should update according to Power Potion Counter
+func ElixirElemental(card):
+    card.key = 'ElixirElemental'
+    card.card_name = 'Elixir Elemental'
+    card.text = 'Charge 4: Deathrottle: Create a Power Potion.'
+    card.text_fn = 'text_fn__Elixir_Elemental'
+    card.type = 'familiar'
+    card.at = 4
+    card.hp = 3
+    card.battlecry = 'battlecry__reset_power_potion_counter'
+    card.charge_time = 4
+    card.deathrottle = 'deathrottle__if_counter_create_power_potion'
+
 
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------

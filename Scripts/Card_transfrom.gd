@@ -112,6 +112,12 @@ func text_fn__create_x_shivs():
         return 'Create %d Shivs. (hold to power up)' % effect_store.charges
     else:
         return 'Create 1 Shiv. (hold to power up)'
+func text_fn__Elixir_Elemental():
+    if charged || ( effect_store.has('power_potion_counter') && effect_store['power_potion_counter'] > 0):
+        return 'Charge 4: Deathrottle: Create a Power Potion. (active)'
+    else:
+        return 'Charge 4: Deathrottle: Create a Power Potion. (disabled)'
+    
 
 func update_appearance():
     $title/name.text = card_name
@@ -1008,6 +1014,12 @@ func battlecry__delay_5_become_a_phoenix():
 func timed_become_a_phoenix():
     become('Phoenix')
 
+func battlecry__reset_power_potion_counter():
+    if charged:
+        effect_store['power_potion_counter'] = 1
+    else:
+        effect_store['power_potion_counter'] = 0
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -1059,6 +1071,11 @@ func deathrottle__summon_2_1_1_slimes(from_field):
     var unoccupied_fields = Game.unoccupied_enemy_familiar_fields()
     if not unoccupied_fields.empty():
         create('Slime1').add_to_field(utils.sample(unoccupied_fields))
+
+func deathrottle__if_counter_create_power_potion(from_field):
+    if effect_store.has('power_potion_counter') && effect_store['power_potion_counter'] > 0:
+        effect_store['power_potion_counter'] = 0
+        create('PowerPotion').add_to_hand()
 
 # sabotage
 # ---------------------------------------------------------------------------------------------
