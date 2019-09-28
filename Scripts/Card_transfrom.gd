@@ -113,10 +113,11 @@ func text_fn__create_x_shivs():
     else:
         return 'Create 1 Shiv. (hold to power up)'
 func text_fn__Elixir_Elemental():
+    var start = 'Charge 4: Deathrottle: Create a Power Potion.'
     if charged || ( effect_store.has('power_potion_counter') && effect_store['power_potion_counter'] > 0):
-        return 'Charge 4: Deathrottle: Create a Power Potion. (active)'
+        return start + ' (active)'
     else:
-        return 'Charge 4: Deathrottle: Create a Power Potion. (disabled)'
+        return start + ' (disabled)'
     
 
 func update_appearance():
