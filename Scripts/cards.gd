@@ -37,7 +37,10 @@ func DracoKnight(card):
     card.type = 'familiar'
     card.at = 2
     card.hp = 5
-    card.sabotage = 'sabotage__become_a_dragon'
+    card.effects = [{
+        trigger = 'sabotage',
+        effect = ['become', 'Dragon'],
+    }]
 
 func Adventurer(card):
     card.key = 'Adventurer'
@@ -50,11 +53,14 @@ func Adventurer(card):
 func LineBreaker(card):
     card.key = 'LineBreaker'
     card.card_name = 'LineBreaker'
-    card.text = 'Attacks immediately.'
+    card.text = 'Battlecry: Attack immediately.'
     card.type = 'familiar'
     card.at = 4
     card.hp = 2
-    card.battlecry = 'battlecry__attack_immediately'
+    card.effects = [{
+        trigger = 'battlecry',
+        effect = ['attack_immediately'],
+    }]
 
 func SplittingOoze(card):
     card.key = 'SplittingOoze'
@@ -90,17 +96,23 @@ func HiredArm(card):
     card.type = 'familiar'
     card.at = 2
     card.hp = 2
-    card.battlecry = 'create_a_shiv'
+    card.effects = [{
+        trigger = 'battlecry',
+        effect = ['create_shiv', 1],
+    }]
 
 # #design: too similar to knife juggler
 func AsuraPriest(card):
     card.key = 'AsuraPriest'
     card.card_name = 'Asura Priest'
-    card.text = 'Combo: Create a Shiv to your hand.'
+    card.text = 'Combo: Create a Shiv.'
     card.type = 'familiar'
     card.at = 2
     card.hp = 4
-    card.combo = 'combo__create_a_shiv'
+    card.effects = [{
+        trigger = 'combo',
+        effect = ['create_shiv', 1],
+    }]
 
 func Shiv(card):
     card.generated = true
@@ -139,7 +151,11 @@ func GoblinForerunner(card):
     card.type = 'familiar'
     card.at = 3
     card.hp = 2
-    card.combo = 'combo__attacks_immediately'
+#    card.combo = 'combo__attacks_immediately'
+    card.effects = [{
+        trigger = 'combo',
+        effect = ['attack_immediately'],
+    }]
 
 # Sorcery: Give a Familiar +2/+2. Combo: affects all allies.
 func BuyARound(card):
@@ -150,6 +166,15 @@ func BuyARound(card):
     card.targeting = 'targets_familiar_combo_not_required'
     card.effect = 'plus_2_plus_2'
     card.combo = 'combo__plus_2_plus_2_to_all'
+
+# #TODO: +2/+2 only on combo?
+func SurpassTheMaster(card):
+    card.key = 'SurpassTheMaster'
+    card.card_name = 'Surpass the Master'
+    card.text = 'Create a copy of target ally. Give it +2/+2.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__copy_ally_gain_plus_2_plus_2'
 
 func MoonRabbit(card):
     card.key = 'MoonRabbit'
@@ -237,6 +262,15 @@ func PowerPotion(card):
     card.targeting = 'targets_familiar'
     card.effect = 'plus_3_plus_3'
 
+func ComboPotion(card):
+    card.key = 'ComboPotion'
+    card.card_name = 'Combo Potion'
+    card.text = 'Give a Familiar +2/+2. Combo: +4/+4 instead.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'plus_2_plus_2'
+    card.combo = 'combo__plus_4_plus_4'
+
 func Raid(card):
     card.key = 'Raid'
     card.card_name = 'Raid'
@@ -308,9 +342,9 @@ func FlashForward(card):
     card.effect = 'deal_2'
     card.inspire = 'inspire__familiar_deals_2_opposing_side'
 
-func TheShepherd(card):
-    card.key = 'TheShepherd'
-    card.card_name = 'The Shepherd'
+func Shepherd(card):
+    card.key = 'Shepherd'
+    card.card_name = 'Shepherd'
     card.text = 'Battlecry: Fill your board with exploding 1/1 Sheeps.'
     card.type = 'familiar'
     card.at = 1
@@ -1320,12 +1354,15 @@ func WolfRaider(card):
     
     card.key = 'WolfRaider'
     card.card_name = 'Wolf Raider'
-    card.text = 'Haste. Attacks immediately.'
+    card.text = 'Haste. Battlecry: Attack immediately.'
     card.type = 'familiar'
     card.at = 3
     card.hp = 1
     card.haste = true
-    card.battlecry = 'battlecry__attack_immediately'
+    card.effects = [{
+        trigger = 'battlecry',
+        effect = ['attack_immediately'],
+    }]
 
 func PackWolf(card):
     card.deck = 'enemy'

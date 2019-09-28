@@ -715,6 +715,11 @@ func sorcery__ai_familiars_deal_damage_to_opposing_side_equal_to_hp(target_field
     for familiar in Game.enemy_familiars():
         familiar.deal_x_in_lane(familiar.hp)
 
+func sorcery__copy_ally_gain_plus_2_plus_2(target_field):
+    var target = target_field.card
+    var copy = target.create(target.key)
+    copy.add_to_hand()
+    copy.buff(2, 2)
 
 # power up cards
 # ---------------------------------------------------------------------------------------------
@@ -793,10 +798,17 @@ func exec_effect(effect):
             for card in Game.cards_in_player_hand():
                 if card.is_familiar():
                     card.buff(effect[1], effect[2])
+        'become':
+            become(effect[1])
+        'attack_immediately':
+            attack_immediately()
+        'create_shiv':
+            create_x_shivs(effect[1])
         'battlecry__every_4_minus_1_minus_1':
             battlecry__every_4_minus_1_minus_1()
         _:
             print("UNknown effect type " + effect[0])
+
 
 # battlecries
 # ---------------------------------------------------------------------------------------------
@@ -805,12 +817,6 @@ func exec_battlecry():
     if battlecry != null:
         funcref(self, battlecry).call_func()
     process_event('battlecry', [self])
-
-func battlecry__attack_immediately():
-    attack_immediately()
-
-func create_a_shiv():
-    create_x_shivs(1)
 
 func battlecry__deal_1_in_lane():
     deal_x_in_lane(1)
@@ -1060,14 +1066,12 @@ func deathrottle__summon_2_1_1_slimes(from_field):
 func exec_sabotage():
     if sabotage != null:
         funcref(self, sabotage).call_func()
+    process_event('sabotage', [self])
 
 func sabotage__draw_a_card():
     if not effect_store.has('looted_for_a_card'):
         effect_store['looted_for_a_card'] = true
         Game.draw_a_card()
-
-func sabotage__become_a_dragon():
-    become_a_dragon()
 
 
 # combo
@@ -1076,9 +1080,7 @@ func sabotage__become_a_dragon():
 func exec_combo(target_field):
     if combo != null:
         funcref(self, combo).call_func(target_field)
-
-func combo__create_a_shiv(target_field):
-    create_x_shivs(1)
+    process_event('combo', [self])
 
 func combo__deal_2_then_return_to_hand(target_field):
     deal_x(target_field, 2)
@@ -1090,6 +1092,9 @@ func combo__plus_2_plus_2_to_all(target_field):
 
 func combo__plus_2_plus_2(target_field):
     buff(2, 2)
+
+func combo__plus_4_plus_4(target_field):
+    target_field.card.buff(4, 4)
 
 func combo__attacks_immediately(target_field):
     attack_immediately()
