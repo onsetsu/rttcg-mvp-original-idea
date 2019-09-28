@@ -409,6 +409,18 @@ func Blacksmith(card):
     card.at = 2
     card.hp = 4
     card.whenever = { play_card = 'own_familiar__plus_2_plus_2'}
+#    card.effects = [{
+#        trigger = 'whenever',
+#        event = {
+#            type = 'play_card',
+#            conditions = [
+#                ['in_group', '$self', 'approaching'],
+#                ['card_type', '$arg', 'familiar'],
+#                ['same_side', '$self', '$arg'],
+#            ]
+#        },
+#        effect = ['hand_buff_all', 3, 3],
+#    }]
 
 func Cinderstorm(card):
     card.key = 'Cinderstorm'
