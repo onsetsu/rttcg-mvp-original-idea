@@ -340,6 +340,12 @@ func targets_not_required(target_field):
 
 func no_target_required_and_is_charged(target_field):
     return charged and targets_not_required(target_field)
+    
+func targets_familiar_or_tower_or_charged_with_empty_field(target_field):
+    if charged:
+        return targets_friendly_unoccupied_familiar_field(target_field)
+    else:
+        return targets_familiar_or_tower(target_field)
 
 func targets_unoccupied_friendly_field():
     pass
@@ -508,6 +514,14 @@ func opponent__approaching_player_card_becomes_sheep(card):
         var approaching_card = Game.ensure_approaching_card_player()
         if  approaching_card:
             approaching_card.become('Sheep')
+
+func own_familiar__become_fox_fire(card):
+    if is_in_group('hand') && side() == card.side() && card.is_familiar():
+        become('FoxFire')
+
+func own_sorcery__become_flame_sprite(card):
+    if is_in_group('hand') && side() == card.side() && card.is_sorcery():
+        become('FlameSprite')
 
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
@@ -732,6 +746,12 @@ func sorcery__gain_plus_hp_plus_at(target_field):
     var familiar = target_field.card
     familiar.buff(familiar.hp, familiar.at)
 
+func sorcery__deal_3_charged_summon_ignited_beacon(target_field):
+    if charged:
+        create('IgnitedBeacon').add_to_field(target_field)
+    else:
+        deal_x(target_field, 3)
+    
 # power up cards
 # ---------------------------------------------------------------------------------------------
 
@@ -1081,6 +1101,9 @@ func deathrottle__if_counter_create_power_potion(from_field):
     if effect_store.has('power_potion_counter') && effect_store['power_potion_counter'] > 0:
         effect_store['power_potion_counter'] = 0
         create('PowerPotion').add_to_hand()
+
+func deathrottle__create_bonfire_ash(from_field):
+    create('BonfireAsh').add_to_hand()
 
 # sabotage
 # ---------------------------------------------------------------------------------------------

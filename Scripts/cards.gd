@@ -1168,7 +1168,45 @@ func EquilibriumGarb(card):
     card.type = 'sorcery'
     card.targeting = 'targets_familiar'
     card.effect = 'sorcery__gain_plus_hp_plus_at'
-    
+
+func BonfireAsh(card):
+    card.key = 'BonfireAsh'
+    card.card_name = 'Bonfire Ash'
+    card.text = 'Deal 3 Damage. Charge 3: Summon a 4/3 Ignited Beacon instead.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar_or_tower_or_charged_with_empty_field'
+    card.effect = 'sorcery__deal_3_charged_summon_ignited_beacon'
+    card.charge_time = 3
+
+func IgnitedBeacon(card):
+    card.key = 'IgnitedBeacon'
+    card.card_name = 'Ignited Beacon'
+    card.text = 'Deathrottle: Create a Bonfire Ash.'
+    card.type = 'familiar'
+    card.at = 4
+    card.hp = 3
+    card.deathrottle = 'deathrottle__create_bonfire_ash'
+
+func FlameSprite(card):
+    card.key = 'FlameSprite'
+    card.card_name = 'Flame Sprite'
+    card.text = 'In hand: When you play a familiar: become a Fox Fire.'
+    card.type = 'familiar'
+    card.at = 2
+    card.hp = 3
+    card.whenever = { play_card = 'own_familiar__become_fox_fire'}
+
+func FoxFire(card):
+    card.key = 'FoxFire'
+    card.card_name = 'Fox Fire'
+    card.text = 'Deal 3 Damage. In hand: When you play a sorcery: become a 2/3 Flame Sprite.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar_or_tower'
+    card.effect = 'deal_3'
+    card.whenever = { play_card = 'own_sorcery__become_flame_sprite'}
+
+#1/4 Ghost: When you play a sorcery: Return this to your hand as a Fireball.
+
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
 # Enemy Cards
