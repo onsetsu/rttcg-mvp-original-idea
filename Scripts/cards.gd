@@ -1161,7 +1161,14 @@ func ElixirElemental(card):
     card.charge_time = 4
     card.deathrottle = 'deathrottle__if_counter_create_power_potion'
 
-
+func EquilibriumGarb(card):
+    card.key = 'EquilibriumGarb'
+    card.card_name = 'Equilibrium Garb'
+    card.text = 'Target familiar gain +Y/+X with x/Y being its stats.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__gain_plus_hp_plus_at'
+    
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
 # Enemy Cards

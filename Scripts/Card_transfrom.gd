@@ -728,6 +728,10 @@ func sorcery__copy_ally_gain_plus_2_plus_2(target_field):
     copy.add_to_hand()
     copy.buff(2, 2)
 
+func sorcery__gain_plus_hp_plus_at(target_field):
+    var familiar = target_field.card
+    familiar.buff(familiar.hp, familiar.at)
+
 # power up cards
 # ---------------------------------------------------------------------------------------------
 
