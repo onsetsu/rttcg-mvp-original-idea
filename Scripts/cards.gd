@@ -213,6 +213,8 @@ func ToKu(card):
     card.combo = 'combo__plus_2_plus_2'
 
 func Dragon(card):
+    card.generated = true
+
     card.key = 'Dragon'
     card.card_name = 'Dragon'
     card.text = ''
@@ -1179,6 +1181,8 @@ func BonfireAsh(card):
     card.charge_time = 3
 
 func IgnitedBeacon(card):
+    card.generated = true
+
     card.key = 'IgnitedBeacon'
     card.card_name = 'Ignited Beacon'
     card.text = 'Deathrottle: Create a Bonfire Ash.'
@@ -1205,7 +1209,25 @@ func FoxFire(card):
     card.effect = 'deal_3'
     card.whenever = { play_card = 'own_sorcery__become_flame_sprite'}
 
-#1/4 Ghost: When you play a sorcery: Return this to your hand as a Fireball.
+func Recycle(card):
+    card.key = 'Recycle'
+    card.card_name = 'Recycle'
+    card.text = 'Discard your hand. Draw that many + 1 cards.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__discard_then_draw_that_many_plus_one'
+
+# 3/3 Familiar: Whenever you discard a card: Gain +1/+1.
+func ScrapCollector(card):
+    card.key = 'ScrapCollector'
+    card.card_name = 'Scrap Collector'
+    card.text = 'Whenever you discard a card: Gain +1/+1.'
+    card.type = 'familiar'
+    card.at = 3
+    card.hp = 3
+    card.whenever = { discard = 'on_field__gain_plus_one_plus_one'}
+
+# 1/4 Ghost: When you play a sorcery: Return this to your hand as a Fireball.
 
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------

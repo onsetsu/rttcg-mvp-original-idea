@@ -523,6 +523,10 @@ func own_sorcery__become_flame_sprite(card):
     if is_in_group('hand') && side() == card.side() && card.is_sorcery():
         become('FlameSprite')
 
+func on_field__gain_plus_one_plus_one(card):
+    if is_in_group('field') && side() == card.side():
+        buff(1, 1)
+
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
 
@@ -751,7 +755,12 @@ func sorcery__deal_3_charged_summon_ignited_beacon(target_field):
         create('IgnitedBeacon').add_to_field(target_field)
     else:
         deal_x(target_field, 3)
-    
+
+func sorcery__discard_then_draw_that_many_plus_one(target_field):
+    var num_cards = Game.cards_in_player_hand().size()
+    Game.discard_player_hand()
+    utils.times(num_cards + 1, Game, 'draw_a_card')
+
 # power up cards
 # ---------------------------------------------------------------------------------------------
 
@@ -1307,6 +1316,7 @@ func discard():
         remove_from_hand()
         queue_free()
         Game.organize_hand()
+        Game.executed_event("discard", self)
     else:
         print('could not discard')
 
