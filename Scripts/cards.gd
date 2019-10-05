@@ -1262,8 +1262,8 @@ func Kirin(card):
     card.card_name = 'Kirin'
     card.text = 'Battlecry: Deal 4 Damage to opposing side.'
     card.type = 'familiar'
-    card.at = 10
-    card.hp = 10
+    card.at = 4
+    card.hp = 4
     card.battlecry = 'battlecry__deal_4_in_lane'
 
 func BatteringRam(card):
