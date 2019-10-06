@@ -6,10 +6,11 @@ onready var card_images = card_images_scene.instance()
 var game_scene = preload("res://Scenes/Game.tscn")
 var deck_slot_scene = preload("res://Scenes/DeckSlot.tscn")
 var card_reward_scene = preload("res://Scenes/CardReward.tscn")
-var options_scene = preload("res://Scenes/Options.tscn")
+var configure_options_scene = preload("res://Scenes/ConfigureOptions.tscn")
 
 # handling options in dedicated scene
 var options
+var options_initialized = false
 var speed_pause_modifier = 1.0
 
 func card_names():
@@ -40,15 +41,14 @@ func dict_name_for_card_name(card_name):
         return 'enemy_deck'
 
 func init_options_scene():
-    options = utils.instance_into_root(options_scene)
-    options.set_process(false)
+    if options_initialized:
+        return
+    options_initialized = true
+
+    options = utils.instance_into_root(configure_options_scene)
+    options.hide()
 
 func _ready():
-    init_options_scene()
-
-    update_speed_info()
-
-    print(get_tree().get_root(), get_tree().get_root().get_node('foo'))
 
     # setup cards
     for c_name in card_names():
@@ -60,6 +60,9 @@ func _ready():
     apply_last_decks()
 
 func _process(delta):
+    init_options_scene()
+    update_speed_info()
+
     if Input.is_action_just_pressed("pause"):
         if speed_pause_modifier == 0.0:
             speed_pause_modifier = 1.0
@@ -309,5 +312,15 @@ func _on_test_card_reward_pressed():
 func return_from_card_reward():
     var root = get_tree().get_root()
     root.remove_child(root.get_node('CardReward'))
+    $menu.show()
+
+
+
+func _on_options_button_pressed():
+    options.show()
+    $menu.hide()
+
+func return_from_options():
+    options.hide()
     $menu.show()
 
