@@ -6,8 +6,10 @@ onready var card_images = card_images_scene.instance()
 var game_scene = preload("res://Scenes/Game.tscn")
 var deck_slot_scene = preload("res://Scenes/DeckSlot.tscn")
 var card_reward_scene = preload("res://Scenes/CardReward.tscn")
+var options_scene = preload("res://Scenes/Options.tscn")
 
-var speed_up = 0.8
+# handling options in dedicated scene
+var options
 var speed_pause_modifier = 1.0
 
 func card_names():
@@ -37,7 +39,13 @@ func dict_name_for_card_name(card_name):
     else: if temp_card.deck == 'enemy':
         return 'enemy_deck'
 
+func init_options_scene():
+    options = utils.instance_into_root(options_scene)
+    options.set_process(false)
+
 func _ready():
+    init_options_scene()
+
     update_speed_info()
 
     print(get_tree().get_root(), get_tree().get_root().get_node('foo'))
@@ -59,10 +67,10 @@ func _process(delta):
             speed_pause_modifier = 0.0
 
 func update_speed_info():
-    find_node('speed-info').text = "%1.1f" % [speed_up]
+    find_node('speed-info').text = "%1.1f" % [options.game_speed]
 
 func _on_speedslider_value_changed(value):
-    speed_up = value
+    options.game_speed = value
     update_speed_info()
 
 func deck_config(key):
@@ -183,9 +191,7 @@ func apply_last_decks():
 func _on_play_button_pressed():
     save_as_last_decks()
     
-    var root = get_tree().get_root()
-    var game = game_scene.instance()
-    root.add_child(game)
+    utils.instance_into_root(game_scene)
     $menu.hide()
 
 func end_game():
@@ -297,9 +303,7 @@ func _on_SaveCustomEnemy_pressed():
 
 
 func _on_test_card_reward_pressed():
-    var root = get_tree().get_root()
-    var card_reward = card_reward_scene.instance()
-    root.add_child(card_reward)
+    utils.instance_into_root(card_reward_scene)
     $menu.hide()
 
 func return_from_card_reward():

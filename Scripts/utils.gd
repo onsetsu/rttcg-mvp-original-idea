@@ -31,6 +31,15 @@ func node_exists(node):
 
     return true
 
+# node utils
+# ---------------------------------------------------------------------------------------------
+
+func instance_into_root(scene_class):
+    var root = get_tree().get_root()
+    var instance = scene_class.instance()
+    root.add_child(instance)
+    return instance
+
 # number utils
 # ---------------------------------------------------------------------------------------------
 
