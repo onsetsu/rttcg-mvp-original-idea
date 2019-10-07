@@ -1427,7 +1427,7 @@ func cancel_attacking():
 
 func setup_charge_to_attack():
     attack_timer_running = true
-    attack_charge_timer = start_timer(Game.Lobby.options.attack_speed, 'attacking', 'attack')
+    attack_charge_timer = start_timer(options.attack_speed, 'attacking', 'attack')
 
 #callback
 func attacking():

@@ -147,3 +147,24 @@ func get_or_create(dict, key, default_value):
     if not dict.has(key):
         dict[key] = default_value
     return dict[key]
+
+# file utils
+# ---------------------------------------------------------------------------------------------
+
+func load_dict(file_name, fallback_object=null, fallback_method=null):
+    var deck_file = File.new()
+    if not deck_file.file_exists(file_name):
+        var fallback = {}
+        if fallback_object && fallback_method:
+            fallback = funcref(fallback_object, fallback_method).call_func(file_name)
+        save_dict(file_name, fallback)
+    deck_file.open(file_name, File.READ)
+    var dict = parse_json(deck_file.get_as_text())
+    deck_file.close()
+    return dict
+
+func save_dict(file_name, dict):
+    var save_deck = File.new()
+    save_deck.open(file_name, File.WRITE)
+    save_deck.store_string(to_json(dict))
+    save_deck.close()

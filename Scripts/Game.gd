@@ -135,7 +135,7 @@ func has_approaching_card():
 func create_approaching_card():
     var approaching_card = create_card_from_deck()
     approaching_card.add_to_group("approaching")
-    approaching_card.start_timer(Lobby.options.player_approaching_speed, "draw_approaching_card", "draw")
+    approaching_card.start_timer(options.player_approaching_speed, "draw_approaching_card", "draw")
     
 func refill_approaching_card_player():
     if not has_approaching_card():
@@ -186,7 +186,7 @@ func in_wait_to_approaching_enemy_card(card):
     card.remove_from_group("in_wait")
     card.add_to_group("approaching")
     
-    card.start_timer(Lobby.options.enemy_approaching_speed, "play_enemy_card", "play")
+    card.start_timer(options.enemy_approaching_speed, "play_enemy_card", "play")
 
 func create_approaching_card_enemy():
     var approaching_card = ensure_in_wait_card_enemy()
