@@ -34,11 +34,19 @@ func node_exists(node):
 # node utils
 # ---------------------------------------------------------------------------------------------
 
-func instance_into_root(scene_class):
+func attach_to_root(scene):
     var root = get_tree().get_root()
+    root.add_child(scene)
+
+func instance_into_root(scene_class):
     var instance = scene_class.instance()
-    root.add_child(instance)
+    attach_to_root(instance)
     return instance
+
+func remove_node(node):
+    var parent = node.get_parent()
+    if parent:
+        parent.remove_child(node)
 
 # number utils
 # ---------------------------------------------------------------------------------------------

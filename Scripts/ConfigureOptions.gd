@@ -39,4 +39,15 @@ func _on_attack_speed_slider_value_changed(value):
 
 func _on_continue_button_pressed():
     options.save_to_file()
-    Lobby.return_from_options()
+    scene_stack.pop()
+
+# ---------------------------------------------------------------------------------------------
+
+func ss_init():
+    pass
+func ss_resume():
+    pass
+func ss_suspend():
+    pass
+func ss_end():
+    utils.remove_node(self)

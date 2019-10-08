@@ -39,6 +39,8 @@ func dict_name_for_card_name(card_name):
         return 'enemy_deck'
 
 func _ready():
+    scene_stack.init(self)
+
     # setup cards
     for c_name in card_names():
         var deck_slot = deck_slot_scene.instance()
@@ -181,14 +183,7 @@ func apply_last_decks():
 
 func _on_play_button_pressed():
     save_as_last_decks()
-    
-    utils.instance_into_root(game_scene)
-    $menu.hide()
-
-func end_game():
-    var root = get_tree().get_root()
-    root.remove_child(root.get_node('Game'))
-    $menu.show()
+    instance_and_push(game_scene)
 
 # Button Callbacks
 # ---------------------------------------------------------------------------------------------
@@ -294,22 +289,20 @@ func _on_SaveCustomEnemy_pressed():
 
 
 func _on_test_card_reward_pressed():
-    utils.instance_into_root(card_reward_scene)
-    $menu.hide()
-
-func return_from_card_reward():
-    var root = get_tree().get_root()
-    root.remove_child(root.get_node('CardReward'))
-    $menu.show()
-
-
+    instance_and_push(card_reward_scene)
 
 func _on_options_button_pressed():
-    utils.instance_into_root(configure_options_scene)
-    $menu.hide()
+    instance_and_push(configure_options_scene)
 
-func return_from_options():
-    var root = get_tree().get_root()
-    root.remove_child(root.get_node('ConfigureOptions'))
+func instance_and_push(scene_class):
+    var scene = utils.instance_into_root(scene_class)
+    scene_stack.push(scene)
+
+func ss_init():
+    pass
+func ss_resume():
     $menu.show()
-
+func ss_suspend():
+    $menu.hide()
+func ss_end():
+    pass

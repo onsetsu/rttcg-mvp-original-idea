@@ -340,4 +340,15 @@ func try_to_play_enemy_card(card):
 # ---------------------------------------------------------------------------------------------
 
 func _on_returnbutton_pressed():
-    Lobby.end_game()
+    scene_stack.pop()
+
+# ---------------------------------------------------------------------------------------------
+
+func ss_init():
+    pass
+func ss_resume():
+    utils.attach_to_root(self)
+func ss_suspend():
+    utils.remove_node(self)
+func ss_end():
+    utils.remove_node(self)
