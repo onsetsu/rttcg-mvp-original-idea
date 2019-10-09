@@ -51,20 +51,11 @@ func _ready():
     apply_last_decks()
 
 func _process(delta):
-    update_speed_info()
-
     if Input.is_action_just_pressed("pause"):
         if speed_pause_modifier == 0.0:
             speed_pause_modifier = 1.0
         else:
             speed_pause_modifier = 0.0
-
-func update_speed_info():
-    find_node('speed-info').text = "%1.1f" % [options.game_speed]
-    find_node('speed-slider').value = options.game_speed
-
-func _on_speedslider_value_changed(value):
-    options.game_speed = value
 
 func deck_config(key):
     return find_node(key, true).pressed
@@ -183,7 +174,7 @@ func apply_last_decks():
 
 func _on_play_button_pressed():
     save_as_last_decks()
-    instance_and_push(game_scene)
+    instanciate_and_push(game_scene)
 
 # Button Callbacks
 # ---------------------------------------------------------------------------------------------
@@ -289,12 +280,12 @@ func _on_SaveCustomEnemy_pressed():
 
 
 func _on_test_card_reward_pressed():
-    instance_and_push(card_reward_scene)
+    instanciate_and_push(card_reward_scene)
 
 func _on_options_button_pressed():
-    instance_and_push(configure_options_scene)
+    instanciate_and_push(configure_options_scene)
 
-func instance_and_push(scene_class):
+func instanciate_and_push(scene_class):
     var scene = utils.instance_into_root(scene_class)
     scene_stack.push(scene)
 

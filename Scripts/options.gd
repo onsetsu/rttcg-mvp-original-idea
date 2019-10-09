@@ -32,6 +32,3 @@ func save_to_file():
 
 func _init():
     load_from_file()
-
-func _ready():
-    print('OTIOIONB2')
