@@ -1227,6 +1227,23 @@ func ScrapCollector(card):
     card.hp = 3
     card.whenever = { discard = 'on_field__gain_plus_one_plus_one'}
 
+func AyaneRogueSorceress(card):
+    card.key = 'AyaneRogueSorceress'
+    card.card_name = 'Ayane, Rogue Sorceress'
+    card.text = 'Whenever you discard a card: Gain +1/+1.'
+    card.type = 'familiar'
+    card.at = 3
+    card.hp = 3
+    card.whenever = { discard = 'on_field__gain_plus_one_plus_one'}
+
+func StunPowder(card):
+    card.key = 'StunPowder'
+    card.card_name = 'Stun Powder'
+    card.text = 'Discard your hand. Draw that many + 1 cards.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__discard_then_draw_that_many_plus_one'
+
 # 1/4 Ghost: When you play a sorcery: Return this to your hand as a Fireball.
 
 # ---------------------------------------------------------------------------------------------
