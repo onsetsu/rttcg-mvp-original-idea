@@ -1244,6 +1244,15 @@ func StunPowder(card):
     card.targeting = 'targets_not_required'
     card.effect = 'sorcery__discard_then_draw_that_many_plus_one'
 
+func Ping(card):
+    card.key = 'Ping'
+    card.card_name = 'Ping'
+    card.text = 'Haste. Deal 1 Damage. Draw 1 Cards.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar_or_tower'
+    card.haste = true
+    card.effect = 'sorcery__deal_1_draw_1'
+
 # 1/4 Ghost: When you play a sorcery: Return this to your hand as a Fireball.
 
 # ---------------------------------------------------------------------------------------------

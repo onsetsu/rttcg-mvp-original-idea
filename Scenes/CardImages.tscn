@@ -263,11 +263,18 @@ region_rect = Rect2( 0, 0, 2281, 2281 )
 
 [node name="ArcaneGatling" type="Sprite" parent="."]
 modulate = Color( 1.1, 0.3, 1.1, 1 )
-position = Vector2( 0.126114, 684.005 )
+position = Vector2( 1.80499, 686.318 )
 scale = Vector2( 0.055, 0.055 )
 texture = ExtResource( 18 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2281, 2281 )
+
+[node name="Ping" type="Sprite" parent="."]
+position = Vector2( 432.298, 683.61 )
+scale = Vector2( 0.22, 0.22 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 1600, 570, 570 )
 
 [node name="AyaneRogueSorceress" type="Sprite" parent="."]
 position = Vector2( 141.819, 684.005 )

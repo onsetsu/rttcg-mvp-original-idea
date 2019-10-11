@@ -761,6 +761,10 @@ func sorcery__discard_then_draw_that_many_plus_one(target_field):
     Game.discard_player_hand()
     utils.times(num_cards + 1, Game, 'draw_a_card')
 
+func sorcery__deal_1_draw_1(target_field):
+    deal_x(target_field, 1)
+    Game.draw_a_card()
+
 # power up cards
 # ---------------------------------------------------------------------------------------------
 
