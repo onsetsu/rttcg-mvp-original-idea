@@ -59,13 +59,15 @@ func create_card_from_deck():
 func create_card_from_enemy_deck():
     return $enemy_deck.create_next_card()
 
-func create_card_from_extra_deck():
-    pass
-    #return $extra_deck.create_next_card()
-
 func draw_a_card():
     var card = create_card_from_deck()
     card.add_to_hand()
+    executed_event('draw_card', card)
+    return card
+
+func draw_approaching_card_player():
+    var card = ensure_approaching_card_player()
+    card.draw_approaching_card()
     return card
 
 func cards_in_player_hand():

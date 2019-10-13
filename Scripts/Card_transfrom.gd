@@ -237,6 +237,8 @@ func draw_approaching_card():
     clear_timers()
     remove_from_group("approaching")
     add_to_hand()
+    Game.executed_event('draw_card', self)
+    return self
 
 #callback
 func play_enemy_card():
@@ -378,6 +380,8 @@ func play(target_field, allied):
         else:
             queue_free()
 
+    if allied && Game.has_combo_card():
+        Game.executed_event('combo_card', [Game.get_combo_card(), self])
     if allied:
         if Game.has_combo_card():
             Game.get_combo_card().exec_inspire(self)
@@ -526,6 +530,16 @@ func own_sorcery__become_flame_sprite(card):
 func on_field__gain_plus_one_plus_one(card):
     if is_in_group('field') && side() == card.side():
         buff(1, 1)
+
+func self__create_stun_powder(card):
+    if self == card:
+        create('StunPowder').add_to_hand()
+
+func sorcery_on_sorcery__transform_into_night_cloak(cards):
+    var comboed_card = cards[0]
+    var card = cards[1]
+    if is_in_group('field') and comboed_card.is_sorcery() and card.is_sorcery():
+        become('NightCloak')
 
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
@@ -764,6 +778,9 @@ func sorcery__discard_then_draw_that_many_plus_one(target_field):
 func sorcery__deal_1_draw_1(target_field):
     deal_x(target_field, 1)
     Game.draw_a_card()
+
+func sorcery__minus_one_minus_1(target_field):
+    target_field.card.debuff(1, 1)
 
 # power up cards
 # ---------------------------------------------------------------------------------------------
@@ -1117,6 +1134,9 @@ func deathrottle__if_counter_create_power_potion(from_field):
 
 func deathrottle__create_bonfire_ash(from_field):
     create('BonfireAsh').add_to_hand()
+
+func deathrottle__create_ayane(from_field):
+    create('AyaneRogueSorceress').add_to_hand()
 
 # sabotage
 # ---------------------------------------------------------------------------------------------

@@ -1230,19 +1230,35 @@ func ScrapCollector(card):
 func AyaneRogueSorceress(card):
     card.key = 'AyaneRogueSorceress'
     card.card_name = 'Ayane, Rogue Sorceress'
-    card.text = 'Whenever you discard a card: Gain +1/+1.'
+    card.text = 'When drawn: Create Stun Powder. Combo a Sorcery with a Sorcery: Transform into Night Cloak.'
     card.type = 'familiar'
-    card.at = 3
-    card.hp = 3
-    card.whenever = { discard = 'on_field__gain_plus_one_plus_one'}
+    card.at = 2
+    card.hp = 2
+    card.whenever = {
+        draw_card = 'self__create_stun_powder',
+        combo_card = 'sorcery_on_sorcery__transform_into_night_cloak'
+    }
 
 func StunPowder(card):
+    card.generated = true
+
     card.key = 'StunPowder'
     card.card_name = 'Stun Powder'
-    card.text = 'Discard your hand. Draw that many + 1 cards.'
+    card.text = 'Target familiar gets -1/-1.'
     card.type = 'sorcery'
-    card.targeting = 'targets_not_required'
-    card.effect = 'sorcery__discard_then_draw_that_many_plus_one'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__minus_one_minus_1'
+
+func NightCloak(card):
+    card.generated = true
+
+    card.key = 'NightCloak'
+    card.card_name = 'Night Cloak'
+    card.text = 'Deathrottle: Return Ayane to your hand.'
+    card.type = 'familiar'
+    card.at = 3
+    card.hp = 5
+    card.deathrottle = 'deathrottle__create_ayane'
 
 func Ping(card):
     card.key = 'Ping'
