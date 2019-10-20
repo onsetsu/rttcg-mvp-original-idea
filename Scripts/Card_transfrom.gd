@@ -113,6 +113,9 @@ func text_fn__create_x_shivs():
     else:
         return 'Create 1 Shiv. (hold to power up)'
 
+func text_fn__frostbite_foes_for_2x_seconds():
+    return 'Frostbite all foes for %d seconds. (hold to power up)' % (2 * effect_store.charges)
+
 func update_appearance():
     $title/name.text = card_name
     if text_fn != null:
@@ -502,6 +505,25 @@ func opponent__approaching_player_card_becomes_sheep(card):
         if  approaching_card:
             approaching_card.become('Sheep')
 
+func this__frostbite_foes_on_other_lanes(card):
+    var this_lane = get_lane()
+    if not this_lane: return
+
+    if card == self:
+        for familiar in Game.enemy_familiars():
+            if familiar.field and familiar.field.lane != this_lane:
+                familiar.frostbite(2)
+
+func enemy__gain_counter_on_5_level_up(card):
+    if is_in_group('field') && card.is_in_group('field') && side() != card.side():
+        if effect_store.has('frostbites_seen'):
+            effect_store.frostbites_seen += 1
+        else:
+            effect_store.frostbites_seen = 1
+        if effect_store.frostbites_seen >= 5:
+            become('FrostOgrePlus')
+            create('BreakTheIce').add_to_hand()
+
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
 
@@ -715,6 +737,14 @@ func sorcery__ai_familiars_deal_damage_to_opposing_side_equal_to_hp(target_field
     for familiar in Game.enemy_familiars():
         familiar.deal_x_in_lane(familiar.hp)
 
+func sorcery__frostbite_for_5_seconds(target_field):
+    target_field.card.frostbite(5)
+
+func sorcery__destroy_all_zero_at_familiars(target_field):
+    var familiars = Game.familiars_on_field()
+    for familiar in familiars:
+        if familiar.at == 0:
+            familiar.die()
 
 # power up cards
 # ---------------------------------------------------------------------------------------------
@@ -740,6 +770,11 @@ func sorcery__draw_1_card_power_up(target_field):
 # charged knife
 func sorcery__create_1_shiv_power_up(target_field):
     create_x_shivs(effect_store.charges)
+
+# freezing glare
+func sorcery__frostbite_foes_for_2x_seconds_power_up(target_field):
+    for familiar in Game.enemy_familiars():
+        familiar.frostbite(2 * effect_store.charges)
 
 # charged beast
 func on_charges_timer_tick_charged_beast():
@@ -832,11 +867,14 @@ func battlecry__return_others_to_hand():
     for f in Game.friendly_familiars():
         if f != self:
             f.return_to_hand()
-
-func battlecry__deal_2_familiars_in_other_lanes():
+func get_lane():
     if not field:
         return
-    var this_lane = field.lane
+    return field.lane
+
+func battlecry__deal_2_familiars_in_other_lanes():
+    var this_lane = get_lane()
+    if not this_lane: return
 
     var familiars = Game.familiars_on_field()
     for familiar in familiars:
@@ -1276,6 +1314,30 @@ func fill_your_board_with(card_key):
         card.add_to_field(unoccupied_field)
         new_cards.append(card)
     return new_cards
+
+func frostbite(duration):
+    var attack = at
+    debuff(attack, 0)
+
+    if effect_store.has('frostbite'):
+        var combined_at = effect_store.frostbite.at + attack
+        var timer = effect_store.frostbite.timer
+
+        effect_store.frostbite.at = combined_at
+        timer.set_action_name('+%1d AT' % [combined_at])
+        timer.increase_duration_by(duration)
+    else:
+        var timer = start_timer(duration, 'delayed__frostbite__at_up', '+%1d AT' % [attack])
+        effect_store.frostbite = {
+            at = attack,
+            timer = timer
+        }
+
+    Game.executed_event("frostbite", self)
+
+func delayed__frostbite__at_up():
+    buff(effect_store.frostbite.at, 0)
+    effect_store.erase('frostbite')
 
 # zone changes
 # ---------------------------------------------------------------------------------------------

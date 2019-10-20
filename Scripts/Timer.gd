@@ -40,11 +40,10 @@ func _process(delta):
 
 # TODO: down ignored for now
 func init(action_name, target_time_, signal_receiver, signal_message):
-    $name.text = action_name
+    set_action_name(action_name)
     current_time = 0.0
-    target_time = target_time_
     $gauge.min_value = 0.0
-    $gauge.max_value = target_time
+    set_target_time(target_time_)
 
     s_receiver = signal_receiver
     s_message = signal_message
@@ -81,3 +80,13 @@ func stop():
     
 func reset():
     current_time = 0.0
+
+func increase_duration_by(duration):
+    set_target_time(target_time + duration)
+
+func set_target_time(value):
+    target_time = value
+    $gauge.max_value = target_time
+
+func set_action_name(action_name):
+    $name.text = action_name
