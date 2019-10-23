@@ -112,6 +112,13 @@ func text_fn__create_x_shivs():
         return 'Create %d Shivs. (hold to power up)' % effect_store.charges
     else:
         return 'Create 1 Shiv. (hold to power up)'
+func text_fn__Elixir_Elemental():
+    var start = 'Charge 4: Deathrottle: Create a Power Potion.'
+    if charged || ( effect_store.has('power_potion_counter') && effect_store['power_potion_counter'] > 0):
+        return start + ' (active)'
+    else:
+        return start + ' (disabled)'
+    
 
 func text_fn__frostbite_foes_for_2x_seconds():
     return 'Frostbite all foes for %d seconds. (hold to power up)' % (2 * effect_store.charges)
@@ -233,6 +240,8 @@ func draw_approaching_card():
     clear_timers()
     remove_from_group("approaching")
     add_to_hand()
+    Game.executed_event('draw_card', self)
+    return self
 
 #callback
 func play_enemy_card():
@@ -336,6 +345,12 @@ func targets_not_required(target_field):
 
 func no_target_required_and_is_charged(target_field):
     return charged and targets_not_required(target_field)
+    
+func targets_familiar_or_tower_or_charged_with_empty_field(target_field):
+    if charged:
+        return targets_friendly_unoccupied_familiar_field(target_field)
+    else:
+        return targets_familiar_or_tower(target_field)
 
 func targets_unoccupied_friendly_field():
     pass
@@ -368,6 +383,8 @@ func play(target_field, allied):
         else:
             queue_free()
 
+    if allied && Game.has_combo_card():
+        Game.executed_event('combo_card', [Game.get_combo_card(), self])
     if allied:
         if Game.has_combo_card():
             Game.get_combo_card().exec_inspire(self)
@@ -504,6 +521,28 @@ func opponent__approaching_player_card_becomes_sheep(card):
         var approaching_card = Game.ensure_approaching_card_player()
         if  approaching_card:
             approaching_card.become('Sheep')
+
+func own_familiar__become_fox_fire(card):
+    if is_in_group('hand') && side() == card.side() && card.is_familiar():
+        become('FoxFire')
+
+func own_sorcery__become_flame_sprite(card):
+    if is_in_group('hand') && side() == card.side() && card.is_sorcery():
+        become('FlameSprite')
+
+func on_field__gain_plus_one_plus_one(card):
+    if is_in_group('field') && side() == card.side():
+        buff(1, 1)
+
+func self__create_stun_powder(card):
+    if self == card:
+        create('StunPowder').add_to_hand()
+
+func sorcery_on_sorcery__transform_into_night_cloak(cards):
+    var comboed_card = cards[0]
+    var card = cards[1]
+    if is_in_group('field') and comboed_card.is_sorcery() and card.is_sorcery():
+        become('NightCloak')
 
 func this__frostbite_foes_on_other_lanes(card):
     var this_lane = get_lane()
@@ -737,8 +776,35 @@ func sorcery__ai_familiars_deal_damage_to_opposing_side_equal_to_hp(target_field
     for familiar in Game.enemy_familiars():
         familiar.deal_x_in_lane(familiar.hp)
 
+func sorcery__copy_ally_gain_plus_2_plus_2(target_field):
+    var target = target_field.card
+    var copy = target.create(target.key)
+    copy.add_to_hand()
+    copy.buff(2, 2)
 func sorcery__frostbite_for_5_seconds(target_field):
     target_field.card.frostbite(5)
+
+func sorcery__gain_plus_hp_plus_at(target_field):
+    var familiar = target_field.card
+    familiar.buff(familiar.hp, familiar.at)
+
+func sorcery__deal_3_charged_summon_ignited_beacon(target_field):
+    if charged:
+        create('IgnitedBeacon').add_to_field(target_field)
+    else:
+        deal_x(target_field, 3)
+
+func sorcery__discard_then_draw_that_many_plus_one(target_field):
+    var num_cards = Game.cards_in_player_hand().size()
+    Game.discard_player_hand()
+    utils.times(num_cards + 1, Game, 'draw_a_card')
+
+func sorcery__deal_1_draw_1(target_field):
+    deal_x(target_field, 1)
+    Game.draw_a_card()
+
+func sorcery__minus_one_minus_1(target_field):
+    target_field.card.debuff(1, 1)
 
 func sorcery__destroy_all_zero_at_familiars(target_field):
     var familiars = Game.familiars_on_field()
@@ -828,10 +894,17 @@ func exec_effect(effect):
             for card in Game.cards_in_player_hand():
                 if card.is_familiar():
                     card.buff(effect[1], effect[2])
+        'become':
+            become(effect[1])
+        'attack_immediately':
+            attack_immediately()
+        'create_shiv':
+            create_x_shivs(effect[1])
         'battlecry__every_4_minus_1_minus_1':
             battlecry__every_4_minus_1_minus_1()
         _:
             print("UNknown effect type " + effect[0])
+
 
 # battlecries
 # ---------------------------------------------------------------------------------------------
@@ -840,12 +913,6 @@ func exec_battlecry():
     if battlecry != null:
         funcref(self, battlecry).call_func()
     process_event('battlecry', [self])
-
-func battlecry__attack_immediately():
-    attack_immediately()
-
-func create_a_shiv():
-    create_x_shivs(1)
 
 func battlecry__deal_1_in_lane():
     deal_x_in_lane(1)
@@ -1040,6 +1107,12 @@ func battlecry__delay_5_become_a_phoenix():
 func timed_become_a_phoenix():
     become('Phoenix')
 
+func battlecry__reset_power_potion_counter():
+    if charged:
+        effect_store['power_potion_counter'] = 1
+    else:
+        effect_store['power_potion_counter'] = 0
+
 # deathrottle
 # ---------------------------------------------------------------------------------------------
 
@@ -1092,20 +1165,29 @@ func deathrottle__summon_2_1_1_slimes(from_field):
     if not unoccupied_fields.empty():
         create('Slime1').add_to_field(utils.sample(unoccupied_fields))
 
+func deathrottle__if_counter_create_power_potion(from_field):
+    if effect_store.has('power_potion_counter') && effect_store['power_potion_counter'] > 0:
+        effect_store['power_potion_counter'] = 0
+        create('PowerPotion').add_to_hand()
+
+func deathrottle__create_bonfire_ash(from_field):
+    create('BonfireAsh').add_to_hand()
+
+func deathrottle__create_ayane(from_field):
+    create('AyaneRogueSorceress').add_to_hand()
+
 # sabotage
 # ---------------------------------------------------------------------------------------------
 
 func exec_sabotage():
     if sabotage != null:
         funcref(self, sabotage).call_func()
+    process_event('sabotage', [self])
 
 func sabotage__draw_a_card():
     if not effect_store.has('looted_for_a_card'):
         effect_store['looted_for_a_card'] = true
         Game.draw_a_card()
-
-func sabotage__become_a_dragon():
-    become_a_dragon()
 
 
 # combo
@@ -1114,9 +1196,7 @@ func sabotage__become_a_dragon():
 func exec_combo(target_field):
     if combo != null:
         funcref(self, combo).call_func(target_field)
-
-func combo__create_a_shiv(target_field):
-    create_x_shivs(1)
+    process_event('combo', [self])
 
 func combo__deal_2_then_return_to_hand(target_field):
     deal_x(target_field, 2)
@@ -1128,6 +1208,9 @@ func combo__plus_2_plus_2_to_all(target_field):
 
 func combo__plus_2_plus_2(target_field):
     buff(2, 2)
+
+func combo__plus_4_plus_4(target_field):
+    target_field.card.buff(4, 4)
 
 func combo__attacks_immediately(target_field):
     attack_immediately()
@@ -1295,6 +1378,7 @@ func discard():
         remove_from_hand()
         queue_free()
         Game.organize_hand()
+        Game.executed_event("discard", self)
     else:
         print('could not discard')
 
@@ -1429,7 +1513,7 @@ func cancel_attacking():
 
 func setup_charge_to_attack():
     attack_timer_running = true
-    attack_charge_timer = start_timer(3, 'attacking', 'attack')
+    attack_charge_timer = start_timer(options.attack_speed, 'attacking', 'attack')
 
 #callback
 func attacking():

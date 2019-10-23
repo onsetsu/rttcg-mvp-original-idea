@@ -6,8 +6,9 @@ onready var card_images = card_images_scene.instance()
 var game_scene = preload("res://Scenes/Game.tscn")
 var deck_slot_scene = preload("res://Scenes/DeckSlot.tscn")
 var card_reward_scene = preload("res://Scenes/CardReward.tscn")
+var configure_options_scene = preload("res://Scenes/ConfigureOptions.tscn")
 
-var speed_up = 0.8
+# handling options in dedicated scene
 var speed_pause_modifier = 1.0
 
 func card_names():
@@ -38,9 +39,7 @@ func dict_name_for_card_name(card_name):
         return 'enemy_deck'
 
 func _ready():
-    update_speed_info()
-
-    print(get_tree().get_root(), get_tree().get_root().get_node('foo'))
+    scene_stack.init(self)
 
     # setup cards
     for c_name in card_names():
@@ -57,13 +56,6 @@ func _process(delta):
             speed_pause_modifier = 1.0
         else:
             speed_pause_modifier = 0.0
-
-func update_speed_info():
-    find_node('speed-info').text = "%1.1f" % [speed_up]
-
-func _on_speedslider_value_changed(value):
-    speed_up = value
-    update_speed_info()
 
 func deck_config(key):
     return find_node(key, true).pressed
@@ -182,16 +174,7 @@ func apply_last_decks():
 
 func _on_play_button_pressed():
     save_as_last_decks()
-    
-    var root = get_tree().get_root()
-    var game = game_scene.instance()
-    root.add_child(game)
-    $menu.hide()
-
-func end_game():
-    var root = get_tree().get_root()
-    root.remove_child(root.get_node('Game'))
-    $menu.show()
+    instanciate_and_push(game_scene)
 
 # Button Callbacks
 # ---------------------------------------------------------------------------------------------
@@ -297,13 +280,20 @@ func _on_SaveCustomEnemy_pressed():
 
 
 func _on_test_card_reward_pressed():
-    var root = get_tree().get_root()
-    var card_reward = card_reward_scene.instance()
-    root.add_child(card_reward)
-    $menu.hide()
+    instanciate_and_push(card_reward_scene)
 
-func return_from_card_reward():
-    var root = get_tree().get_root()
-    root.remove_child(root.get_node('CardReward'))
+func _on_options_button_pressed():
+    instanciate_and_push(configure_options_scene)
+
+func instanciate_and_push(scene_class):
+    var scene = utils.instance_into_root(scene_class)
+    scene_stack.push(scene)
+
+func ss_init():
+    pass
+func ss_resume():
     $menu.show()
-
+func ss_suspend():
+    $menu.hide()
+func ss_end():
+    pass

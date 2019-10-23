@@ -217,5 +217,6 @@ margin_top = 124.0
 margin_right = 297.0
 margin_bottom = 138.0
 text = "Breaking the Layout!"
+
 [connection signal="mouse_entered" from="area" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="area" to="." method="_on_Area2D_mouse_exited"]

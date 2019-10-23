@@ -162,44 +162,18 @@ margin_bottom = 20.0
 text = "Save Custom"
 
 [node name="speed" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="PanelContainer" type="PanelContainer" parent="speed"]
-margin_right = 270.0
+[node name="HBoxContainer" type="HBoxContainer" parent="speed"]
+margin_right = 360.0
 margin_bottom = 30.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="speed/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 263.0
-margin_bottom = 23.0
+[node name="options_button" type="Button" parent="speed/HBoxContainer"]
+margin_right = 63.0
+margin_bottom = 30.0
+text = "Options"
 
-[node name="speed-slider" type="HSlider" parent="speed/PanelContainer/HBoxContainer"]
-margin_right = 177.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-size_flags_vertical = 2
-max_value = 2.0
-step = 0.1
-value = 1.0
-tick_count = 5
-ticks_on_borders = true
-
-[node name="speed-info" type="Label" parent="speed/PanelContainer/HBoxContainer"]
-margin_left = 181.0
-margin_top = 1.0
-margin_right = 201.0
-margin_bottom = 15.0
-text = "1.0"
-
-[node name="speed-label" type="Label" parent="speed/PanelContainer/HBoxContainer"]
-margin_left = 205.0
-margin_top = 1.0
-margin_right = 256.0
-margin_bottom = 15.0
-text = "* speed"
 [connection signal="pressed" from="menu/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="menu/test_card_reward" to="." method="_on_test_card_reward_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/RookieParty" to="." method="_on_RookieParty_pressed"]
@@ -211,4 +185,4 @@ text = "* speed"
 [connection signal="pressed" from="menu/VBoxContainer2/EndlessWall" to="." method="_on_EndlessWall_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer2/HBoxContainer/LoadCustomEnemy" to="." method="_on_LoadCustomEnemy_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer2/HBoxContainer/SaveCustomEnemy" to="." method="_on_SaveCustomEnemy_pressed"]
-[connection signal="value_changed" from="speed/PanelContainer/HBoxContainer/speed-slider" to="." method="_on_speedslider_value_changed"]
+[connection signal="pressed" from="speed/HBoxContainer/options_button" to="." method="_on_options_button_pressed"]

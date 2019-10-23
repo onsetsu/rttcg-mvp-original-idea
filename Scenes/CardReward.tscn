@@ -57,6 +57,7 @@ margin_top = 217.624
 margin_right = 584.659
 margin_bottom = 247.624
 text = "Pick"
+
 [connection signal="pressed" from="Node/PanelContainer/Panel/Button" to="." method="_on_pick_left"]
 [connection signal="pressed" from="Node/PanelContainer/Panel/Button2" to="." method="_on_pick_middle"]
 [connection signal="pressed" from="Node/PanelContainer/Panel/Button3" to="." method="_on_pick_right"]

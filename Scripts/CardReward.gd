@@ -52,4 +52,15 @@ func pick_card(key):
     Lobby.sort_grids()
 
 func return_to_lobby():
-    Lobby.return_from_card_reward()
+    scene_stack.pop()
+
+# ---------------------------------------------------------------------------------------------
+
+func ss_init():
+    pass
+func ss_resume():
+    pass
+func ss_suspend():
+    pass
+func ss_end():
+    utils.remove_node(self)

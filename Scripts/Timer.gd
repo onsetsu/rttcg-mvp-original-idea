@@ -29,7 +29,7 @@ func _process(delta):
         multiplier *= haste_multiplier
     if s_receiver and s_receiver.slow and $name.text != 'combo':
         multiplier *= slow_multiplier
-    current_time += delta * Lobby.speed_up * multiplier * Lobby.speed_pause_modifier
+    current_time += delta * options.game_speed * multiplier * Lobby.speed_pause_modifier
     
     $gauge.value = current_time
     $time.text = "%1d" % (target_time - current_time + 1)

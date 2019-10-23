@@ -59,13 +59,15 @@ func create_card_from_deck():
 func create_card_from_enemy_deck():
     return $enemy_deck.create_next_card()
 
-func create_card_from_extra_deck():
-    pass
-    #return $extra_deck.create_next_card()
-
 func draw_a_card():
     var card = create_card_from_deck()
     card.add_to_hand()
+    executed_event('draw_card', card)
+    return card
+
+func draw_approaching_card_player():
+    var card = ensure_approaching_card_player()
+    card.draw_approaching_card()
     return card
 
 func cards_in_player_hand():
@@ -135,7 +137,7 @@ func has_approaching_card():
 func create_approaching_card():
     var approaching_card = create_card_from_deck()
     approaching_card.add_to_group("approaching")
-    approaching_card.start_timer(5, "draw_approaching_card", "draw")
+    approaching_card.start_timer(options.player_approaching_speed, "draw_approaching_card", "draw")
     
 func refill_approaching_card_player():
     if not has_approaching_card():
@@ -186,7 +188,7 @@ func in_wait_to_approaching_enemy_card(card):
     card.remove_from_group("in_wait")
     card.add_to_group("approaching")
     
-    card.start_timer(5.0, "play_enemy_card", "play")
+    card.start_timer(options.enemy_approaching_speed, "play_enemy_card", "play")
 
 func create_approaching_card_enemy():
     var approaching_card = ensure_in_wait_card_enemy()
@@ -340,4 +342,15 @@ func try_to_play_enemy_card(card):
 # ---------------------------------------------------------------------------------------------
 
 func _on_returnbutton_pressed():
-    Lobby.end_game()
+    scene_stack.pop()
+
+# ---------------------------------------------------------------------------------------------
+
+func ss_init():
+    pass
+func ss_resume():
+    utils.attach_to_root(self)
+func ss_suspend():
+    utils.remove_node(self)
+func ss_end():
+    utils.remove_node(self)

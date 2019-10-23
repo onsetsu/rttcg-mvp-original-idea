@@ -1,0 +1,212 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ConfigureOptions.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="ConfigureOptions" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_left = 301.0
+margin_top = 213.0
+margin_right = 722.0
+margin_bottom = 387.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+margin_right = 421.0
+margin_bottom = 174.0
+
+[node name="Subtitle" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_right = 421.0
+margin_bottom = 14.0
+text = "Speed"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 421.0
+margin_bottom = 48.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 8.0
+margin_right = 169.0
+margin_bottom = 22.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+text = "Game Speed"
+align = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 173.0
+margin_right = 421.0
+margin_bottom = 30.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 241.0
+margin_bottom = 23.0
+
+[node name="game_speed_label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer"]
+margin_top = 1.0
+margin_right = 30.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 30, 0 )
+text = "1.0"
+align = 2
+
+[node name="game_speed_slider" type="HSlider" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 34.0
+margin_right = 234.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+max_value = 2.0
+step = 0.1
+value = 1.0
+ticks_on_borders = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 421.0
+margin_bottom = 82.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 8.0
+margin_right = 169.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+text = "Player Approaching Speed"
+align = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 173.0
+margin_right = 421.0
+margin_bottom = 30.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 241.0
+margin_bottom = 23.0
+
+[node name="player_approaching_speed_label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer"]
+margin_top = 1.0
+margin_right = 30.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 30, 0 )
+text = "5.0"
+align = 2
+
+[node name="player_approaching_speed_slider" type="HSlider" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer"]
+margin_left = 34.0
+margin_right = 234.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+max_value = 15.0
+step = 0.5
+value = 5.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 86.0
+margin_right = 421.0
+margin_bottom = 116.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_top = 8.0
+margin_right = 169.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+text = "Enemy Approaching Speed"
+align = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 173.0
+margin_right = 421.0
+margin_bottom = 30.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 241.0
+margin_bottom = 23.0
+
+[node name="enemy_approaching_speed_label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3/HBoxContainer"]
+margin_top = 1.0
+margin_right = 30.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 30, 0 )
+text = "3.0"
+align = 2
+
+[node name="enemy_approaching_speed_slider" type="HSlider" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3/HBoxContainer"]
+margin_left = 34.0
+margin_right = 234.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+max_value = 15.0
+step = 0.5
+value = 5.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 421.0
+margin_bottom = 150.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_top = 8.0
+margin_right = 169.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+text = "Attack Speed"
+align = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 173.0
+margin_right = 421.0
+margin_bottom = 30.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 241.0
+margin_bottom = 23.0
+
+[node name="attack_speed_label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer2/HBoxContainer"]
+margin_top = 1.0
+margin_right = 30.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 30, 0 )
+text = "3.0"
+align = 2
+
+[node name="attack_speed_slider" type="HSlider" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer2/HBoxContainer"]
+margin_left = 34.0
+margin_right = 234.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+max_value = 15.0
+step = 0.5
+value = 3.0
+
+[node name="continue_button" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_left = 183.0
+margin_top = 154.0
+margin_right = 237.0
+margin_bottom = 174.0
+size_flags_horizontal = 4
+text = "Return"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 141.69, 96.4697 )
+rotation = 0.387699
+texture = ExtResource( 2 )
+
+[connection signal="value_changed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/game_speed_slider" to="." method="_on_game_speed_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer/player_approaching_speed_slider" to="." method="_on_player_approaching_speed_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer3/PanelContainer3/HBoxContainer/enemy_approaching_speed_slider" to="." method="_on_enemy_approaching_speed_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer2/HBoxContainer/attack_speed_slider" to="." method="_on_attack_speed_slider_value_changed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/continue_button" to="." method="_on_continue_button_pressed"]

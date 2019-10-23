@@ -22,8 +22,9 @@ config/icon="res://icon.png"
 [autoload]
 
 utils="*res://Scripts/utils.gd"
+options="*res://Scripts/options.gd"
 cards="*res://Scripts/cards.gd"
-lists="*res://Scripts/lists.gd"
+scene_stack="*res://Scripts/scene_stack.gd"
 
 [display]
 
