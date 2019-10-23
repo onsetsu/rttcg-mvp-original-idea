@@ -759,6 +759,7 @@ func CuriousExperimenter(card):
     card.hp = 2
     card.battlecry ='battlecry__create_random_spell'
 
+# Use Champion technology prevent multiple Djinns from happening, instead, get a Wish (Decide between next two cards in your hand?)
 func Djinn(card):
     card.key = 'Djinn'
     card.card_name = 'Djinn'
@@ -768,6 +769,7 @@ func Djinn(card):
     card.hp = 3
     card.deathrottle ='deathrottle__if_no_lamp_create_a_lamp'
 
+# #TODO: Summon a Djinn instead of Creating one!
 func Lamp(card):
     card.generated = true
     
