@@ -759,6 +759,7 @@ func CuriousExperimenter(card):
     card.hp = 2
     card.battlecry ='battlecry__create_random_spell'
 
+# Use Champion technology prevent multiple Djinns from happening, instead, get a Wish (Decide between next two cards in your hand?)
 func Djinn(card):
     card.key = 'Djinn'
     card.card_name = 'Djinn'
@@ -768,6 +769,7 @@ func Djinn(card):
     card.hp = 3
     card.deathrottle ='deathrottle__if_no_lamp_create_a_lamp'
 
+# #TODO: Summon a Djinn instead of Creating one!
 func Lamp(card):
     card.generated = true
     
@@ -1282,6 +1284,71 @@ func Refresh(card):
 
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------
+
+# Ashe (from Legends of RuneTerra)
+# Basic Spell to generate
+func Frostbite(card):
+    card.key = 'Frostbite'
+    card.card_name = 'Frostbite'
+    card.text = 'Reduce the AT of target familiar to 0 for 5 seconds.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_familiar'
+    card.effect = 'sorcery__frostbite_for_5_seconds'
+
+func FreezingGlare(card):
+    card.key = 'FreezingGlare'
+    card.card_name = 'Freezing Glare'
+    card.text = 'Frostbite all foes for 2 seconds. (hold to power up)'
+    card.text_fn = 'text_fn__frostbite_foes_for_2x_seconds'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+
+    card.effect = 'sorcery__frostbite_foes_for_2x_seconds_power_up'
+    card.effect_store = {
+        charges = 1,
+        power_up_time = 2,
+        power_up_callback = 'power_up_tick',
+        power_up_label = '+2 Seconds'
+    }
+    card.on_drag_start = 'start_power_up_timer'
+    card.on_snap_back = 'reset_charges_remove_power_up_timer'
+    
+func FrostOgre(card):
+    card.key = 'FrostOgre'
+    card.card_name = 'Frost Ogre'
+    card.text = 'Attack: Frostbite foes on other lanes. Level Up: Frostbite 5+ enemies.'
+    card.type = 'familiar'
+    card.at = 4
+    card.hp = 2
+    card.whenever = {
+        attack = 'this__frostbite_foes_on_other_lanes',
+        frostbite = 'enemy__gain_counter_on_5_level_up'
+    }
+
+# Perm. Effect: Destroy all familiars with 0 AT.?
+func FrostOgrePlus(card):
+    card.generated = true
+
+    card.key = 'FrostOgrePlus'
+    card.card_name = 'Frost Ogre +'
+    card.text = 'Attack: Frostbite foes on other lanes.'
+    card.type = 'familiar'
+    card.at = 5
+    card.hp = 3
+    card.whenever = {
+        attack = 'this__frostbite_foes_on_other_lanes'
+    }
+
+func BreakTheIce(card):
+    card.generated = true
+
+    card.key = 'BreakTheIce'
+    card.card_name = 'BreakTheIce'
+    card.text = 'Destroy all familiars with 0 AT.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    card.effect = 'sorcery__destroy_all_zero_at_familiars'
+
 # Enemy Cards
 # ---------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------

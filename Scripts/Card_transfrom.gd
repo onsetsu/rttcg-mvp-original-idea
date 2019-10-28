@@ -120,6 +120,9 @@ func text_fn__Elixir_Elemental():
         return start + ' (disabled)'
     
 
+func text_fn__frostbite_foes_for_2x_seconds():
+    return 'Frostbite all foes for %d seconds. (hold to power up)' % (2 * effect_store.charges)
+
 func update_appearance():
     $title/name.text = card_name
     if text_fn != null:
@@ -541,6 +544,25 @@ func sorcery_on_sorcery__transform_into_night_cloak(cards):
     if is_in_group('field') and comboed_card.is_sorcery() and card.is_sorcery():
         become('NightCloak')
 
+func this__frostbite_foes_on_other_lanes(card):
+    var this_lane = get_lane()
+    if not this_lane: return
+
+    if card == self:
+        for familiar in Game.enemy_familiars():
+            if familiar.field and familiar.field.lane != this_lane:
+                familiar.frostbite(2)
+
+func enemy__gain_counter_on_5_level_up(card):
+    if is_in_group('field') && card.is_in_group('field') && side() != card.side():
+        if effect_store.has('frostbites_seen'):
+            effect_store.frostbites_seen += 1
+        else:
+            effect_store.frostbites_seen = 1
+        if effect_store.frostbites_seen >= 5:
+            become('FrostOgrePlus')
+            create('BreakTheIce').add_to_hand()
+
 # sorcery effects
 # ---------------------------------------------------------------------------------------------
 
@@ -759,6 +781,8 @@ func sorcery__copy_ally_gain_plus_2_plus_2(target_field):
     var copy = target.create(target.key)
     copy.add_to_hand()
     copy.buff(2, 2)
+func sorcery__frostbite_for_5_seconds(target_field):
+    target_field.card.frostbite(5)
 
 func sorcery__gain_plus_hp_plus_at(target_field):
     var familiar = target_field.card
@@ -781,6 +805,12 @@ func sorcery__deal_1_draw_1(target_field):
 
 func sorcery__minus_one_minus_1(target_field):
     target_field.card.debuff(1, 1)
+
+func sorcery__destroy_all_zero_at_familiars(target_field):
+    var familiars = Game.familiars_on_field()
+    for familiar in familiars:
+        if familiar.at == 0:
+            familiar.die()
 
 func sorcery__draw_up_to_4(target_field):
     Game.draw_up_to(4)
@@ -809,6 +839,11 @@ func sorcery__draw_1_card_power_up(target_field):
 # charged knife
 func sorcery__create_1_shiv_power_up(target_field):
     create_x_shivs(effect_store.charges)
+
+# freezing glare
+func sorcery__frostbite_foes_for_2x_seconds_power_up(target_field):
+    for familiar in Game.enemy_familiars():
+        familiar.frostbite(2 * effect_store.charges)
 
 # charged beast
 func on_charges_timer_tick_charged_beast():
@@ -902,11 +937,14 @@ func battlecry__return_others_to_hand():
     for f in Game.friendly_familiars():
         if f != self:
             f.return_to_hand()
-
-func battlecry__deal_2_familiars_in_other_lanes():
+func get_lane():
     if not field:
         return
-    var this_lane = field.lane
+    return field.lane
+
+func battlecry__deal_2_familiars_in_other_lanes():
+    var this_lane = get_lane()
+    if not this_lane: return
 
     var familiars = Game.familiars_on_field()
     for familiar in familiars:
@@ -1363,6 +1401,30 @@ func fill_your_board_with(card_key):
         card.add_to_field(unoccupied_field)
         new_cards.append(card)
     return new_cards
+
+func frostbite(duration):
+    var attack = at
+    debuff(attack, 0)
+
+    if effect_store.has('frostbite'):
+        var combined_at = effect_store.frostbite.at + attack
+        var timer = effect_store.frostbite.timer
+
+        effect_store.frostbite.at = combined_at
+        timer.set_action_name('+%1d AT' % [combined_at])
+        timer.increase_duration_by(duration)
+    else:
+        var timer = start_timer(duration, 'delayed__frostbite__at_up', '+%1d AT' % [attack])
+        effect_store.frostbite = {
+            at = attack,
+            timer = timer
+        }
+
+    Game.executed_event("frostbite", self)
+
+func delayed__frostbite__at_up():
+    buff(effect_store.frostbite.at, 0)
+    effect_store.erase('frostbite')
 
 # zone changes
 # ---------------------------------------------------------------------------------------------

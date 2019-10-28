@@ -173,7 +173,6 @@ margin_bottom = 30.0
 margin_right = 63.0
 margin_bottom = 30.0
 text = "Options"
-
 [connection signal="pressed" from="menu/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="menu/test_card_reward" to="." method="_on_test_card_reward_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/RookieParty" to="." method="_on_RookieParty_pressed"]
