@@ -65,6 +65,10 @@ func draw_a_card():
     executed_event('draw_card', card)
     return card
 
+func draw_up_to(number_of_cards):
+    while cards_in_player_hand().size() < number_of_cards:
+        draw_a_card()
+
 func draw_approaching_card_player():
     var card = ensure_approaching_card_player()
     card.draw_approaching_card()

@@ -782,6 +782,9 @@ func sorcery__deal_1_draw_1(target_field):
 func sorcery__minus_one_minus_1(target_field):
     target_field.card.debuff(1, 1)
 
+func sorcery__draw_up_to_4(target_field):
+    Game.draw_up_to(4)
+
 # power up cards
 # ---------------------------------------------------------------------------------------------
 

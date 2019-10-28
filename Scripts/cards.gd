@@ -1269,6 +1269,15 @@ func Ping(card):
     card.haste = true
     card.effect = 'sorcery__deal_1_draw_1'
 
+func Refresh(card):
+    card.key = 'Refresh'
+    card.card_name = 'Refresh'
+    card.text = 'Draw cards until you have 4 or more in hand.'
+    card.type = 'sorcery'
+    card.targeting = 'targets_not_required'
+    
+    card.effect = 'sorcery__draw_up_to_4'
+   
 # 1/4 Ghost: When you play a sorcery: Return this to your hand as a Fireball.
 
 # ---------------------------------------------------------------------------------------------
