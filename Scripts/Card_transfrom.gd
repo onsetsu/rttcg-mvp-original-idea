@@ -1572,6 +1572,8 @@ func receive_damage(amount):
         display_hint(amount, Color(1,0,0))
         hp -= amount
         check_for_death()
+#        if amount > 0:
+#            cancel_attacking()
 
 func attack_that_tower(tower):
     tower.receive_damage(at)

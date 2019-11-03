@@ -22,6 +22,7 @@ __meta__ = {
 }
 
 [node name="Mockups & Placement" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Anschluss" type="ColorRect" parent="Mockups & Placement"]
 editor/display_folded = true
@@ -479,4 +480,5 @@ valign = 1
 [node name="elements" type="Node" parent="."]
 
 [node name="effects" type="Node" parent="."]
+
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
