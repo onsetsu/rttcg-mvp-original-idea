@@ -182,7 +182,7 @@ func _on_play_button_pressed():
 func _player_default_deck():
     return {
         "Adventurer" : 2,
-        "Duelist" : 1,
+        "LivingTorch" : 1,
         "IceWall" : 1,
         "Fireball" : 1,
         "PowerPotion" : 1,

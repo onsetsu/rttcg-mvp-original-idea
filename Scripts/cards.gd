@@ -22,6 +22,14 @@ func Duelist(card):
         effect = ['shoot', 1],
     }]
 
+func LivingTorch(card):
+    card.key = 'LivingTorch'
+    card.card_name = 'Living Torch'
+    card.text = ''
+    card.type = 'familiar'
+    card.at = 4
+    card.hp = 1
+
 func FormOfDragon(card):
     card.key = 'FormOfDragon'
     card.card_name = 'Form of Dragon'
