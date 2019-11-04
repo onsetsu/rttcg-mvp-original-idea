@@ -592,7 +592,7 @@ func sorcery__deal_3_charged_6(target_field):
     
 func deal_4_all_enemy_familiars(target_field):
     for familiar in Game.enemy_familiars():
-        deal_x_familiar(familiar, 5)
+        deal_x_familiar(familiar, 4)
 
 func plus_2_plus_2(target_field):
     target_field.card.buff(2, 2)
@@ -602,7 +602,7 @@ func plus_3_plus_3(target_field):
 
 func plus_2_plus_2_then_attack(target_field):
     var familiar = target_field.card
-    familiar.buff(1, 1)
+    familiar.buff(2, 2)
     familiar.attack_immediately()
 
 func plus_3_plus_3_then_attack(target_field):
