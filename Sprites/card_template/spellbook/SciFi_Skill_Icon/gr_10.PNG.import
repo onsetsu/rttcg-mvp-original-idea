@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/gr_10.PNG-05654a3d1c25c817fc6c367b020a0b32.s3tc.stex"
+path.etc2="res://.import/gr_10.PNG-05654a3d1c25c817fc6c367b020a0b32.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Sprites/card_template/spellbook/SciFi_Skill_Icon/gr_10.PNG"
+dest_files=[ "res://.import/gr_10.PNG-05654a3d1c25c817fc6c367b020a0b32.s3tc.stex", "res://.import/gr_10.PNG-05654a3d1c25c817fc6c367b020a0b32.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.03
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
