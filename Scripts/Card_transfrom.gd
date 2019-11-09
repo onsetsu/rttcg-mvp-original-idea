@@ -309,9 +309,6 @@ func targets_familiar(target_field):
     if (target_field == null):
         print('no field selected')
         return false # did not play the card
-    if (target_field.type != 'familiar'):
-        print('no field for familiar')
-        return false # cannot play on tomers for now
     var card_on_field = target_field.card
     if (card_on_field == null):
         print('field not occupied')
@@ -772,6 +769,7 @@ func sorcery__copy_ally_gain_plus_2_plus_2(target_field):
     var copy = target.create(target.key)
     copy.add_to_hand()
     copy.buff(2, 2)
+
 func sorcery__frostbite_for_5_seconds(target_field):
     target_field.card.frostbite(5)
 

@@ -98,13 +98,6 @@ func _ready():
     Lobby.set_deck_from_config($player_deck, 'player')
     Lobby.set_deck_from_config($enemy_deck, 'enemy')
 
-    $towers/tower_right_enemy.add_to_field($field/field_right_enemy_tower)
-    $towers/tower_right_ally.add_to_field($field/field_right_ally_tower)
-    $towers/tower_middle_enemy.add_to_field($field/field_middle_enemy_tower)
-    $towers/tower_middle_ally.add_to_field($field/field_middle_ally_tower)
-    $towers/tower_left_enemy.add_to_field($field/field_left_enemy_tower)
-    $towers/tower_left_ally.add_to_field($field/field_left_ally_tower)
-    # add towers to familiar fields
     $towers/tower_right_enemy.add_to_field($field/field_right_enemy_familiar)
     $towers/tower_right_ally.add_to_field($field/field_right_ally_familiar)
     $towers/tower_middle_enemy.add_to_field($field/field_middle_enemy_familiar)
@@ -256,7 +249,7 @@ func get_hovered_field():
             return field
 
 func enemy_familiar_fields():
-    return utils.filter_props(fields(), {side = 'enemy', type = 'familiar'})
+    return utils.filter_props(fields(), {side = 'enemy'})
 
 func unoccupied_enemy_familiar_fields():
     return utils.filter_func(enemy_familiar_fields(), 'is_unoccupied', true)
@@ -271,7 +264,7 @@ func enemy_towers():
     return [$towers/tower_left_enemy, $towers/tower_middle_enemy, $towers/tower_right_enemy]
 
 func friendly_familiar_fields():
-    return utils.filter_props(fields(), {side = 'friendly', type = 'familiar'})
+    return utils.filter_props(fields(), {side = 'friendly'})
 
 func friendly_towers():
     return [$towers/tower_left_ally, $towers/tower_middle_ally, $towers/tower_right_ally]
@@ -286,9 +279,8 @@ func friendly_familiars():
     return utils.pluck(occupied_friendly_familiar_fields(), 'card')
 
 func familiars_on_field():
-    var familiar_fields = utils.filter_props(fields(), {type = 'familiar'})
     var result = []
-    for f in familiar_fields:
+    for f in fields():
         if f.card:
             result.append(f.card)
     return result

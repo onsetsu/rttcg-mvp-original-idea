@@ -327,18 +327,11 @@ position = Vector2( 715, 35 )
 
 [node name="field" type="Node2D" parent="."]
 
-[node name="field_left_enemy_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 190.0
-margin_top = -225.793
-margin_right = 400.0
-margin_bottom = -175.793
-
 [node name="field_left_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_top = 60.0
 margin_right = 400.0
 margin_bottom = 220.0
-type = "familiar"
 
 [node name="field_left_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
@@ -346,21 +339,6 @@ margin_top = 220.0
 margin_right = 400.0
 margin_bottom = 380.0
 side = "friendly"
-type = "familiar"
-
-[node name="field_left_ally_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 190.0
-margin_top = 891.714
-margin_right = 400.0
-margin_bottom = 941.714
-side = "friendly"
-
-[node name="field_middle_enemy_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 400.0
-margin_top = -225.793
-margin_right = 610.0
-margin_bottom = -175.793
-lane = "middle"
 
 [node name="field_middle_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
@@ -368,7 +346,6 @@ margin_top = 60.0
 margin_right = 610.0
 margin_bottom = 220.0
 lane = "middle"
-type = "familiar"
 
 [node name="field_middle_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
@@ -377,22 +354,6 @@ margin_right = 610.0
 margin_bottom = 380.0
 lane = "middle"
 side = "friendly"
-type = "familiar"
-
-[node name="field_middle_ally_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 400.0
-margin_top = 891.714
-margin_right = 610.0
-margin_bottom = 941.714
-lane = "middle"
-side = "friendly"
-
-[node name="field_right_enemy_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 610.0
-margin_top = -225.793
-margin_right = 820.0
-margin_bottom = -175.793
-lane = "right"
 
 [node name="field_right_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
@@ -400,22 +361,12 @@ margin_top = 60.0
 margin_right = 820.0
 margin_bottom = 220.0
 lane = "right"
-type = "familiar"
 
 [node name="field_right_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
 margin_top = 220.0
 margin_right = 820.0
 margin_bottom = 380.0
-lane = "right"
-side = "friendly"
-type = "familiar"
-
-[node name="field_right_ally_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 610.0
-margin_top = 891.714
-margin_right = 820.0
-margin_bottom = 941.714
 lane = "right"
 side = "friendly"
 

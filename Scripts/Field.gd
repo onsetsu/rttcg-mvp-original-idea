@@ -4,7 +4,6 @@ onready var Game = get_tree().get_root().get_node('Game')
 
 export var lane = 'left' # middle, right
 export var side = 'enemy' # friendly
-export var type = 'tower' # familiar
 
 var card
 var tower
@@ -17,9 +16,9 @@ func is_middle(): return lane == 'middle'
 func is_right(): return lane == 'right'
 
 func is_unoccupied():
-    return type == 'familiar' && card == null
+    return not is_occupied()
 func is_occupied():
-    return type == 'familiar' && card != null
+    return card != null
 
 func is_hovered():
     return modern_is_hovered()
@@ -54,7 +53,7 @@ func center_position():
 
 func opposing_field():
     for field in Game.fields():
-        if field.type == 'familiar' && field.side != side && field.lane == lane:
+        if field.side != side && field.lane == lane:
             return field
 
 func field_to_the_right_in_ring():
@@ -64,8 +63,5 @@ func field_to_the_right_in_ring():
     if lane == 'right': query_lane = 'left'
     
     for field in Game.fields():
-        if field.type == type && field.side == side && field.lane == query_lane:
+        if field.side == side && field.lane == query_lane:
             return field
-
-func receive_damage(x):
-    pass
