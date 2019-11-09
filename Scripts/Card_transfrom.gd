@@ -279,8 +279,8 @@ func is_enemy():
 
 func opposing_familiar():
     if not field: return null
-    if field.opposing_familiar_field().is_empty(): return null
-    return field.opposing_familiar_field().card
+    if field.opposing_field().is_unoccupied(): return null
+    return field.opposing_field().card
 
 # targeting
 # ---------------------------------------------------------------------------------------------
@@ -322,13 +322,7 @@ func targets_tower(target_field):
     if (target_field == null):
         print('no field selected')
         return false # did not play the card
-    if (target_field.type != 'tower'):
-        print('no field for tower')
-        return false # cannot play on tomers for now
     var tower_on_field = target_field.tower
-    if (tower_on_field == null):
-        print('field not occupied')
-        return false # field occupied
     if (tower_on_field.hp <= 0):
         print('tower dead')
         return false # tower dead
@@ -362,7 +356,7 @@ func targets_familiar_combo_not_required(target_field):
         return targets_familiar(target_field)
 
 func targets_familiar_with_empty_field_to_the_right(target_field):
-    return targets_familiar(target_field) and target_field.field_to_the_right_in_ring().is_empty()
+    return targets_familiar(target_field) and target_field.field_to_the_right_in_ring().is_unoccupied()
 
 # play from hand
 # ---------------------------------------------------------------------------------------------
@@ -575,9 +569,6 @@ func deal_3(target_field):
 func deal_4(target_field):
     deal_x(target_field, 4)
 
-func deal_5(target_field):
-    deal_x(target_field, 5)
-
 func sorcery__deal_5(target_field):
     deal_x(target_field, 5)
 
@@ -640,7 +631,7 @@ func deal_3_if_approching_sorcery_deal_6(target_field):
         deal_x(target_field, 3)
 
 func deal_4_all_in_lane(target_field):
-    deal_x_all_in_lane(target_field, 4)
+    deal_x_everything_in_lane(target_field, 4)
 
 func sorcery__return_to_hand(target_field):
     target_field.card.return_to_hand()
@@ -752,7 +743,7 @@ func sorcery__transform_into_fafnir_knight(target_field):
     card.effect_store['fafnir_knight_transformed_card_key'] = transformed_card_key
 
 func sorcery__plus_0_plus_3_or_summon_a_0_3(target_field):
-    if target_field.is_empty():
+    if target_field.is_unoccupied():
         create('PlateShield').add_to_field(target_field)
     else:
         target_field.card.buff(0,3)
@@ -903,10 +894,8 @@ func exec_effect(effect):
             attack_immediately()
         'create_shiv':
             create_x_shivs(effect[1])
-        'battlecry__every_4_minus_1_minus_1':
-            battlecry__every_4_minus_1_minus_1()
         _:
-            print("UNknown effect type " + effect[0])
+            print("Unknown effect type " + effect[0])
 
 
 # battlecries
@@ -1015,8 +1004,7 @@ func timed_deal_1_opposing_side():
 func battlecry__heal_5_guarded_tower():
     if not field:
         return
-
-    field.friendly_tower_field().tower.heal(5)
+    field.tower.heal(5)
 
 func battlecry__charged_swap_at_hp():
     if charged:
@@ -1219,8 +1207,7 @@ func combo__attacks_immediately(target_field):
     attack_immediately()
 
 func deal_3_then_deal_3_to_tower(target_field):
-    deal_x(target_field, 3)
-    deal_x(target_field.friendly_tower_field(), 3)
+    deal_x_familiar_and_tower(target_field, 3)
 
 func combo__copy_to_hand(target_field):
     create(key).add_to_hand()
@@ -1271,7 +1258,7 @@ func ignition__plus_1_minus_1():
     check_for_death()
 
 func ignition__deal_2_all_in_lane():
-    deal_x_all_in_lane(field, 2)
+    deal_x_everything_in_lane(field, 2)
 
 func ignition__become_shield_form():
     become('ShieldFormOoze')
@@ -1296,11 +1283,14 @@ func apply_effect_damage_modifier(amount):
     
     return utils.max([0, amount + modifier])
 
-func deal_x(target_field, amount):
-    if target_field.type == 'familiar' && target_field.card != null:
-        deal_x_familiar(target_field.card, amount)
+func shoot(amount = at):
+    if field:
+        deal_x_in_lane(amount, field)
     else:
-        deal_x_tower(target_field.tower, amount)
+        print('Familiar wants to shoot, but has no field :(')
+
+func deal_x(target_field, amount):
+    deal_x_on_field(amount, target_field)
 
 func deal_x_familiar(familiar, amount):
     familiar.receive_damage(apply_effect_damage_modifier(amount))
@@ -1308,19 +1298,22 @@ func deal_x_familiar(familiar, amount):
 func deal_x_tower(tower, amount):
     tower.receive_damage(apply_effect_damage_modifier(amount))
 
-func deal_x_in_lane(x, f = field):
-    var familiar_field = f.opposing_familiar_field()
-    if familiar_field.is_empty():
-        deal_x(f.opposing_tower_field(), x)
+func deal_x_in_lane(amount, f = field):
+    deal_x_on_field(amount, f.opposing_field())
+func deal_x_on_field(amount, target_field):
+    if target_field.is_unoccupied():
+        deal_x_tower(target_field.tower, amount)
     else:
-        deal_x(familiar_field, x)
+        deal_x_familiar(target_field.card, amount)
 
-func deal_x_all_in_lane(target_field, amount):
-    for f in target_field.all_fields_in_same_lane():
-        if f.type == 'familiar' && f.card == null: # no familiar on field
-            pass
-        else:
-            deal_x(f, amount)
+func deal_x_everything_in_lane(target_field, amount):
+    deal_x_familiar_and_tower(target_field, amount)
+    var other_field = target_field.opposing_field()
+    deal_x_familiar_and_tower(other_field, amount)
+func deal_x_familiar_and_tower(target_field, amount):
+    deal_x_tower(target_field.tower, amount)
+    if !target_field.is_unoccupied():
+        deal_x_familiar(target_field.card, amount)
 
 func set_stats(at, hp):
     display_hint('%1d/%1d' % [at, hp], Color(0,1,0))
@@ -1529,12 +1522,8 @@ func start_attacking():
     
     attacking = true
     
-    attacks_a_tower = !field.opposing_familiar_field().card
-    var target_pos
-    if attacks_a_tower:
-        target_pos = field.opposing_tower_field().center_position()
-    else:
-        target_pos = field.opposing_familiar_field().center_position()
+    attacks_a_tower = field.opposing_field().is_unoccupied()
+    var target_pos = field.opposing_field().center_position()
     
     # attack animation
     $pos_tween.connect('tween_completed', self, 'attack_contact')
@@ -1545,14 +1534,15 @@ func attack_contact(unused, unused2):
     
     Game.executed_event('attack', self)
     
+    var opposing_tower = field.opposing_field().tower
     if(attacks_a_tower):
-        attack_that_tower(field.opposing_tower_field().tower)
+        attack_that_tower(opposing_tower)
     else:
-        var opposing_familiar = field.opposing_familiar_field().card
+        var opposing_familiar = field.opposing_field().card
         if opposing_familiar != null:
             attack_that_familiar(opposing_familiar)
         else:
-            print('DO NOT ATTACK A TOWER NOR A FAMILIAR, smtg is wrong')
+            attack_that_tower(opposing_tower)
     
     if not on_field():
         return

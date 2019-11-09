@@ -10,16 +10,16 @@ var card
 var tower
 
 func _ready():
-    # Called every time the node is added to the scene.
-    # Initialization here
     hide()
 
 func is_left(): return lane == 'left'
 func is_middle(): return lane == 'middle'
 func is_right(): return lane == 'right'
 
-func is_empty():
+func is_unoccupied():
     return type == 'familiar' && card == null
+func is_occupied():
+    return type == 'familiar' && card != null
 
 func is_hovered():
     return modern_is_hovered()
@@ -52,28 +52,10 @@ func _process(delta):
 func center_position():
     return rect_position + rect_size / 2
 
-func opposing_familiar_field():
+func opposing_field():
     for field in Game.fields():
         if field.type == 'familiar' && field.side != side && field.lane == lane:
             return field
-
-func opposing_tower_field():
-    for field in Game.fields():
-        if field.type == 'tower' && field.side != side && field.lane == lane:
-            return field
-
-func friendly_familiar_field():
-    for field in Game.fields():
-        if field.type == 'familiar' && field.side == side && field.lane == lane:
-            return field
-
-func friendly_tower_field():
-    for field in Game.fields():
-        if field.type == 'tower' && field.side == side && field.lane == lane:
-            return field
-
-func all_fields_in_same_lane():
-    return utils.filter_prop(Game.fields(), 'lane', lane)
 
 func field_to_the_right_in_ring():
     var query_lane

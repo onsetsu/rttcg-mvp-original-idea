@@ -329,9 +329,9 @@ position = Vector2( 715, 35 )
 
 [node name="field_left_enemy_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
-margin_top = 10.0
+margin_top = -225.793
 margin_right = 400.0
-margin_bottom = 60.0
+margin_bottom = -175.793
 
 [node name="field_left_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
@@ -350,16 +350,16 @@ type = "familiar"
 
 [node name="field_left_ally_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
-margin_top = 380.0
+margin_top = 891.714
 margin_right = 400.0
-margin_bottom = 430.0
+margin_bottom = 941.714
 side = "friendly"
 
 [node name="field_middle_enemy_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
-margin_top = 10.0
+margin_top = -225.793
 margin_right = 610.0
-margin_bottom = 60.0
+margin_bottom = -175.793
 lane = "middle"
 
 [node name="field_middle_enemy_familiar" parent="field" instance=ExtResource( 5 )]
@@ -381,17 +381,17 @@ type = "familiar"
 
 [node name="field_middle_ally_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
-margin_top = 380.0
+margin_top = 891.714
 margin_right = 610.0
-margin_bottom = 430.0
+margin_bottom = 941.714
 lane = "middle"
 side = "friendly"
 
 [node name="field_right_enemy_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
-margin_top = 10.0
+margin_top = -225.793
 margin_right = 820.0
-margin_bottom = 60.0
+margin_bottom = -175.793
 lane = "right"
 
 [node name="field_right_enemy_familiar" parent="field" instance=ExtResource( 5 )]
@@ -413,9 +413,9 @@ type = "familiar"
 
 [node name="field_right_ally_tower" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
-margin_top = 380.0
+margin_top = 891.714
 margin_right = 820.0
-margin_bottom = 430.0
+margin_bottom = 941.714
 lane = "right"
 side = "friendly"
 
@@ -480,5 +480,4 @@ valign = 1
 [node name="elements" type="Node" parent="."]
 
 [node name="effects" type="Node" parent="."]
-
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
