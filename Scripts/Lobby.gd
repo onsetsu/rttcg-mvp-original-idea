@@ -214,7 +214,6 @@ func __unused__():
         "Arcanist" : 1,
         "Concentrate" : 1,
         "Duelist" : 1,
-        "KnifeJuggler" : 1,
         "AsuraPriest" : 1,
         "SharedGrowth" : 1,
         "ComboFighter" : 1,

@@ -126,7 +126,7 @@ func HiredArm(card):
         effect = ['create_shiv', 1],
     }]
 
-# #design: too similar to knife juggler
+# #design: too similar to HiredArm
 func AsuraPriest(card):
     card.key = 'AsuraPriest'
     card.card_name = 'Asura Priest'
@@ -1278,10 +1278,7 @@ func ForgottenSoul(card):
     card.at = 2
     card.hp = 2
     card.no_damage = true
-    card.effects = [{
-        trigger = 'battlecry',
-        effect = ['battlecry__every_4_minus_1_minus_1'],
-    }]
+    card.battlecry = 'battlecry__every_4_minus_1_minus_1'
 
 func ElixirElemental(card):
     card.key = 'ElixirElemental'
@@ -1578,7 +1575,7 @@ func RockThrow(card):
     card.cost = 2
     card.type = 'sorcery'
     card.targeting = 'targets_familiar'
-    card.effect = 'deal_5'
+    card.effect = 'sorcery__deal_5'
 
 func ManaSapling(card):
     card.deck = 'enemy'
@@ -1906,7 +1903,7 @@ func AwakeTheWalls(card):
     
     card.key = 'AwakeTheWalls'
     card.card_name = 'Awake The Walls'
-    card.text = 'All AIs shoot with their HP.'
+    card.text = 'All Enemies shoot with their HP.'
     card.cost = 2
     card.type = 'sorcery'
     card.targeting = 'targets_not_required'

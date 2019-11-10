@@ -327,97 +327,54 @@ position = Vector2( 715, 35 )
 
 [node name="field" type="Node2D" parent="."]
 
-[node name="field_left_enemy_tower" parent="field" instance=ExtResource( 5 )]
+[node name="field_left_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_top = 10.0
 margin_right = 400.0
-margin_bottom = 60.0
-
-[node name="field_left_enemy_familiar" parent="field" instance=ExtResource( 5 )]
-margin_left = 190.0
-margin_top = 60.0
-margin_right = 400.0
 margin_bottom = 220.0
-type = "familiar"
+familiar_position = Vector2( 105, 130 )
 
 [node name="field_left_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_top = 220.0
 margin_right = 400.0
-margin_bottom = 380.0
-side = "friendly"
-type = "familiar"
-
-[node name="field_left_ally_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 190.0
-margin_top = 380.0
-margin_right = 400.0
 margin_bottom = 430.0
 side = "friendly"
-
-[node name="field_middle_enemy_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 400.0
-margin_top = 10.0
-margin_right = 610.0
-margin_bottom = 60.0
-lane = "middle"
+familiar_position = Vector2( 105, 80 )
 
 [node name="field_middle_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
-margin_top = 60.0
+margin_top = 10.0
 margin_right = 610.0
 margin_bottom = 220.0
 lane = "middle"
-type = "familiar"
+familiar_position = Vector2( 105, 130 )
 
 [node name="field_middle_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 400.0
 margin_top = 220.0
 margin_right = 610.0
-margin_bottom = 380.0
-lane = "middle"
-side = "friendly"
-type = "familiar"
-
-[node name="field_middle_ally_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 400.0
-margin_top = 380.0
-margin_right = 610.0
 margin_bottom = 430.0
 lane = "middle"
 side = "friendly"
-
-[node name="field_right_enemy_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 610.0
-margin_top = 10.0
-margin_right = 820.0
-margin_bottom = 60.0
-lane = "right"
+familiar_position = Vector2( 105, 80 )
 
 [node name="field_right_enemy_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
-margin_top = 60.0
+margin_top = 10.0
 margin_right = 820.0
 margin_bottom = 220.0
 lane = "right"
-type = "familiar"
+familiar_position = Vector2( 105, 130 )
 
 [node name="field_right_ally_familiar" parent="field" instance=ExtResource( 5 )]
 margin_left = 610.0
 margin_top = 220.0
 margin_right = 820.0
-margin_bottom = 380.0
-lane = "right"
-side = "friendly"
-type = "familiar"
-
-[node name="field_right_ally_tower" parent="field" instance=ExtResource( 5 )]
-margin_left = 610.0
-margin_top = 380.0
-margin_right = 820.0
 margin_bottom = 430.0
 lane = "right"
 side = "friendly"
+familiar_position = Vector2( 105, 80 )
 
 [node name="player_deck" parent="." instance=ExtResource( 6 )]
 position = Vector2( 924, 374 )
@@ -480,5 +437,4 @@ valign = 1
 [node name="elements" type="Node" parent="."]
 
 [node name="effects" type="Node" parent="."]
-
 [connection signal="pressed" from="win-lose-box/VBoxContainer/return-button" to="." method="_on_returnbutton_pressed"]
