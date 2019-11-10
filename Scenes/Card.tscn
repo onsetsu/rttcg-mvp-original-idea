@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Card_transfrom.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/card_template/cards/Tex_HP.PNG" type="Texture" id=2]
@@ -23,6 +23,9 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 18
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 5 )
 
 [node name="Card" type="Node2D"]
@@ -99,7 +102,6 @@ valign = 1
 autowrap = true
 
 [node name="health" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 54.5, 52.1638 )
 
 [node name="heart" type="Sprite" parent="health"]
@@ -143,6 +145,27 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
+align = 1
+valign = 1
+
+[node name="cost" type="Node2D" parent="."]
+position = Vector2( 62.4978, -31.2489 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="circle" type="Sprite" parent="cost"]
+scale = Vector2( 0.125, 0.125 )
+texture = ExtResource( 8 )
+
+[node name="cost" type="Label" parent="cost"]
+anchor_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.0509804, 0.0862745, 1, 1 )
+text = "2"
 align = 1
 valign = 1
 

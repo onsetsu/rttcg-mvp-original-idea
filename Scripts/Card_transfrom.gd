@@ -15,6 +15,8 @@ var text_fn
 
 var type = 'familiar' # sorcery
 
+var cost = 1
+
 # for sorceries
 var targeting
 var effect
@@ -129,6 +131,8 @@ func update_appearance():
         $text.text = funcref(self, text_fn).call_func()
     else:
         $text.text = str(text)
+    
+    $cost/cost.text = str(cost)
 
     if is_familiar():
         $attack/at.text = str(at)
