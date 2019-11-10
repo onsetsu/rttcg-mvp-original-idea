@@ -1432,13 +1432,13 @@ func move_to_field(new_field):
         field = null
     field = new_field
     field.card = self
-    go_to(field.center_position(), 0.3)
+    go_to(field.get_familiar_position(), 0.3)
 
 func add_to_field(field):
     add_to_group('field')
     self.field = field
     field.card = self
-    go_to(field.center_position(), 0.3)
+    go_to(field.get_familiar_position(), 0.3)
 
 func remove_from_field():
     # needs to be called explicitly, because we have an extra instance 
@@ -1503,7 +1503,7 @@ func cancel_attacking():
 
     cancel_go_to()
     # TODO: for some reason, this go_to makes the card snap to its fields center position after connection with the attack target
-    #go_to(field.center_position(), 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+    #go_to(field.get_familiar_position(), 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 
 func setup_charge_to_attack():
     attack_timer_running = true
@@ -1521,7 +1521,7 @@ func start_attacking():
     attacking = true
     
     attacks_a_tower = field.opposing_field().is_unoccupied()
-    var target_pos = field.opposing_field().center_position()
+    var target_pos = field.opposing_field().get_familiar_position()
     
     # attack animation
     $pos_tween.connect('tween_completed', self, 'attack_contact')
@@ -1547,7 +1547,7 @@ func attack_contact(unused, unused2):
     
     # release animation
     $pos_tween.connect('tween_completed', self, 'attack_released')
-    go_to(field.center_position(), 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+    go_to(field.get_familiar_position(), 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 
 func attack_that_familiar(familiar):
     familiar.receive_damage(at)

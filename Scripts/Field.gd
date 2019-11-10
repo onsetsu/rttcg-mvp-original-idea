@@ -4,6 +4,7 @@ onready var Game = get_tree().get_root().get_node('Game')
 
 export var lane = 'left' # middle, right
 export var side = 'enemy' # friendly
+export(Vector2) var familiar_position = Vector2(0, 0)
 
 var card
 var tower
@@ -48,8 +49,8 @@ func _process(delta):
     else:
         hide()
 
-func center_position():
-    return rect_position + rect_size / 2
+func get_familiar_position():
+    return rect_position + familiar_position
 
 func opposing_field():
     for field in Game.fields():
